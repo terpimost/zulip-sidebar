@@ -11,15 +11,17 @@
     --icon-document: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3e%3cpath fill='black' d='M6.03 12.38h3.93a.65.65 0 0 0 .66-.66.64.64 0 0 0-.18-.47.63.63 0 0 0-.47-.19H6.04a.65.65 0 0 0-.67.65c0 .19.07.35.2.47.12.13.27.2.46.2Zm0-2.63h3.93a.65.65 0 0 0 .66-.65.64.64 0 0 0-.18-.47.63.63 0 0 0-.47-.2H6.04a.65.65 0 0 0-.67.66c0 .18.07.34.2.47.12.13.27.19.46.19ZM4.06 15c-.36 0-.67-.13-.93-.39a1.27 1.27 0 0 1-.38-.92V2.3c0-.36.13-.67.39-.92.25-.26.56-.39.92-.39H9.2c.18 0 .34.03.5.1.15.05.3.15.43.28l2.74 2.74a1.26 1.26 0 0 1 .38.93v8.64c0 .36-.13.67-.39.92-.25.26-.56.39-.92.39H4.06ZM8.88 4.72v-2.4H4.05v11.37h7.88V5.38h-2.4a.63.63 0 0 1-.48-.2.63.63 0 0 1-.19-.46Z'/%3e%3c/svg%3e");
     --icon-calendar-days: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3e%3cg fill='black'%3e%3cpath d='M4.67 8.66c0-.36.3-.66.66-.66h.01a.66.66 0 1 1 0 1.33.67.67 0 0 1-.67-.67ZM8 8a.66.66 0 1 0 0 1.33A.66.66 0 1 0 8 8Zm2 .66c0-.36.3-.66.67-.66a.67.67 0 0 1 0 1.33.66.66 0 0 1-.67-.67Zm-4.67 2.01a.66.66 0 1 0 0 1.33h.01a.66.66 0 1 0 0-1.33Zm2 .66c0-.37.3-.66.67-.66A.66.66 0 1 1 8 12a.66.66 0 0 1-.67-.67Zm3.34-.66a.66.66 0 1 0 0 1.33.67.67 0 0 0 0-1.33Z'/%3e%3cpath fill-rule='evenodd' d='M11.33.67a.66.66 0 1 0-1.33 0v.66H6V.66a.66.66 0 1 0-1.33 0v.67H3.33a2 2 0 0 0-2 2v9.34c0 1.1.9 2 2 2h9.34a2 2 0 0 0 2-2V3.33a2 2 0 0 0-2-2h-1.34V.66Zm2 4.66v-2c0-.37-.3-.67-.66-.67h-1.34v.67a.66.66 0 1 1-1.33 0v-.67H6v.67a.66.66 0 1 1-1.33 0v-.67H3.33c-.37 0-.67.3-.67.67v2h10.68ZM2.67 6.66h10.68v6c0 .37-.3.67-.67.67H3.33a.67.67 0 0 1-.67-.66v-6Z' clip-rule='evenodd'/%3e%3c/g%3e%3c/svg%3e");
 
-    --color-sidebar-item-bg-hover: hsl(0, 0%, 96%);
+    --color-sidebar-item-bg-hover: hsl(0, 0%, 97%);
     --color-sidebar-item-outline-hover: hsla(0, 0%, 0%, 0.1);
     --color-sidebar-item-bg-selected: hsl(0, 0%, 100%);
 
     --color-clickable-icon: hsla(240, 20%, 50%, 1);
     --color-clickable-icon-hover: hsla(240, 100%, 15%, 1);
-    --color-clickable-icon-hover-bg: hsla(240, 100%, 50%, 0.1);
+    --color-clickable-icon-hover-bg: hsla(240, 100%, 50%, 0.08);
 
-    --transition-sidebar-general: all 140ms liner;
+    --transition-sidebar-all-slow: all 140ms linear;
+    --transition-sidebar-all-medium: all 140ms linear;
+    --transition-sidebar-all-fast: all 40ms ease-out;
 
     --border-empty: 1px solid transparent;
 }
@@ -110,8 +112,8 @@ i.icon {
     flex-wrap: nowrap;
     flex-direction: row;
     align-items: stretch;
-    flex-grow: 1;
     cursor: pointer;
+    padding-right: 10px;
 }
 .sidebar-group__summary-expander{
     width: 20px;
@@ -120,8 +122,7 @@ i.icon {
     justify-content: center;
     color: #1D2E48;
     opacity: 0.5;
-    transition: var(--transition-sidebar-general);
-    transition-duration: 250ms;
+    transition: var(--transition-sidebar-all-slow);
 }
 .icon-trangle-right{
     display: inline-block;
@@ -134,7 +135,7 @@ i.icon {
     -webkit-mask-position: center;
     mask-repeat: no-repeat;
     -webkit-mask-repeat: no-repeat;
-    transition: var(--transition-sidebar-general);
+    transition: var(--transition-sidebar-all-medium);
 }
 .sidebar-group._expanded .sidebar-group__summary-expander .icon-trangle-right{
     transform: rotate(90deg);
@@ -154,8 +155,7 @@ i.icon {
     color: hsl(216, 43%, 20%);
     opacity: 0.5;
     user-select: none;
-    transition: var(--transition-sidebar-general);
-    transition-duration: 250ms;
+    transition: var(--transition-sidebar-all-slow);
 }
 
 .sidebar-group__expander-area:hover .sidebar-group__summary-label,
@@ -163,6 +163,36 @@ i.icon {
     opacity: 0.7;
 }
 
+.sidebar-group__buttons{
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-end;
+    flex-shrink: 0;
+    flex-grow: 1;
+}
+.sidebar-group__button{
+    color: var(--color-clickable-icon);
+    border: none;
+    user-select: none;
+    cursor: pointer;
+    min-width: 26px;
+    flex-grow: 1;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+.sidebar-group__button:hover,
+.sidebar-group__button:focus-visible{
+    transition: none;
+    color: var(--color-clickable-icon-hover);
+    background-color: var(--color-clickable-icon-hover-bg);
+}
+.sidebar-group__button:active{
+    scale: 0.94;
+}
 
 
 
@@ -179,7 +209,7 @@ i.icon {
     flex-shrink: 0;
     cursor: pointer;
     opacity: 0;
-    transition: var(--transition-sidebar-general);
+    transition: none;
 }
 .sidebar-item__button-more:hover,
 .sidebar-item__button-more:focus-visible{
@@ -190,7 +220,6 @@ i.icon {
 }
 .sidebar-item__button-more:active{
     scale: 0.94;
-    transition: var(--transition-sidebar-general);
 }
 
 .sidebar-item__button-more._hidden{
@@ -252,6 +281,11 @@ i.icon {
     align-items: center;
     flex-grow: 1;
     color: hsl(0, 0%, 20%);
+    transition: var(--transition-sidebar-all-medium);
+}
+.sidebar-row a:active{
+    scale: 0.98;
+    transition: var(--transition-sidebar-all-fast);
 }
 .sidebar-row__label{
     flex-grow: 1;
