@@ -217,7 +217,7 @@
             <span class="sidebar-group__summary-label">Views</span>
           </div>
           <div class="sidebar-item__button-more hidden-for-spectators" tabindex="0">
-            <i class="icon icon_dots-vertical"></i>
+            <i class="icon icon-dots-vertical"></i>
           </div>
         </div>
 
@@ -230,76 +230,88 @@
           </span> 
           to this:
           <div class="sidebar-item__button-more hidden-for-spectators" tabindex="0">
-            <i class="icon icon_dots-vertical"></i>
+            <i class="icon icon-dots-vertical"></i>
           </div>
         -->
         <!-- add title="Options" for more button  -->
+        <!-- replaced icon in the list item inside <a> from:
+        <span class="filter-icon">
+          <i class="fa fa-align-left" aria-hidden="true"></i>
+        </span>
+        to this:
+        <i class="icon icon-interleaved-all" aria-hidden="true"></i> 
+        -->
 
         <ul id="global_filters" class="filters">
           <li tabindex="0" onclick="onSidebarRowClick(event)" onkeydown="onSidebarRowKeyDown(event)" class="top_left_all_messages top_left_row sidebar-row" title="All messages (a)">
             <a tabindex="-1" href="#all_messages" class="home-link">
-              <span class="filter-icon">
-                <i class="fa fa-align-left" aria-hidden="true"></i>
-              </span>
+              <i class="icon icon-interleaved-all sidebar-row__icon sidebar-row__icon" aria-hidden="true"></i>
               <span class="sidebar-row__label">All messages</span>
-              <span class="unread-count">2</span>
+              <span class="unread-count">321</span>
             </a>
             <div class="sidebar-item__button-more hidden-for-spectators" title="Options" tabindex="0">
-              <i class="icon icon_dots-vertical"></i>
+              <i class="icon icon-dots-vertical"></i>
             </div>
           </li>
           <li onclick="onSidebarRowClick(event)" onkeydown="onSidebarRowKeyDown(event)" tabindex="0" class="top_left_recent_topics top_left_row sidebar-row" title="Recent conversations (t)">
             <a tabindex="-1" href="#recent">
-              <span class="filter-icon">
-                <i class="fa fa-clock-o" aria-hidden="true"></i>
-              </span><span class="sidebar-row__label">Recent conversations</span>
+              <i class="icon icon-inbox sidebar-row__icon" aria-hidden="true"></i>
+              <span class="sidebar-row__label">Inbox</span>
             </a>
             <div class="sidebar-item__button-more hidden-for-spectators" title="Options" tabindex="0">
-              <i class="icon icon_dots-vertical"></i>
+              <i class="icon icon-dots-vertical"></i>
+            </div>
+          </li>
+          <li onclick="onSidebarRowClick(event)" onkeydown="onSidebarRowKeyDown(event)" tabindex="0" 
+              class="top_left_recent_topics top_left_row sidebar-row _selected" 
+              title="Recent conversations (t)"
+          >
+            <a tabindex="-1" href="#recent">
+              <i class="icon icon-clock sidebar-row__icon" aria-hidden="true"></i>
+              <span class="sidebar-row__label">Recent conversations</span>
+            </a>
+            <div class="sidebar-item__button-more hidden-for-spectators" title="Options" tabindex="0">
+              <i class="icon icon-dots-vertical"></i>
             </div>
           </li>
           <li onclick="onSidebarRowClick(event)" onkeydown="onSidebarRowKeyDown(event)" tabindex="0" class="top_left_mentions top_left_row sidebar-row hidden-for-spectators" title="Mentions">
             <a tabindex="-1" href="#narrow/is/mentioned">
-              <span class="filter-icon">
-                <i class="fa fa-at" aria-hidden="true"></i>
-              </span><span>Mentions</span>
+              <i class="icon icon-at sidebar-row__icon" aria-hidden="true"></i>
+              <span>Mentions</span>
               <span class="unread-count" style="display: none;"></span>
             </a>
             <div class="sidebar-item__button-more hidden-for-spectators" title="Options" tabindex="0">
-              <i class="icon icon_dots-vertical"></i>
+              <i class="icon icon-dots-vertical"></i>
             </div>
           </li>
           <li onclick="onSidebarRowClick(event)" onkeydown="onSidebarRowKeyDown(event)" tabindex="0" class="top_left_starred_messages top_left_row sidebar-row hidden-for-spectators" title="Starred messages">
             <a tabindex="-1" href="#narrow/is/starred">
-              <span class="filter-icon">
-                <i class="fa fa-star" aria-hidden="true"></i>
-              </span><span class="sidebar-row__label">Starred messages</span>
+              <i class="icon icon-star sidebar-row__icon" aria-hidden="true"></i>
+              <span class="sidebar-row__label">Starred messages</span>
               <span class="item-count">154</span>
             </a>
             <div class="sidebar-item__button-more hidden-for-spectators" title="Options" tabindex="0">
-              <i class="icon icon_dots-vertical"></i>
+              <i class="icon icon-dots-vertical"></i>
             </div>
           </li>
           <li onclick="onSidebarRowClick(event)" onkeydown="onSidebarRowKeyDown(event)" tabindex="0" class="top_left_drafts top_left_row sidebar-row hidden-for-spectators" title="Drafts (d)">
             <a tabindex="-1" href="#drafts">
-              <span class="filter-icon">
-                <i class="fa fa-pencil" aria-hidden="true"></i>
-              </span><span class="sidebar-row__label">Drafts</span>
-              <span class="unread-count" style="display: inline;">1</span>
+              <i class="icon icon-document sidebar-row__icon" aria-hidden="true"></i>
+              <span class="sidebar-row__label">Drafts</span>
+              <span class="unread-count" style="display: inline;">2</span>
             </a>
             <div class="sidebar-item__button-more hidden-for-spectators" title="Options" tabindex="0">
-              <i class="icon icon_dots-vertical"></i>
+              <i class="icon icon-dots-vertical"></i>
             </div>
           </li>
           <li onclick="onSidebarRowClick(event)" onkeydown="onSidebarRowKeyDown(event)" tabindex="0" class="top_left_scheduled_messages top_left_row sidebar-row hidden-for-spectators">
             <a tabindex="-1" href="#scheduled">
-              <span class="filter-icon">
-                <i class="fa fa-calendar" aria-hidden="true"></i>
-              </span><span class="sidebar-row__label">Scheduled messages</span>
-              <span class="unread-count"></span>
+              <i class="icon icon-calendar-days sidebar-row__icon" aria-hidden="true"></i>
+              <span class="sidebar-row__label">Scheduled messages</span>
+              <span class="item-count">1</span>
             </a>
             <div class="sidebar-item__button-more hidden-for-spectators" title="Options" tabindex="0">
-              <i class="icon icon_dots-vertical"></i>
+              <i class="icon icon-dots-vertical"></i>
             </div>
           </li>
         </ul>
