@@ -164,7 +164,9 @@ i.icon {
 }
 
 .sidebar-group__summary:hover .sidebar-item__button-more,
-.sidebar-row:hover .sidebar-item__button-more{
+.sidebar-group__summary:focus-visible .sidebar-item__button-more,
+.sidebar-row:hover .sidebar-item__button-more,
+.sidebar-row:focus-visible .sidebar-item__button-more{
     opacity: 0.75;
     transition: var(--transition-sidebar-general);
     transition-duration: 250ms;
@@ -198,7 +200,8 @@ i.icon {
     outline: 1px solid hsla(0, 0%, 0%, 0);
     cursor: pointer;
 }
-.sidebar-row:hover {
+.sidebar-row:hover,
+.sidebar-row:focus-visible {
     background-color: var(--color-sidebar-item-bg-hover);
     outline: 1px solid var(--color-sidebar-item-outline-hover);
     transition: var(--transition-sidebar-row-hover-in);

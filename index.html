@@ -235,8 +235,8 @@
         -->
 
         <ul id="global_filters" class="filters">
-          <li onclick="onSidebarRowClick(event)" onclick="onSidebarRowClick(event)" tabindex="0" class="top_left_all_messages top_left_row sidebar-row" title="All messages (a)">
-            <a href="#all_messages" class="home-link">
+          <li tabindex="0" onclick="onSidebarRowClick(event)" onkeydown="onSidebarRowKeyDown(event)" class="top_left_all_messages top_left_row sidebar-row" title="All messages (a)">
+            <a tabindex="-1" href="#all_messages" class="home-link">
               <span class="filter-icon">
                 <i class="fa fa-align-left" aria-hidden="true"></i>
               </span>
@@ -247,8 +247,8 @@
               <i class="icon icon_dots-vertical"></i>
             </div>
           </li>
-          <li onclick="onSidebarRowClick(event)" tabindex="0" class="top_left_recent_topics top_left_row sidebar-row" title="Recent conversations (t)">
-            <a href="#recent">
+          <li onclick="onSidebarRowClick(event)" onkeydown="onSidebarRowKeyDown(event)" tabindex="0" class="top_left_recent_topics top_left_row sidebar-row" title="Recent conversations (t)">
+            <a tabindex="-1" href="#recent">
               <span class="filter-icon">
                 <i class="fa fa-clock-o" aria-hidden="true"></i>
               </span><span class="sidebar-row__label">Recent conversations</span>
@@ -257,8 +257,8 @@
               <i class="icon icon_dots-vertical"></i>
             </div>
           </li>
-          <li onclick="onSidebarRowClick(event)" tabindex="0" class="top_left_mentions top_left_row sidebar-row hidden-for-spectators" title="Mentions">
-            <a href="#narrow/is/mentioned">
+          <li onclick="onSidebarRowClick(event)" onkeydown="onSidebarRowKeyDown(event)" tabindex="0" class="top_left_mentions top_left_row sidebar-row hidden-for-spectators" title="Mentions">
+            <a tabindex="-1" href="#narrow/is/mentioned">
               <span class="filter-icon">
                 <i class="fa fa-at" aria-hidden="true"></i>
               </span><span>Mentions</span>
@@ -268,8 +268,8 @@
               <i class="icon icon_dots-vertical"></i>
             </div>
           </li>
-          <li onclick="onSidebarRowClick(event)" tabindex="0" class="top_left_starred_messages top_left_row sidebar-row hidden-for-spectators" title="Starred messages">
-            <a href="#narrow/is/starred">
+          <li onclick="onSidebarRowClick(event)" onkeydown="onSidebarRowKeyDown(event)" tabindex="0" class="top_left_starred_messages top_left_row sidebar-row hidden-for-spectators" title="Starred messages">
+            <a tabindex="-1" href="#narrow/is/starred">
               <span class="filter-icon">
                 <i class="fa fa-star" aria-hidden="true"></i>
               </span><span class="sidebar-row__label">Starred messages</span>
@@ -279,8 +279,8 @@
               <i class="icon icon_dots-vertical"></i>
             </div>
           </li>
-          <li onclick="onSidebarRowClick(event)" tabindex="0" class="top_left_drafts top_left_row sidebar-row hidden-for-spectators" title="Drafts (d)">
-            <a href="#drafts">
+          <li onclick="onSidebarRowClick(event)" onkeydown="onSidebarRowKeyDown(event)" tabindex="0" class="top_left_drafts top_left_row sidebar-row hidden-for-spectators" title="Drafts (d)">
+            <a tabindex="-1" href="#drafts">
               <span class="filter-icon">
                 <i class="fa fa-pencil" aria-hidden="true"></i>
               </span><span class="sidebar-row__label">Drafts</span>
@@ -290,8 +290,8 @@
               <i class="icon icon_dots-vertical"></i>
             </div>
           </li>
-          <li onclick="onSidebarRowClick(event)" tabindex="0" class="top_left_scheduled_messages top_left_row sidebar-row hidden-for-spectators">
-            <a href="#scheduled">
+          <li onclick="onSidebarRowClick(event)" onkeydown="onSidebarRowKeyDown(event)" tabindex="0" class="top_left_scheduled_messages top_left_row sidebar-row hidden-for-spectators">
+            <a tabindex="-1" href="#scheduled">
               <span class="filter-icon">
                 <i class="fa fa-calendar" aria-hidden="true"></i>
               </span><span class="sidebar-row__label">Scheduled messages</span>
