@@ -211,62 +211,95 @@
 
 
       <div class="narrows_panel sidebar-group _expanded">
-        <div class="sidebar-group__summary">
+        <div class="sidebar-group__summary" tabindex="0">
           <div class="sidebar-group__expander-area">
             <span class="sidebar-group__summary-expander"><i class="icon-trangle-right"></i></span>
             <span class="sidebar-group__summary-label">Views</span>
           </div>
-          <div class="sidebar-item__button-more"></div>
-
-         
-          
-
+          <div class="sidebar-item__button-more hidden-for-spectators" tabindex="0">
+            <i class="icon icon_dots-vertical"></i>
+          </div>
         </div>
+
+        <!-- added "sidebar-row" class to every li item to provide general styling,
+            potentially that can replace top_left_row -->
+        <!-- added "sidebar-row__label" for a span inside <a> -->
+        <!-- replaced more button from this:
+          <span class="arrow all-messages-sidebar-menu-icon hidden-for-spectators">
+            <i class="zulip-icon zulip-icon-ellipsis-v-solid" aria-hidden="true"></i>
+          </span> 
+          to this:
+          <div class="sidebar-item__button-more hidden-for-spectators" tabindex="0">
+            <i class="icon icon_dots-vertical"></i>
+          </div>
+        -->
+
         <ul id="global_filters" class="filters">
-          <li class="top_left_all_messages top_left_row" title="All messages (a)">
+          <li onclick="onSidebarRowClick(event)" onclick="onSidebarRowClick(event)" tabindex="0" class="top_left_all_messages top_left_row sidebar-row" title="All messages (a)">
             <a href="#all_messages" class="home-link">
               <span class="filter-icon">
                 <i class="fa fa-align-left" aria-hidden="true"></i>
-              </span><span>All messages</span>
-              <span class="unread_count" style="display: inline;">2</span>
+              </span>
+              <span class="sidebar-row__label">All messages</span>
+              <span class="unread-count">2</span>
             </a>
-            <span class="arrow all-messages-sidebar-menu-icon hidden-for-spectators"><i
-                class="zulip-icon zulip-icon-ellipsis-v-solid" aria-hidden="true"></i></span>
+            <div class="sidebar-item__button-more hidden-for-spectators" tabindex="0">
+              <i class="icon icon_dots-vertical"></i>
+            </div>
           </li>
-          <li class="top_left_recent_topics top_left_row" title="Recent conversations (t)">
+          <li onclick="onSidebarRowClick(event)" tabindex="0" class="top_left_recent_topics top_left_row sidebar-row" title="Recent conversations (t)">
             <a href="#recent">
               <span class="filter-icon">
                 <i class="fa fa-clock-o" aria-hidden="true"></i>
-              </span><span>Recent conversations</span>
+              </span><span class="sidebar-row__label">Recent conversations</span>
             </a>
+            <div class="sidebar-item__button-more hidden-for-spectators" tabindex="0">
+              <i class="icon icon_dots-vertical"></i>
+            </div>
           </li>
-          <li class="top_left_mentions top_left_row hidden-for-spectators" title="Mentions">
+          <li onclick="onSidebarRowClick(event)" tabindex="0" class="top_left_mentions top_left_row sidebar-row hidden-for-spectators" title="Mentions">
             <a href="#narrow/is/mentioned">
               <span class="filter-icon">
                 <i class="fa fa-at" aria-hidden="true"></i>
               </span><span>Mentions</span>
-              <span class="unread_count" style="display: none;"></span>
+              <span class="unread-count" style="display: none;"></span>
             </a>
+            <div class="sidebar-item__button-more hidden-for-spectators" tabindex="0">
+              <i class="icon icon_dots-vertical"></i>
+            </div>
           </li>
-          <li class="top_left_starred_messages top_left_row hidden-for-spectators" title="Starred messages">
+          <li onclick="onSidebarRowClick(event)" tabindex="0" class="top_left_starred_messages top_left_row sidebar-row hidden-for-spectators" title="Starred messages">
             <a href="#narrow/is/starred">
               <span class="filter-icon">
                 <i class="fa fa-star" aria-hidden="true"></i>
-              </span><span>Starred messages</span>
-              <span class="unread_count" style="display: inline;">154</span>
+              </span><span class="sidebar-row__label">Starred messages</span>
+              <span class="item-count">154</span>
             </a>
-            <span class="arrow starred-messages-sidebar-menu-icon"><i class="zulip-icon zulip-icon-ellipsis-v-solid"
-                aria-hidden="true"></i></span>
+            <div class="sidebar-item__button-more hidden-for-spectators" tabindex="0">
+              <i class="icon icon_dots-vertical"></i>
+            </div>
           </li>
-          <li class="top_left_drafts top_left_row hidden-for-spectators" title="Drafts (d)">
+          <li onclick="onSidebarRowClick(event)" tabindex="0" class="top_left_drafts top_left_row sidebar-row hidden-for-spectators" title="Drafts (d)">
             <a href="#drafts">
               <span class="filter-icon">
                 <i class="fa fa-pencil" aria-hidden="true"></i>
-              </span><span>Drafts</span>
-              <span class="unread_count" style="display: inline;">1</span>
+              </span><span class="sidebar-row__label">Drafts</span>
+              <span class="unread-count" style="display: inline;">1</span>
             </a>
-            <span class="arrow drafts-sidebar-menu-icon"><i class="zulip-icon zulip-icon-ellipsis-v-solid"
-                aria-hidden="true"></i></span>
+            <div class="sidebar-item__button-more hidden-for-spectators" tabindex="0">
+              <i class="icon icon_dots-vertical"></i>
+            </div>
+          </li>
+          <li onclick="onSidebarRowClick(event)" tabindex="0" class="top_left_scheduled_messages top_left_row sidebar-row hidden-for-spectators">
+            <a href="#scheduled">
+              <span class="filter-icon">
+                <i class="fa fa-calendar" aria-hidden="true"></i>
+              </span><span class="sidebar-row__label">Scheduled messages</span>
+              <span class="unread-count"></span>
+            </a>
+            <div class="sidebar-item__button-more hidden-for-spectators" tabindex="0">
+              <i class="icon icon_dots-vertical"></i>
+            </div>
           </li>
         </ul>
       </div>

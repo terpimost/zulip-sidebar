@@ -15,3 +15,9 @@ function onThemeSwitcherClick(){
   document.body.classList.toggle('dark')
 }
 
+// if click was on a row but not on a button or a link, this could be on the border of li
+function onSidebarRowClick(event){
+  if(event.target.classList.contains('sidebar-row')){
+    event.target.querySelector('a').click()
+  }
+}
