@@ -15,10 +15,17 @@ function onThemeSwitcherClick(){
   document.body.classList.toggle('dark')
 }
 
+
+
 // if click was on a row but not on a button or a link, this could be on the border of li
 function onSidebarRowClick(event){
   if(event.target.classList.contains('sidebar-row')){
     event.currentTarget.querySelector('a').click()
+  }
+}
+function onSidebarGroupClick(event){
+  if(event.target.classList.contains('sidebar-group__summary')){
+    event.currentTarget.querySelector('.sidebar-group__expander-area').click()
   }
 }
 
@@ -28,4 +35,13 @@ function onSidebarRowKeyDown(event){
   if(event.key==='Enter'){
     event.currentTarget.querySelector('a').click()
   }
+}
+function onSidebarGroupKeyDown(event){
+  if(event.key==='Enter'){
+    event.currentTarget.querySelector('.sidebar-group__expander-area').click()
+  }
+}
+
+function onSidebarGroupExpanderAreaClick(event){
+  //TODO unfold and fold
 }

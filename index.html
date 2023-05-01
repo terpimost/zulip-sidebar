@@ -211,8 +211,8 @@
 
 
       <div class="narrows_panel sidebar-group _expanded">
-        <div class="sidebar-group__summary" tabindex="0">
-          <div class="sidebar-group__expander-area">
+        <div class="sidebar-group__summary" tabindex="0" onclick="onSidebarGroupClick(event)" onkeydown="onSidebarGroupKeyDown(event)">
+          <div class="sidebar-group__expander-area" onclick="onSidebarGroupExpanderAreaClick(event)">
             <span class="sidebar-group__summary-expander"><i class="icon-trangle-right"></i></span>
             <span class="sidebar-group__summary-label">Views</span>
           </div>
@@ -233,6 +233,7 @@
             <i class="icon icon_dots-vertical"></i>
           </div>
         -->
+        <!-- add title="Options" for more button  -->
 
         <ul id="global_filters" class="filters">
           <li tabindex="0" onclick="onSidebarRowClick(event)" onkeydown="onSidebarRowKeyDown(event)" class="top_left_all_messages top_left_row sidebar-row" title="All messages (a)">
@@ -243,7 +244,7 @@
               <span class="sidebar-row__label">All messages</span>
               <span class="unread-count">2</span>
             </a>
-            <div class="sidebar-item__button-more hidden-for-spectators" tabindex="0">
+            <div class="sidebar-item__button-more hidden-for-spectators" title="Options" tabindex="0">
               <i class="icon icon_dots-vertical"></i>
             </div>
           </li>
@@ -253,7 +254,7 @@
                 <i class="fa fa-clock-o" aria-hidden="true"></i>
               </span><span class="sidebar-row__label">Recent conversations</span>
             </a>
-            <div class="sidebar-item__button-more hidden-for-spectators" tabindex="0">
+            <div class="sidebar-item__button-more hidden-for-spectators" title="Options" tabindex="0">
               <i class="icon icon_dots-vertical"></i>
             </div>
           </li>
@@ -264,7 +265,7 @@
               </span><span>Mentions</span>
               <span class="unread-count" style="display: none;"></span>
             </a>
-            <div class="sidebar-item__button-more hidden-for-spectators" tabindex="0">
+            <div class="sidebar-item__button-more hidden-for-spectators" title="Options" tabindex="0">
               <i class="icon icon_dots-vertical"></i>
             </div>
           </li>
@@ -275,7 +276,7 @@
               </span><span class="sidebar-row__label">Starred messages</span>
               <span class="item-count">154</span>
             </a>
-            <div class="sidebar-item__button-more hidden-for-spectators" tabindex="0">
+            <div class="sidebar-item__button-more hidden-for-spectators" title="Options" tabindex="0">
               <i class="icon icon_dots-vertical"></i>
             </div>
           </li>
@@ -286,7 +287,7 @@
               </span><span class="sidebar-row__label">Drafts</span>
               <span class="unread-count" style="display: inline;">1</span>
             </a>
-            <div class="sidebar-item__button-more hidden-for-spectators" tabindex="0">
+            <div class="sidebar-item__button-more hidden-for-spectators" title="Options" tabindex="0">
               <i class="icon icon_dots-vertical"></i>
             </div>
           </li>
@@ -297,7 +298,7 @@
               </span><span class="sidebar-row__label">Scheduled messages</span>
               <span class="unread-count"></span>
             </a>
-            <div class="sidebar-item__button-more hidden-for-spectators" tabindex="0">
+            <div class="sidebar-item__button-more hidden-for-spectators" title="Options" tabindex="0">
               <i class="icon icon_dots-vertical"></i>
             </div>
           </li>

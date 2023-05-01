@@ -63,6 +63,7 @@
     flex-direction: row;
     align-items: stretch;
     flex-grow: 1;
+    cursor: pointer;
 }
 .sidebar-group__summary-expander{
     width: 20px;
