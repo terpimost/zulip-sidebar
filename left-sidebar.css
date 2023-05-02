@@ -115,6 +115,10 @@ i.icon {
     cursor: pointer;
     padding-right: 10px;
 }
+.sidebar-group__expander-area:active{
+    scale: 0.97;
+}
+
 .sidebar-group__summary-expander{
     width: 20px;
     display: flex;
@@ -169,7 +173,13 @@ i.icon {
     justify-content: flex-end;
     flex-shrink: 0;
     flex-grow: 1;
+    transition: var(--transition-sidebar-all-medium);
 }
+.sidebar-group._expanded ._group_expanded_hidden{
+    visibility: hidden;
+    opacity: 0;
+}
+
 .sidebar-group__button{
     color: var(--color-clickable-icon);
     border: none;
@@ -203,6 +213,19 @@ i.icon {
     height: 6px;
     border-radius: 4px;
     background-color: var(--color-clickable-icon) ;
+}
+
+.sidebar-group .sidebar-group__details{
+    pointer-events: none;
+    max-height: 0px;
+    overflow: hidden;
+    transition: var(--transition-sidebar-all-medium);
+}
+.sidebar-group._expanded .sidebar-group__details{
+    pointer-events: all;
+    /* visibility: visible; */
+    max-height: 100vh;
+    overflow: auto;
 }
 
 

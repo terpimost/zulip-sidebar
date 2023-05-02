@@ -43,5 +43,6 @@ function onSidebarGroupKeyDown(event){
 }
 
 function onSidebarGroupExpanderAreaClick(event){
-  //TODO unfold and fold
+  console.log(event.currentTarget.closest('.sidebar-group'));
+  event.currentTarget.closest('.sidebar-group').classList.toggle('_expanded')
 }

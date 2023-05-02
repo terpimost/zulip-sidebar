@@ -209,14 +209,13 @@
   <div class="column-left" id="left-sidebar-container">
     <div class="left-sidebar" id="left-sidebar" role="navigation">
 
-
       <div class="narrows_panel sidebar-group _expanded">
         <div class="sidebar-group__summary" tabindex="0" onclick="onSidebarGroupClick(event)" onkeydown="onSidebarGroupKeyDown(event)">
           <div class="sidebar-group__expander-area" onclick="onSidebarGroupExpanderAreaClick(event)">
             <span class="sidebar-group__summary-expander"><i class="icon-trangle-right"></i></span>
             <span class="sidebar-group__summary-label">Views</span>
           </div>
-          <div class="sidebar-group__buttons">
+          <div class="sidebar-group__buttons _group_expanded_hidden">
             <a class="sidebar-group__button" href="#all_messages">
               <i class="icon icon-interleaved-all sidebar-group__icon" ></i>
               <i class="sidebar-group__button-badge"></i>
@@ -261,7 +260,7 @@
         <i class="icon icon-interleaved-all" aria-hidden="true"></i> 
         -->
 
-        <ul id="global_filters" class="filters">
+        <ul id="global_filters" class="filters sidebar-group__details">
           <li tabindex="0" onclick="onSidebarRowClick(event)" onkeydown="onSidebarRowKeyDown(event)" class="top_left_all_messages top_left_row sidebar-row" title="All messages (a)">
             <a tabindex="-1" href="#all_messages" class="home-link">
               <i class="icon icon-interleaved-all sidebar-row__icon" aria-hidden="true"></i>
