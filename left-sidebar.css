@@ -183,6 +183,7 @@ i.icon {
     justify-content: center;
     flex-shrink: 0;
     cursor: pointer;
+    position: relative;
 }
 .sidebar-group__button:hover,
 .sidebar-group__button:focus-visible{
@@ -193,7 +194,16 @@ i.icon {
 .sidebar-group__button:active{
     scale: 0.94;
 }
-
+.sidebar-group__button-badge{
+    display: block;
+    position: absolute;
+    top: calc(50% - 11px);
+    right: calc(50% - 13px);
+    width: 6px;
+    height: 6px;
+    border-radius: 4px;
+    background-color: var(--color-clickable-icon) ;
+}
 
 
 .sidebar-item__button-more{
