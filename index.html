@@ -209,6 +209,7 @@
   <div class="column-left" id="left-sidebar-container">
     <div class="left-sidebar" id="left-sidebar" role="navigation">
 
+      <!-- VIEWS -->
       <div class="narrows_panel sidebar-group _expanded">
         <div class="sidebar-group__summary" tabindex="0" onclick="onSidebarGroupClick(event)" onkeydown="onSidebarGroupKeyDown(event)">
           <div class="sidebar-group__expander-area" onclick="onSidebarGroupExpanderAreaClick(event)">
@@ -223,7 +224,7 @@
             <a class="sidebar-group__button" href="#inbox">
               <i class="icon icon-inbox sidebar-group__icon" ></i>
             </a>
-            <a class="sidebar-group__button" href="#recent">
+            <a class="sidebar-group__button _selected" href="#recent">
               <i class="icon icon-clock sidebar-group__icon" ></i>
             </a>
             <a class="sidebar-group__button" href="#narrow/is/mentioned">
@@ -240,7 +241,7 @@
         </div>
 
         <!-- added "sidebar-row" class to every li item to provide general styling,
-            potentially that can replace top_left_row -->
+            removed top_left_row -->
         <!-- added "sidebar-row__label" for a span inside <a> -->
         <!-- replaced more button from this:
           <span class="arrow all-messages-sidebar-menu-icon hidden-for-spectators">
@@ -261,7 +262,7 @@
         -->
 
         <ul id="global_filters" class="filters sidebar-group__details">
-          <li tabindex="0" onclick="onSidebarRowClick(event)" onkeydown="onSidebarRowKeyDown(event)" class="top_left_all_messages top_left_row sidebar-row" title="All messages (a)">
+          <li tabindex="0" onclick="onSidebarRowClick(event)" onkeydown="onSidebarRowKeyDown(event)" class="top_left_all_messages sidebar-row" title="All messages (a)">
             <a tabindex="-1" href="#all_messages" class="home-link">
               <i class="icon icon-interleaved-all sidebar-row__icon" aria-hidden="true"></i>
               <span class="sidebar-row__label">All messages</span>
@@ -271,7 +272,7 @@
               <i class="icon icon-dots-vertical"></i>
             </div>
           </li>
-          <li onclick="onSidebarRowClick(event)" onkeydown="onSidebarRowKeyDown(event)" tabindex="0" class="top_left_recent_topics top_left_row sidebar-row" title="Recent conversations (t)">
+          <li onclick="onSidebarRowClick(event)" onkeydown="onSidebarRowKeyDown(event)" tabindex="0" class="top_left_recent_topics sidebar-row" title="Recent conversations (t)">
             <a tabindex="-1" href="#inbox">
               <i class="icon icon-inbox sidebar-row__icon" aria-hidden="true"></i>
               <span class="sidebar-row__label">Inbox</span>
@@ -281,7 +282,7 @@
             </div>
           </li>
           <li onclick="onSidebarRowClick(event)" onkeydown="onSidebarRowKeyDown(event)" tabindex="0" 
-              class="top_left_recent_topics top_left_row sidebar-row _selected" 
+              class="top_left_recent_topics sidebar-row _selected" 
               title="Recent conversations (t)"
           >
             <a tabindex="-1" href="#recent">
@@ -292,7 +293,7 @@
               <i class="icon icon-dots-vertical"></i>
             </div>
           </li>
-          <li onclick="onSidebarRowClick(event)" onkeydown="onSidebarRowKeyDown(event)" tabindex="0" class="top_left_mentions top_left_row sidebar-row hidden-for-spectators" title="Mentions">
+          <li onclick="onSidebarRowClick(event)" onkeydown="onSidebarRowKeyDown(event)" tabindex="0" class="top_left_mentions sidebar-row hidden-for-spectators" title="Mentions">
             <a tabindex="-1" href="#narrow/is/mentioned">
               <i class="icon icon-at sidebar-row__icon" aria-hidden="true"></i>
               <span class="sidebar-row__label">Mentions</span>
@@ -302,7 +303,7 @@
               <i class="icon icon-dots-vertical"></i>
             </div>
           </li>
-          <li onclick="onSidebarRowClick(event)" onkeydown="onSidebarRowKeyDown(event)" tabindex="0" class="top_left_starred_messages top_left_row sidebar-row hidden-for-spectators" title="Starred messages">
+          <li onclick="onSidebarRowClick(event)" onkeydown="onSidebarRowKeyDown(event)" tabindex="0" class="top_left_starred_messages sidebar-row hidden-for-spectators" title="Starred messages">
             <a tabindex="-1" href="#narrow/is/starred">
               <i class="icon icon-star sidebar-row__icon" aria-hidden="true"></i>
               <span class="sidebar-row__label">Starred messages</span>
@@ -312,7 +313,7 @@
               <i class="icon icon-dots-vertical"></i>
             </div>
           </li>
-          <li onclick="onSidebarRowClick(event)" onkeydown="onSidebarRowKeyDown(event)" tabindex="0" class="top_left_drafts top_left_row sidebar-row hidden-for-spectators" title="Drafts (d)">
+          <li onclick="onSidebarRowClick(event)" onkeydown="onSidebarRowKeyDown(event)" tabindex="0" class="top_left_drafts sidebar-row hidden-for-spectators" title="Drafts (d)">
             <a tabindex="-1" href="#drafts">
               <i class="icon icon-document sidebar-row__icon" aria-hidden="true"></i>
               <span class="sidebar-row__label">Drafts</span>
@@ -322,7 +323,7 @@
               <i class="icon icon-dots-vertical"></i>
             </div>
           </li>
-          <li onclick="onSidebarRowClick(event)" onkeydown="onSidebarRowKeyDown(event)" tabindex="0" class="top_left_scheduled_messages top_left_row sidebar-row hidden-for-spectators">
+          <li onclick="onSidebarRowClick(event)" onkeydown="onSidebarRowKeyDown(event)" tabindex="0" class="top_left_scheduled_messages sidebar-row hidden-for-spectators">
             <a tabindex="-1" href="#scheduled">
               <i class="icon icon-calendar-days sidebar-row__icon" aria-hidden="true"></i>
               <span class="sidebar-row__label">Scheduled messages</span>
@@ -334,7 +335,11 @@
           </li>
         </ul>
       </div>
-      another
+
+
+      <!-- DMs -->
+
+
 
     </div>
   </div>

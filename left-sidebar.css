@@ -204,6 +204,10 @@ i.icon {
     cursor: pointer;
     position: relative;
 }
+.sidebar-group__button._selected{
+    color: var(--color-clickable-icon-hover);
+    background-color: var(--color-sidebar-item-bg-selected);
+}
 .sidebar-group__button:hover,
 .sidebar-group__button:focus-visible{
     transition: none;
@@ -213,6 +217,8 @@ i.icon {
 .sidebar-group__button:active{
     scale: 0.94;
 }
+
+
 .sidebar-group__button-badge{
     display: block;
     position: absolute;
