@@ -102,14 +102,12 @@ i.icon {
     z-index: 1;
 }
 .summary-sticky-views{
-    margin: -4px -4px 0px -2px;
-    padding: 4px 4px 0px; 
+    margin: -4px 0px 0px;
+    padding: 4px 0px 0px; 
     top: -4px;
 }
 .summary-sticky-dms{
-    margin: 0px -4px 0px -2px;
-    padding: 1px 4px 0px;
-    top: 29px;
+    top: 30px;
 }
 
 .sidebar-group{
@@ -408,5 +406,17 @@ i.icon {
 .item-count{
     background-color: transparent;
     color: hsla(240, 15%, 60%, 1);
+}
+
+.summary-sticky-views-dms-separator{
+    top: 60px;
+    padding-top: 4px;
+}
+.sidebar-group__separator{
+    border: none;
+    height: 1px;
+    margin: 0;
+    background-color: rgba(0, 0, 0, 0.15);
+    margin-bottom: 4px;
 }
 
