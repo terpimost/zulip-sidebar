@@ -210,35 +210,42 @@
     <div class="left-sidebar" id="left-sidebar" role="navigation">
 
       <!-- VIEWS -->
-      <div class="narrows_panel sidebar-group _expanded">
-        <div class="sidebar-group__summary" tabindex="0" onclick="onSidebarGroupClick(event)" onkeydown="onSidebarGroupKeyDown(event)">
+      <div class="sidebar-group__summary-sticky summary-sticky-views">
+
+        <div class="sidebar-group__summary sidebar-group-views" tabindex="0" onclick="onSidebarGroupClick(event)"
+          onkeydown="onSidebarGroupKeyDown(event)">
           <div class="sidebar-group__expander-area" onclick="onSidebarGroupExpanderAreaClick(event)">
             <span class="sidebar-group__summary-expander"><i class="icon-trangle-right"></i></span>
             <span class="sidebar-group__summary-label">Views</span>
           </div>
           <div class="sidebar-group__buttons _group_expanded_hidden">
             <a class="sidebar-group__button" href="#all_messages">
-              <i class="icon icon-interleaved-all sidebar-group__icon" ></i>
+              <i class="icon icon-interleaved-all sidebar-group__icon"></i>
               <i class="sidebar-group__button-badge"></i>
             </a>
             <a class="sidebar-group__button" href="#inbox">
-              <i class="icon icon-inbox sidebar-group__icon" ></i>
+              <i class="icon icon-inbox sidebar-group__icon"></i>
             </a>
             <a class="sidebar-group__button _selected" href="#recent">
-              <i class="icon icon-clock sidebar-group__icon" ></i>
+              <i class="icon icon-clock sidebar-group__icon"></i>
             </a>
             <a class="sidebar-group__button" href="#narrow/is/mentioned">
-              <i class="icon icon-at sidebar-group__icon" ></i>
+              <i class="icon icon-at sidebar-group__icon"></i>
               <i class="sidebar-group__button-badge"></i>
             </a>
             <a class="sidebar-group__button" href="#narrow/is/starred">
-              <i class="icon icon-star sidebar-group__icon" ></i>
+              <i class="icon icon-star sidebar-group__icon"></i>
             </a>
           </div>
-          <div class="sidebar-item__button-more hidden-for-spectators" tabindex="0">
+          <div class="sidebar-row__button-more hidden-for-spectators" tabindex="0">
             <i class="icon icon-dots-vertical"></i>
           </div>
         </div>
+
+      </div>
+      <!-- removed narrows_panel class -->
+      <div class="sidebar-group sidebar-group-views _expanded">
+
 
         <!-- added "sidebar-row" class to every li item to provide general styling,
             removed top_left_row -->
@@ -248,7 +255,7 @@
             <i class="zulip-icon zulip-icon-ellipsis-v-solid" aria-hidden="true"></i>
           </span> 
           to this:
-          <div class="sidebar-item__button-more hidden-for-spectators" tabindex="0">
+          <div class="sidebar-row__button-more hidden-for-spectators" tabindex="0">
             <i class="icon icon-dots-vertical"></i>
           </div>
         -->
@@ -262,82 +269,981 @@
         -->
 
         <ul id="global_filters" class="filters sidebar-group__details">
-          <li tabindex="0" onclick="onSidebarRowClick(event)" onkeydown="onSidebarRowKeyDown(event)" class="top_left_all_messages sidebar-row" title="All messages (a)">
+          <li tabindex="0" onclick="onSidebarRowClick(event)" onkeydown="onSidebarRowKeyDown(event)"
+            class="top_left_all_messages sidebar-row" title="All messages (a)">
             <a tabindex="-1" href="#all_messages" class="home-link">
               <i class="icon icon-interleaved-all sidebar-row__icon" aria-hidden="true"></i>
               <span class="sidebar-row__label">All messages</span>
               <span class="unread-count">321</span>
             </a>
-            <div class="sidebar-item__button-more hidden-for-spectators" title="Options" tabindex="0">
+            <div class="sidebar-row__button-more hidden-for-spectators" title="Options" tabindex="0">
               <i class="icon icon-dots-vertical"></i>
             </div>
           </li>
-          <li onclick="onSidebarRowClick(event)" onkeydown="onSidebarRowKeyDown(event)" tabindex="0" class="top_left_recent_topics sidebar-row" title="Recent conversations (t)">
+          <li onclick="onSidebarRowClick(event)" onkeydown="onSidebarRowKeyDown(event)" tabindex="0"
+            class="top_left_recent_topics sidebar-row" title="Recent conversations (t)">
             <a tabindex="-1" href="#inbox">
               <i class="icon icon-inbox sidebar-row__icon" aria-hidden="true"></i>
               <span class="sidebar-row__label">Inbox</span>
             </a>
-            <div class="sidebar-item__button-more hidden-for-spectators" title="Options" tabindex="0">
+            <div class="sidebar-row__button-more hidden-for-spectators" title="Options" tabindex="0">
               <i class="icon icon-dots-vertical"></i>
             </div>
           </li>
-          <li onclick="onSidebarRowClick(event)" onkeydown="onSidebarRowKeyDown(event)" tabindex="0" 
-              class="top_left_recent_topics sidebar-row _selected" 
-              title="Recent conversations (t)"
-          >
+          <li onclick="onSidebarRowClick(event)" onkeydown="onSidebarRowKeyDown(event)" tabindex="0"
+            class="top_left_recent_topics sidebar-row _selected" title="Recent conversations (t)">
             <a tabindex="-1" href="#recent">
               <i class="icon icon-clock sidebar-row__icon" aria-hidden="true"></i>
               <span class="sidebar-row__label">Recent conversations</span>
             </a>
-            <div class="sidebar-item__button-more hidden-for-spectators" title="Options" tabindex="0">
+            <div class="sidebar-row__button-more hidden-for-spectators" title="Options" tabindex="0">
               <i class="icon icon-dots-vertical"></i>
             </div>
           </li>
-          <li onclick="onSidebarRowClick(event)" onkeydown="onSidebarRowKeyDown(event)" tabindex="0" class="top_left_mentions sidebar-row hidden-for-spectators" title="Mentions">
+          <li onclick="onSidebarRowClick(event)" onkeydown="onSidebarRowKeyDown(event)" tabindex="0"
+            class="top_left_mentions sidebar-row hidden-for-spectators" title="Mentions">
             <a tabindex="-1" href="#narrow/is/mentioned">
               <i class="icon icon-at sidebar-row__icon" aria-hidden="true"></i>
               <span class="sidebar-row__label">Mentions</span>
               <span class="unread-count">3</span>
             </a>
-            <div class="sidebar-item__button-more hidden-for-spectators" title="Options" tabindex="0">
+            <div class="sidebar-row__button-more hidden-for-spectators" title="Options" tabindex="0">
               <i class="icon icon-dots-vertical"></i>
             </div>
           </li>
-          <li onclick="onSidebarRowClick(event)" onkeydown="onSidebarRowKeyDown(event)" tabindex="0" class="top_left_starred_messages sidebar-row hidden-for-spectators" title="Starred messages">
+          <li onclick="onSidebarRowClick(event)" onkeydown="onSidebarRowKeyDown(event)" tabindex="0"
+            class="top_left_starred_messages sidebar-row hidden-for-spectators" title="Starred messages">
             <a tabindex="-1" href="#narrow/is/starred">
               <i class="icon icon-star sidebar-row__icon" aria-hidden="true"></i>
               <span class="sidebar-row__label">Starred messages</span>
               <span class="item-count">154</span>
             </a>
-            <div class="sidebar-item__button-more hidden-for-spectators" title="Options" tabindex="0">
+            <div class="sidebar-row__button-more hidden-for-spectators" title="Options" tabindex="0">
               <i class="icon icon-dots-vertical"></i>
             </div>
           </li>
-          <li onclick="onSidebarRowClick(event)" onkeydown="onSidebarRowKeyDown(event)" tabindex="0" class="top_left_drafts sidebar-row hidden-for-spectators" title="Drafts (d)">
+          <li onclick="onSidebarRowClick(event)" onkeydown="onSidebarRowKeyDown(event)" tabindex="0"
+            class="top_left_drafts sidebar-row hidden-for-spectators" title="Drafts (d)">
             <a tabindex="-1" href="#drafts">
               <i class="icon icon-document sidebar-row__icon" aria-hidden="true"></i>
               <span class="sidebar-row__label">Drafts</span>
               <span class="unread-count">2</span>
             </a>
-            <div class="sidebar-item__button-more hidden-for-spectators" title="Options" tabindex="0">
+            <div class="sidebar-row__button-more hidden-for-spectators" title="Options" tabindex="0">
               <i class="icon icon-dots-vertical"></i>
             </div>
           </li>
-          <li onclick="onSidebarRowClick(event)" onkeydown="onSidebarRowKeyDown(event)" tabindex="0" class="top_left_scheduled_messages sidebar-row hidden-for-spectators">
+          <li onclick="onSidebarRowClick(event)" onkeydown="onSidebarRowKeyDown(event)" tabindex="0"
+            class="top_left_scheduled_messages sidebar-row hidden-for-spectators">
             <a tabindex="-1" href="#scheduled">
               <i class="icon icon-calendar-days sidebar-row__icon" aria-hidden="true"></i>
               <span class="sidebar-row__label">Scheduled messages</span>
               <span class="item-count">1</span>
             </a>
-            <div class="sidebar-item__button-more hidden-for-spectators" title="Options" tabindex="0">
+            <div class="sidebar-row__button-more hidden-for-spectators" title="Options" tabindex="0">
               <i class="icon icon-dots-vertical"></i>
             </div>
           </li>
         </ul>
       </div>
 
+      <!-- DMs -->
+      <div class="sidebar-group__summary-sticky summary-sticky-dms">
+        <div class="sidebar-group__summary sidebar-group-dms">DMs</div>
+
+      </div>
+      <div class="sidebar-group _expanded">
+        <ul class="sidebar-group__details">
+          <li class="unread_count">1</li>
+          <li class="unread_count">2</li>
+          <li class="unread_count">3</li>
+          <li class="unread_count">4</li>
+          <li class="unread_count">5</li>
+          <li class="unread_count">6</li>
+          <li class="unread_count">7</li>
+          <li class="unread_count">8</li>
+          <li class="unread_count">9</li>
+          <li class="unread_count">10</li>
+          <li class="unread_count">11</li>
+          <li class="unread_count">12</li>
+          <li class="unread_count">13</li>
+        </ul>
+      </div>
+      
+      <!-- Streams -->
+      <div class="sidebar-group _expanded">
+        <div class="sidebar-group__summary sidebar-group-stream">Streams</div>
+        <ul class="sidebar-group__details">
+          <li class="unread_count">#1</li>
+          <li class="unread_count">#2</li>
+          <li class="unread_count">#3</li>
+          <li class="unread_count">#4</li>
+          <li class="unread_count">#5</li>
+          <li class="unread_count">#6</li>
+          <li class="unread_count">#7</li>
+          <li class="unread_count">#8</li>
+          <li class="unread_count">#9</li>
+          <li class="unread_count">#10</li>
+          <li class="unread_count">#11</li>
+          <li class="unread_count">#12</li>
+          <li class="unread_count">#13</li>
+          <li class="unread_count">#14</li>
+          <li class="unread_count">#15</li>
+          <li class="unread_count">#16</li>
+          <li class="unread_count">#17</li>
+          <li class="unread_count">#18</li>
+          <li class="unread_count">#19</li>
+          <li class="unread_count">#20</li>
+          <li class="unread_count">#21</li>
+          <li class="unread_count">#22</li>
+          <li class="unread_count">#23</li>
+          <li class="unread_count">#24</li>
+          <li class="unread_count">#25</li>
+          <li class="unread_count">#26</li>
+          <li class="unread_count">#13</li>
+          <li class="unread_count">#14</li>
+          <li class="unread_count">#15</li>
+          <li class="unread_count">#16</li>
+          <li class="unread_count">#17</li>
+          <li class="unread_count">#18</li>
+          <li class="unread_count">#19</li>
+          <li class="unread_count">#20</li>
+          <li class="unread_count">#21</li>
+          <li class="unread_count">#22</li>
+          <li class="unread_count">#23</li>
+          <li class="unread_count">#24</li>
+          <li class="unread_count">#25</li>
+          <li class="unread_count">#26</li>
+        </ul>
+      </div>
 
       <!-- DMs -->
+
+
+      <!-- <div id="private_messages_sticky_header" class="private_messages_container zoom-out hidden-for-spectators">
+        <div id="private_messages_section">
+          <div id="private_messages_section_header" class="zoom-out zoom-in-sticky">
+            <span id="pm_tooltip_container">
+              <i id="toggle_private_messages_section_icon"
+                class="fa fa-sm fa-caret-down toggle_private_messages_section zoom-in-hide" aria-hidden="true"></i>
+              <h4 class="sidebar-title toggle_private_messages_section">DIRECT MESSAGES</h4>
+            </span>
+            <span class="unread_count" style="display: none;"></span>
+            <a id="show_all_private_messages" href="#narrow/is/dm" data-tooltip-template-id="show-all-pms-template">
+              <i class="fa fa-align-right" aria-label="All direct messages"></i>
+            </a>
+            <template id="show-all-pms-template">
+              All direct messages
+              <span class="tooltip-hotkey-hints"><span class="tooltip-hotkey-hint">Shift</span><span
+                  class="tooltip-hotkey-hint">P</span></span>
+            </template>
+          </div>
+        </div>
+        <a class="zoom-out-hide" id="hide_more_private_messages">
+          <span> back to streams</span>
+        </a>
+      </div> -->
+
+
+
+      <!-- <div id="left_sidebar_scroll_container" class="scrolling_list simplebar-scrollable-y" data-simplebar="init"
+        style="max-height: 247.036px;">
+        <div class="simplebar-wrapper" style="margin: 0px;">
+          <div class="simplebar-height-auto-observer-wrapper">
+            <div class="simplebar-height-auto-observer"></div>
+          </div>
+          <div class="simplebar-mask">
+            <div class="simplebar-offset" style="right: 0px; bottom: 0px;">
+              <div class="simplebar-content-wrapper" tabindex="0" role="region" aria-label="scrollable content"
+                style="height: auto; overflow: hidden scroll;">
+                <div class="simplebar-content" style="padding: 0px;">
+                  <div class="private_messages_container zoom-out hidden-for-spectators">
+                    <div id="private_messages_list">
+                      <ul class="pm-list" data-name="private">
+                        <li class=" zero-pm-unreads pm-list-item bottom_left_row" data-user-ids-string="26369">
+                          <span class="pm-box pm_user_status" data-user-ids-string="26369" data-is-group="false">
+
+                            <div class="pm_left_col">
+                              <span class="user_circle_empty user_circle"></span>
+                            </div>
+
+                            <a href="#narrow/dm/26369-Karl-Stolley" class="conversation-partners">
+                              Karl Stolley
+                            </a>
+                            <span class="unread_count zero_count">
+                              0
+                            </span>
+                          </span>
+                        </li>
+
+                        <li class=" zero-pm-unreads pm-list-item bottom_left_row" data-user-ids-string="19257">
+                          <span class="pm-box pm_user_status" data-user-ids-string="19257" data-is-group="false">
+
+                            <div class="pm_left_col">
+                              <span class="user_circle_idle user_circle"></span>
+                            </div>
+
+                            <a href="#narrow/dm/19257-Alya-Abbott" class="conversation-partners">
+                              Alya Abbott
+                              <span class="emoji status-emoji emoji-1f30c"></span>
+                            </a>
+                            <span class="unread_count zero_count">
+                              0
+                            </span>
+                          </span>
+                        </li>
+
+                        <li class=" zero-pm-unreads pm-list-item bottom_left_row" data-user-ids-string="22433">
+                          <span class="pm-box pm_user_status" data-user-ids-string="22433" data-is-group="false">
+
+                            <div class="pm_left_col">
+                              <span class="user_circle_green user_circle"></span>
+                            </div>
+
+                            <a href="#narrow/dm/22433-Vlad-Korobov" class="conversation-partners">
+                              Vlad Korobov
+                            </a>
+                            <span class="unread_count zero_count">
+                              0
+                            </span>
+                          </span>
+                        </li>
+
+                        <li class=" zero-pm-unreads pm-list-item bottom_left_row" data-user-ids-string="5140">
+                          <span class="pm-box pm_user_status" data-user-ids-string="5140" data-is-group="false">
+
+                            <div class="pm_left_col">
+                              <span class="user_circle_empty user_circle"></span>
+                            </div>
+
+                            <a href="#narrow/dm/5140-Aman-(amanagr)" class="conversation-partners">
+                              Aman (amanagr)
+                            </a>
+                            <span class="unread_count zero_count">
+                              0
+                            </span>
+                          </span>
+                        </li>
+
+                        <li class=" zero-pm-unreads pm-list-item bottom_left_row" data-user-ids-string="7,19257">
+                          <span class="pm-box pm_user_status" data-user-ids-string="7,19257" data-is-group="true">
+
+                            <div class="pm_left_col">
+                              <span class="fa fa-group"></span>
+                            </div>
+
+                            <a href="#narrow/dm/7,19257-group" class="conversation-partners">
+                              Alya Abbott, Tim Abbott
+                            </a>
+                            <span class="unread_count zero_count">
+                              0
+                            </span>
+                          </span>
+                        </li>
+
+                        <li class=" zero-pm-unreads pm-list-item bottom_left_row" data-user-ids-string="7">
+                          <span class="pm-box pm_user_status" data-user-ids-string="7" data-is-group="false">
+
+                            <div class="pm_left_col">
+                              <span class="user_circle_idle user_circle"></span>
+                            </div>
+
+                            <a href="#narrow/dm/7-Tim-Abbott" class="conversation-partners">
+                              Tim Abbott
+                              <span class="emoji status-emoji emoji-1f419"></span>
+                            </a>
+                            <span class="unread_count zero_count">
+                              0
+                            </span>
+                          </span>
+                        </li>
+
+                        <li class=" zero-pm-unreads pm-list-item bottom_left_row" data-user-ids-string="7,5140,19257">
+                          <span class="pm-box pm_user_status" data-user-ids-string="7,5140,19257" data-is-group="true">
+
+                            <div class="pm_left_col">
+                              <span class="fa fa-group"></span>
+                            </div>
+
+                            <a href="#narrow/dm/7,5140,19257-group" class="conversation-partners">
+                              Alya Abbott, Aman (amanagr), Tim Abbott
+                            </a>
+                            <span class="unread_count zero_count">
+                              0
+                            </span>
+                          </span>
+                        </li>
+
+                        <li class=" zero-pm-unreads pm-list-item bottom_left_row" data-user-ids-string="5140,19257">
+                          <span class="pm-box pm_user_status" data-user-ids-string="5140,19257" data-is-group="true">
+
+                            <div class="pm_left_col">
+                              <span class="fa fa-group"></span>
+                            </div>
+
+                            <a href="#narrow/dm/5140,19257-group" class="conversation-partners">
+                              Alya Abbott, Aman (amanagr)
+                            </a>
+                            <span class="unread_count zero_count">
+                              0
+                            </span>
+                          </span>
+                        </li>
+
+                        <li id="show_more_private_messages" class="pm-list-item bottom_left_row zero-pm-unreads">
+                          <span>
+                            <a class="pm-name" tabindex="0">more conversations</a>
+                            <span class="unread_count zero_count">
+                              0
+                            </span>
+                          </span>
+                        </li>
+
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div id="streams_list" class="zoom-out">
+                    <div id="streams_header" class="zoom-in-hide">
+                      <h4 class="sidebar-title" data-tooltip-template-id="filter-streams-tooltip-template">STREAMS</h4>
+                      <span id="add_streams_tooltip" class="streams_inline_icon_wrapper hidden-for-spectators"
+                        data-tippy-content="Add streams">
+                        <i id="streams_inline_icon" class="fa fa-plus" aria-hidden="true"></i>
+                      </span>
+                      <i id="filter_streams_tooltip" class="streams_filter_icon fa fa-filter" aria-hidden="true"
+                        data-tooltip-template-id="filter-streams-tooltip-template"></i>
+                      <div class="input-append notdisplayed stream_search_section">
+                        <input class="stream-list-filter home-page-input" type="text" autocomplete="off"
+                          placeholder="Filter streams">
+                        <button type="button" class="btn clear_search_button" id="clear_search_stream_button">
+                          <i class="fa fa-remove" aria-hidden="true"></i>
+                        </button>
+                      </div>
+                      <template id="filter-streams-tooltip-template">
+                        Filter streams
+                        <span class="tooltip-hotkey-hints"><span class="tooltip-hotkey-hint">Q</span></span>
+                      </template>
+                    </div>
+                    <div id="topics_header">
+                      <a class="show-all-streams" tabindex="0">Back to streams</a>
+                    </div>
+                    <div id="stream-filters-container">
+                      <ul id="stream_filters" class="filters">
+                        <div class="streams_subheader">
+                          <span>Pinned</span>
+                        </div>
+                        <li class="narrow-filter" data-stream-id="101">
+                          <div class="bottom_left_row">
+                            <div class="subscription_block selectable_sidebar_block">
+
+                              <span class="stream-privacy-original-color-101 stream-privacy filter-icon"
+                                style="color: #bfd56f">
+                                <i class="zulip-icon zulip-icon-globe" aria-hidden="true"></i>
+                              </span>
+
+                              <a href="#narrow/stream/101-design" title="design" class="stream-name">design</a>
+
+                              <span class="unread_mention_info" style="display: none;"></span>
+                              <span class="unread_count" style="display: none;"></span>
+                            </div>
+                            <span class="stream-sidebar-menu-icon hidden-for-spectators"><i
+                                class="zulip-icon zulip-icon-ellipsis-v-solid" aria-hidden="true"></i></span>
+                          </div>
+                        </li>
+                        <li class="narrow-filter" data-stream-id="431">
+                          <div class="bottom_left_row">
+                            <div class="subscription_block selectable_sidebar_block">
+
+                              <span class="stream-privacy-original-color-431 stream-privacy filter-icon"
+                                style="color: #bfd56f">
+                                <i class="zulip-icon zulip-icon-hashtag" aria-hidden="true"></i>
+                              </span>
+
+                              <a href="#narrow/stream/431-redesign-project" title="redesign project"
+                                class="stream-name">redesign project</a>
+
+                              <span class="unread_mention_info" style="display: none;"></span>
+                              <span class="unread_count" style="display: none;"></span>
+                            </div>
+                            <span class="stream-sidebar-menu-icon hidden-for-spectators"><i
+                                class="zulip-icon zulip-icon-ellipsis-v-solid" aria-hidden="true"></i></span>
+                          </div>
+                        </li>
+                        <li class="narrow-filter out_of_home_view" data-stream-id="137">
+                          <div class="bottom_left_row">
+                            <div class="subscription_block selectable_sidebar_block stream-with-count">
+
+                              <span class="stream-privacy-original-color-137 stream-privacy filter-icon"
+                                style="color: #4f8de4">
+                                <i class="zulip-icon zulip-icon-globe" aria-hidden="true"></i>
+                              </span>
+
+                              <a href="#narrow/stream/137-feedback" title="feedback" class="stream-name">feedback</a>
+
+                              <span class="unread_mention_info" style="display: none;"></span>
+                              <span class="unread_count" style="">58</span>
+                            </div>
+                            <span class="stream-sidebar-menu-icon hidden-for-spectators"><i
+                                class="zulip-icon zulip-icon-ellipsis-v-solid" aria-hidden="true"></i></span>
+                          </div>
+                        </li>
+                        <li class="narrow-filter out_of_home_view" data-stream-id="243">
+                          <div class="bottom_left_row">
+                            <div class="subscription_block selectable_sidebar_block stream-with-count">
+
+                              <span class="stream-privacy-original-color-243 stream-privacy filter-icon"
+                                style="color: #76ce90">
+                                <i class="zulip-icon zulip-icon-hashtag" aria-hidden="true"></i>
+                              </span>
+
+                              <a href="#narrow/stream/243-mobile-team" title="mobile-team"
+                                class="stream-name">mobile-team</a>
+
+                              <span class="unread_mention_info" style="display: none;"></span>
+                              <span class="unread_count" style="">46</span>
+                            </div>
+                            <span class="stream-sidebar-menu-icon hidden-for-spectators"><i
+                                class="zulip-icon zulip-icon-ellipsis-v-solid" aria-hidden="true"></i></span>
+                          </div>
+                        </li>
+                        <div class="streams_subheader">
+                          <span>Active</span>
+                        </div>
+                        <li class="narrow-filter" data-stream-id="1">
+                          <div class="bottom_left_row">
+                            <div class="subscription_block selectable_sidebar_block">
+
+                              <span class="stream-privacy-original-color-1 stream-privacy filter-icon"
+                                style="color: #a6c7e5">
+                                <i class="zulip-icon zulip-icon-globe" aria-hidden="true"></i>
+                              </span>
+
+                              <a href="#narrow/stream/1-announce" title="announce" class="stream-name">announce</a>
+
+                              <span class="unread_mention_info" style="display: none;"></span>
+                              <span class="unread_count" style="display: none;"></span>
+                            </div>
+                            <span class="stream-sidebar-menu-icon hidden-for-spectators"><i
+                                class="zulip-icon zulip-icon-ellipsis-v-solid" aria-hidden="true"></i></span>
+                          </div>
+                        </li>
+                        <li class="narrow-filter" data-stream-id="415">
+                          <div class="bottom_left_row">
+                            <div class="subscription_block selectable_sidebar_block">
+
+                              <span class="stream-privacy-original-color-415 stream-privacy filter-icon"
+                                style="color: #addfe5">
+                                <i class="zulip-icon zulip-icon-globe" aria-hidden="true"></i>
+                              </span>
+
+                              <a href="#narrow/stream/415-chat.2Ezulip.2Eorg" title="chat.zulip.org"
+                                class="stream-name">chat.zulip.org</a>
+
+                              <span class="unread_mention_info" style="display: none;"></span>
+                              <span class="unread_count" style="display: none;"></span>
+                            </div>
+                            <span class="stream-sidebar-menu-icon hidden-for-spectators"><i
+                                class="zulip-icon zulip-icon-ellipsis-v-solid" aria-hidden="true"></i></span>
+                          </div>
+                        </li>
+                        <li class="narrow-filter" data-stream-id="2">
+                          <div class="bottom_left_row">
+                            <div class="subscription_block selectable_sidebar_block">
+
+                              <span class="stream-privacy-original-color-2 stream-privacy filter-icon"
+                                style="color: #e79ab5">
+                                <i class="zulip-icon zulip-icon-globe" aria-hidden="true"></i>
+                              </span>
+
+                              <a href="#narrow/stream/2-general" title="general" class="stream-name">general</a>
+
+                              <span class="unread_mention_info" style="display: none;"></span>
+                              <span class="unread_count" style="display: none;"></span>
+                            </div>
+                            <span class="stream-sidebar-menu-icon hidden-for-spectators"><i
+                                class="zulip-icon zulip-icon-ellipsis-v-solid" aria-hidden="true"></i></span>
+                          </div>
+                        </li>
+                        <li class="narrow-filter" data-stream-id="153">
+                          <div class="bottom_left_row">
+                            <div class="subscription_block selectable_sidebar_block">
+
+                              <span class="stream-privacy-original-color-153 stream-privacy filter-icon"
+                                style="color: #c8bebf">
+                                <i class="zulip-icon zulip-icon-hashtag" aria-hidden="true"></i>
+                              </span>
+
+                              <a href="#narrow/stream/153-hacker-news" title="hacker news" class="stream-name">hacker
+                                news</a>
+
+                              <span class="unread_mention_info" style="display: none;"></span>
+                              <span class="unread_count" style="display: none;"></span>
+                            </div>
+                            <span class="stream-sidebar-menu-icon hidden-for-spectators"><i
+                                class="zulip-icon zulip-icon-ellipsis-v-solid" aria-hidden="true"></i></span>
+                          </div>
+                        </li>
+                        <li class="narrow-filter" data-stream-id="107">
+                          <div class="bottom_left_row">
+                            <div class="subscription_block selectable_sidebar_block">
+
+                              <span class="stream-privacy-original-color-107 stream-privacy filter-icon"
+                                style="color: #76ce90">
+                                <i class="zulip-icon zulip-icon-lock" aria-hidden="true"></i>
+                              </span>
+
+                              <a href="#narrow/stream/107-kandra" title="kandra" class="stream-name">kandra</a>
+
+                              <span class="unread_mention_info" style="display: none;"></span>
+                              <span class="unread_count" style="display: none;"></span>
+                            </div>
+                            <span class="stream-sidebar-menu-icon hidden-for-spectators"><i
+                                class="zulip-icon zulip-icon-ellipsis-v-solid" aria-hidden="true"></i></span>
+                          </div>
+                        </li>
+                        <li class="narrow-filter" data-stream-id="447">
+                          <div class="bottom_left_row">
+                            <div class="subscription_block selectable_sidebar_block">
+
+                              <span class="stream-privacy-original-color-447 stream-privacy filter-icon"
+                                style="color: #9987e1">
+                                <i class="zulip-icon zulip-icon-lock" aria-hidden="true"></i>
+                              </span>
+
+                              <a href="#narrow/stream/447-kandra-checkins" title="kandra checkins"
+                                class="stream-name">kandra checkins</a>
+
+                              <span class="unread_mention_info" style="display: none;"></span>
+                              <span class="unread_count" style="display: none;"></span>
+                            </div>
+                            <span class="stream-sidebar-menu-icon hidden-for-spectators"><i
+                                class="zulip-icon zulip-icon-ellipsis-v-solid" aria-hidden="true"></i></span>
+                          </div>
+                        </li>
+                        <li class="narrow-filter" data-stream-id="148">
+                          <div class="bottom_left_row">
+                            <div class="subscription_block selectable_sidebar_block">
+
+                              <span class="stream-privacy-original-color-148 stream-privacy filter-icon"
+                                style="color: #76ce90">
+                                <i class="zulip-icon zulip-icon-lock" aria-hidden="true"></i>
+                              </span>
+
+                              <a href="#narrow/stream/148-kandra-feedback" title="kandra feedback"
+                                class="stream-name">kandra feedback</a>
+
+                              <span class="unread_mention_info" style="display: none;"></span>
+                              <span class="unread_count" style="display: none;"></span>
+                            </div>
+                            <span class="stream-sidebar-menu-icon hidden-for-spectators"><i
+                                class="zulip-icon zulip-icon-ellipsis-v-solid" aria-hidden="true"></i></span>
+                          </div>
+                        </li>
+                        <li class="narrow-filter" data-stream-id="438">
+                          <div class="bottom_left_row">
+                            <div class="subscription_block selectable_sidebar_block">
+
+                              <span class="stream-privacy-original-color-438 stream-privacy filter-icon"
+                                style="color: #bd86e5">
+                                <i class="zulip-icon zulip-icon-hashtag" aria-hidden="true"></i>
+                              </span>
+
+                              <a href="#narrow/stream/438-release-management" title="release management"
+                                class="stream-name">release management</a>
+
+                              <span class="unread_mention_info" style="display: none;"></span>
+                              <span class="unread_count" style="display: none;"></span>
+                            </div>
+                            <span class="stream-sidebar-menu-icon hidden-for-spectators"><i
+                                class="zulip-icon zulip-icon-ellipsis-v-solid" aria-hidden="true"></i></span>
+                          </div>
+                        </li>
+                        <li class="narrow-filter out_of_home_view" data-stream-id="65">
+                          <div class="bottom_left_row">
+                            <div class="subscription_block selectable_sidebar_block stream-with-count">
+
+                              <span class="stream-privacy-original-color-65 stream-privacy filter-icon"
+                                style="color: #53a063">
+                                <i class="zulip-icon zulip-icon-hashtag" aria-hidden="true"></i>
+                              </span>
+
+                              <a href="#narrow/stream/65-checkins" title="checkins" class="stream-name">checkins</a>
+
+                              <span class="unread_mention_info" style="display: none;"></span>
+                              <span class="unread_count" style="">7</span>
+                            </div>
+                            <span class="stream-sidebar-menu-icon hidden-for-spectators"><i
+                                class="zulip-icon zulip-icon-ellipsis-v-solid" aria-hidden="true"></i></span>
+                          </div>
+                        </li>
+                        <li class="narrow-filter out_of_home_view" data-stream-id="91">
+                          <div class="bottom_left_row">
+                            <div class="subscription_block selectable_sidebar_block">
+
+                              <span class="stream-privacy-original-color-91 stream-privacy filter-icon"
+                                style="color: #c2726a">
+                                <i class="zulip-icon zulip-icon-hashtag" aria-hidden="true"></i>
+                              </span>
+
+                              <a href="#narrow/stream/91-code-review" title="code review" class="stream-name">code
+                                review</a>
+
+                              <span class="unread_mention_info" style="display: none;"></span>
+                              <span class="unread_count" style="display: none;"></span>
+                            </div>
+                            <span class="stream-sidebar-menu-icon hidden-for-spectators"><i
+                                class="zulip-icon zulip-icon-ellipsis-v-solid" aria-hidden="true"></i></span>
+                          </div>
+                        </li>
+                        <li class="narrow-filter out_of_home_view" data-stream-id="311">
+                          <div class="bottom_left_row">
+                            <div class="subscription_block selectable_sidebar_block stream-with-count">
+
+                              <span class="stream-privacy-original-color-311 stream-privacy filter-icon"
+                                style="color: #76ce90">
+                                <i class="zulip-icon zulip-icon-lock" aria-hidden="true"></i>
+                              </span>
+
+                              <a href="#narrow/stream/311-core-social" title="core social" class="stream-name">core
+                                social</a>
+
+                              <span class="unread_mention_info" style="display: none;"></span>
+                              <span class="unread_count" style="">4</span>
+                            </div>
+                            <span class="stream-sidebar-menu-icon hidden-for-spectators"><i
+                                class="zulip-icon zulip-icon-ellipsis-v-solid" aria-hidden="true"></i></span>
+                          </div>
+                        </li>
+                        <li class="narrow-filter out_of_home_view" data-stream-id="57">
+                          <div class="bottom_left_row">
+                            <div class="subscription_block selectable_sidebar_block">
+
+                              <span class="stream-privacy-original-color-57 stream-privacy filter-icon"
+                                style="color: #76ce90">
+                                <i class="zulip-icon zulip-icon-lock" aria-hidden="true"></i>
+                              </span>
+
+                              <a href="#narrow/stream/57-core-team" title="core team" class="stream-name">core team</a>
+
+                              <span class="unread_mention_info" style="display: none;"></span>
+                              <span class="unread_count" style="display: none;"></span>
+                            </div>
+                            <span class="stream-sidebar-menu-icon hidden-for-spectators"><i
+                                class="zulip-icon zulip-icon-ellipsis-v-solid" aria-hidden="true"></i></span>
+                          </div>
+                        </li>
+                        <li class="narrow-filter out_of_home_view" data-stream-id="16">
+                          <div class="bottom_left_row">
+                            <div class="subscription_block selectable_sidebar_block">
+
+                              <span class="stream-privacy-original-color-16 stream-privacy filter-icon"
+                                style="color: #9987e1">
+                                <i class="zulip-icon zulip-icon-globe" aria-hidden="true"></i>
+                              </span>
+
+                              <a href="#narrow/stream/16-desktop" title="desktop" class="stream-name">desktop</a>
+
+                              <span class="unread_mention_info" style="display: none;"></span>
+                              <span class="unread_count" style="display: none;"></span>
+                            </div>
+                            <span class="stream-sidebar-menu-icon hidden-for-spectators"><i
+                                class="zulip-icon zulip-icon-ellipsis-v-solid" aria-hidden="true"></i></span>
+                          </div>
+                        </li>
+                        <li class="narrow-filter out_of_home_view" data-stream-id="49">
+                          <div class="bottom_left_row">
+                            <div class="subscription_block selectable_sidebar_block stream-with-count">
+
+                              <span class="stream-privacy-original-color-49 stream-privacy filter-icon"
+                                style="color: #a6dcbf">
+                                <i class="zulip-icon zulip-icon-hashtag" aria-hidden="true"></i>
+                              </span>
+
+                              <a href="#narrow/stream/49-development-help" title="development help"
+                                class="stream-name">development help</a>
+
+                              <span class="unread_mention_info" style="display: none;"></span>
+                              <span class="unread_count" style="">2</span>
+                            </div>
+                            <span class="stream-sidebar-menu-icon hidden-for-spectators"><i
+                                class="zulip-icon zulip-icon-ellipsis-v-solid" aria-hidden="true"></i></span>
+                          </div>
+                        </li>
+                        <li class="narrow-filter out_of_home_view" data-stream-id="6">
+                          <div class="bottom_left_row">
+                            <div class="subscription_block selectable_sidebar_block stream-with-count">
+
+                              <span class="stream-privacy-original-color-6 stream-privacy filter-icon"
+                                style="color: #f4ae55">
+                                <i class="zulip-icon zulip-icon-globe" aria-hidden="true"></i>
+                              </span>
+
+                              <a href="#narrow/stream/6-frontend" title="frontend" class="stream-name">frontend</a>
+
+                              <span class="unread_mention_info" style="display: none;"></span>
+                              <span class="unread_count" style="">118</span>
+                            </div>
+                            <span class="stream-sidebar-menu-icon hidden-for-spectators"><i
+                                class="zulip-icon zulip-icon-ellipsis-v-solid" aria-hidden="true"></i></span>
+                          </div>
+                        </li>
+                        <li class="narrow-filter out_of_home_view" data-stream-id="9">
+                          <div class="bottom_left_row">
+                            <div class="subscription_block selectable_sidebar_block stream-with-count">
+
+                              <span class="stream-privacy-original-color-9 stream-privacy filter-icon"
+                                style="color: #addfe5">
+                                <i class="zulip-icon zulip-icon-globe" aria-hidden="true"></i>
+                              </span>
+
+                              <a href="#narrow/stream/9-issues" title="issues" class="stream-name">issues</a>
+
+                              <span class="unread_mention_info" style="display: none;"></span>
+                              <span class="unread_count" style="">251</span>
+                            </div>
+                            <span class="stream-sidebar-menu-icon hidden-for-spectators"><i
+                                class="zulip-icon zulip-icon-ellipsis-v-solid" aria-hidden="true"></i></span>
+                          </div>
+                        </li>
+                        <li class="narrow-filter out_of_home_view" data-stream-id="51">
+                          <div class="bottom_left_row">
+                            <div class="subscription_block selectable_sidebar_block">
+
+                              <span class="stream-privacy-original-color-51 stream-privacy filter-icon"
+                                style="color: #76ce90">
+                                <i class="zulip-icon zulip-icon-lock" aria-hidden="true"></i>
+                              </span>
+
+                              <a href="#narrow/stream/51-kandra-marketing" title="kandra marketing"
+                                class="stream-name">kandra marketing</a>
+
+                              <span class="unread_mention_info" style="display: none;"></span>
+                              <span class="unread_count" style="display: none;"></span>
+                            </div>
+                            <span class="stream-sidebar-menu-icon hidden-for-spectators"><i
+                                class="zulip-icon zulip-icon-ellipsis-v-solid" aria-hidden="true"></i></span>
+                          </div>
+                        </li>
+                        <li class="narrow-filter out_of_home_view" data-stream-id="326">
+                          <div class="bottom_left_row">
+                            <div class="subscription_block selectable_sidebar_block">
+
+                              <span class="stream-privacy-original-color-326 stream-privacy filter-icon"
+                                style="color: #76ce90">
+                                <i class="zulip-icon zulip-icon-lock" aria-hidden="true"></i>
+                              </span>
+
+                              <a href="#narrow/stream/326-kandra-press" title="kandra press" class="stream-name">kandra
+                                press</a>
+
+                              <span class="unread_mention_info" style="display: none;"></span>
+                              <span class="unread_count" style="display: none;"></span>
+                            </div>
+                            <span class="stream-sidebar-menu-icon hidden-for-spectators"><i
+                                class="zulip-icon zulip-icon-ellipsis-v-solid" aria-hidden="true"></i></span>
+                          </div>
+                        </li>
+                        <li class="narrow-filter out_of_home_view" data-stream-id="191">
+                          <div class="bottom_left_row">
+                            <div class="subscription_block selectable_sidebar_block stream-with-count">
+
+                              <span class="stream-privacy-original-color-191 stream-privacy filter-icon"
+                                style="color: #76ce90">
+                                <i class="zulip-icon zulip-icon-lock" aria-hidden="true"></i>
+                              </span>
+
+                              <a href="#narrow/stream/191-kandra-support" title="kandra support"
+                                class="stream-name">kandra support</a>
+
+                              <span class="unread_mention_info" style="display: none;"></span>
+                              <span class="unread_count" style="">42</span>
+                            </div>
+                            <span class="stream-sidebar-menu-icon hidden-for-spectators"><i
+                                class="zulip-icon zulip-icon-ellipsis-v-solid" aria-hidden="true"></i></span>
+                          </div>
+                        </li>
+                        <li class="narrow-filter out_of_home_view" data-stream-id="92">
+                          <div class="bottom_left_row">
+                            <div class="subscription_block selectable_sidebar_block stream-with-count">
+
+                              <span class="stream-privacy-original-color-92 stream-privacy filter-icon"
+                                style="color: #e4523d">
+                                <i class="zulip-icon zulip-icon-globe" aria-hidden="true"></i>
+                              </span>
+
+                              <a href="#narrow/stream/92-learning" title="learning" class="stream-name">learning</a>
+
+                              <span class="unread_mention_info" style="display: none;"></span>
+                              <span class="unread_count" style="">2</span>
+                            </div>
+                            <span class="stream-sidebar-menu-icon hidden-for-spectators"><i
+                                class="zulip-icon zulip-icon-ellipsis-v-solid" aria-hidden="true"></i></span>
+                          </div>
+                        </li>
+                        <li class="narrow-filter out_of_home_view" data-stream-id="48">
+                          <div class="bottom_left_row">
+                            <div class="subscription_block selectable_sidebar_block stream-with-count">
+
+                              <span class="stream-privacy-original-color-48 stream-privacy filter-icon"
+                                style="color: #ffffff">
+                                <i class="zulip-icon zulip-icon-globe" aria-hidden="true"></i>
+                              </span>
+
+                              <a href="#narrow/stream/48-mobile" title="mobile" class="stream-name">mobile</a>
+
+                              <span class="unread_mention_info" style="display: none;"></span>
+                              <span class="unread_count" style="">2</span>
+                            </div>
+                            <span class="stream-sidebar-menu-icon hidden-for-spectators"><i
+                                class="zulip-icon zulip-icon-ellipsis-v-solid" aria-hidden="true"></i></span>
+                          </div>
+                        </li>
+                        <li class="narrow-filter out_of_home_view" data-stream-id="176">
+                          <div class="bottom_left_row">
+                            <div class="subscription_block selectable_sidebar_block stream-with-count">
+
+                              <span class="stream-privacy-original-color-176 stream-privacy filter-icon"
+                                style="color: #a6dcbf">
+                                <i class="zulip-icon zulip-icon-lock" aria-hidden="true"></i>
+                              </span>
+
+                              <a href="#narrow/stream/176-mobile-core" title="mobile-core"
+                                class="stream-name">mobile-core</a>
+
+                              <span class="unread_mention_info" style="display: none;"></span>
+                              <span class="unread_count" style="">3</span>
+                            </div>
+                            <span class="stream-sidebar-menu-icon hidden-for-spectators"><i
+                                class="zulip-icon zulip-icon-ellipsis-v-solid" aria-hidden="true"></i></span>
+                          </div>
+                        </li>
+                        <li class="narrow-filter out_of_home_view" data-stream-id="21">
+                          <div class="bottom_left_row">
+                            <div class="subscription_block selectable_sidebar_block">
+
+                              <span class="stream-privacy-original-color-21 stream-privacy filter-icon"
+                                style="color: #fae589">
+                                <i class="zulip-icon zulip-icon-hashtag" aria-hidden="true"></i>
+                              </span>
+
+                              <a href="#narrow/stream/21-provision-help" title="provision help"
+                                class="stream-name">provision help</a>
+
+                              <span class="unread_mention_info" style="display: none;"></span>
+                              <span class="unread_count" style="display: none;"></span>
+                            </div>
+                            <span class="stream-sidebar-menu-icon hidden-for-spectators"><i
+                                class="zulip-icon zulip-icon-ellipsis-v-solid" aria-hidden="true"></i></span>
+                          </div>
+                        </li>
+                        <div class="streams_subheader">
+                          <span>Inactive</span>
+                        </div>
+                        <li class="narrow-filter inactive_stream" data-stream-id="331">
+                          <div class="bottom_left_row">
+                            <div class="subscription_block selectable_sidebar_block">
+
+                              <span class="stream-privacy-original-color-331 stream-privacy filter-icon"
+                                style="color: #76ce90">
+                                <i class="zulip-icon zulip-icon-lock" aria-hidden="true"></i>
+                              </span>
+
+                              <a href="#narrow/stream/331-kandra-branding" title="kandra branding"
+                                class="stream-name">kandra branding</a>
+
+                              <span class="unread_mention_info" style="display: none;"></span>
+                              <span class="unread_count" style="display: none;"></span>
+                            </div>
+                            <span class="stream-sidebar-menu-icon hidden-for-spectators"><i
+                                class="zulip-icon zulip-icon-ellipsis-v-solid" aria-hidden="true"></i></span>
+                          </div>
+                        </li>
+                        <li class="narrow-filter inactive_stream" data-stream-id="413">
+                          <div class="bottom_left_row">
+                            <div class="subscription_block selectable_sidebar_block">
+
+                              <span class="stream-privacy-original-color-413 stream-privacy filter-icon"
+                                style="color: #e7cc4d">
+                                <i class="zulip-icon zulip-icon-lock" aria-hidden="true"></i>
+                              </span>
+
+                              <a href="#narrow/stream/413-kandra-design" title="kandra design"
+                                class="stream-name">kandra design</a>
+
+                              <span class="unread_mention_info" style="display: none;"></span>
+                              <span class="unread_count" style="display: none;"></span>
+                            </div>
+                            <span class="stream-sidebar-menu-icon hidden-for-spectators"><i
+                                class="zulip-icon zulip-icon-ellipsis-v-solid" aria-hidden="true"></i></span>
+                          </div>
+                        </li>
+                        <li class="narrow-filter out_of_home_view inactive_stream" data-stream-id="375">
+                          <div class="bottom_left_row">
+                            <div class="subscription_block selectable_sidebar_block">
+
+                              <span class="stream-privacy-original-color-375 stream-privacy filter-icon"
+                                style="color: #76ce90">
+                                <i class="zulip-icon zulip-icon-lock" aria-hidden="true"></i>
+                              </span>
+
+                              <a href="#narrow/stream/375-kandra-planning" title="kandra planning"
+                                class="stream-name">kandra planning</a>
+
+                              <span class="unread_mention_info" style="display: none;"></span>
+                              <span class="unread_count" style="display: none;"></span>
+                            </div>
+                            <span class="stream-sidebar-menu-icon hidden-for-spectators"><i
+                                class="zulip-icon zulip-icon-ellipsis-v-solid" aria-hidden="true"></i></span>
+                          </div>
+                        </li>
+                        <li class="narrow-filter inactive_stream" data-stream-id="224">
+                          <div class="bottom_left_row">
+                            <div class="subscription_block selectable_sidebar_block">
+
+                              <span class="stream-privacy-original-color-224 stream-privacy filter-icon"
+                                style="color: #76ce90">
+                                <i class="zulip-icon zulip-icon-hashtag" aria-hidden="true"></i>
+                              </span>
+
+                              <a href="#narrow/stream/224-zulip-swift-tests" title="zulip-swift-tests"
+                                class="stream-name">zulip-swift-tests</a>
+
+                              <span class="unread_mention_info" style="display: none;"></span>
+                              <span class="unread_count" style="display: none;"></span>
+                            </div>
+                            <span class="stream-sidebar-menu-icon hidden-for-spectators"><i
+                                class="zulip-icon zulip-icon-ellipsis-v-solid" aria-hidden="true"></i></span>
+                          </div>
+                        </li>
+                      </ul>
+                      <div id="subscribe-to-more-streams"> <a href="#streams/all">
+                          <i class="fa fa-plus-circle" aria-hidden="true"></i>Browse 165 more streams</a>
+                      </div>
+                      <div id="login-link-container" class="only-visible-for-spectators">
+                        <a class="login_button">
+                          <i class="fa fa-sign-in" aria-hidden="true"></i>Log in to browse more streams
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="simplebar-placeholder" style="width: 270px; height: 1014px;"></div>
+        </div>
+         <div class="simplebar-track simplebar-horizontal" style="visibility: hidden;">
+          <div class="simplebar-scrollbar" style="width: 0px; display: none;"></div>
+        </div>
+        <div class="simplebar-track simplebar-vertical" style="visibility: visible;">
+          <div class="simplebar-scrollbar"
+            style="height: 60px; transform: translate3d(0px, 29px, 0px); display: block;"></div>
+        </div>
+      </div> -->
+
+
+
 
 
 
