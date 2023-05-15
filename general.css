@@ -181,3 +181,31 @@ header {
 .message__user-line:nth-child(4) {
     width: 20%;
 }
+
+
+/* zulip classes for emoji */
+div.emoji, span.emoji {
+    display: inline-block;
+    background-image: url(https://chat.zulip.org/static/webpack-bundles/files/64.0cdafdf0b6596657a9be.png);
+    background-size: 6100.000%;
+    background-repeat: no-repeat;
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.emoji-1f30c {
+    background-position: 8.333% 18.333%;
+}
+
+.status-emoji {
+    height: 16px;
+    width: 16px;
+    min-width: 16px;
+    margin-left: 3px;
+    margin-right: 0;
+}
+.emoji-1f419 {
+    background-image: url(https://chat.zulip.org/static/webpack-bundles/files/1f419.fb1ebe4a0ba630d4181b.png) !important;
+    background-position: 0% 0% !important;
+    background-size: contain !important;
+}

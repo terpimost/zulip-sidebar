@@ -358,20 +358,107 @@
         </div>
       </div>
       <div class="sidebar-group _expanded">
-        <ul class="sidebar-group__details">
-          <li class="unread_count">1</li>
-          <li class="unread_count">2</li>
-          <li class="unread_count">3</li>
-          <li class="unread_count">4</li>
-          <li class="unread_count">5</li>
-          <li class="unread_count">6</li>
-          <li class="unread_count">7</li>
-          <li class="unread_count">8</li>
-          <li class="unread_count">9</li>
-          <li class="unread_count">10</li>
-          <li class="unread_count">11</li>
-          <li class="unread_count">12</li>
-          <li class="unread_count">13</li>
+        <ul class="sidebar-group__details dm-list">
+          <!-- replaced bottom_left_row with sidebar-row -->
+          <!-- removed zero-pm-unreads -->
+          <!-- removed pm-list-item -->
+          <!-- removed conversation-partners -->
+          <!-- removed zero-count, insted use _hidden-->
+          <!-- moved counter inside <a></a> -->
+          <!-- unread-count is unread-count -->
+          <!-- text of <a> is wrapped in <span class="sidebar-row__label"> -->
+          <!-- removed  <span class="pm-box pm_user_status"></span> and <div class="pm_left_col"> since icon will be inside a-->
+          <!-- _hidden more button is placed to be sure that counter is on the same placehorisontally -->
+  
+          <li class="sidebar-row" data-user-ids-string="26369" tabindex="0">
+            <a tabindex="-1" href="#narrow/dm/26369-Karl-Stolley">
+              <i class="icon icon-user-status sidebar-row__icon _online" aria-hidden="true"></i>
+              <span class="sidebar-row__label">Karl Stolley</span>
+              <span class="unread-count">2</span>
+            </a>
+            <div class="sidebar-row__button-more hidden-for-spectators _hidden" title="Options" tabindex="0">
+              <i class="icon icon-dots-vertical"></i>
+            </div>
+          </li>
+
+          <li class="sidebar-row" data-user-ids-string="19257" tabindex="0">
+            <a tabindex="-1" href="#narrow/dm/19257-Alya-Abbott">
+              <i class="icon icon-user-status sidebar-row__icon _idle" aria-hidden="true"></i>
+              <span class="sidebar-row__label">Alya Abbott
+                <span class="emoji status-emoji emoji-1f30c"></span>
+              </span>
+              <span class="unread-count _hidden">0</span>
+            </a>
+            <div class="sidebar-row__button-more hidden-for-spectators _hidden" title="Options" tabindex="0">
+              <i class="icon icon-dots-vertical"></i>
+            </div>
+          </li>
+
+          <li class="sidebar-row" data-user-ids-string="22433" tabindex="0">
+            <a tabindex="-1" href="#narrow/dm/22433-Vlad-Korobov">
+              <i class="icon icon-user-status sidebar-row__icon _away" aria-hidden="true"></i>
+              <span class="sidebar-row__label">Vlad Korobov</span>
+              <span class="unread-count _hidden">0</span>
+            </a>
+            <div class="sidebar-row__button-more hidden-for-spectators _hidden" title="Options" tabindex="0">
+              <i class="icon icon-dots-vertical"></i>
+            </div>
+          </li>
+
+          <li class="sidebar-row" data-user-ids-string="5140" tabindex="0">
+              <a tabindex="-1" href="#narrow/dm/5140-Aman-(amanagr)">
+                <i class="icon icon-user-status sidebar-row__icon _online" aria-hidden="true"></i>
+                <span class="sidebar-row__label">Aman (amanagr)</span>
+                <span class="unread-count">5</span>
+              </a>
+              <div class="sidebar-row__button-more hidden-for-spectators _hidden" title="Options" tabindex="0">
+                <i class="icon icon-dots-vertical"></i>
+              </div>
+          </li>
+
+          <li class="sidebar-row" data-user-ids-string="7,19257" tabindex="0">
+            <a tabindex="-1" href="#narrow/dm/7,19257-group">
+              <i class="icon icon-user-group sidebar-row__icon" aria-hidden="true"></i>
+              <span class="sidebar-row__label">Alya Abbott, Tim Abbott</span>
+              <span class="unread-count">99</span>
+            </a>
+            <div class="sidebar-row__button-more hidden-for-spectators _hidden" title="Options" tabindex="0">
+              <i class="icon icon-dots-vertical"></i>
+            </div>
+          </li>
+
+          <li class="sidebar-row" data-user-ids-string="7" tabindex="0">
+            <a tabindex="-1" href="#narrow/dm/7-Tim-Abbott">
+              <i class="icon icon-user-status sidebar-row__icon _away" aria-hidden="true"></i>
+              <span class="sidebar-row__label">Tim Abbott
+                <span class="emoji status-emoji emoji-1f419"></span>
+              </span>
+              <span class="unread-count">1</span>
+            </a>
+            <div class="sidebar-row__button-more hidden-for-spectators _hidden" title="Options" tabindex="0">
+              <i class="icon icon-dots-vertical"></i>
+            </div>
+          </li>
+
+          <li class="sidebar-row" data-user-ids-string="7,5140,19257" tabindex="0">
+            <a tabindex="-1" href="#narrow/dm/7,5140,19257-group">
+              <i class="icon icon-user-group sidebar-row__icon" aria-hidden="true"></i>
+              <span class="sidebar-row__label">Alya Abbott, Aman (amanagr), Tim Abbott, Somebody Else, Another Person</span>
+              <span class="unread-count">123</span>
+            </a>
+            <div class="sidebar-row__button-more hidden-for-spectators _hidden" title="Options" tabindex="0">
+              <i class="icon icon-dots-vertical"></i>
+            </div>
+          </li>
+
+          <li id="show_more_private_messages" class="sidebar-row" tabindex="0">
+            <span>
+              <a tabindex="-1" class="pm-name" tabindex="0">more conversations</a>
+              <span class="unread-count">
+                0
+              </span>
+            </span>
+          </li>
         </ul>
       </div>
       
@@ -380,48 +467,93 @@
       </div>
       <!-- Streams -->
       <div class="sidebar-group _expanded">
-        <div class="sidebar-group__summary sidebar-group-stream">Streams</div>
+        <div class="sidebar-group__summary sidebar-group-stream">Stream main</div>
         <ul class="sidebar-group__details">
-          <li class="unread_count">#1</li>
-          <li class="unread_count">#2</li>
-          <li class="unread_count">#3</li>
-          <li class="unread_count">#4</li>
-          <li class="unread_count">#5</li>
-          <li class="unread_count">#6</li>
-          <li class="unread_count">#7</li>
-          <li class="unread_count">#8</li>
-          <li class="unread_count">#9</li>
-          <li class="unread_count">#10</li>
-          <li class="unread_count">#11</li>
-          <li class="unread_count">#12</li>
-          <li class="unread_count">#13</li>
-          <li class="unread_count">#14</li>
-          <li class="unread_count">#15</li>
-          <li class="unread_count">#16</li>
-          <li class="unread_count">#17</li>
-          <li class="unread_count">#18</li>
-          <li class="unread_count">#19</li>
-          <li class="unread_count">#20</li>
-          <li class="unread_count">#21</li>
-          <li class="unread_count">#22</li>
-          <li class="unread_count">#23</li>
-          <li class="unread_count">#24</li>
-          <li class="unread_count">#25</li>
-          <li class="unread_count">#26</li>
-          <li class="unread_count">#13</li>
-          <li class="unread_count">#14</li>
-          <li class="unread_count">#15</li>
-          <li class="unread_count">#16</li>
-          <li class="unread_count">#17</li>
-          <li class="unread_count">#18</li>
-          <li class="unread_count">#19</li>
-          <li class="unread_count">#20</li>
-          <li class="unread_count">#21</li>
-          <li class="unread_count">#22</li>
-          <li class="unread_count">#23</li>
-          <li class="unread_count">#24</li>
-          <li class="unread_count">#25</li>
-          <li class="unread_count">#26</li>
+          <li class="unread-count">#1</li>
+          <li class="unread-count">#2</li>
+          <li class="unread-count">#3</li>
+          <li class="unread-count">#4</li>
+          <li class="unread-count">#5</li>
+          <li class="unread-count">#6</li>
+          <li class="unread-count">#7</li>
+          <li class="unread-count">#8</li>
+          <li class="unread-count">#9</li>
+          <li class="unread-count">#10</li>
+          <li class="unread-count">#11</li>
+          <li class="unread-count">#12</li>
+          <li class="unread-count">#13</li>
+          <li class="unread-count">#14</li>
+          <li class="unread-count">#15</li>
+          <li class="unread-count">#16</li>
+          <li class="unread-count">#17</li>
+          <li class="unread-count">#18</li>
+          <li class="unread-count">#19</li>
+          <li class="unread-count">#20</li>
+          <li class="unread-count">#21</li>
+          <li class="unread-count">#22</li>
+          <li class="unread-count">#23</li>
+          <li class="unread-count">#24</li>
+          <li class="unread-count">#25</li>
+        </ul>
+      </div>
+      <div class="sidebar-group _expanded">
+        <div class="sidebar-group__summary sidebar-group-stream">Stream dev</div>
+        <ul class="sidebar-group__details">
+          <li class="unread-count">#1</li>
+          <li class="unread-count">#2</li>
+          <li class="unread-count">#3</li>
+          <li class="unread-count">#4</li>
+          <li class="unread-count">#5</li>
+          <li class="unread-count">#6</li>
+          <li class="unread-count">#7</li>
+          <li class="unread-count">#8</li>
+          <li class="unread-count">#9</li>
+          <li class="unread-count">#10</li>
+          <li class="unread-count">#11</li>
+          <li class="unread-count">#12</li>
+          <li class="unread-count">#13</li>
+          <li class="unread-count">#14</li>
+          <li class="unread-count">#15</li>
+          <li class="unread-count">#16</li>
+          <li class="unread-count">#17</li>
+          <li class="unread-count">#18</li>
+          <li class="unread-count">#19</li>
+          <li class="unread-count">#20</li>
+          <li class="unread-count">#21</li>
+          <li class="unread-count">#22</li>
+          <li class="unread-count">#23</li>
+          <li class="unread-count">#24</li>
+          <li class="unread-count">#25</li>
+        </ul>
+      </div>
+      <div class="sidebar-group _expanded">
+        <div class="sidebar-group__summary sidebar-group-stream">Stream dev</div>
+        <ul class="sidebar-group__details">
+          <li class="unread-count">#1</li>
+          <li class="unread-count">#2</li>
+          <li class="unread-count">#3</li>
+          <li class="unread-count">#4</li>
+          <li class="unread-count">#5</li>
+          <li class="unread-count">#6</li>
+          <li class="unread-count">#7</li>
+          <li class="unread-count">#8</li>
+          <li class="unread-count">#9</li>
+          <li class="unread-count">#10</li>
+          <li class="unread-count">#11</li>
+          <li class="unread-count">#12</li>
+          <li class="unread-count">#13</li>
+          <li class="unread-count">#14</li>
+          <li class="unread-count">#15</li>
+          <li class="unread-count">#16</li>
+          <li class="unread-count">#17</li>
+          <li class="unread-count">#18</li>
+          <li class="unread-count">#19</li>
+          <li class="unread-count">#20</li>
+          <li class="unread-count">#21</li>
+          <li class="unread-count">#22</li>
+          <li class="unread-count">#23</li>
+          <li class="unread-count">#24</li>
+          <li class="unread-count">#25</li>
         </ul>
       </div>
 
@@ -436,7 +568,7 @@
                 class="fa fa-sm fa-caret-down toggle_private_messages_section zoom-in-hide" aria-hidden="true"></i>
               <h4 class="sidebar-title toggle_private_messages_section">DIRECT MESSAGES</h4>
             </span>
-            <span class="unread_count" style="display: none;"></span>
+            <span class="unread-count" style="display: none;"></span>
             <a id="show_all_private_messages" href="#narrow/is/dm" data-tooltip-template-id="show-all-pms-template">
               <i class="fa fa-align-right" aria-label="All direct messages"></i>
             </a>
@@ -478,7 +610,7 @@
                             <a href="#narrow/dm/26369-Karl-Stolley" class="conversation-partners">
                               Karl Stolley
                             </a>
-                            <span class="unread_count zero_count">
+                            <span class="unread-count zero-count">
                               0
                             </span>
                           </span>
@@ -495,7 +627,7 @@
                               Alya Abbott
                               <span class="emoji status-emoji emoji-1f30c"></span>
                             </a>
-                            <span class="unread_count zero_count">
+                            <span class="unread-count zero-count">
                               0
                             </span>
                           </span>
@@ -511,7 +643,7 @@
                             <a href="#narrow/dm/22433-Vlad-Korobov" class="conversation-partners">
                               Vlad Korobov
                             </a>
-                            <span class="unread_count zero_count">
+                            <span class="unread-count zero-count">
                               0
                             </span>
                           </span>
@@ -527,7 +659,7 @@
                             <a href="#narrow/dm/5140-Aman-(amanagr)" class="conversation-partners">
                               Aman (amanagr)
                             </a>
-                            <span class="unread_count zero_count">
+                            <span class="unread-count zero-count">
                               0
                             </span>
                           </span>
@@ -543,7 +675,7 @@
                             <a href="#narrow/dm/7,19257-group" class="conversation-partners">
                               Alya Abbott, Tim Abbott
                             </a>
-                            <span class="unread_count zero_count">
+                            <span class="unread-count zero-count">
                               0
                             </span>
                           </span>
@@ -560,7 +692,7 @@
                               Tim Abbott
                               <span class="emoji status-emoji emoji-1f419"></span>
                             </a>
-                            <span class="unread_count zero_count">
+                            <span class="unread-count zero-count">
                               0
                             </span>
                           </span>
@@ -576,7 +708,7 @@
                             <a href="#narrow/dm/7,5140,19257-group" class="conversation-partners">
                               Alya Abbott, Aman (amanagr), Tim Abbott
                             </a>
-                            <span class="unread_count zero_count">
+                            <span class="unread-count zero-count">
                               0
                             </span>
                           </span>
@@ -592,7 +724,7 @@
                             <a href="#narrow/dm/5140,19257-group" class="conversation-partners">
                               Alya Abbott, Aman (amanagr)
                             </a>
-                            <span class="unread_count zero_count">
+                            <span class="unread-count zero-count">
                               0
                             </span>
                           </span>
@@ -601,7 +733,7 @@
                         <li id="show_more_private_messages" class="pm-list-item bottom_left_row zero-pm-unreads">
                           <span>
                             <a class="pm-name" tabindex="0">more conversations</a>
-                            <span class="unread_count zero_count">
+                            <span class="unread-count zero-count">
                               0
                             </span>
                           </span>
@@ -652,7 +784,7 @@
                               <a href="#narrow/stream/101-design" title="design" class="stream-name">design</a>
 
                               <span class="unread_mention_info" style="display: none;"></span>
-                              <span class="unread_count" style="display: none;"></span>
+                              <span class="unread-count" style="display: none;"></span>
                             </div>
                             <span class="stream-sidebar-menu-icon hidden-for-spectators"><i
                                 class="zulip-icon zulip-icon-ellipsis-v-solid" aria-hidden="true"></i></span>
@@ -671,7 +803,7 @@
                                 class="stream-name">redesign project</a>
 
                               <span class="unread_mention_info" style="display: none;"></span>
-                              <span class="unread_count" style="display: none;"></span>
+                              <span class="unread-count" style="display: none;"></span>
                             </div>
                             <span class="stream-sidebar-menu-icon hidden-for-spectators"><i
                                 class="zulip-icon zulip-icon-ellipsis-v-solid" aria-hidden="true"></i></span>
@@ -689,7 +821,7 @@
                               <a href="#narrow/stream/137-feedback" title="feedback" class="stream-name">feedback</a>
 
                               <span class="unread_mention_info" style="display: none;"></span>
-                              <span class="unread_count" style="">58</span>
+                              <span class="unread-count" style="">58</span>
                             </div>
                             <span class="stream-sidebar-menu-icon hidden-for-spectators"><i
                                 class="zulip-icon zulip-icon-ellipsis-v-solid" aria-hidden="true"></i></span>
@@ -708,7 +840,7 @@
                                 class="stream-name">mobile-team</a>
 
                               <span class="unread_mention_info" style="display: none;"></span>
-                              <span class="unread_count" style="">46</span>
+                              <span class="unread-count" style="">46</span>
                             </div>
                             <span class="stream-sidebar-menu-icon hidden-for-spectators"><i
                                 class="zulip-icon zulip-icon-ellipsis-v-solid" aria-hidden="true"></i></span>
@@ -729,7 +861,7 @@
                               <a href="#narrow/stream/1-announce" title="announce" class="stream-name">announce</a>
 
                               <span class="unread_mention_info" style="display: none;"></span>
-                              <span class="unread_count" style="display: none;"></span>
+                              <span class="unread-count" style="display: none;"></span>
                             </div>
                             <span class="stream-sidebar-menu-icon hidden-for-spectators"><i
                                 class="zulip-icon zulip-icon-ellipsis-v-solid" aria-hidden="true"></i></span>
@@ -748,7 +880,7 @@
                                 class="stream-name">chat.zulip.org</a>
 
                               <span class="unread_mention_info" style="display: none;"></span>
-                              <span class="unread_count" style="display: none;"></span>
+                              <span class="unread-count" style="display: none;"></span>
                             </div>
                             <span class="stream-sidebar-menu-icon hidden-for-spectators"><i
                                 class="zulip-icon zulip-icon-ellipsis-v-solid" aria-hidden="true"></i></span>
@@ -766,7 +898,7 @@
                               <a href="#narrow/stream/2-general" title="general" class="stream-name">general</a>
 
                               <span class="unread_mention_info" style="display: none;"></span>
-                              <span class="unread_count" style="display: none;"></span>
+                              <span class="unread-count" style="display: none;"></span>
                             </div>
                             <span class="stream-sidebar-menu-icon hidden-for-spectators"><i
                                 class="zulip-icon zulip-icon-ellipsis-v-solid" aria-hidden="true"></i></span>
@@ -785,7 +917,7 @@
                                 news</a>
 
                               <span class="unread_mention_info" style="display: none;"></span>
-                              <span class="unread_count" style="display: none;"></span>
+                              <span class="unread-count" style="display: none;"></span>
                             </div>
                             <span class="stream-sidebar-menu-icon hidden-for-spectators"><i
                                 class="zulip-icon zulip-icon-ellipsis-v-solid" aria-hidden="true"></i></span>
@@ -803,7 +935,7 @@
                               <a href="#narrow/stream/107-kandra" title="kandra" class="stream-name">kandra</a>
 
                               <span class="unread_mention_info" style="display: none;"></span>
-                              <span class="unread_count" style="display: none;"></span>
+                              <span class="unread-count" style="display: none;"></span>
                             </div>
                             <span class="stream-sidebar-menu-icon hidden-for-spectators"><i
                                 class="zulip-icon zulip-icon-ellipsis-v-solid" aria-hidden="true"></i></span>
@@ -822,7 +954,7 @@
                                 class="stream-name">kandra checkins</a>
 
                               <span class="unread_mention_info" style="display: none;"></span>
-                              <span class="unread_count" style="display: none;"></span>
+                              <span class="unread-count" style="display: none;"></span>
                             </div>
                             <span class="stream-sidebar-menu-icon hidden-for-spectators"><i
                                 class="zulip-icon zulip-icon-ellipsis-v-solid" aria-hidden="true"></i></span>
@@ -841,7 +973,7 @@
                                 class="stream-name">kandra feedback</a>
 
                               <span class="unread_mention_info" style="display: none;"></span>
-                              <span class="unread_count" style="display: none;"></span>
+                              <span class="unread-count" style="display: none;"></span>
                             </div>
                             <span class="stream-sidebar-menu-icon hidden-for-spectators"><i
                                 class="zulip-icon zulip-icon-ellipsis-v-solid" aria-hidden="true"></i></span>
@@ -860,7 +992,7 @@
                                 class="stream-name">release management</a>
 
                               <span class="unread_mention_info" style="display: none;"></span>
-                              <span class="unread_count" style="display: none;"></span>
+                              <span class="unread-count" style="display: none;"></span>
                             </div>
                             <span class="stream-sidebar-menu-icon hidden-for-spectators"><i
                                 class="zulip-icon zulip-icon-ellipsis-v-solid" aria-hidden="true"></i></span>
@@ -878,7 +1010,7 @@
                               <a href="#narrow/stream/65-checkins" title="checkins" class="stream-name">checkins</a>
 
                               <span class="unread_mention_info" style="display: none;"></span>
-                              <span class="unread_count" style="">7</span>
+                              <span class="unread-count" style="">7</span>
                             </div>
                             <span class="stream-sidebar-menu-icon hidden-for-spectators"><i
                                 class="zulip-icon zulip-icon-ellipsis-v-solid" aria-hidden="true"></i></span>
@@ -897,7 +1029,7 @@
                                 review</a>
 
                               <span class="unread_mention_info" style="display: none;"></span>
-                              <span class="unread_count" style="display: none;"></span>
+                              <span class="unread-count" style="display: none;"></span>
                             </div>
                             <span class="stream-sidebar-menu-icon hidden-for-spectators"><i
                                 class="zulip-icon zulip-icon-ellipsis-v-solid" aria-hidden="true"></i></span>
@@ -916,7 +1048,7 @@
                                 social</a>
 
                               <span class="unread_mention_info" style="display: none;"></span>
-                              <span class="unread_count" style="">4</span>
+                              <span class="unread-count" style="">4</span>
                             </div>
                             <span class="stream-sidebar-menu-icon hidden-for-spectators"><i
                                 class="zulip-icon zulip-icon-ellipsis-v-solid" aria-hidden="true"></i></span>
@@ -934,7 +1066,7 @@
                               <a href="#narrow/stream/57-core-team" title="core team" class="stream-name">core team</a>
 
                               <span class="unread_mention_info" style="display: none;"></span>
-                              <span class="unread_count" style="display: none;"></span>
+                              <span class="unread-count" style="display: none;"></span>
                             </div>
                             <span class="stream-sidebar-menu-icon hidden-for-spectators"><i
                                 class="zulip-icon zulip-icon-ellipsis-v-solid" aria-hidden="true"></i></span>
@@ -952,7 +1084,7 @@
                               <a href="#narrow/stream/16-desktop" title="desktop" class="stream-name">desktop</a>
 
                               <span class="unread_mention_info" style="display: none;"></span>
-                              <span class="unread_count" style="display: none;"></span>
+                              <span class="unread-count" style="display: none;"></span>
                             </div>
                             <span class="stream-sidebar-menu-icon hidden-for-spectators"><i
                                 class="zulip-icon zulip-icon-ellipsis-v-solid" aria-hidden="true"></i></span>
@@ -971,7 +1103,7 @@
                                 class="stream-name">development help</a>
 
                               <span class="unread_mention_info" style="display: none;"></span>
-                              <span class="unread_count" style="">2</span>
+                              <span class="unread-count" style="">2</span>
                             </div>
                             <span class="stream-sidebar-menu-icon hidden-for-spectators"><i
                                 class="zulip-icon zulip-icon-ellipsis-v-solid" aria-hidden="true"></i></span>
@@ -989,7 +1121,7 @@
                               <a href="#narrow/stream/6-frontend" title="frontend" class="stream-name">frontend</a>
 
                               <span class="unread_mention_info" style="display: none;"></span>
-                              <span class="unread_count" style="">118</span>
+                              <span class="unread-count" style="">118</span>
                             </div>
                             <span class="stream-sidebar-menu-icon hidden-for-spectators"><i
                                 class="zulip-icon zulip-icon-ellipsis-v-solid" aria-hidden="true"></i></span>
@@ -1007,7 +1139,7 @@
                               <a href="#narrow/stream/9-issues" title="issues" class="stream-name">issues</a>
 
                               <span class="unread_mention_info" style="display: none;"></span>
-                              <span class="unread_count" style="">251</span>
+                              <span class="unread-count" style="">251</span>
                             </div>
                             <span class="stream-sidebar-menu-icon hidden-for-spectators"><i
                                 class="zulip-icon zulip-icon-ellipsis-v-solid" aria-hidden="true"></i></span>
@@ -1026,7 +1158,7 @@
                                 class="stream-name">kandra marketing</a>
 
                               <span class="unread_mention_info" style="display: none;"></span>
-                              <span class="unread_count" style="display: none;"></span>
+                              <span class="unread-count" style="display: none;"></span>
                             </div>
                             <span class="stream-sidebar-menu-icon hidden-for-spectators"><i
                                 class="zulip-icon zulip-icon-ellipsis-v-solid" aria-hidden="true"></i></span>
@@ -1045,7 +1177,7 @@
                                 press</a>
 
                               <span class="unread_mention_info" style="display: none;"></span>
-                              <span class="unread_count" style="display: none;"></span>
+                              <span class="unread-count" style="display: none;"></span>
                             </div>
                             <span class="stream-sidebar-menu-icon hidden-for-spectators"><i
                                 class="zulip-icon zulip-icon-ellipsis-v-solid" aria-hidden="true"></i></span>
@@ -1064,7 +1196,7 @@
                                 class="stream-name">kandra support</a>
 
                               <span class="unread_mention_info" style="display: none;"></span>
-                              <span class="unread_count" style="">42</span>
+                              <span class="unread-count" style="">42</span>
                             </div>
                             <span class="stream-sidebar-menu-icon hidden-for-spectators"><i
                                 class="zulip-icon zulip-icon-ellipsis-v-solid" aria-hidden="true"></i></span>
@@ -1082,7 +1214,7 @@
                               <a href="#narrow/stream/92-learning" title="learning" class="stream-name">learning</a>
 
                               <span class="unread_mention_info" style="display: none;"></span>
-                              <span class="unread_count" style="">2</span>
+                              <span class="unread-count" style="">2</span>
                             </div>
                             <span class="stream-sidebar-menu-icon hidden-for-spectators"><i
                                 class="zulip-icon zulip-icon-ellipsis-v-solid" aria-hidden="true"></i></span>
@@ -1100,7 +1232,7 @@
                               <a href="#narrow/stream/48-mobile" title="mobile" class="stream-name">mobile</a>
 
                               <span class="unread_mention_info" style="display: none;"></span>
-                              <span class="unread_count" style="">2</span>
+                              <span class="unread-count" style="">2</span>
                             </div>
                             <span class="stream-sidebar-menu-icon hidden-for-spectators"><i
                                 class="zulip-icon zulip-icon-ellipsis-v-solid" aria-hidden="true"></i></span>
@@ -1119,7 +1251,7 @@
                                 class="stream-name">mobile-core</a>
 
                               <span class="unread_mention_info" style="display: none;"></span>
-                              <span class="unread_count" style="">3</span>
+                              <span class="unread-count" style="">3</span>
                             </div>
                             <span class="stream-sidebar-menu-icon hidden-for-spectators"><i
                                 class="zulip-icon zulip-icon-ellipsis-v-solid" aria-hidden="true"></i></span>
@@ -1138,7 +1270,7 @@
                                 class="stream-name">provision help</a>
 
                               <span class="unread_mention_info" style="display: none;"></span>
-                              <span class="unread_count" style="display: none;"></span>
+                              <span class="unread-count" style="display: none;"></span>
                             </div>
                             <span class="stream-sidebar-menu-icon hidden-for-spectators"><i
                                 class="zulip-icon zulip-icon-ellipsis-v-solid" aria-hidden="true"></i></span>
@@ -1160,7 +1292,7 @@
                                 class="stream-name">kandra branding</a>
 
                               <span class="unread_mention_info" style="display: none;"></span>
-                              <span class="unread_count" style="display: none;"></span>
+                              <span class="unread-count" style="display: none;"></span>
                             </div>
                             <span class="stream-sidebar-menu-icon hidden-for-spectators"><i
                                 class="zulip-icon zulip-icon-ellipsis-v-solid" aria-hidden="true"></i></span>
@@ -1179,7 +1311,7 @@
                                 class="stream-name">kandra design</a>
 
                               <span class="unread_mention_info" style="display: none;"></span>
-                              <span class="unread_count" style="display: none;"></span>
+                              <span class="unread-count" style="display: none;"></span>
                             </div>
                             <span class="stream-sidebar-menu-icon hidden-for-spectators"><i
                                 class="zulip-icon zulip-icon-ellipsis-v-solid" aria-hidden="true"></i></span>
@@ -1198,7 +1330,7 @@
                                 class="stream-name">kandra planning</a>
 
                               <span class="unread_mention_info" style="display: none;"></span>
-                              <span class="unread_count" style="display: none;"></span>
+                              <span class="unread-count" style="display: none;"></span>
                             </div>
                             <span class="stream-sidebar-menu-icon hidden-for-spectators"><i
                                 class="zulip-icon zulip-icon-ellipsis-v-solid" aria-hidden="true"></i></span>
@@ -1217,7 +1349,7 @@
                                 class="stream-name">zulip-swift-tests</a>
 
                               <span class="unread_mention_info" style="display: none;"></span>
-                              <span class="unread_count" style="display: none;"></span>
+                              <span class="unread-count" style="display: none;"></span>
                             </div>
                             <span class="stream-sidebar-menu-icon hidden-for-spectators"><i
                                 class="zulip-icon zulip-icon-ellipsis-v-solid" aria-hidden="true"></i></span>
