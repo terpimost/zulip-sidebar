@@ -17,7 +17,7 @@
     --icon-user-group: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3e%3cpath fill='black' d='M7.07 5.7a2.54 2.54 0 0 0-3.47.93 2.53 2.53 0 1 0 3.47-.93Zm6.46-3.59a2.54 2.54 0 0 0-3.46.93 2.53 2.53 0 1 0 3.46-.93Zm.12 7.39a2.54 2.54 0 0 0-3.46.93 2.54 2.54 0 1 0 3.46-.93Z'/%3e%3c/svg%3e");
 
     --color-sidebar-row-bg-hover: hsl(0, 0%, 97%);
-    --color-sidebar-row-border-hover: hsla(0, 0%, 0%, 0.15);
+    --color-sidebar-row-border-hover: hsla(0, 0%, 0%, 0.2);
     --color-sidebar-row-bg-selected: hsl(0, 0%, 100%);
 
     --color-clickable-icon: hsla(240, 20%, 50%, 1);
@@ -296,7 +296,7 @@ i.icon-user-status.sidebar-row__icon._away{
     background-color: var(--color-clickable-icon-hover-bg);
 }
 .sidebar-group__button:active{
-    scale: 0.94;
+    scale: 0.92;
 }
 
 
@@ -345,13 +345,18 @@ i.icon-user-status.sidebar-row__icon._away{
     } 
 }
 
+.sidebar-row__buttons-wrapper{
+    padding: 2px 2px 2px 1px;
+    display: flex;
+    gap: 1px;
+}
 
 .sidebar-row__button-more{
     color: var(--color-clickable-icon);
     border: none;
     user-select: none;
     cursor: pointer;
-    width: 26px;
+    width: 24px;
     border-radius: 3px;
     display: flex;
     align-items: center;
@@ -369,7 +374,7 @@ i.icon-user-status.sidebar-row__icon._away{
     opacity: 1;
 }
 .sidebar-row__button-more:active{
-    scale: 0.94;
+    scale: 0.92;
 }
 
 .sidebar-row__button-more._hidden{
@@ -405,18 +410,21 @@ i.icon-user-status.sidebar-row__icon._away{
     font-family: var(--font-ss3);
     font-size: 15px;
     line-height: 1.2;
-    min-height: 24px;
-    padding: 1px;
-    box-sizing: content-box;
+    min-height: 26px;
+    /* padding: 1px; */
+    box-sizing: border-box;
     border-radius: 4px;
-    border: 1px solid hsla(0, 0%, 0%, 0);
+    border: none;
+    /* border: 1px solid hsla(0, 0%, 0%, 0); */
+    box-shadow: inset 0px 0px 0px 1px hsla(0, 0%, 0%, 0);
     user-select: none;
     cursor: pointer;
 }
 .sidebar-row:hover,
 .sidebar-row:focus-visible {
     background-color: var(--color-sidebar-row-bg-hover);
-    border: 1px solid var(--color-sidebar-row-border-hover);
+    /* border: 1px solid var(--color-sidebar-row-border-hover); */
+    box-shadow: inset 0px 0px 0px 1px var(--color-sidebar-row-border-hover);
 }
 .sidebar-row._selected{
     background-color: var(--color-sidebar-row-bg-selected);
@@ -438,7 +446,30 @@ i.icon-user-status.sidebar-row__icon._away{
     scale: 0.98;
     transition: var(--transition-sidebar-all-fast);
 }
+
+.sidebar-row.sidebar-row__button-more-items a{
+    padding-left: 41px;
+}
+.sidebar-row.sidebar-row__button-more-items .sidebar-row__label{
+    font-variant: all-small-caps;
+    letter-spacing: .03em;
+    text-transform: uppercase;
+    color: var(--color-clickable-icon);
+    font-size: 18px;
+}
+.sidebar-row.sidebar-row__button-more-items {
+
+}
+.sidebar-row.sidebar-row__button-more-items:hover {
+    background-color: var(--color-clickable-icon-hover-bg); 
+}
+.sidebar-row.sidebar-row__button-more-items:hover .sidebar-row__label{
+    color: var(--color-clickable-icon-hover);
+}
+
+
 .sidebar-row__label{
+    padding: 2px 0px;
     flex-grow: 1;
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -472,7 +503,6 @@ i.icon-user-status.sidebar-row__icon._away{
     font-feature-settings: "tnum";
     font-family: var(--font-ss3);
     padding: 0 4px;
-    margin-right: 1px;
     text-align: right;
 }
 .item-count{
