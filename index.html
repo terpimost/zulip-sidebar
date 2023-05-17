@@ -383,18 +383,21 @@
           <!-- text of <a> is wrapped in <span class="sidebar-row__label"> -->
           <!-- removed  <span class="pm-box pm_user_status"></span> and <div class="pm_left_col"> since icon will be inside a-->
           <!-- _hidden more button is placed to be sure that counter is on the same placehorisontally -->
+          <!-- _no-extra-buttons mean tha there is no More button inside that row and we should maximize <a> tag
+            we don't have this:
+            <div class="sidebar-row__buttons-wrapper">
+              <div class="sidebar-row__button-more hidden-for-spectators _hidden" title="Options" tabindex="0">
+                <i class="icon icon-dots-vertical"></i>
+              </div>
+            </div> 
+          -->
   
-          <li class="sidebar-row" data-user-ids-string="26369" tabindex="0">
+          <li class="sidebar-row _no-extra-buttons" data-user-ids-string="26369" tabindex="0">
             <a tabindex="-1" href="#narrow/dm/26369-Karl-Stolley">
               <i class="icon icon-user-status sidebar-row__icon _online" aria-hidden="true"></i>
               <span class="sidebar-row__label">Karl Stolley</span>
               <span class="unread-count">2</span>
             </a>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-row__button-more hidden-for-spectators _hidden" title="Options" tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
-              </div>
-            </div>
           </li>
 
           <li class="sidebar-row" data-user-ids-string="19257" tabindex="0">
@@ -412,46 +415,33 @@
             </div>
           </li>
 
-          <li class="sidebar-row" data-user-ids-string="22433" tabindex="0">
+          <li class="sidebar-row _no-extra-buttons" data-user-ids-string="22433" tabindex="0">
             <a tabindex="-1" href="#narrow/dm/22433-Vlad-Korobov">
               <i class="icon icon-user-status sidebar-row__icon _away" aria-hidden="true"></i>
               <span class="sidebar-row__label">Vlad Korobov</span>
               <span class="unread-count _hidden">0</span>
             </a>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-row__button-more hidden-for-spectators _hidden" title="Options" tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
-              </div>
-            </div>
+            
           </li>
 
-          <li class="sidebar-row" data-user-ids-string="5140" tabindex="0">
+          <li class="sidebar-row _no-extra-buttons" data-user-ids-string="5140" tabindex="0">
               <a tabindex="-1" href="#narrow/dm/5140-Aman-(amanagr)">
                 <i class="icon icon-user-status sidebar-row__icon _online" aria-hidden="true"></i>
                 <span class="sidebar-row__label">Aman (amanagr)</span>
                 <span class="unread-count">5</span>
               </a>
-              <div class="sidebar-row__buttons-wrapper">
-                <div class="sidebar-row__button-more hidden-for-spectators _hidden" title="Options" tabindex="0">
-                  <i class="icon icon-dots-vertical"></i>
-                </div>
-              </div>
+              
           </li>
 
-          <li class="sidebar-row" data-user-ids-string="7,19257" tabindex="0">
+          <li class="sidebar-row _no-extra-buttons" data-user-ids-string="7,19257" tabindex="0">
             <a tabindex="-1" href="#narrow/dm/7,19257-group">
               <i class="icon icon-user-group sidebar-row__icon" aria-hidden="true"></i>
               <span class="sidebar-row__label">Alya Abbott, Tim Abbott</span>
               <span class="unread-count">99</span>
             </a>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-row__button-more hidden-for-spectators _hidden" title="Options" tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
-              </div>
-            </div>
           </li>
 
-          <li class="sidebar-row" data-user-ids-string="7" tabindex="0">
+          <li class="sidebar-row _no-extra-buttons" data-user-ids-string="7" tabindex="0">
             <a tabindex="-1" href="#narrow/dm/7-Tim-Abbott">
               <i class="icon icon-user-status sidebar-row__icon _away" aria-hidden="true"></i>
               <span class="sidebar-row__label">Tim Abbott
@@ -459,28 +449,18 @@
               </span>
               <span class="unread-count">1</span>
             </a>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-row__button-more hidden-for-spectators _hidden" title="Options" tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
-              </div>
-            </div>
           </li>
 
-          <li class="sidebar-row" data-user-ids-string="7,5140,19257" tabindex="0">
+          <li class="sidebar-row _no-extra-buttons" data-user-ids-string="7,5140,19257" tabindex="0">
             <a tabindex="-1" href="#narrow/dm/7,5140,19257-group">
               <i class="icon icon-user-group sidebar-row__icon" aria-hidden="true"></i>
               <span class="sidebar-row__label">Alya Abbott, Aman (amanagr), Tim Abbott, Somebody Else, Another Person</span>
               <span class="unread-count">123</span>
             </a>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-row__button-more hidden-for-spectators _hidden" title="Options" tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
-              </div>
-            </div>
           </li>
 
           <!-- removed class="pm-name" from <a></a> -->
-          <li id="show_more_private_messages" class="sidebar-row sidebar-row__button-more-items" tabindex="0">
+          <li id="show_more_private_messages" class="sidebar-row sidebar-row__button-more-items _no-extra-buttons" tabindex="0">
             <a tabindex="-1" >
               <span class="sidebar-row__label">more conversations</span>
               <span class="unread-count">1</span>

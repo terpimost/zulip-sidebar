@@ -377,10 +377,10 @@ i.icon-user-status.sidebar-row__icon._away{
     scale: 0.92;
 }
 
-.sidebar-row__button-more._hidden{
+/* .sidebar-row__button-more._hidden{
     visibility: hidden;
     pointer-events: none;
-}
+} */
 
 .sidebar-group__summary:hover .sidebar-row__button-more,
 .sidebar-group__summary:focus-visible .sidebar-row__button-more,
@@ -450,6 +450,12 @@ i.icon-user-status.sidebar-row__icon._away{
 .sidebar-row.sidebar-row__button-more-items a{
     padding-left: 41px;
 }
+.sidebar-row._no-extra-buttons a{
+    /* we want space from the right be like other items with counter have */
+    /* sidebar-row__buttons-wrapper +  sidebar-row__button-more inside it*/
+    padding-right: 27px; 
+}
+
 .sidebar-row.sidebar-row__button-more-items .sidebar-row__label{
     font-variant: all-small-caps;
     letter-spacing: .03em;
