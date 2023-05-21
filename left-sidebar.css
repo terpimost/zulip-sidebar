@@ -204,8 +204,8 @@ i.icon-user-status.sidebar-row__icon._away {
     z-index: 1;
 }
 .sidebar-group__summary-sticky._covering{
-    box-shadow: 0 8px 12px -12px hsl(0deg 0% 0% / 80%);
-    transition: all 0.5s;
+    box-shadow: 0 6px 12px -12px hsl(0deg 0% 0% / 100%);
+    transition: all 0.7s ease-out;
 }
 
 .summary-sticky-views {

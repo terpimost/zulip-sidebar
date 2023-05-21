@@ -89,7 +89,7 @@ header {
 .feed {
     /* width: 50%; */
     margin: 0 216px 0 var(--left-sidebar-width);
-    padding-bottom: 400px;
+    padding: 0px 8px 400px 8px;
 }
 
 .feed__topic {
