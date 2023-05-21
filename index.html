@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simplebar@6.2.4/dist/simplebar.css" />
   <script src="https://cdn.jsdelivr.net/npm/simplebar@6.2.4/dist/simplebar.min.js"></script>
 
-  <script src="script.js"></script>
+  
 
 </head>
 
@@ -210,6 +210,7 @@
     <div class="left-sidebar" id="left-sidebar" role="navigation">
 
       <!-- VIEWS -->
+      <div id="intercept_views"></div>
       <div class="sidebar-group__summary-sticky summary-sticky-views">
 
         <div class="sidebar-group__summary sidebar-group-views" tabindex="0" onclick="onSidebarGroupClick(event)"
@@ -246,9 +247,10 @@
         </div>
 
       </div>
+      
       <!-- removed narrows_panel class -->
       <div class="sidebar-group sidebar-group-views _expanded">
-
+        
 
         <!-- added "sidebar-row" class to every li item to provide general styling,
             removed top_left_row -->
@@ -366,6 +368,7 @@
       </div>
 
       <!-- DMs -->
+      <div id="intercept_dms" style="position: relative; top:-30px"></div>
       <div class="sidebar-group__summary-sticky summary-sticky-dms">
         <div class="sidebar-group__summary sidebar-group-dms">
           <div class="sidebar-group__expander-area" onclick="onSidebarGroupExpanderAreaClick(event)">
@@ -1422,7 +1425,7 @@
     </div>
 
   </div>
-
+  <script src="script.js"></script>
 </body>
 
 </html>

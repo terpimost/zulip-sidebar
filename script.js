@@ -46,3 +46,16 @@ function onSidebarGroupExpanderAreaClick(event){
   console.log(event.currentTarget.closest('.sidebar-group'));
   event.currentTarget.closest('.sidebar-group').classList.toggle('_expanded')
 }
+
+const interceptViews = document.getElementById('intercept_views')
+const interceptDms = document.getElementById('intercept_dms')
+const rowIntersectionObserver = new IntersectionObserver(([entry]) => {
+  console.log(entry);
+  const stickyEl = entry.target.nextElementSibling
+  console.log('stickyEl=', stickyEl);
+  stickyEl.classList.toggle('_covering', !entry.isIntersecting)
+  // console.log('stickyEl=', stickyEl);
+  // header.classList.toggle("active", !entry.isIntersecting);
+});
+rowIntersectionObserver.observe(interceptViews);
+rowIntersectionObserver.observe(interceptDms);
