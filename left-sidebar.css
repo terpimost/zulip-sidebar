@@ -170,7 +170,32 @@ i.icon-user-status.sidebar-row__icon._away {
     overflow-y: auto;
     overflow-x: hidden;
     box-sizing: border-box;
+
+    scrollbar-width: thin;
 }
+.left-sidebar::-webkit-scrollbar {
+    width: 8px;
+    border-radius: 12px;
+    background: transparent;
+}
+.left-sidebar::-webkit-scrollbar-thumb {
+    background: hsl(0, 0%, 60%);
+    border-radius: 12px;
+    border: 2px solid var(--color-main-bg);
+}
+.left-sidebar::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 12px;
+}
+.dark .left-sidebar::-webkit-scrollbar-thumb {
+    background: hsl(0, 0%, 40%);
+    border-color: var(--color-main-bg)
+}
+.dark .left-sidebar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+
 
 .sidebar-group__summary-sticky {
     background: var(--color-main-bg);
