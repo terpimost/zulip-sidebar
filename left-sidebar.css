@@ -543,7 +543,7 @@ i.icon-user-status.sidebar-row__icon._away {
 }
 
 .sidebar-row.sidebar-row__button-more-items a {
-    padding-left: 41px;
+    padding-left: 21px;
 }
 
 .sidebar-row._no-extra-buttons a {
@@ -557,7 +557,7 @@ i.icon-user-status.sidebar-row__icon._away {
     letter-spacing: .03em;
     text-transform: uppercase;
     color: var(--color-clickable-icon);
-    font-size: 18px;
+    font-size: 19px;
 }
 
 .sidebar-row.sidebar-row__button-more-items {}
