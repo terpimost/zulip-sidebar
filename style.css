@@ -451,6 +451,8 @@ input.compose-to__topic-input:placeholder-shown+.compose-to-topic__new-topic {
   -webkit-mask-image: var(--icon-globe);
   mask-position: center;
   mask-repeat: no-repeat;
+  /* compensating vertical alignment */
+  margin-top: -1px;
 }
 
 .icon-lock {
@@ -459,6 +461,8 @@ input.compose-to__topic-input:placeholder-shown+.compose-to-topic__new-topic {
   -webkit-mask-image: var(--icon-lock);
   mask-position: center;
   mask-repeat: no-repeat;
+  /* compensating vertical alignment */
+  margin-top: -2px;
 }
 
 .icon-dm {

@@ -57,7 +57,7 @@ const rowIntersectionObserver = new IntersectionObserver(([entry]) => {
   // switching shadow so when scroll back fast it isn't blinking
   if(entry.target.id == 'intercept_dms'){
     interceptViews.nextElementSibling.classList.toggle('_covering', entry.isIntersecting)
-  } else if(entry.target.classList.contains('intercept_stream')){
+  } else if(interceptStreams[0]==entry.target && entry.target.classList.contains('intercept_stream')){
     interceptDms.nextElementSibling.classList.toggle('_covering', entry.isIntersecting)
   }
 });

@@ -197,12 +197,12 @@ i.icon-user-status.sidebar-row__icon._away {
     position: sticky;
     top: 0;
     z-index: 1;
-    transition: all 0.4s ease-out;
+    transition: all 0.3s ease-out;
+    transition-delay: 0.1s;
 }
 .sidebar-group__summary-sticky._covering{
-    box-shadow: 0 8px 12px -12px hsl(0deg 0% 0% / 100%);
-    transition: all 0.4s ease-out;
-    transition-delay: 0.1s;
+    box-shadow: 0 8px 12px -12px hsl(0deg 0% 0% / 80%);
+    transition: all 0.2s ease-out;
 }
 
 .summary-sticky-views {
@@ -222,12 +222,17 @@ i.icon-user-status.sidebar-row__icon._away {
 .summary-sticky-views-dms-separator {
     top: 56px;
     padding-top: 4px;
-    padding-bottom: 2px;
+    padding-bottom: 4px;
     z-index: 2;
 }
 
 .summary-sticky-stream {
-    top: 67px;
+    top: 65px;
+}
+
+.intercept_stream{
+    position: relative;
+    top:-64px;
 }
 
 .sidebar-group {
@@ -624,5 +629,4 @@ i.icon-user-status.sidebar-row__icon._away {
     height: 1px;
     margin: 0;
     background-color: rgba(0, 0, 0, 0.15);
-    margin-bottom: 4px;
 }
