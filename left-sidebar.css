@@ -160,7 +160,7 @@ i.icon-user-status.sidebar-row__icon._away {
     position: fixed;
     width: var(--left-sidebar-width);
     max-width: var(--left-sidebar-width);
-    padding: 4px 4px 0 8px;
+    padding: 4px 4px 16px 8px;
     height: calc(100% - var(--header-height));
     overflow-y: auto;
     overflow-x: hidden;
@@ -253,13 +253,6 @@ i.icon-user-status.sidebar-row__icon._away {
     overflow: hidden;
 }
 
-/* .sidebar-group__summary.sidebar-group-dms{
-    top: calc(28px + 2px);
-}
-.sidebar-group__summary.sidebar-group-stream{
-    top: calc(56px + 4px);
-} */
-
 .sidebar-group__summary:hover,
 .sidebar-group__summary:focus-visible {
     background-color: var(--color-sidebar-row-bg-hover);
@@ -306,7 +299,9 @@ i.icon-user-status.sidebar-row__icon._away {
     transition: var(--transition-sidebar-all-medium);
 }
 
-.sidebar-group._expanded .sidebar-group__summary-expander .icon-trangle-right {
+.sidebar-group._expanded .sidebar-group__summary-expander .icon-trangle-right,
+.sidebar-group-dms._expanded .sidebar-group__summary-expander .icon-trangle-right,
+.sidebar-group-views._expanded .sidebar-group__summary-expander .icon-trangle-right  {
     transform: rotate(90deg);
 }
 
@@ -396,11 +391,11 @@ i.icon-user-status.sidebar-row__icon._away {
 
 .sidebar-group .sidebar-group__details {
     overflow: hidden;
-    animation: hide-details 100ms forwards;
+    animation: hide-details 200ms forwards;
 }
 
 .sidebar-group._expanded .sidebar-group__details {
-    animation: show-details 400ms forwards;
+    animation: show-details 500ms forwards;
 
 }
 
@@ -558,6 +553,8 @@ i.icon-user-status.sidebar-row__icon._away {
     text-transform: uppercase;
     color: var(--color-clickable-icon);
     font-size: 19px;
+    line-height: 17px;
+    padding-bottom: 4px;
 }
 
 .sidebar-row.sidebar-row__button-more-items {}

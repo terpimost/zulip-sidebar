@@ -11,40 +11,67 @@ function onDocumentResize() {
   updateEditorButtonsScrollShadows()
 }
 
-function onThemeSwitcherClick(){
+function onThemeSwitcherClick() {
   document.body.classList.toggle('dark')
 }
 
 
 
 // if click was on a row but not on a button or a link, this could be on the border of li
-function onSidebarRowClick(event){
-  if(event.target.classList.contains('sidebar-row')){
+function onSidebarRowClick(event) {
+  if (event.target.classList.contains('sidebar-row')) {
     event.currentTarget.querySelector('a').click()
   }
 }
-function onSidebarGroupClick(event){
-  if(event.target.classList.contains('sidebar-group__summary')){
+function onSidebarGroupClick(event) {
+  if (event.target.classList.contains('sidebar-group__summary')) {
     event.currentTarget.querySelector('.sidebar-group__expander-area').click()
   }
 }
 
 // if tabbed focus to the element and hit Enter we wat the link to be working
 // since for sibar-row li elements we have tabindex="0" whil for <a> we have tabindex="-1"
-function onSidebarRowKeyDown(event){
-  if(event.key==='Enter'){
+function onSidebarRowKeyDown(event) {
+  if (event.key === 'Enter') {
     event.currentTarget.querySelector('a').click()
   }
 }
-function onSidebarGroupKeyDown(event){
-  if(event.key==='Enter'){
+function onSidebarGroupKeyDown(event) {
+  if (event.key === 'Enter') {
     event.currentTarget.querySelector('.sidebar-group__expander-area').click()
   }
 }
 
-function onSidebarGroupExpanderAreaClick(event){
-  console.log(event.currentTarget.closest('.sidebar-group'));
-  event.currentTarget.closest('.sidebar-group').classList.toggle('_expanded')
+function onSidebarGroupExpanderAreaClick(event) {
+  if (event.currentTarget.parentElement.classList.contains('sidebar-group-dms')) {
+    [...document.querySelectorAll('.sidebar-group-dms')].map(e => e.classList.toggle('_expanded'))
+    if (document.querySelector('.sidebar-group-dms').classList.contains('_expanded')) {
+      //scroll to if needed
+      // we can't use scroll into view because of expantion animation, but we don't want to wait
+      const el = document.querySelector('.sidebar-group._expanded.sidebar-group-dms')
+      const rect = el.getBoundingClientRect();
+      if (rect.top < 102) {
+        document.querySelector('.left-sidebar').scrollTo({
+          behavior: 'smooth',
+          top: el.offsetTop - 60
+        })
+      }
+      //remove covering shadow
+      document.querySelector('.summary-sticky-dms').classList.remove('_covering')
+    }
+  } else if (event.currentTarget.parentElement.classList.contains('sidebar-group-views')) {
+    [...document.querySelectorAll('.sidebar-group-views')].map(e => e.classList.toggle('_expanded'))
+    //scroll to top since in any case we should be up
+    document.querySelector('.left-sidebar').scrollTo({
+      behavior: 'smooth',
+      top: 0
+    })
+    //remove covering shadow
+    document.querySelector('.summary-sticky-views').classList.remove('_covering')
+
+  } else {
+    event.currentTarget.closest('.sidebar-group').classList.toggle('_expanded')
+  }
 }
 
 const interceptViews = document.getElementById('intercept_views')
@@ -55,12 +82,12 @@ const rowIntersectionObserver = new IntersectionObserver(([entry]) => {
   stickyEl.classList.toggle('_covering', !entry.isIntersecting)
 
   // switching shadow so when scroll back fast it isn't blinking
-  if(entry.target.id == 'intercept_dms'){
+  if (entry.target.id == 'intercept_dms') {
     interceptViews.nextElementSibling.classList.toggle('_covering', entry.isIntersecting)
-  } else if(interceptStreams[0]==entry.target && entry.target.classList.contains('intercept_stream')){
+  } else if (interceptStreams[0] == entry.target && entry.target.classList.contains('intercept_stream')) {
     interceptDms.nextElementSibling.classList.toggle('_covering', entry.isIntersecting)
   }
 });
 rowIntersectionObserver.observe(interceptViews);
 rowIntersectionObserver.observe(interceptDms);
-[...interceptStreams].map(s=>rowIntersectionObserver.observe(s))
+[...interceptStreams].map(s => rowIntersectionObserver.observe(s))
