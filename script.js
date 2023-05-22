@@ -49,13 +49,18 @@ function onSidebarGroupExpanderAreaClick(event){
 
 const interceptViews = document.getElementById('intercept_views')
 const interceptDms = document.getElementById('intercept_dms')
+const interceptStreams = document.getElementsByClassName('intercept_stream')
 const rowIntersectionObserver = new IntersectionObserver(([entry]) => {
-  console.log(entry);
   const stickyEl = entry.target.nextElementSibling
-  console.log('stickyEl=', stickyEl);
   stickyEl.classList.toggle('_covering', !entry.isIntersecting)
-  // console.log('stickyEl=', stickyEl);
-  // header.classList.toggle("active", !entry.isIntersecting);
+
+  // switching shadow so when scroll back fast it isn't blinking
+  if(entry.target.id == 'intercept_dms'){
+    interceptViews.nextElementSibling.classList.toggle('_covering', entry.isIntersecting)
+  } else if(entry.target.classList.contains('intercept_stream')){
+    interceptDms.nextElementSibling.classList.toggle('_covering', entry.isIntersecting)
+  }
 });
 rowIntersectionObserver.observe(interceptViews);
 rowIntersectionObserver.observe(interceptDms);
+[...interceptStreams].map(s=>rowIntersectionObserver.observe(s))
