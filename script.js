@@ -74,6 +74,7 @@ function onSidebarGroupExpanderAreaClick(event) {
   }
 }
 
+
 const interceptViews = document.getElementById('intercept_views')
 const interceptDms = document.getElementById('intercept_dms')
 const interceptStreams = document.getElementsByClassName('intercept_stream')
