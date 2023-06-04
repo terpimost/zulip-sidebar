@@ -389,6 +389,12 @@ i.icon-user-status.sidebar-row__icon._away {
     background-color: var(--color-clickable-icon);
 }
 
+._expanded ._group_expanded_hidden {
+    transition: opacity 0.2s;
+    opacity: 0;
+    visibility: hidden;
+}
+
 .sidebar-group .sidebar-group__details {
     overflow: hidden;
     animation: hide-details 200ms forwards;
