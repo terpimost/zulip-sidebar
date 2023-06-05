@@ -14,8 +14,11 @@ body {
     margin: 0;
     padding: 0;
     font-family: var(--font-ss3);
-
     background-color: var(--color-main-bg);
+}
+
+html{
+    overflow: hidden;
 }
 
 header {

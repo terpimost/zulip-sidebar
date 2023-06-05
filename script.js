@@ -1,5 +1,5 @@
 // import { signal } from "https://cdn.skypack.dev/@preact/signals-core";
-import { colord, extend } from 'https://unpkg.com/colord@2.9.3/index.mjs';
+import { colord, random, extend } from 'https://unpkg.com/colord@2.9.3/index.mjs';
 //color lib that we use
 import lchPlugin from "https://unpkg.com/colord@2.9.3/plugins/lch.mjs";
 import mixPlugin from 'https://unpkg.com/colord@2.9.3/plugins/mix.mjs';
@@ -21,10 +21,13 @@ function onDocumentResize() {
 document.querySelector('.theme_switcher').addEventListener('click', onThemeSwitcherClick)
 function onThemeSwitcherClick() {
   document.body.classList.toggle('dark')
+  colorizeStreamRows()
 }
 
 
 //Colors related
+
+// preparing array of different colors
 const ZULIP_ASSIGNMENT_COLORS = [
   "#76ce90",
   "#fae589",
@@ -51,9 +54,92 @@ const ZULIP_ASSIGNMENT_COLORS = [
   "#c8bebf",
   "#a47462",
 ];
+const EXTREME_COLORS = [
+  "#FFFFFF", // White
+  "#000000", // Black
+  "#D3D3D3", // Light Grey
+  "#A9A9A9", // Dark Grey
+  "#808080", // Grey (50% Black)
+  "#FFFF00", // Yellow
+  "#FF0000", // Red
+  "#008000", // Green
+  "#0000FF", // Blue
+  "#EE82EE", // Violet
+  "#FFA500", // Orange
+  "#800080", // Purple
+  "#00FFFF", // Aqua
+  "#FF00FF", // Magenta
+  "#00FF00", // Lime
+  "#800000", // Maroon
+  "#008080", // Teal
+  "#000080", // Navy
+  "#FFFFE0", // LightYellow
+  "#FF69B4", // HotPink
+];
 let streamColors = [];
-const streamGroupsULs = document.querySelectorAll('ul.sidebar-group-streams')
-console.log('streamGroupsULs=', streamGroupsULs);
+streamColors = ZULIP_ASSIGNMENT_COLORS.concat(EXTREME_COLORS)
+
+
+// we don't use this function here but it is available
+function getRecipientBarColor({ color = "#000000", darkMode = false }) {
+  return colord(darkMode ? "#000000" : "#f9f9f9").mix(color, darkMode ? 0.38 : 0.22).toHex();
+}
+//this is a new function
+function getCounterBackgroundColor({ color = "#000000", darkMode = false }) {
+  //counter color: stream color > LCH > L= 70 >RGB , alpha = 0.2 for light theme, alpha = 0.4 for dark theme
+  let min_color_l = 30;
+  let max_color_l = 70;
+  let alpha = 0.3
+  let color_l = colord(color).toLch().l
+  let counterBgColor = color
+  
+  if (color_l < min_color_l) {
+    counterBgColor = colord({ ...colord(color).toLch(), l: min_color_l }).toHex(); 
+  } else if (color_l > max_color_l) {
+    counterBgColor = colord({ ...colord(color).toLch(), l: max_color_l }).toHex();
+  } 
+  return colord(counterBgColor).alpha(0.3).toHex()
+}
+// this function should be already in Zulip
+function correctStreamColor({ color = "#000000" }) {
+  let color_l, min_color_l, max_color_l;
+  min_color_l = 20;
+  max_color_l = 75;
+  color_l = colord(color).toLch().l //chroma.js color_l = chroma(color).get("lch.l");
+
+  if (color_l < min_color_l) {
+    return colord({ ...colord(color).toLch(), l: min_color_l }).toHex(); //chroma(color).set("lch.l", min_color_l).hex();
+  } else if (color_l > max_color_l) {
+    return colord({ ...colord(color).toLch(), l: max_color_l }).toHex(); //chroma(color).set("lch.l", max_color_l).hex();
+  } else {
+    return color;
+  }
+}
+
+//going through streams and colorizing icons and badges
+function colorizeStreamRows(){
+  const darkMode = document.body.classList.contains('dark')
+  document.querySelectorAll('ul.sidebar-group-streams').forEach((sg,sg_i)=>{
+    [...sg.children].forEach((s,s_i)=>{
+      console.log('sg_i + s_i=', sg_i + s_i);
+      const color = streamColors[sg_i + s_i]
+
+      const correctedColor = correctStreamColor({ color, darkMode });
+      const icon_el = s.querySelector('a .sidebar-row__icon')
+      if(icon_el){
+        icon_el.style.color = correctedColor
+      }
+      const counter = s.querySelector('.unread-count');
+      if(counter){ 
+        counter.style.backgroundColor = getCounterBackgroundColor({color, darkMode})
+        counter.style.color = darkMode?'rgb(255 255 255 / 90%)':'rgb(0 0 0 / 90%)';
+      }
+    })
+  })
+}
+
+//should be called on theme change
+colorizeStreamRows()
 
 
 // Sidebar interactions related
