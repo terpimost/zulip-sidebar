@@ -121,24 +121,34 @@ function colorizeStreamRows(){
   const darkMode = document.body.classList.contains('dark')
   document.querySelectorAll('ul.sidebar-group-streams').forEach((sg,sg_i)=>{
     [...sg.children].forEach((s,s_i)=>{
-      console.log('sg_i + s_i=', sg_i + s_i);
+      // console.log('s=', s);
+      // console.log('sg_i + s_i=', sg_i + s_i);
       const color = streamColors[sg_i + s_i]
-
-      const correctedColor = correctStreamColor({ color, darkMode });
-      const icon_el = s.querySelector('a .sidebar-row__icon')
-      if(icon_el){
-        icon_el.style.color = correctedColor
-      }
-      const counter = s.querySelector('.unread-count');
-      if(counter){ 
-        counter.style.backgroundColor = getCounterBackgroundColor({color, darkMode})
-        counter.style.color = darkMode?'rgb(255 255 255 / 90%)':'rgb(0 0 0 / 90%)';
+      colorizeStreamRow(s, color, darkMode)
+      const possibleTopics = s.querySelector('ul.sidebar-topics')?.children;
+      if(possibleTopics){
+        [...possibleTopics].forEach((t)=>{
+          colorizeStreamRow(t, color, darkMode)
+        })
       }
     })
   })
 }
 
-//should be called on theme change
+function colorizeStreamRow(row, color, darkMode){
+  const correctedColor = correctStreamColor({ color, darkMode });
+  const icon_el = row.querySelector('a .sidebar-row__icon')
+  if(icon_el){
+    icon_el.style.color = correctedColor
+  }
+  const counter = row.querySelector('.unread-count');
+  if(counter){ 
+    counter.style.backgroundColor = getCounterBackgroundColor({color, darkMode})
+    counter.style.color = darkMode?'rgb(255 255 255 / 90%)':'rgb(0 0 0 / 90%)';
+  }
+}
+
+//should be called on theme change / topics open
 colorizeStreamRows()
 
 

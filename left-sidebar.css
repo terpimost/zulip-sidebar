@@ -3,7 +3,8 @@
     --left-sidebar-width: 304px;
     /* used to be 270 */
     /* --header-height: 42px; is defined in general.css */
-    --icon-triangle-right: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3e%3cpath fill='black' d='m5 4 6.93 4L5 12V4Z'/%3e%3c/svg%3e");
+    /* --icon-triangle-right: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3e%3cpath fill='black' d='m5 4 6.93 4L5 12V4Z'/%3e%3c/svg%3e"); */
+    --icon-triangle-right: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3e%3cpath fill='black' d='M5.39 4.24 13.09 8l-7.7 3.76V4.24Z'/%3e%3c/svg%3e");
     --icon-dots-vertical: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3e%3cpath fill='black' d='M8 1.67A1.67 1.67 0 1 0 8 5a1.67 1.67 0 0 0 0-3.33Zm0 4.66a1.67 1.67 0 1 0 0 3.34 1.67 1.67 0 0 0 0-3.34ZM8 11a1.67 1.67 0 1 0 0 3.33A1.67 1.67 0 0 0 8 11Z'/%3e%3c/svg%3e");
     --icon-interleaved-all: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3e%3cpath fill='black' d='M2 2.08a.67.67 0 0 0 0 1.34h8a.67.67 0 1 0 0-1.34H2Zm-.67 3.34c0-.37.3-.67.67-.67h10a.67.67 0 0 1 0 1.33H2a.67.67 0 0 1-.67-.66Zm0 2.66c0-.37.3-.66.67-.66h12a.67.67 0 0 1 0 1.33H2a.67.67 0 0 1-.67-.67Zm0 2.67c0-.37.3-.67.67-.67h10a.67.67 0 0 1 0 1.34H2a.67.67 0 0 1-.67-.67Zm.67 2a.67.67 0 0 0 0 1.33h8a.67.67 0 1 0 0-1.33H2Z'/%3e%3c/svg%3e");
     --icon-inbox: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3e%3cpath fill='black' fill-rule='evenodd' d='M11.17 2H4.83a2 2 0 0 0-1.8 1.11L.75 7.7c-.04.1-.07.2-.07.31v4a2 2 0 0 0 2 2h10.66a2 2 0 0 0 2-2V8a.66.66 0 0 0-.07-.31l-2.3-4.58a2 2 0 0 0-1.79-1.1Zm2.42 5.33L11.77 3.7a.67.67 0 0 0-.6-.37H4.83a.67.67 0 0 0-.6.37L2.4 7.33h2.92a.7.7 0 0 1 .56.3l1.13 1.7h1.96l1.13-1.7a.7.7 0 0 1 .56-.3h2.92ZM1.99 8.66V12a.67.67 0 0 0 .68.67h10.66A.67.67 0 0 0 14 12V8.66h-2.98l-1.13 1.7a.66.66 0 0 1-.56.3H6.67a.66.66 0 0 1-.56-.3l-1.13-1.7H2Z' clip-rule='evenodd'/%3e%3c/svg%3e");
@@ -24,6 +25,8 @@
     --color-clickable-icon: hsla(240, 20%, 50%, 1);
     --color-clickable-icon-hover: hsla(240, 100%, 15%, 1);
     --color-clickable-icon-hover-bg: hsla(240, 100%, 50%, 0.08);
+
+    --color-sidebar-group-label: hsl(216, 65%, 20%);
 
     --transition-sidebar-all-slow: all 140ms linear;
     --transition-sidebar-all-medium: all 140ms linear;
@@ -168,24 +171,29 @@ i.icon-user-status.sidebar-row__icon._away {
 
     scrollbar-width: thin;
 }
+
 .left-sidebar::-webkit-scrollbar {
     width: 8px;
     border-radius: 12px;
     background: transparent;
 }
+
 .left-sidebar::-webkit-scrollbar-thumb {
     background: hsl(0, 0%, 60%);
     border-radius: 12px;
     border: 2px solid var(--color-main-bg);
 }
+
 .left-sidebar::-webkit-scrollbar-track {
     background: transparent;
     border-radius: 12px;
 }
+
 .dark .left-sidebar::-webkit-scrollbar-thumb {
     background: hsl(0, 0%, 40%);
     border-color: var(--color-main-bg)
 }
+
 .dark .left-sidebar::-webkit-scrollbar-track {
     background: transparent;
 }
@@ -200,7 +208,8 @@ i.icon-user-status.sidebar-row__icon._away {
     transition: all 0.3s ease-out;
     transition-delay: 0.1s;
 }
-.sidebar-group__summary-sticky._covering{
+
+.sidebar-group__summary-sticky._covering {
     box-shadow: 0 8px 12px -12px hsl(0deg 0% 0% / 80%);
     transition: all 0.2s ease-out;
 }
@@ -230,9 +239,9 @@ i.icon-user-status.sidebar-row__icon._away {
     top: 65px;
 }
 
-.intercept_stream{
+.intercept_stream {
     position: relative;
-    top:-64px;
+    top: -64px;
 }
 
 .sidebar-group {
@@ -280,7 +289,7 @@ i.icon-user-status.sidebar-row__icon._away {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #1D2E48;
+    color: var(--color-sidebar-group-label);
     opacity: 0.5;
     transition: var(--transition-sidebar-all-slow);
 }
@@ -301,7 +310,7 @@ i.icon-user-status.sidebar-row__icon._away {
 
 .sidebar-group._expanded .sidebar-group__summary-expander .icon-trangle-right,
 .sidebar-group-dms._expanded .sidebar-group__summary-expander .icon-trangle-right,
-.sidebar-group-views._expanded .sidebar-group__summary-expander .icon-trangle-right  {
+.sidebar-group-views._expanded .sidebar-group__summary-expander .icon-trangle-right {
     transform: rotate(90deg);
 }
 
@@ -318,15 +327,15 @@ i.icon-user-status.sidebar-row__icon._away {
     line-height: 100%;
     padding-top: 2px;
     letter-spacing: 0.05em;
-    color: hsl(216, 43%, 20%);
-    opacity: 0.5;
+    color: var(--color-sidebar-group-label);
+    opacity: 0.7;
     user-select: none;
     transition: var(--transition-sidebar-all-slow);
 }
 
 .sidebar-group__expander-area:hover .sidebar-group__summary-label,
 .sidebar-group__expander-area:hover .sidebar-group__summary-expander {
-    opacity: 0.7;
+    opacity: 0.9;
 }
 
 .sidebar-group__buttons {
@@ -376,7 +385,6 @@ i.icon-user-status.sidebar-row__icon._away {
 .sidebar-group__button:active {
     scale: 0.92;
 }
-
 
 .sidebar-group__button-badge {
     display: block;
@@ -553,6 +561,19 @@ i.icon-user-status.sidebar-row__icon._away {
     padding-right: 27px;
 }
 
+.sidebar-stream {
+    flex-direction: column;
+    border-radius: 4px;
+}
+
+.stream-name-container {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    overflow: hidden;
+    width: 100%;
+}
+
 .sidebar-row.sidebar-row__button-more-items .sidebar-row__label {
     font-variant: all-small-caps;
     letter-spacing: .03em;
@@ -632,4 +653,15 @@ i.icon-user-status.sidebar-row__icon._away {
     height: 1px;
     margin: 0;
     background-color: rgba(0, 0, 0, 0.15);
+}
+
+ul.sidebar-topics {
+    padding-left: 21px;
+}
+
+.sidebar-stream._selected {
+    background-color: var(--color-sidebar-row-bg-selected);   
+}
+.sidebar-stream._selected>.sidebar-row{
+    font-weight: 600;
 }
