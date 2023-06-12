@@ -544,6 +544,10 @@ i.icon-user-status.sidebar-row__icon._away {
     background-color: var(--color-sidebar-row-bg-selected);
     font-weight: 600;
 }
+.sidebar-row._muted {
+    opacity: 0.6;
+}
+
 
 .sidebar-row a,
 .sidebar-row a:hover,
@@ -656,7 +660,7 @@ i.icon-user-status.sidebar-row__icon._away {
 }
 
 .unread-count,
-.item-count {
+.item-count{
     user-select: none;
     border-radius: 3px;
     background-color: hsla(240, 20%, 50%, 0.15);
@@ -678,6 +682,23 @@ i.icon-user-status.sidebar-row__icon._away {
 .unread-count._hidden,
 .item-count._hidden {
     visibility: hidden;
+}
+
+.sidebar-row._silent-counter .unread-count {
+    transition: all 200ms;
+    color: rgba(0,0,0,0) !important;
+    font-size: 0;
+    line-height: 8px;
+    border-radius: 8px;
+    margin-right: 3px;
+}
+.sidebar-row._silent-counter:hover .unread-count {
+    transition-delay: 0.07s;
+    color: inherit !important;
+    font-size: 13px;
+    line-height: 17px;
+    border-radius: 3px;
+    margin-right: 0;
 }
 
 
