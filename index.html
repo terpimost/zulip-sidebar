@@ -218,22 +218,22 @@
             <span class="sidebar-group__summary-expander"><i class="icon-trangle-right"></i></span>
             <span class="sidebar-group__summary-label">Views</span>
           </div>
-          <div class="sidebar-group__buttons _group_expanded_hidden">
+          <div class="sidebar-group__buttons _growing _group_expanded_hidden">
             <a class="sidebar-group__button" href="#inbox">
-              <i class="icon icon-inbox sidebar-group__icon"></i>
+              <i class="icon icon-inbox"></i>
             </a>
             <a class="sidebar-group__button _selected" href="#recent">
-              <i class="icon icon-clock sidebar-group__icon"></i>
+              <i class="icon icon-clock"></i>
             </a>
             <a class="sidebar-group__button" href="#narrow/is/mentioned">
-              <i class="icon icon-at sidebar-group__icon"></i>
+              <i class="icon icon-at"></i>
               <i class="sidebar-group__button-badge"></i>
             </a>
             <a class="sidebar-group__button" href="#narrow/is/starred">
-              <i class="icon icon-star sidebar-group__icon"></i>
+              <i class="icon icon-star"></i>
             </a>
             <a class="sidebar-group__button" href="#all_messages">
-              <i class="icon icon-interleaved-all sidebar-group__icon"></i>
+              <i class="icon icon-interleaved-all"></i>
               <i class="sidebar-group__button-badge"></i>
             </a>
           </div>
@@ -328,7 +328,7 @@
             <a tabindex="-1" href="#all_messages" class="home-link">
               <i class="icon icon-interleaved-all sidebar-row__icon" aria-hidden="true"></i>
               <span class="sidebar-row__label">All messages</span>
-              <span class="unread-count">321</span>
+              <span class="unread-count">521</span>
             </a>
             <div class="sidebar-row__buttons-wrapper">
               <div class="sidebar-row__button-more hidden-for-spectators" title="Options" tabindex="0">
@@ -372,6 +372,25 @@
           <div class="sidebar-group__expander-area">
             <span class="sidebar-group__summary-expander"><i class="icon-trangle-right"></i></span>
             <span class="sidebar-group__summary-label">Direct Messages</span>
+            
+          </div>
+          
+          <div class="sidebar-group__buttons _show-on-hover">
+            <a class="sidebar-group__button" href="#narrow/is/starred">
+              <i class="icon icon-search"></i>
+            </a>
+            <a class="sidebar-group__button" href="#all_messages">
+              <i class="icon icon-interleaved-all"></i>
+            </a>
+          </div>
+          <span class="unread-count-wrapper">
+            <span class="unread-count">198</span>
+          </span>
+          <!-- Hiding more button with "_hidden" until we have one for DMs -->
+          <div class="sidebar-row__buttons-wrapper _hidden">
+            <div class="sidebar-row__button-more hidden-for-spectators" title="Options" tabindex="0">
+              <i class="icon icon-dots-vertical"></i>
+            </div>
           </div>
         </div>
       </div>
@@ -475,7 +494,7 @@
           <li id="show_more_private_messages" class="sidebar-row sidebar-row__button-more-items _no-extra-buttons"
             tabindex="0">
             <a tabindex="-1">
-              <span class="sidebar-row__label">all DM conversations</span>
+              <span class="sidebar-row__label">more DM conversations</span>
               <span class="unread-count">1</span>
             </a>
           </li>
@@ -496,6 +515,23 @@
               <span class="sidebar-group__summary-expander"><i class="icon-trangle-right"></i></span>
               <span class="sidebar-group__summary-label">Streams main</span>
             </div>
+            <div class="sidebar-group__buttons _show-on-hover">
+              <a class="sidebar-group__button" href="#narrow/is/starred">
+                <i class="icon icon-search"></i>
+              </a>
+              <a class="sidebar-group__button" href="#all_messages">
+                <i class="icon icon-interleaved-all"></i>
+              </a>
+            </div>
+            <span class="unread-count-wrapper">
+              <span class="unread-count">203</span>
+            </span>
+            <div class="sidebar-row__buttons-wrapper">
+              <div class="sidebar-row__button-more hidden-for-spectators" title="Options" tabindex="0">
+                <i class="icon icon-dots-vertical"></i>
+              </div>
+            </div>
+
           </div>
         </div>
         <ul class="sidebar-group__details sidebar-group-streams">
@@ -883,11 +919,22 @@
               </div>
             </div>
           </li>
+
+          <!-- inactive -->
+          <li  tabindex="-1" class=" hidden-for-spectators">
+            <div class="sidebar-stream__separator-wrapper">
+              <hr class="sidebar-stream__separator"/>
+              <span class="sidebar-stream__separator-label">Inactive</span>
+              <hr class="sidebar-stream__separator"/>
+            </div>
+          </li>
+
+
           <li  tabindex="0"
             class="sidebar-row _muted hidden-for-spectators">
             <a tabindex="-1" href="#stream">
               <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
-              <span class="sidebar-row__label">mobile</span>
+              <span class="sidebar-row__label">mobile issues</span>
               <!-- <span class="unread-count">0</span> -->
             </a>
             <div class="sidebar-row__buttons-wrapper">
@@ -926,6 +973,22 @@
             <div class="sidebar-group__expander-area" >
               <span class="sidebar-group__summary-expander"><i class="icon-trangle-right"></i></span>
               <span class="sidebar-group__summary-label">Streams development infrastructure</span>
+            </div>
+            <div class="sidebar-group__buttons _show-on-hover">
+              <a class="sidebar-group__button" href="#narrow/is/starred">
+                <i class="icon icon-search"></i>
+              </a>
+              <a class="sidebar-group__button" href="#all_messages">
+                <i class="icon icon-interleaved-all"></i>
+              </a>
+            </div>
+            <span class="unread-count-wrapper">
+              <span class="unread-count">198</span>
+            </span>
+            <div class="sidebar-row__buttons-wrapper">
+              <div class="sidebar-row__button-more hidden-for-spectators" title="Options" tabindex="0">
+                <i class="icon icon-dots-vertical"></i>
+              </div>
             </div>
           </div>
         </div>
@@ -1012,6 +1075,22 @@
             <div class="sidebar-group__expander-area" >
               <span class="sidebar-group__summary-expander"><i class="icon-trangle-right"></i></span>
               <span class="sidebar-group__summary-label">Streams London</span>
+            </div>
+            <div class="sidebar-group__buttons _show-on-hover">
+              <a class="sidebar-group__button" href="#narrow/is/starred">
+                <i class="icon icon-search"></i>
+              </a>
+              <a class="sidebar-group__button" href="#all_messages">
+                <i class="icon icon-interleaved-all"></i>
+              </a>
+            </div>
+            <span class="unread-count-wrapper">
+              <span class="unread-count">198</span>
+            </span>
+            <div class="sidebar-row__buttons-wrapper">
+              <div class="sidebar-row__button-more hidden-for-spectators" title="Options" tabindex="0">
+                <i class="icon icon-dots-vertical"></i>
+              </div>
             </div>
           </div>
         </div>

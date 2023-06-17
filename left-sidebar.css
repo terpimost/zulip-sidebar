@@ -15,6 +15,7 @@
     --icon-document: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3e%3cpath fill='black' d='M6.03 12.38h3.93a.65.65 0 0 0 .66-.66.64.64 0 0 0-.18-.47.63.63 0 0 0-.47-.19H6.04a.65.65 0 0 0-.67.65c0 .19.07.35.2.47.12.13.27.2.46.2Zm0-2.63h3.93a.65.65 0 0 0 .66-.65.64.64 0 0 0-.18-.47.63.63 0 0 0-.47-.2H6.04a.65.65 0 0 0-.67.66c0 .18.07.34.2.47.12.13.27.19.46.19ZM4.06 15c-.36 0-.67-.13-.93-.39a1.27 1.27 0 0 1-.38-.92V2.3c0-.36.13-.67.39-.92.25-.26.56-.39.92-.39H9.2c.18 0 .34.03.5.1.15.05.3.15.43.28l2.74 2.74a1.26 1.26 0 0 1 .38.93v8.64c0 .36-.13.67-.39.92-.25.26-.56.39-.92.39H4.06ZM8.88 4.72v-2.4H4.05v11.37h7.88V5.38h-2.4a.63.63 0 0 1-.48-.2.63.63 0 0 1-.19-.46Z'/%3e%3c/svg%3e");
     --icon-calendar-days: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3e%3cg fill='black'%3e%3cpath d='M4.67 8.66c0-.36.3-.66.66-.66h.01a.66.66 0 1 1 0 1.33.67.67 0 0 1-.67-.67ZM8 8a.66.66 0 1 0 0 1.33A.66.66 0 1 0 8 8Zm2 .66c0-.36.3-.66.67-.66a.67.67 0 0 1 0 1.33.66.66 0 0 1-.67-.67Zm-4.67 2.01a.66.66 0 1 0 0 1.33h.01a.66.66 0 1 0 0-1.33Zm2 .66c0-.37.3-.66.67-.66A.66.66 0 1 1 8 12a.66.66 0 0 1-.67-.67Zm3.34-.66a.66.66 0 1 0 0 1.33.67.67 0 0 0 0-1.33Z'/%3e%3cpath fill-rule='evenodd' d='M11.33.67a.66.66 0 1 0-1.33 0v.66H6V.66a.66.66 0 1 0-1.33 0v.67H3.33a2 2 0 0 0-2 2v9.34c0 1.1.9 2 2 2h9.34a2 2 0 0 0 2-2V3.33a2 2 0 0 0-2-2h-1.34V.66Zm2 4.66v-2c0-.37-.3-.67-.66-.67h-1.34v.67a.66.66 0 1 1-1.33 0v-.67H6v.67a.66.66 0 1 1-1.33 0v-.67H3.33c-.37 0-.67.3-.67.67v2h10.68ZM2.67 6.66h10.68v6c0 .37-.3.67-.67.67H3.33a.67.67 0 0 1-.67-.66v-6Z' clip-rule='evenodd'/%3e%3c/g%3e%3c/svg%3e");
     --icon-pin: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3e%3cpath fill='black' d='M5.22 2.74v.31a1 1 0 0 0 1 1h.02l-.16 4.42c-1.02 0-2.66 1.43-2.66 2.6h4.01v3.65l.65.65.65-.65v-3.66h4.03c0-1.08-1.69-2.59-2.69-2.59l-.15-4.42a1 1 0 0 0 1-1v-.3h-5.7Z'/%3e%3c/svg%3e");
+    --icon-search: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3e%3cpath fill='black' d='m14.27 13.17-2.94-2.94a5.47 5.47 0 1 0-1.1 1.1l2.94 2.94a.78.78 0 0 0 1.1-1.1ZM3.06 6.96a3.9 3.9 0 1 1 7.8 0 3.9 3.9 0 0 1-7.8 0Z'/%3e%3c/svg%3e");
 
     /* in icon-user-status the circle is shifted to the right */
     --icon-user-status: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3e%3ccircle cx='10' cy='8' r='4' fill='black'/%3e%3c/svg%3e");
@@ -107,6 +108,11 @@ i.icon {
 .icon-pin {
     mask-image: var(--icon-pin);
     -webkit-mask-image: var(--icon-pin);
+}
+
+.icon-search {
+    mask-image: var(--icon-search);
+    -webkit-mask-image: var(--icon-search);
 }
 
 i.icon-user-status.sidebar-row__icon._online {
@@ -289,6 +295,9 @@ i.icon-user-status.sidebar-row__icon._away {
     cursor: pointer;
     padding-right: 10px;
     max-width: calc(100% - 10px);
+    flex-grow: 2;
+    flex-basis: 0;
+    overflow: hidden;
 }
 
 .sidebar-group__expander-area:active {
@@ -355,10 +364,21 @@ i.icon-user-status.sidebar-row__icon._away {
     align-items: stretch;
     justify-content: flex-end;
     flex-shrink: 0;
-    flex-grow: 1;
-    padding: 2px;
+    padding: 2px 0px 2px 2px ;
     transition: var(--transition-sidebar-all-medium);
 }
+.sidebar-group__buttons._growing{
+    flex-grow: 1;
+} 
+.sidebar-group__buttons._show-on-hover{
+    opacity: 0;
+    display: none;
+}
+.sidebar-group__summary:hover .sidebar-group__buttons._show-on-hover{
+    opacity: 1;
+    display: flex;
+}
+
 
 .sidebar-group._expanded ._group_expanded_hidden {
     visibility: hidden;
@@ -371,7 +391,7 @@ i.icon-user-status.sidebar-row__icon._away {
     border: none;
     user-select: none;
     cursor: pointer;
-    min-width: 26px;
+    min-width: 30px;
     min-height: 24px;
     flex-grow: 1;
     border-radius: 3px;
@@ -381,6 +401,7 @@ i.icon-user-status.sidebar-row__icon._away {
     flex-shrink: 0;
     position: relative;
 }
+
 
 .sidebar-group__button._selected {
     color: var(--color-clickable-icon-hover);
@@ -422,6 +443,7 @@ i.icon-user-status.sidebar-row__icon._away {
 
 .sidebar-group._expanded .sidebar-group__details {
     animation: show-details 500ms forwards;
+    padding-bottom: 8px;
 }
 
 @keyframes hide-details {
@@ -459,6 +481,10 @@ i.icon-user-status.sidebar-row__icon._away {
     padding: 2px 2px 2px 1px;
     display: flex;
     gap: 1px;
+}
+.sidebar-row__buttons-wrapper._hidden{
+    opacity: 0;
+    visibility: hidden;
 }
 
 .sidebar-row__button-more {
@@ -701,12 +727,35 @@ i.icon-user-status.sidebar-row__icon._away {
     margin-right: 0;
 }
 
+.unread-count-wrapper{
+    padding-left: 1px;
+    display: flex;
+    align-items: center;
+}
 
-.sidebar-group__separator {
+
+.sidebar-group__separator,
+.sidebar-stream__separator {
     border: none;
     height: 1px;
     margin: 0;
     background-color: rgba(0, 0, 0, 0.15);
+    flex-grow: 1;
+}
+.sidebar-stream__separator-wrapper{
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 4px;
+    padding: 0 18px;
+    height: 20px;
+}
+.sidebar-stream__separator-label{
+    font-size: 14px;
+    line-height: 100%;
+    letter-spacing: 0.04em;
+    opacity: 0.4;
+    user-select: none;
 }
 
 .sidebar-topics{
@@ -725,7 +774,7 @@ ul.sidebar-topics:before {
     display: block;
     position: absolute;
     top: 0;
-    bottom: 4px;
+    bottom: 27px;
     left: 27px;
     border-left: 1px solid hsl(0deg 0% 0% / 9%);
 }
