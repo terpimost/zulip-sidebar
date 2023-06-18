@@ -176,6 +176,7 @@ document.querySelectorAll('ul.sidebar-group__details>li').forEach(li=>{
   li.addEventListener('keydown', onSidebarRowKeyDown)
 })
 function onSidebarRowKeyDown(event) {
+  console.log('onSidebarRowKeyDown');
   if (event.key === 'Enter') {
     event.currentTarget.querySelector('a').click()
   }
@@ -235,3 +236,33 @@ const rowIntersectionObserver = new IntersectionObserver(([entry]) => {
 rowIntersectionObserver.observe(interceptViews);
 rowIntersectionObserver.observe(interceptDms);
 [...interceptStreams].map(s => rowIntersectionObserver.observe(s))
+
+
+
+// sidebar modal related
+document.querySelectorAll('.button-close-modal').forEach(el=>{
+  el.addEventListener('click', closeSidebarModal)
+})
+
+function closeSidebarModal(e){
+  e.currentTarget.closest('.sidebar-modal-content').style.display='none'
+  e.currentTarget.closest('.left-sidebar-modal').style.display='none'
+}
+
+//click on a free space above the modal to close it
+document.querySelector('.left-sidebar-modal').addEventListener('click',(e)=>{
+  if(e.currentTarget===e.target){
+    e.currentTarget.style.display='none'
+    e.currentTarget.querySelectorAll('.sidebar-modal-content').forEach(e=>e.style.display = 'none')
+  }
+})
+
+//opening model by the click on more topics button
+document.querySelectorAll('.button-more-topics>a').forEach(el=>{
+  el.addEventListener('click', openTopicModal)
+})
+
+function openTopicModal(e){
+  document.querySelector('.sidebar-modal-content').style.display='flex'
+  document.querySelector('.left-sidebar-modal').style.display='flex'
+}

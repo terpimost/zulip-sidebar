@@ -280,7 +280,7 @@ i.icon-user-status.sidebar-row__icon._away {
     position: absolute;
     top: 100px;
     bottom: 0;
-    left: 8px;
+    left: 0;
     right: 0;
     padding: 0;
 
@@ -289,7 +289,9 @@ i.icon-user-status.sidebar-row__icon._away {
     flex-direction: column;
     overflow: hidden;
 }
-
+.dark .sidebar-modal-content {
+    box-shadow: 0px -4px 24px rgba(0, 0, 0, 0.7);
+}
 
 
 .sidebar-group__summary-sticky {
@@ -360,7 +362,7 @@ i.icon-user-status.sidebar-row__icon._away {
 }
 
 .sidebar-group__expander-area,
-.sidebar-group__label-area {
+.sidebar-group__header-label {
     /* acts as an indicator of hover on icon or icon and label */
     display: flex;
     flex-wrap: nowrap;
@@ -377,8 +379,8 @@ i.icon-user-status.sidebar-row__icon._away {
     scale: 0.97;
 }
 
-.sidebar-group__label-area {
-    margin-left: 10px;
+.sidebar-group__header-label {
+    margin-left: 16px;
     cursor: default;
 }
 
@@ -1004,6 +1006,7 @@ ul.sidebar-topics:before {
     display: flex;
     flex-direction: row;
     padding: 0px;
+    gap: 1px;
 }
 .dark .tabs{
     background-color: hsla(0, 0%, 17%, 0.6);
@@ -1031,16 +1034,17 @@ button.tab{
     transition: var(--transition-sidebar-all-fast);
 }
 button.tab:hover{
-    color: var(--color-clickable-icon-hover);
-    background-color: var(--color-clickable-icon-hover-bg);
+    border: 1px solid rgba(0, 0, 0, 0.25);
 }
 button.tab:active{
-    transform: scale(0.95);
+    transform: scale(0.96);
 }
 button.tab._selected{
-    color: var(--color-clickable-icon-hover);
     background-color: #FFFFFF;
     border: 1px solid rgba(0, 0, 0, 0.5);
+}
+.dark button.tab:hover{
+    border: 1px solid hsla(0, 0%, 100%, 0.15);
 }
 .dark button.tab._selected{
     background-color: hsl(0, 0%, 20%);
