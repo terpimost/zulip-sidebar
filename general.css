@@ -4,7 +4,7 @@
     --color-main-bg: hsla(0, 0%, 94%, 1);
 }
 .dark {
-    --color-main-bg: #1D1D1D;
+    --color-main-bg: hsl(0, 0%, 11%);
 }
 
 html,
