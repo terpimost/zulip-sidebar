@@ -92,12 +92,12 @@ function getCounterBackgroundColor({ color = "#000000", darkMode = false }) {
   let alpha = 0.3
   let color_l = colord(color).toLch().l
   let counterBgColor = color
-  
+
   if (color_l < min_color_l) {
-    counterBgColor = colord({ ...colord(color).toLch(), l: min_color_l }).toHex(); 
+    counterBgColor = colord({ ...colord(color).toLch(), l: min_color_l }).toHex();
   } else if (color_l > max_color_l) {
     counterBgColor = colord({ ...colord(color).toLch(), l: max_color_l }).toHex();
-  } 
+  }
   return colord(counterBgColor).alpha(0.3).toHex()
 }
 // this function should be already in Zulip
@@ -117,17 +117,17 @@ function correctStreamColor({ color = "#000000" }) {
 }
 
 //going through streams and colorizing icons and badges
-function colorizeStreamRows(){
+function colorizeStreamRows() {
   const darkMode = document.body.classList.contains('dark')
-  document.querySelectorAll('ul.sidebar-group-streams').forEach((sg,sg_i)=>{
-    [...sg.children].forEach((s,s_i)=>{
+  document.querySelectorAll('ul.sidebar-group-streams').forEach((sg, sg_i) => {
+    [...sg.children].forEach((s, s_i) => {
       // console.log('s=', s);
       // console.log('sg_i + s_i=', sg_i + s_i);
       const color = streamColors[sg_i + s_i]
       colorizeStreamRow(s, color, darkMode)
       const possibleTopics = s.querySelector('ul.sidebar-topics')?.children;
-      if(possibleTopics){
-        [...possibleTopics].forEach((t)=>{
+      if (possibleTopics) {
+        [...possibleTopics].forEach((t) => {
           colorizeStreamRow(t, color, darkMode)
         })
       }
@@ -135,16 +135,16 @@ function colorizeStreamRows(){
   })
 }
 
-function colorizeStreamRow(row, color, darkMode){
+function colorizeStreamRow(row, color, darkMode) {
   const correctedColor = correctStreamColor({ color, darkMode });
   const icon_el = row.querySelector('a .sidebar-row__icon')
-  if(icon_el){
+  if (icon_el) {
     icon_el.style.color = correctedColor
   }
   const counter = row.querySelector('.unread-count');
-  if(counter){ 
-    counter.style.backgroundColor = getCounterBackgroundColor({color, darkMode})
-    counter.style.color = darkMode?'rgb(255 255 255 / 90%)':'rgb(0 0 0 / 90%)';
+  if (counter) {
+    counter.style.backgroundColor = getCounterBackgroundColor({ color, darkMode })
+    counter.style.color = darkMode ? 'rgb(255 255 255 / 90%)' : 'rgb(0 0 0 / 90%)';
   }
 }
 
@@ -155,7 +155,7 @@ colorizeStreamRows()
 // Sidebar interactions related
 
 //if a click was on some empty area of a summary consider it as a click on expander area
-document.querySelectorAll('.sidebar-group__summary').forEach(ss=>{
+document.querySelectorAll('.sidebar-group__summary').forEach(ss => {
   ss.addEventListener('click', onSidebarGroupClick)
   ss.addEventListener('keydown', onSidebarGroupKeyDown)
 })
@@ -172,7 +172,7 @@ function onSidebarGroupKeyDown(event) {
 
 // if tabbed focus to the element and hit Enter we wat the link to be working
 // since for sibar-row li elements we have tabindex="0" whil for <a> we have tabindex="-1"
-document.querySelectorAll('ul.sidebar-group__details>li').forEach(li=>{
+document.querySelectorAll('ul.sidebar-group__details>li').forEach(li => {
   li.addEventListener('keydown', onSidebarRowKeyDown)
 })
 function onSidebarRowKeyDown(event) {
@@ -183,41 +183,89 @@ function onSidebarRowKeyDown(event) {
 }
 
 
-document.querySelectorAll('.sidebar-group__expander-area').forEach(el=>{
-  el.addEventListener('click',onSidebarGroupExpanderAreaClick)
+document.querySelectorAll('.sidebar-group__expander-area').forEach(el => {
+  el.addEventListener('click', onSidebarGroupExpanderAreaClick)
 })
 function onSidebarGroupExpanderAreaClick(event) {
-  if (event.currentTarget.parentElement.classList.contains('sidebar-group-dms')) {
-    [...document.querySelectorAll('.sidebar-group-dms')].map(e => e.classList.toggle('_expanded'))
-    if (document.querySelector('.sidebar-group-dms').classList.contains('_expanded')) {
-      //scroll to if needed
-      // we can't use scroll into view because of expantion animation, but we don't want to wait
-      const el = document.querySelector('.sidebar-group._expanded.sidebar-group-dms')
-      const rect = el.getBoundingClientRect();
-      if (rect.top < 102) {
-        document.querySelector('.left-sidebar').scrollTo({
-          behavior: 'smooth',
-          top: el.offsetTop - 60
-        })
-      }
-      //remove covering shadow
-      document.querySelector('.summary-sticky-dms').classList.remove('_covering')
+  const sidebar = document.querySelector('.left-sidebar')
+  let group = event.currentTarget.closest('.sidebar-group')
+  let stickySummaryViewsOrDms
+  if(!group){ //it is not a regular stream group but views or dms
+    const stickyParent = event.currentTarget.closest('.sidebar-group__summary-sticky')
+    group = stickyParent.nextElementSibling
+    stickySummaryViewsOrDms = stickyParent.querySelector('.sidebar-group__summary')
+  }
+
+  const expanded = group.classList.contains('_expanded')
+  const groupDetails = group.querySelector('.sidebar-group__details')
+
+  if (expanded) {//we will fold the group
+    
+    const stickyAreaAbove = stickyAreaHeightAboveDetails(groupDetails)
+    if(stickyAreaAbove){
+      group.scrollIntoView(true)
+      //compensate for sticky
+      sidebar.scrollTo({
+        top: sidebar.scrollTop - 69,
+        behavior: 'instant', //smooth
+      })
     }
-  } else if (event.currentTarget.parentElement.classList.contains('sidebar-group-views')) {
-    [...document.querySelectorAll('.sidebar-group-views')].map(e => e.classList.toggle('_expanded'))
-    //scroll to top since in any case we should be up
-    document.querySelector('.left-sidebar').scrollTo({
-      behavior: 'smooth',
-      top: 0
-    })
-    //remove covering shadow
-    document.querySelector('.summary-sticky-views').classList.remove('_covering')
+    group.classList.remove('_expanded')
+    if(stickySummaryViewsOrDms) stickySummaryViewsOrDms.classList.remove('_expanded')
 
   } else {
-    event.currentTarget.closest('.sidebar-group').classList.toggle('_expanded')
+    group.classList.add('_expanded')
+    if(stickySummaryViewsOrDms) stickySummaryViewsOrDms.classList.add('_expanded')
   }
+  // if (event.currentTarget.parentElement.classList.contains('sidebar-group-dms')) {
+  //   [...document.querySelectorAll('.sidebar-group-dms')].map(e => e.classList.toggle('_expanded'))
+  //   if (document.querySelector('.sidebar-group-dms').classList.contains('_expanded')) {
+  //     //scroll to if needed
+  //     // we can't use scroll into view because of expantion animation, but we don't want to wait
+  //     const el = document.querySelector('.sidebar-group._expanded.sidebar-group-dms')
+  //     const rect = el.getBoundingClientRect();
+  //     if (rect.top < 102) {
+  //       document.querySelector('.left-sidebar').scrollTo({
+  //         behavior: 'smooth',
+  //         top: el.offsetTop - 60
+  //       })
+  //     }
+  //     //remove covering shadow
+  //     document.querySelector('.summary-sticky-dms').classList.remove('_covering')
+  //   }
+  // } else if (event.currentTarget.parentElement.classList.contains('sidebar-group-views')) {
+  //   [...document.querySelectorAll('.sidebar-group-views')].map(e => e.classList.toggle('_expanded'))
+  //   //scroll to top since in any case we should be up
+  //   document.querySelector('.left-sidebar').scrollTo({
+  //     behavior: 'smooth',
+  //     top: 0
+  //   })
+  //   //remove covering shadow
+  //   document.querySelector('.summary-sticky-views').classList.remove('_covering')
+
+  // } else {
+  //   event.currentTarget.closest('.sidebar-group').classList.toggle('_expanded')
+  // }
 }
 
+function stickyAreaHeightAboveDetails(element) {
+  // possible stack of sticky elements is views(possible view outside folded views)+dms+(possible dm outside folded dms)+separator
+  // for now we are ignoring possible view/dm outside their container, but later such should be factored in calculation
+  const sidebar = document.querySelector('.left-sidebar')
+  const viewsStickyHeight = sidebar.querySelector('.summary-sticky-views').offsetHeight
+  const viewStickyHeight = 0 // TODO detect that it exists in case of views are folded and get offsetHeight
+  const dmsStickyHeight = sidebar.querySelector('.summary-sticky-dms').offsetHeight
+  const dmStickyHeight = 0 // TODO detect that it exists in case of views are folded and get offsetHeight
+  const separatorStickyHeight = sidebar.querySelector('.summary-sticky-views-dms-separator').offsetHeight
+  const streamGroupHeigh = sidebar.querySelector('.summary-sticky-stream').offsetHeight
+  const streamHeight = 0 // TODO detect that there is a stream of folded group outside that group above the element
+  const totalStickyHeight = viewsStickyHeight + viewStickyHeight + dmsStickyHeight + dmStickyHeight + separatorStickyHeight + streamGroupHeigh + streamHeight
+
+  const elementRect = element.getBoundingClientRect()
+  const sidebarRect = sidebar.getBoundingClientRect()
+
+  return (sidebarRect.top + totalStickyHeight) > elementRect.top
+}
 
 const interceptViews = document.getElementById('intercept_views')
 const interceptDms = document.getElementById('intercept_dms')
@@ -240,29 +288,29 @@ rowIntersectionObserver.observe(interceptDms);
 
 
 // sidebar modal related
-document.querySelectorAll('.button-close-modal').forEach(el=>{
+document.querySelectorAll('.button-close-modal').forEach(el => {
   el.addEventListener('click', closeSidebarModal)
 })
 
-function closeSidebarModal(e){
-  e.currentTarget.closest('.sidebar-modal-content').style.display='none'
-  e.currentTarget.closest('.left-sidebar-modal').style.display='none'
+function closeSidebarModal(e) {
+  e.currentTarget.closest('.sidebar-modal-content').style.display = 'none'
+  e.currentTarget.closest('.left-sidebar-modal').style.display = 'none'
 }
 
 //click on a free space above the modal to close it
-document.querySelector('.left-sidebar-modal').addEventListener('click',(e)=>{
-  if(e.currentTarget===e.target){
-    e.currentTarget.style.display='none'
-    e.currentTarget.querySelectorAll('.sidebar-modal-content').forEach(e=>e.style.display = 'none')
+document.querySelector('.left-sidebar-modal').addEventListener('click', (e) => {
+  if (e.currentTarget === e.target) {
+    e.currentTarget.style.display = 'none'
+    e.currentTarget.querySelectorAll('.sidebar-modal-content').forEach(e => e.style.display = 'none')
   }
 })
 
 //opening model by the click on more topics button
-document.querySelectorAll('.button-more-topics>a').forEach(el=>{
+document.querySelectorAll('.button-more-topics>a').forEach(el => {
   el.addEventListener('click', openTopicModal)
 })
 
-function openTopicModal(e){
-  document.querySelector('.sidebar-modal-content').style.display='flex'
-  document.querySelector('.left-sidebar-modal').style.display='flex'
+function openTopicModal(e) {
+  document.querySelector('.sidebar-modal-content').style.display = 'flex'
+  document.querySelector('.left-sidebar-modal').style.display = 'flex'
 }
