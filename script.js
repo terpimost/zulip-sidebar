@@ -190,32 +190,42 @@ function onSidebarGroupExpanderAreaClick(event) {
   const sidebar = document.querySelector('.left-sidebar')
   let group = event.currentTarget.closest('.sidebar-group')
   let stickySummaryViewsOrDms
-  if(!group){ //it is not a regular stream group but views or dms
-    const stickyParent = event.currentTarget.closest('.sidebar-group__summary-sticky')
+  let stickyParent
+  if (!group) { //it is not a regular stream group but views or dms
+    stickyParent = event.currentTarget.closest('.sidebar-group__summary-sticky')
     group = stickyParent.nextElementSibling
     stickySummaryViewsOrDms = stickyParent.querySelector('.sidebar-group__summary')
   }
 
   const expanded = group.classList.contains('_expanded')
   const groupDetails = group.querySelector('.sidebar-group__details')
-
+  const stickyAreaAbove = stickyAreaHeightAboveDetails(groupDetails, stickyParent)
   if (expanded) {//we will fold the group
-    
-    const stickyAreaAbove = stickyAreaHeightAboveDetails(groupDetails)
-    if(stickyAreaAbove){
+    if (stickyAreaAbove) { //scroll to the beginning of the current element
+      //so when it folds, we are at expected place visually
       group.scrollIntoView(true)
       //compensate for sticky
       sidebar.scrollTo({
-        top: sidebar.scrollTop - 69,
-        behavior: 'instant', //smooth
+        top: sidebar.scrollTop - stickyAreaAbove,
+        behavior: 'instant', 
       })
     }
     group.classList.remove('_expanded')
-    if(stickySummaryViewsOrDms) stickySummaryViewsOrDms.classList.remove('_expanded')
+    if (stickySummaryViewsOrDms) stickySummaryViewsOrDms.classList.remove('_expanded')
 
-  } else {
+  } else {//we will expand the group
     group.classList.add('_expanded')
-    if(stickySummaryViewsOrDms) stickySummaryViewsOrDms.classList.add('_expanded')
+    if (stickySummaryViewsOrDms) {
+      stickySummaryViewsOrDms.classList.add('_expanded')
+      //user might scrolled down, so we should scroll to the expanded area
+      if(stickyAreaAbove){
+        group.scrollIntoView(true)
+        sidebar.scrollTo({
+          top: sidebar.scrollTop - stickyAreaAbove,
+          behavior: 'instant', 
+        })
+      }
+    }
   }
   // if (event.currentTarget.parentElement.classList.contains('sidebar-group-dms')) {
   //   [...document.querySelectorAll('.sidebar-group-dms')].map(e => e.classList.toggle('_expanded'))
@@ -248,23 +258,51 @@ function onSidebarGroupExpanderAreaClick(event) {
   // }
 }
 
-function stickyAreaHeightAboveDetails(element) {
-  // possible stack of sticky elements is views(possible view outside folded views)+dms+(possible dm outside folded dms)+separator
-  // for now we are ignoring possible view/dm outside their container, but later such should be factored in calculation
+function stickyAreaHeightAboveDetails(element, stickyParent) {
   const sidebar = document.querySelector('.left-sidebar')
-  const viewsStickyHeight = sidebar.querySelector('.summary-sticky-views').offsetHeight
-  const viewStickyHeight = 0 // TODO detect that it exists in case of views are folded and get offsetHeight
-  const dmsStickyHeight = sidebar.querySelector('.summary-sticky-dms').offsetHeight
-  const dmStickyHeight = 0 // TODO detect that it exists in case of views are folded and get offsetHeight
-  const separatorStickyHeight = sidebar.querySelector('.summary-sticky-views-dms-separator').offsetHeight
-  const streamGroupHeigh = sidebar.querySelector('.summary-sticky-stream').offsetHeight
-  const streamHeight = 0 // TODO detect that there is a stream of folded group outside that group above the element
-  const totalStickyHeight = viewsStickyHeight + viewStickyHeight + dmsStickyHeight + dmStickyHeight + separatorStickyHeight + streamGroupHeigh + streamHeight
 
   const elementRect = element.getBoundingClientRect()
   const sidebarRect = sidebar.getBoundingClientRect()
+  let totalStickyHeight = 0
 
-  return (sidebarRect.top + totalStickyHeight) > elementRect.top
+  const isAbove = (totalHeight)=> (sidebarRect.top + totalHeight) > elementRect.top
+  // possible stack of sticky elements is views(possible view outside folded views)+dms+(possible dm outside folded dms)+separator
+  // for now we are ignoring possible view/dm outside their container, but later such should be factored in calculation
+  
+  const viewsSticky = sidebar.querySelector('.summary-sticky-views')
+
+  const viewsStickyHeight = viewsSticky.offsetHeight
+  totalStickyHeight += viewsStickyHeight
+  if (stickyParent == viewsSticky) {
+    if (isAbove(totalStickyHeight)) return totalStickyHeight 
+    else return 0
+  }
+
+  const viewStickyHeight = 0 // TODO detect that it exists in case of views are folded and get offsetHeight
+
+  const dmsSticky = sidebar.querySelector('.summary-sticky-dms')
+  const dmsStickyHeight = dmsSticky.offsetHeight
+  totalStickyHeight += viewStickyHeight + dmsStickyHeight
+  if (stickyParent == dmsSticky) {
+    if (isAbove(totalStickyHeight)) return totalStickyHeight 
+    else return 0
+  }
+
+  const dmStickyHeight = 0 // TODO detect that it exists in case of views are folded and get offsetHeight
+
+  const separatorStickyHeight = sidebar.querySelector('.summary-sticky-views-dms-separator').offsetHeight
+
+  // we don't include current group sticky since we want it to be visible and only above content matters
+  // const streamGroup = element.closest('.sidebar-group').querySelector('.summary-sticky-stream')
+  // const streamGroupHeigh = streamGroup.offsetHeight
+  totalStickyHeight +=  (dmStickyHeight+ separatorStickyHeight)
+  if (isAbove(totalStickyHeight)) return totalStickyHeight 
+  
+  const streamHeight = 0 // TODO detect that there is a stream of folded group outside that group above the element
+  totalStickyHeight += streamHeight
+
+  if (isAbove(totalStickyHeight)) return totalStickyHeight 
+  else return 0
 }
 
 const interceptViews = document.getElementById('intercept_views')
