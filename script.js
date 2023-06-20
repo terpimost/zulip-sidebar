@@ -227,35 +227,6 @@ function onSidebarGroupExpanderAreaClick(event) {
       }
     }
   }
-  // if (event.currentTarget.parentElement.classList.contains('sidebar-group-dms')) {
-  //   [...document.querySelectorAll('.sidebar-group-dms')].map(e => e.classList.toggle('_expanded'))
-  //   if (document.querySelector('.sidebar-group-dms').classList.contains('_expanded')) {
-  //     //scroll to if needed
-  //     // we can't use scroll into view because of expantion animation, but we don't want to wait
-  //     const el = document.querySelector('.sidebar-group._expanded.sidebar-group-dms')
-  //     const rect = el.getBoundingClientRect();
-  //     if (rect.top < 102) {
-  //       document.querySelector('.left-sidebar').scrollTo({
-  //         behavior: 'smooth',
-  //         top: el.offsetTop - 60
-  //       })
-  //     }
-  //     //remove covering shadow
-  //     document.querySelector('.summary-sticky-dms').classList.remove('_covering')
-  //   }
-  // } else if (event.currentTarget.parentElement.classList.contains('sidebar-group-views')) {
-  //   [...document.querySelectorAll('.sidebar-group-views')].map(e => e.classList.toggle('_expanded'))
-  //   //scroll to top since in any case we should be up
-  //   document.querySelector('.left-sidebar').scrollTo({
-  //     behavior: 'smooth',
-  //     top: 0
-  //   })
-  //   //remove covering shadow
-  //   document.querySelector('.summary-sticky-views').classList.remove('_covering')
-
-  // } else {
-  //   event.currentTarget.closest('.sidebar-group').classList.toggle('_expanded')
-  // }
 }
 
 function stickyAreaHeightAboveDetails(element, stickyParent) {
