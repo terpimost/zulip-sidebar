@@ -525,7 +525,7 @@ i.icon-user-status.sidebar-row__icon._away {
 
 .sidebar-group__button .icon{
     /* we use half of the space without the height if an icon */
-    margin-top: calc( (var(--sidebar-button-default-height) - 16px) / 2 )  ;
+    margin-top: calc( (var(--sidebar-button-default-height) - 16px) / 2 );
 }
 
 
@@ -748,7 +748,8 @@ i.icon-user-status.sidebar-row__icon._away {
     content: ' ';
     position: absolute;
     right: 5px;
-    top: calc(50% - 8px);
+    /* same as .sidebar-group__button .icon but we are adding 2px of border and padding */
+    top: calc( (var(--sidebar-button-default-height) - 16px) / 2 + 2px) ;
     opacity: 0.4;
 }
 
@@ -883,9 +884,7 @@ i.icon-user-status.sidebar-row__icon._away {
     padding-left: 1px;
     display: flex;
     align-items: center;
-    visibility: hidden;
 }
-
 
 .sidebar-group__separator,
 .sidebar-stream__separator {
