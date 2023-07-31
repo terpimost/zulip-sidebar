@@ -1026,6 +1026,16 @@ ul.sidebar-topics:before {
     box-shadow: 0px 0px 5px rgb(255 255 255 / 40%);
 }
 
+/* subscribed topic could be indicated like thisnwith a color instead of any other icon */
+.sidebar-topic._following a .sidebar-row__label{
+    color: hsl(240 65% 40% / 1);
+}
+.dark .sidebar-topic._following a .sidebar-row__label{
+    color: hsl(240 80% 75% / 1);
+}
+
+
+
 .tabs{
     background-color: hsla(0, 0%, 0%, 0.07);
     border-radius: 4px;
