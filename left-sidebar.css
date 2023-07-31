@@ -502,20 +502,9 @@ i.icon-user-status.sidebar-row__icon._away {
     justify-content: center;
     flex-shrink: 0;
     position: relative;
-    min-width: 30px;
+    min-width: 24px;
     min-height: 22px;
     flex-grow: 1;
-}
-
-
-.sidebar-group__button._selected {
-    color: var(--color-clickable-icon-hover);
-    background-color: var(--color-sidebar-row-bg-selected);
-}
-
-/* additional lightness for selected with shadow, since background color isn't enough for such small button */
-.dark .sidebar-group__button._selected {
-    box-shadow: inset 0 0 30px hsl(0deg 0% 100% / 10%);
 }
 
 .sidebar-group__button:hover,
