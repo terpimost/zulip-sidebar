@@ -49,6 +49,12 @@
     --color-separator-border: hsla(0, 0%, 0%, 0.15);
 
     --color-main-bg-transparent: hsla(0, 0%, 94%, 0.5);
+
+    /* use this variable abd redefine it to shift icons accordingly due to vertical alignment 
+    .sidebar-group__button has 22px as min height and it is ok, but summary rowas could be higher,
+    as .sidebar-group__summary and .sidebar-modal__header
+    */
+    --sidebar-button-default-height: 22px;
 }
 
 .dark {
@@ -340,7 +346,7 @@ i.icon-user-status.sidebar-row__icon._away {
 
 .sidebar-group__summary,
 .sidebar-modal__header {
-    min-height: 28px;
+    height: 28px;
     box-sizing: content-box;
     display: flex;
     flex-wrap: nowrap;
@@ -351,8 +357,17 @@ i.icon-user-status.sidebar-row__icon._away {
     width: 100%;
     overflow: hidden;
 }
+/* this is for buttons in the group row */
+.sidebar-group__summary .sidebar-group__button{
+    --sidebar-button-default-height: 24px;
+}
+
 .sidebar-modal__header {
-    min-height: 32px;
+    height: 32px;
+}
+/* this is for close button in the side bar modal */
+.sidebar-modal__header .sidebar-group__button{
+    --sidebar-button-default-height: 28px;
 }
 
 .sidebar-group__summary:hover,
@@ -477,13 +492,12 @@ i.icon-user-status.sidebar-row__icon._away {
 
     border-radius: 3px;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     flex-shrink: 0;
     position: relative;
-
     min-width: 30px;
-    min-height: 24px;
+    min-height: 22px;
     flex-grow: 1;
 }
 
@@ -508,6 +522,12 @@ i.icon-user-status.sidebar-row__icon._away {
 .sidebar-group__button:active {
     scale: 0.92;
 }
+
+.sidebar-group__button .icon{
+    /* we use half of the space without the height if an icon */
+    margin-top: calc( (var(--sidebar-button-default-height) - 16px) / 2 )  ;
+}
+
 
 .sidebar-group__button-badge {
     display: block;
@@ -678,10 +698,10 @@ i.icon-user-status.sidebar-row__icon._away {
 }
 
 .sidebar-row a {
-    padding-left: 20px;
+    padding: 4px 0px 4px 20px;
     text-decoration: none;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     flex-grow: 1;
     gap: 2px;
     color: var(--color-sidebar-row-text);
@@ -769,8 +789,8 @@ i.icon-user-status.sidebar-row__icon._away {
     text-transform: uppercase;
     color: var(--color-clickable-icon);
     font-size: 19px;
-    line-height: 17px;
-    padding-bottom: 4px;
+    line-height: 16px;
+    padding-bottom: 1px;
 }
 
 .sidebar-row.sidebar-row__button-more-items {}
@@ -785,7 +805,7 @@ i.icon-user-status.sidebar-row__icon._away {
 
 
 .sidebar-row__label {
-    padding: 2px 0px;
+    padding: 0px;
     flex-grow: 1;
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -800,6 +820,7 @@ i.icon-user-status.sidebar-row__icon._away {
     /* Common fallback */
     max-height: calc(1.2em * 3);
     /* Adjust based on font size and line height */
+    word-break: break-word;
 }
 
 .sidebar-row__label .status-emoji {
@@ -809,6 +830,7 @@ i.icon-user-status.sidebar-row__icon._away {
 .sidebar-row__icon {
     color: var(--color-clickable-icon);
     margin-right: 5px;
+    margin-top: 0.5px
 }
 
 .unread-count,
@@ -825,6 +847,7 @@ i.icon-user-status.sidebar-row__icon._away {
     font-family: var(--font-ss3);
     padding: 0 4px;
     text-align: right;
+    margin-top: 0.5px;
 }
 
 .item-count {
@@ -838,16 +861,17 @@ i.icon-user-status.sidebar-row__icon._away {
 }
 
 .sidebar-row._silent-counter .unread-count {
-    transition: all 200ms;
     color: var(--color-base-text) !important;
     font-size: 0;
     line-height: 8px;
     border-radius: 8px;
     margin-right: 3px;
+    position: relative;
+    top: 5px;
 }
 
 .sidebar-row._silent-counter:hover .unread-count {
-    transition-delay: 0.07s;
+    position: static;
     color: inherit !important;
     font-size: 13px;
     line-height: 17px;
@@ -859,6 +883,7 @@ i.icon-user-status.sidebar-row__icon._away {
     padding-left: 1px;
     display: flex;
     align-items: center;
+    visibility: hidden;
 }
 
 

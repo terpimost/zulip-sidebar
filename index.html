@@ -486,13 +486,20 @@
             </a>
           </li>
 
-          <li class="sidebar-row _no-extra-buttons" data-user-ids-string="7,5140,19257" tabindex="0">
+          <li class="sidebar-row" data-user-ids-string="7,5140,19257" tabindex="0">
             <a tabindex="-1" href="#narrow/dm/7,5140,19257-group">
               <i class="icon icon-user-group sidebar-row__icon" aria-hidden="true"></i>
               <span class="sidebar-row__label">Alya Abbott, Aman (amanagr), Tim Abbott, Somebody Else, Another
                 Person</span>
               <span class="unread-count">123</span>
             </a>
+            <!-- with more button -->
+            <div class="sidebar-row__buttons-wrapper">
+              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators _hidden" title="Options"
+                tabindex="0">
+                <i class="icon icon-dots-vertical"></i>
+              </div>
+            </div>
           </li>
 
           <!-- removed class="pm-name" from <a></a> -->
@@ -1089,7 +1096,7 @@
 
           <li class="sidebar-row sidebar-row__button-more-items button-more-streams _no-extra-buttons" tabindex="0">
             <a tabindex="-1">
-              <span class="sidebar-row__label">add streams development infrastructure</span>
+              <span class="sidebar-row__label">more streams development infrastructure</span>
             </a>
           </li>
 
@@ -1717,15 +1724,17 @@
             </li>
             <li class="topic-list__filter-wrapper">
               <i class="icon icon-search"></i>
-              <input class="topic-list__filter" type="text" size="1" placeholder="Filter topic name" value="">
+              <input class="topic-list__filter" type="text" size="1" placeholder="Filter topics" value="">
             </li>
-            <li class="topic-list__filter-wrapper">
+            <!-- Instead of providing any additional filter controls
+            we should create better typeahead experience, which could be reused in other places -->
+            <!-- <li class="topic-list__filter-wrapper">
               <div class="tabs topic-tabs">
                 <button class="tab _selected">All</button>
                 <button class="tab">Unresolved</button>
                 <button class="tab">Resolved</button>
               </div>
-            </li>
+            </li> -->
             <div class="sidebar-modal-scrollable">
               <!-- topics -->
               <ul class="sidebar-topics">
