@@ -17,6 +17,7 @@
     --icon-pin: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3e%3cpath fill='black' d='M5.22 2.74v.31a1 1 0 0 0 1 1h.02l-.16 4.42c-1.02 0-2.66 1.43-2.66 2.6h4.01v3.65l.65.65.65-.65v-3.66h4.03c0-1.08-1.69-2.59-2.69-2.59l-.15-4.42a1 1 0 0 0 1-1v-.3h-5.7Z'/%3e%3c/svg%3e");
     --icon-search: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3e%3cpath fill='black' d='m14.27 13.17-2.94-2.94a5.47 5.47 0 1 0-1.1 1.1l2.94 2.94a.78.78 0 0 0 1.1-1.1ZM3.06 6.96a3.9 3.9 0 1 1 7.8 0 3.9 3.9 0 0 1-7.8 0Z'/%3e%3c/svg%3e");
     --icon-close: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3e%3cpath fill='black' d='M14.47 2.47a.67.67 0 0 0-.94-.94L8 7.06 2.47 1.53a.67.67 0 0 0-.94.94L7.06 8l-5.53 5.53a.67.67 0 0 0 .94.94L8 8.94l5.53 5.53a.66.66 0 1 0 .94-.94L8.94 8l5.53-5.53Z'/%3e%3c/svg%3e");
+    --icon-plus: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3e%3cpath fill='black' d='M8.66 3.33a.66.66 0 1 0-1.33 0v4h-4a.67.67 0 0 0 0 1.33h4v4a.66.66 0 1 0 1.33 0v-4h4a.67.67 0 0 0 0-1.33h-4v-4Z'/%3e%3c/svg%3e");
 
     /* in icon-user-status the circle is shifted to the right */
     --icon-user-status: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3e%3ccircle cx='10' cy='8' r='4' fill='black'/%3e%3c/svg%3e");
@@ -167,6 +168,11 @@ i.icon {
     -webkit-mask-image: var(--icon-close);
 }
 
+.icon-plus {
+    mask-image: var(--icon-plus);
+    -webkit-mask-image: var(--icon-plus);
+}
+
 i.icon-user-status.sidebar-row__icon._online {
     background-color: hsl(137, 42%, 47%);
 }
@@ -232,7 +238,7 @@ i.icon-user-status.sidebar-row__icon._away {
 .left-sidebar {
     position: fixed;
     width: var(--left-sidebar-width);
-    padding: 4px 1px 16px 8px;
+    padding: 4px 1px 18px 8px;
     height: calc(100% - var(--header-height));
     overflow-y: auto;
     overflow-x: hidden;
@@ -555,7 +561,7 @@ i.icon-user-status.sidebar-row__icon._away {
 .sidebar-group._expanded .sidebar-group__details {
     animation: show-details 500ms forwards;
     animation: show-details 0ms forwards;
-    padding-bottom: 8px;
+    padding-bottom: 4px;
 }
 
 .sidebar-modal-content .sidebar-group__details {
@@ -791,7 +797,7 @@ i.icon-user-status.sidebar-row__icon._away {
     color: var(--color-clickable-icon);
     font-size: 19px;
     line-height: 16px;
-    padding-bottom: 1px;
+    padding-bottom: 2px;
 }
 
 .sidebar-row.sidebar-row__button-more-items {}
@@ -1085,4 +1091,31 @@ button.tab._selected{
 .dark button.tab._selected{
     background-color: hsl(0, 0%, 20%);
     border: 1px solid hsla(0, 0%, 100%, 0.3);
+}
+
+.sidebar-button-cta{
+    cursor: pointer;
+    font-family: var(--font-ss3);
+    letter-spacing: 0.03em;
+    color: var(--color-clickable-icon);
+    width: 100%;
+    border: none;
+    display: flex;
+    gap: 4px;
+    justify-content: center;
+    padding: 4px 8px;
+    font-size: 14px;
+    line-height: 1.2;
+    border-radius: 4px;
+    background-color: var(--color-clickable-icon-hover-bg);
+    transition: var(--transition-sidebar-all-fast);
+}
+.sidebar-button-cta:hover{
+    color: var(--color-clickable-icon);
+    background-color: var(--color-clickable-icon-hover-bg);
+    box-shadow: inset 0px 0px 0px 1px hsla(240, 100%, 50%, 0.3);
+}
+.sidebar-button-cta:active{
+    scale: 0.97;
+    transition: var(--transition-sidebar-all-fast);
 }
