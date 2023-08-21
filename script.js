@@ -3,8 +3,11 @@ import { colord, random, extend } from 'https://unpkg.com/colord@2.9.3/index.mjs
 //color lib that we use
 import lchPlugin from "https://unpkg.com/colord@2.9.3/plugins/lch.mjs";
 import mixPlugin from 'https://unpkg.com/colord@2.9.3/plugins/mix.mjs';
-extend([lchPlugin, mixPlugin]);
 
+//used only to get throttle, lodash is tree shakable, so it could be
+// import throttle from "lodash/throttle"
+import lodash from 'https://cdn.jsdelivr.net/npm/lodash@4.17.21/+esm'
+extend([lchPlugin, mixPlugin]);
 
 //utils for demo
 function onComposeStart() {
@@ -207,7 +210,7 @@ function onSidebarGroupExpanderAreaClick(event) {
       //compensate for sticky
       sidebar.scrollTo({
         top: sidebar.scrollTop - stickyAreaAbove,
-        behavior: 'instant', 
+        behavior: 'instant',
       })
     }
     group.classList.remove('_expanded')
@@ -218,11 +221,11 @@ function onSidebarGroupExpanderAreaClick(event) {
     if (stickySummaryViewsOrDms) {
       stickySummaryViewsOrDms.classList.add('_expanded')
       //user might scrolled down, so we should scroll to the expanded area
-      if(stickyAreaAbove){
+      if (stickyAreaAbove) {
         group.scrollIntoView(true)
         sidebar.scrollTo({
           top: sidebar.scrollTop - stickyAreaAbove,
-          behavior: 'instant', 
+          behavior: 'instant',
         })
       }
     }
@@ -236,16 +239,16 @@ function stickyAreaHeightAboveDetails(element, stickyParent) {
   const sidebarRect = sidebar.getBoundingClientRect()
   let totalStickyHeight = 0
 
-  const isAbove = (totalHeight)=> (sidebarRect.top + totalHeight) > elementRect.top
+  const isAbove = (totalHeight) => (sidebarRect.top + totalHeight) > elementRect.top
   // possible stack of sticky elements is views(possible view outside folded views)+dms+(possible dm outside folded dms)+separator
   // for now we are ignoring possible view/dm outside their container, but later such should be factored in calculation
-  
+
   const viewsSticky = sidebar.querySelector('.summary-sticky-views')
 
   const viewsStickyHeight = viewsSticky.offsetHeight
   totalStickyHeight += viewsStickyHeight
   if (stickyParent == viewsSticky) {
-    if (isAbove(totalStickyHeight)) return totalStickyHeight 
+    if (isAbove(totalStickyHeight)) return totalStickyHeight
     else return 0
   }
 
@@ -255,7 +258,7 @@ function stickyAreaHeightAboveDetails(element, stickyParent) {
   const dmsStickyHeight = dmsSticky.offsetHeight
   totalStickyHeight += viewStickyHeight + dmsStickyHeight
   if (stickyParent == dmsSticky) {
-    if (isAbove(totalStickyHeight)) return totalStickyHeight 
+    if (isAbove(totalStickyHeight)) return totalStickyHeight
     else return 0
   }
 
@@ -266,34 +269,64 @@ function stickyAreaHeightAboveDetails(element, stickyParent) {
   // we don't include current group sticky since we want it to be visible and only above content matters
   // const streamGroup = element.closest('.sidebar-group').querySelector('.summary-sticky-stream')
   // const streamGroupHeigh = streamGroup.offsetHeight
-  totalStickyHeight +=  (dmStickyHeight+ separatorStickyHeight)
-  if (isAbove(totalStickyHeight)) return totalStickyHeight 
-  
+  totalStickyHeight += (dmStickyHeight + separatorStickyHeight)
+  if (isAbove(totalStickyHeight)) return totalStickyHeight
+
   const streamHeight = 0 // TODO detect that there is a stream of folded group outside that group above the element
   totalStickyHeight += streamHeight
 
-  if (isAbove(totalStickyHeight)) return totalStickyHeight 
+  if (isAbove(totalStickyHeight)) return totalStickyHeight
   else return 0
 }
 
-const interceptViews = document.getElementById('intercept_views')
-const interceptDms = document.getElementById('intercept_dms')
-const interceptStreams = document.getElementsByClassName('intercept_stream')
-const rowIntersectionObserver = new IntersectionObserver(([entry]) => {
-  const stickyEl = entry.target.nextElementSibling
-  stickyEl.classList.toggle('_covering', !entry.isIntersecting)
+// const interceptViews = document.getElementById('intercept_views')
+// const interceptDms = document.getElementById('intercept_dms')
+// const interceptStreams = document.getElementsByClassName('intercept_stream')
+// const rowIntersectionObserver = new IntersectionObserver(([entry]) => {
+//   const stickyEl = entry.target.nextElementSibling
+//   stickyEl.classList.toggle('_covering', !entry.isIntersecting)
 
-  // switching shadow so when scroll back fast it isn't blinking
-  if (entry.target.id == 'intercept_dms') {
-    interceptViews.nextElementSibling.classList.toggle('_covering', entry.isIntersecting)
-  } else if (interceptStreams[0] == entry.target && entry.target.classList.contains('intercept_stream')) {
-    interceptDms.nextElementSibling.classList.toggle('_covering', entry.isIntersecting)
-  }
-});
-rowIntersectionObserver.observe(interceptViews);
-rowIntersectionObserver.observe(interceptDms);
-[...interceptStreams].map(s => rowIntersectionObserver.observe(s))
+//   // switching shadow so when scroll back fast it isn't blinking
+//   if (entry.target.id == 'intercept_dms') {
+//     interceptViews.nextElementSibling.classList.toggle('_covering', entry.isIntersecting)
+//   } else if (interceptStreams[0] == entry.target && entry.target.classList.contains('intercept_stream')) {
+//     interceptDms.nextElementSibling.classList.toggle('_covering', entry.isIntersecting)
+//   }
+// });
+// rowIntersectionObserver.observe(interceptViews);
+// rowIntersectionObserver.observe(interceptDms);
+// [...interceptStreams].map(s => rowIntersectionObserver.observe(s))
 
+//sidebar scroll tracker to control shadow under group header 
+// and _overscrolled status for groups which are _expanded
+
+function onLeftSidebarScroll() {
+
+  const groups = document.querySelectorAll('.sidebar-group')
+  groups.forEach(group => {
+    //.sidebar-group__summary-sticky will be either a child or prev sibling
+    let sticky_header = group.querySelector('.sidebar-group__summary-sticky')
+    if (!sticky_header?.classList.contains('sidebar-group__summary-sticky')) {
+      sticky_header = group.previousElementSibling
+    }
+
+    if (group.classList.contains('_expanded')) {
+      const details = group.querySelector('.sidebar-group__details')
+      const details_rect = details.getBoundingClientRect()
+      const sticky_header_rect = sticky_header.getBoundingClientRect()
+      if(details_rect.top < sticky_header_rect.bottom-4){
+        sticky_header.classList.add('_covering')
+      }else{
+        sticky_header.classList.remove('_covering')
+      }
+    } else {
+      sticky_header.classList.remove('_covering')
+    }
+  })
+}
+
+const onLeftSidebarScrollThrottled = lodash.throttle(onLeftSidebarScroll, 200)
+document.getElementById('left-sidebar').addEventListener('scroll', onLeftSidebarScrollThrottled)
 
 
 // sidebar modal related

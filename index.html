@@ -210,7 +210,6 @@
     <div class="left-sidebar" id="left-sidebar" role="navigation">
 
       <!-- VIEWS -->
-      <div id="intercept_views" style="position:relative; top: 2px"></div>
       <div class="sidebar-group__summary-sticky summary-sticky-views">
 
         <div class="sidebar-group__summary sidebar-group-views _expanded" tabindex="0">
@@ -368,7 +367,6 @@
       </div>
 
       <!-- DMs -->
-      <div id="intercept_dms" style="position: relative; top:-30px"></div>
       <div class="sidebar-group__summary-sticky summary-sticky-dms">
         <div class="sidebar-group__summary sidebar-group-dms _expanded">
           <div class="sidebar-group__expander-area">
@@ -520,7 +518,6 @@
 
       <!-- Streams -->
       <div class="sidebar-group _expanded">
-        <div class="intercept_stream"></div>
         <div class="sidebar-group__summary-sticky summary-sticky-stream">
           <div class="sidebar-group__summary">
             <div class="sidebar-group__expander-area">
@@ -662,7 +659,7 @@
               </li>
               <li tabindex="0" class="sidebar-row _following">
                 <a tabindex="-1" href="#stream">
-                  <i class="icon icon-eye-small" aria-hidden="true"></i>
+                  <i class="icon icon-eye-small" title="You are following this topic"></i>
                   <span class="sidebar-row__label">mobile releases</span>
                   <span class="unread-count">2</span>
                 </a>
@@ -699,8 +696,8 @@
               </li>
               <li tabindex="0" class="sidebar-row _following _resolved">
                 <a tabindex="-1" href="#stream">
-                  <i class="icon icon-resolved-small" aria-hidden="true"></i>
-                  <i class="icon icon-eye-small" aria-hidden="true"></i>
+                  <i class="icon icon-resolved-small" title="Topic is resolved"></i>
+                  <i class="icon icon-eye-small" title="You are following this topic" aria-hidden="true"></i>
                   <span class="sidebar-row__label">End Point Dev case study long topic name to check how icons are aligned</span>
                 </a>
                 <div class="sidebar-row__buttons-wrapper">
@@ -789,7 +786,7 @@
             <ul class="sidebar-topics">
               <li tabindex="0" class="sidebar-row _following">
                 <a tabindex="-1" href="#stream">
-                  <i class="icon icon-eye-small" aria-hidden="true"></i>
+                  <i class="icon icon-eye-small" title="You are following this topic"></i>
                   <span class="sidebar-row__label">#24237</span>
                 </a>
                 <div class="sidebar-row__buttons-wrapper">
@@ -801,7 +798,7 @@
               </li>
               <li tabindex="0" class="sidebar-row sidebar-topic _following">
                 <a tabindex="-1" href="#stream">
-                  <i class="icon icon-eye-small" aria-hidden="true"></i>
+                  <i class="icon icon-eye-small" title="You are following this topic"></i>
                   <span class="sidebar-row__label">PR review and comment</span>
                 </a>
                 <div class="sidebar-row__buttons-wrapper">
@@ -848,7 +845,7 @@
 
               <li tabindex="0" class="sidebar-row _resolved">
                 <a tabindex="-1" href="#topic">
-                  <i class="icon icon-resolved-small" aria-hidden="true"></i>
+                  <i class="icon icon-resolved-small" title="Topic is resolved"></i>
                   <span class="sidebar-row__label">#25351</span>
                 </a>
                 <div class="sidebar-row__buttons-wrapper">
@@ -1004,7 +1001,6 @@
       </div>
 
       <div class="sidebar-group _expanded">
-        <div class="intercept_stream"></div>
         <div class="sidebar-group__summary-sticky summary-sticky-stream">
           <div class="sidebar-group__summary">
             <div class="sidebar-group__expander-area">
@@ -1108,7 +1104,6 @@
       </div>
 
       <div class="sidebar-group _expanded">
-        <div class="intercept_stream"></div>
         <div class="sidebar-group__summary-sticky summary-sticky-stream">
           <div class="sidebar-group__summary">
             <div class="sidebar-group__expander-area">
@@ -1807,7 +1802,8 @@
 
                 <li tabindex="0" class="sidebar-row _resolved">
                   <a tabindex="-1" href="#stream">
-                    <span class="sidebar-row__label">✔ #25351</span>
+                    <i class="icon icon-resolved-small" title="Topic is resolved"></i>
+                    <span class="sidebar-row__label">#25351</span>
                   </a>
                   <div class="sidebar-row__buttons-wrapper">
                     <div class="sidebar-group__button sidebar-row__button-more" title="Options"

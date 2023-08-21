@@ -355,11 +355,6 @@ i.icon-user-status.sidebar-row__icon._away {
     top: 65px;
 }
 
-.intercept_stream {
-    position: relative;
-    top: -64px;
-}
-
 .sidebar-group__summary,
 .sidebar-modal__header {
     height: 28px;
@@ -384,6 +379,7 @@ i.icon-user-status.sidebar-row__icon._away {
 /* this is for close button in the side bar modal */
 .sidebar-modal__header .sidebar-group__button{
     --sidebar-button-default-height: 28px;
+    width: var(--sidebar-button-default-height);
 }
 
 .sidebar-group__summary:hover,
@@ -961,6 +957,9 @@ ul.sidebar-topics .sidebar-row._following a  {
 .sidebar-modal-content ul.sidebar-topics .sidebar-row a {
     padding-left: 33px;
 }
+.sidebar-modal-content ul.sidebar-topics .sidebar-row._resolved a{
+padding-left: calc(33px - 16px - 4px);
+}
 
 ul.sidebar-topics:before {
     content: ' ';
@@ -973,6 +972,7 @@ ul.sidebar-topics:before {
     border-radius: 9px 0px 0px 9px;
     border-right: none;
     width: 7px;
+    pointer-events: none;
 }
 ul.sidebar-topics:after {
     content: ' ';
@@ -983,6 +983,11 @@ ul.sidebar-topics:after {
     left: 18px;
     border-bottom: 1px solid var(--color-topic-indent-border);
     width: 16px;
+    pointer-events: none;
+}
+.sidebar-modal-scrollable ul.sidebar-topics:after,
+.sidebar-modal-scrollable ul.sidebar-topics:before {
+    opacity: 0;
 }
 
 .sidebar-modal-content ul.sidebar-topics:before {
