@@ -192,18 +192,18 @@ document.querySelectorAll('.sidebar-group__expander-area').forEach(el => {
 function onSidebarGroupExpanderAreaClick(event) {
   const sidebar = document.querySelector('.left-sidebar')
   let group = event.currentTarget.closest('.sidebar-group')
-  let stickySummaryViewsOrDms
+  let summaryViewsOrDms
   let stickyParent
   if (!group) { //it is not a regular stream group but views or dms
     stickyParent = event.currentTarget.closest('.sidebar-group__summary-sticky')
     group = stickyParent.nextElementSibling
-    stickySummaryViewsOrDms = stickyParent.querySelector('.sidebar-group__summary')
+    summaryViewsOrDms = stickyParent.querySelector('.sidebar-group__summary')
   }
 
   const expanded = group.classList.contains('_expanded')
   const groupDetails = group.querySelector('.sidebar-group__details')
   const stickyAreaAbove = stickyAreaHeightAboveDetails(groupDetails, stickyParent)
-  if (expanded) {//we will fold the group
+  if (expanded && !summaryViewsOrDms?.classList.contains('_overscrolled')) {//we will fold the group
     if (stickyAreaAbove) { //scroll to the beginning of the current element
       //so when it folds, we are at expected place visually
       group.scrollIntoView(true)
@@ -214,12 +214,12 @@ function onSidebarGroupExpanderAreaClick(event) {
       })
     }
     group.classList.remove('_expanded')
-    if (stickySummaryViewsOrDms) stickySummaryViewsOrDms.classList.remove('_expanded')
+    if (summaryViewsOrDms) summaryViewsOrDms.classList.remove('_expanded')
 
   } else {//we will expand the group
     group.classList.add('_expanded')
-    if (stickySummaryViewsOrDms) {
-      stickySummaryViewsOrDms.classList.add('_expanded')
+    if (summaryViewsOrDms) {
+      summaryViewsOrDms.classList.add('_expanded')
       //user might scrolled down, so we should scroll to the expanded area
       if (stickyAreaAbove) {
         group.scrollIntoView(true)
@@ -230,6 +230,7 @@ function onSidebarGroupExpanderAreaClick(event) {
       }
     }
   }
+  onLeftSidebarScrollThrottled() //to validate headers of groups about shadow and _overscrolled
 }
 
 function stickyAreaHeightAboveDetails(element, stickyParent) {
@@ -314,10 +315,19 @@ function onLeftSidebarScroll() {
       const details = group.querySelector('.sidebar-group__details')
       const details_rect = details.getBoundingClientRect()
       const sticky_header_rect = sticky_header.getBoundingClientRect()
+      const summary = sticky_header.querySelector('.sidebar-group__summary')
       if(details_rect.top < sticky_header_rect.bottom-4){
         sticky_header.classList.add('_covering')
+        // we might want to virtually close that group, so when clicked it will not be close 
+        // but scrolled to and expanded
+        if(details_rect.bottom < sticky_header_rect.bottom){
+          summary.classList.add('_overscrolled')
+        }else{
+          summary.classList.remove('_overscrolled')
+        }
       }else{
         sticky_header.classList.remove('_covering')
+        summary.classList.remove('_overscrolled')
       }
     } else {
       sticky_header.classList.remove('_covering')

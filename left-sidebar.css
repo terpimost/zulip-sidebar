@@ -321,8 +321,8 @@ i.icon-user-status.sidebar-row__icon._away {
     position: sticky;
     top: 0;
     z-index: 1;
-    transition: all 0.3s ease-out;
-    transition-delay: 0.1s;
+    transition: all 0.15s ease-out;
+    /* transition-delay: 0.1s; */
 }
 
 .sidebar-group__summary-sticky._covering {
@@ -441,6 +441,11 @@ i.icon-user-status.sidebar-row__icon._away {
 .sidebar-group-views._expanded .sidebar-group__summary-expander .icon-trangle-right {
     transform: rotate(90deg);
 }
+.sidebar-group._expanded._overscrolled .sidebar-group__summary-expander .icon-trangle-right,
+.sidebar-group-dms._expanded._overscrolled .sidebar-group__summary-expander .icon-trangle-right,
+.sidebar-group-views._expanded._overscrolled .sidebar-group__summary-expander .icon-trangle-right {
+    transform: rotate(0deg);
+}
 
 .sidebar-group__summary-label {
     white-space: nowrap;
@@ -490,10 +495,10 @@ i.icon-user-status.sidebar-row__icon._away {
 }
 
 
-.sidebar-group._expanded ._group_expanded_hidden {
+/* .sidebar-group._expanded ._group_expanded_hidden {
     visibility: hidden;
     opacity: 0;
-}
+} */
 
 .sidebar-group__button {
     color: var(--color-clickable-icon);
@@ -545,6 +550,10 @@ i.icon-user-status.sidebar-row__icon._away {
     transition: opacity 0.2s;
     opacity: 0;
     visibility: hidden;
+}
+._expanded._overscrolled ._group_expanded_hidden {
+    opacity: 1;
+    visibility: visible;
 }
 
 .sidebar-group .sidebar-group__details {
