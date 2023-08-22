@@ -620,9 +620,9 @@
             </div>
             <!-- topics -->
             <ul class="sidebar-topics">
-              <li tabindex="0" class="sidebar-row">
-                <a tabindex="-1" href="#stream">
-                  <span class="sidebar-row__label">new streams</span>
+              <li tabindex="0" class="sidebar-row no-topic">
+                <a tabindex="-1" href="#topic" >
+                  <span class="sidebar-row__label">General chat</span>
                   <span class="unread-count">2</span>
                 </a>
                 <div class="sidebar-row__buttons-wrapper">
@@ -1130,6 +1130,13 @@
           </div>
         </div>
         <ul class="sidebar-group__details sidebar-group-streams">
+          <li class="stream-list__filter-wrapper">
+            <i class="icon icon-search"></i>
+            <input class="sidebar-list__filter" type="text" size="1" placeholder="Filter streams">
+            <button class="icon-button clear-input">
+              <i class="icon icon-close-small"></i>
+            </button>
+          </li>
           <li tabindex="0" class="sidebar-row hidden-for-spectators">
             <a tabindex="-1" href="#stream">
               <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
@@ -1725,13 +1732,16 @@
                 </div>
               </div>
             </li>
-            <li class="topic-list__filter-wrapper">
+            <li class="sidebar-list__filter-wrapper">
               <i class="icon icon-search"></i>
-              <input class="topic-list__filter" type="text" size="1" placeholder="Filter topics" value="">
+              <input class="sidebar-list__filter" type="text" size="1" placeholder="Filter topics">
+              <button class="icon-button clear-input">
+                <i class="icon icon-close-small"></i>
+              </button>
             </li>
             <!-- Instead of providing any additional filter controls
             we should create better typeahead experience, which could be reused in other places -->
-            <!-- <li class="topic-list__filter-wrapper">
+            <!-- <li class="sidebar-list__filter-wrapper">
               <div class="tabs topic-tabs">
                 <button class="tab _selected">All</button>
                 <button class="tab">Unresolved</button>

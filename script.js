@@ -320,7 +320,7 @@ function onLeftSidebarScroll() {
         sticky_header.classList.add('_covering')
         // we might want to virtually close that group, so when clicked it will not be close 
         // but scrolled to and expanded
-        if(details_rect.bottom < sticky_header_rect.bottom){
+        if(details_rect.bottom < sticky_header_rect.bottom+4){
           summary.classList.add('_overscrolled')
         }else{
           summary.classList.remove('_overscrolled')
@@ -365,4 +365,13 @@ document.querySelectorAll('.button-more-topics>a').forEach(el => {
 function openTopicModal(e) {
   document.querySelector('.sidebar-modal-content').style.display = 'flex'
   document.querySelector('.left-sidebar-modal').style.display = 'flex'
+}
+
+// search and filter inputs
+document.querySelectorAll('button.clear-input').forEach(el => {
+  el.addEventListener('click', onClearInput)
+})
+function onClearInput(e){
+  e.currentTarget.previousElementSibling.value = ''
+  e.currentTarget.previousElementSibling.focus()
 }
