@@ -220,6 +220,7 @@
           <div class="sidebar-group__buttons _growing _group_expanded_hidden">
             <a class="sidebar-group__button" href="#inbox">
               <i class="icon icon-inbox"></i>
+              <i class="sidebar-group__button-badge"></i>
             </a>
             <a class="sidebar-group__button" href="#recent">
               <i class="icon icon-clock"></i>
@@ -233,7 +234,6 @@
             </a>
             <a class="sidebar-group__button" href="#all_messages">
               <i class="icon icon-interleaved-all"></i>
-              <i class="sidebar-group__button-badge"></i>
             </a>
           </div>
 
@@ -244,7 +244,10 @@
             </div>
           </div>
         </div>
-
+        <div class="sticky-active-underfold">
+          <!-- a copy of active element of this group should be placed here -->
+          <!-- look at activateViewItem() -->
+        </div>
       </div>
 
       <!-- removed narrows_panel class -->
@@ -394,6 +397,9 @@
               <i class="icon icon-dots-vertical"></i>
             </div>
           </div>
+        </div>
+        <div class="sticky-active-underfold">
+          <!-- an active element of this folded group will be placed here -->
         </div>
       </div>
       <div class="sidebar-group _expanded sidebar-group-dms">

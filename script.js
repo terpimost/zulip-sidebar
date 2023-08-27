@@ -280,24 +280,6 @@ function stickyAreaHeightAboveDetails(element, stickyParent) {
   else return 0
 }
 
-// const interceptViews = document.getElementById('intercept_views')
-// const interceptDms = document.getElementById('intercept_dms')
-// const interceptStreams = document.getElementsByClassName('intercept_stream')
-// const rowIntersectionObserver = new IntersectionObserver(([entry]) => {
-//   const stickyEl = entry.target.nextElementSibling
-//   stickyEl.classList.toggle('_covering', !entry.isIntersecting)
-
-//   // switching shadow so when scroll back fast it isn't blinking
-//   if (entry.target.id == 'intercept_dms') {
-//     interceptViews.nextElementSibling.classList.toggle('_covering', entry.isIntersecting)
-//   } else if (interceptStreams[0] == entry.target && entry.target.classList.contains('intercept_stream')) {
-//     interceptDms.nextElementSibling.classList.toggle('_covering', entry.isIntersecting)
-//   }
-// });
-// rowIntersectionObserver.observe(interceptViews);
-// rowIntersectionObserver.observe(interceptDms);
-// [...interceptStreams].map(s => rowIntersectionObserver.observe(s))
-
 //sidebar scroll tracker to control shadow under group header 
 // and _overscrolled status for groups which are _expanded
 
@@ -316,16 +298,16 @@ function onLeftSidebarScroll() {
       const details_rect = details.getBoundingClientRect()
       const sticky_header_rect = sticky_header.getBoundingClientRect()
       const summary = sticky_header.querySelector('.sidebar-group__summary')
-      if(details_rect.top < sticky_header_rect.bottom-4){
+      if (details_rect.top < sticky_header_rect.bottom - 4) {
         sticky_header.classList.add('_covering')
         // we might want to virtually close that group, so when clicked it will not be close 
         // but scrolled to and expanded
-        if(details_rect.bottom < sticky_header_rect.bottom+4){
+        if (details_rect.bottom < sticky_header_rect.bottom + 4) {
           summary.classList.add('_overscrolled')
-        }else{
+        } else {
           summary.classList.remove('_overscrolled')
         }
-      }else{
+      } else {
         sticky_header.classList.remove('_covering')
         summary.classList.remove('_overscrolled')
       }
@@ -371,7 +353,80 @@ function openTopicModal(e) {
 document.querySelectorAll('button.clear-input').forEach(el => {
   el.addEventListener('click', onClearInput)
 })
-function onClearInput(e){
+function onClearInput(e) {
   e.currentTarget.previousElementSibling.value = ''
   e.currentTarget.previousElementSibling.focus()
+}
+
+
+
+// switchin on/off active alement in the group, just to test active element outside parent group
+const button_href_word_regex = /[a-zA-Z0-9_]+\b/
+function get_button_href_word(href) {
+  const match = href.split('').reverse().join('').match(button_href_word_regex)
+  if (match) {
+    return match[0].split('').reverse().join('')
+  } return ''
+}
+
+
+document.querySelectorAll('.summary-sticky-views .sidebar-group__buttons .sidebar-group__button').forEach(it =>
+  it.addEventListener('click', onViewItemClick)
+)
+function onViewItemClick(e) {
+  activateViewItem(e.currentTarget.href)
+}
+document.querySelectorAll('.sidebar-group-views .sidebar-row a').forEach(it =>
+  it.addEventListener('click', onViewItemClick)
+)
+function activateViewItem(href) {
+  const word = get_button_href_word(href)
+  const underfoldParent = document.querySelector('.summary-sticky-views .sticky-active-underfold')
+  document.querySelectorAll('.sidebar-group-views .sidebar-row').forEach(it => {
+    if (it.classList.contains('_selected')) {
+      it.classList.remove('_selected')
+      copyNodeAndAddToParent(null, underfoldParent)
+    } else { //lets select it
+      if (word == get_button_href_word(it.querySelector('a').href)) {
+        it.classList.add('_selected')
+        // place copy of the element to sticky-active-underfold
+        // don't forget to attach event listeners to more button and other unless they are specified in the html
+        // cloneNode() doesn't copy event listeners added via addEventListener()
+        // also cloned element shouldn't have ids/names
+        const clonedNode = copyNodeAndAddToParent(it, underfoldParent)
+      }
+    }
+  })
+  validateActiveStickyItems()
+}
+//node is an active row
+//parent is sticky-active-underfold inside sticky element related to active row
+function copyNodeAndAddToParent(node, parent){
+  parent.innerHTML = ''
+  if(node){
+    const cloned = node.cloneNode(true)
+    parent.appendChild(cloned)
+    return cloned
+  }
+}
+
+// go through items of Views and DMs and correct their top positions
+// if we have active item but folded group we should show that item next to this group
+function validateActiveStickyItems(){
+  const summaryStickyView = document.querySelector('.summary-sticky-views');
+  const summaryStickyViewComputedStyle = getComputedStyle(summaryStickyView);
+  const summaryStickyViewPading = extractNumericValue(summaryStickyViewComputedStyle.getPropertyValue('padding-top'))
+  const summaryStickyViewHeight = summaryStickyView.clientHeight - summaryStickyViewPading
+  console.log('summaryStickyViewHeight=', summaryStickyViewHeight);
+  const summaryStickyDMs = document.querySelector('.summary-sticky-dms')
+  const summaryStickyDMsHeight = summaryStickyDMs.clientHeight
+  console.log('summaryStickyDMsHeight=', summaryStickyDMsHeight);
+
+  const stickyViewsDMsSeparator = document.querySelector('.summary-sticky-views-dms-separator')
+  const stickyViewsDMsSeparatorHeight = stickyViewsDMsSeparator.clientHeight
+  console.log('stickyViewsDMsSeparatorHeight=', stickyViewsDMsSeparatorHeight);
+}
+function extractNumericValue(value) {
+  var numericValue = parseFloat(value);
+  return isNaN(numericValue) ? 0 : numericValue;
 }

@@ -341,6 +341,7 @@ i.icon-user-status.sidebar-row__icon._away {
 }
 
 .summary-sticky-views {
+    /* -4 and 4 is because we don't want scrolled content underneath it to be visible */
     margin: -4px 0px 0px;
     padding: 4px 0px 0px;
     top: -4px;
@@ -635,12 +636,19 @@ i.icon-user-status.sidebar-row__icon._away {
     transition: none;
 }
 
+
 .sidebar-row__button-more:hover,
 .sidebar-row__button-more:focus-visible {
     transition: none;
     color: var(--color-clickable-icon-hover);
-    background-color: var(--color-clickable-icon-hover-bg);
+    /* background-color: var(--color-clickable-icon-hover-bg); */
+    /* we have to use non transparent background color to make pinn icon be not visible on focus of more button*/
+    background-color: hsl(240, 100%, 93%);
     opacity: 1;
+}
+.dark .sidebar-row__button-more:hover,
+.dark .sidebar-row__button-more:focus-visible {
+    background-color: hsl(240, 25%, 35%);
 }
 
 .sidebar-row__button-more:active {
@@ -771,12 +779,14 @@ i.icon-user-status.sidebar-row__icon._away {
     /* same as .sidebar-group__button .icon but we are adding 2px of border and padding */
     top: calc( (var(--sidebar-button-default-height) - 16px) / 2 + 2px) ;
     opacity: 0.4;
+    z-index: -1;
 }
 
 .dark .sidebar-row._pinned:after {
     opacity: 0.5;
 }
 
+.sidebar-row:focus-visible._pinned:after,
 .sidebar-row:hover._pinned:after {
     display: none;
 }
@@ -1046,7 +1056,7 @@ ul.sidebar-topics:after {
 .sidebar-list__filter-wrapper .icon-search,
 .stream-list__filter-wrapper .icon-search{
     position: absolute;
-    z-index: 1;
+    pointer-events: none;
     display: block;
     top: 50%; 
     transform: translateY(-50%);
