@@ -331,13 +331,12 @@ i.icon-user-status.sidebar-row__icon._away {
     position: sticky;
     top: 0;
     z-index: 1;
-    transition: all 0.15s ease-out;
-    /* transition-delay: 0.1s; */
+    transition: box-shadow 0.15s ease-out;
 }
 
 .sidebar-group__summary-sticky._covering {
     box-shadow: 0 8px 12px -12px hsl(0deg 0% 0% / 80%);
-    transition: all 0.2s ease-out;
+    transition: box-shadow 0.2s ease-out;
 }
 
 .summary-sticky-views {
@@ -458,6 +457,14 @@ i.icon-user-status.sidebar-row__icon._away {
     transform: rotate(0deg);
 }
 
+.sticky-active-underfold{ 
+    overflow: hidden;
+}
+.sidebar-group__summary-sticky ._expanded+.sticky-active-underfold{
+    display: none;
+    pointer-events: none;
+}
+
 .sidebar-group__summary-label {
     white-space: nowrap;
     overflow: hidden;
@@ -504,12 +511,6 @@ i.icon-user-status.sidebar-row__icon._away {
     opacity: 1;
     display: flex;
 }
-
-
-/* .sidebar-group._expanded ._group_expanded_hidden {
-    visibility: hidden;
-    opacity: 0;
-} */
 
 .sidebar-group__button {
     color: var(--color-clickable-icon);

@@ -231,6 +231,7 @@ function onSidebarGroupExpanderAreaClick(event) {
     }
   }
   onLeftSidebarScrollThrottled() //to validate headers of groups about shadow and _overscrolled
+  validateActiveStickyItems()
 }
 
 function stickyAreaHeightAboveDetails(element, stickyParent) {
@@ -385,7 +386,9 @@ function activateViewItem(href) {
   document.querySelectorAll('.sidebar-group-views .sidebar-row').forEach(it => {
     if (it.classList.contains('_selected')) {
       it.classList.remove('_selected')
-      copyNodeAndAddToParent(null, underfoldParent)
+      if(word == get_button_href_word(it.querySelector('a').href)){
+        copyNodeAndAddToParent(null, underfoldParent) //deselection
+      }
     } else { //lets select it
       if (word == get_button_href_word(it.querySelector('a').href)) {
         it.classList.add('_selected')
@@ -402,29 +405,38 @@ function activateViewItem(href) {
 //node is an active row
 //parent is sticky-active-underfold inside sticky element related to active row
 function copyNodeAndAddToParent(node, parent){
-  parent.innerHTML = ''
+  console.log('copyNodeAndAddToParent', ' node=', node,);
   if(node){
+    parent.innerHTML = ''
     const cloned = node.cloneNode(true)
     parent.appendChild(cloned)
     return cloned
+  }else{
+    parent.innerHTML = ''
+    return null
   }
 }
 
 // go through items of Views and DMs and correct their top positions
 // if we have active item but folded group we should show that item next to this group
 function validateActiveStickyItems(){
+  console.log('validateActiveStickyItems');
   const summaryStickyView = document.querySelector('.summary-sticky-views');
   const summaryStickyViewComputedStyle = getComputedStyle(summaryStickyView);
   const summaryStickyViewPading = extractNumericValue(summaryStickyViewComputedStyle.getPropertyValue('padding-top'))
   const summaryStickyViewHeight = summaryStickyView.clientHeight - summaryStickyViewPading
-  console.log('summaryStickyViewHeight=', summaryStickyViewHeight);
+
   const summaryStickyDMs = document.querySelector('.summary-sticky-dms')
   const summaryStickyDMsHeight = summaryStickyDMs.clientHeight
-  console.log('summaryStickyDMsHeight=', summaryStickyDMsHeight);
+  summaryStickyDMs.style.top = summaryStickyViewHeight+'px'
 
   const stickyViewsDMsSeparator = document.querySelector('.summary-sticky-views-dms-separator')
   const stickyViewsDMsSeparatorHeight = stickyViewsDMsSeparator.clientHeight
-  console.log('stickyViewsDMsSeparatorHeight=', stickyViewsDMsSeparatorHeight);
+  stickyViewsDMsSeparator.style.top = (summaryStickyViewHeight+summaryStickyDMsHeight)+'px'
+
+  document.querySelectorAll('.summary-sticky-stream').forEach(it=>{
+    it.style.top = (summaryStickyViewHeight+summaryStickyDMsHeight+stickyViewsDMsSeparatorHeight)+'px'
+  })
 }
 function extractNumericValue(value) {
   var numericValue = parseFloat(value);
