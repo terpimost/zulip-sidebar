@@ -49,6 +49,8 @@
     --color-unread-count-bg: hsla(240, 10%, 50%, 0.15);
     --color-item-count-text: hsla(240, 15%, 50%, 1);
     --color-unread-count-text: hsla(240, 0%, 0%, 0.8);
+    --color-unread-count-strong-bg: hsl(240deg 10% 50% / 70%);
+    --color-unread-count-strong-text: hsl(0deg 0% 100%);
     --color-topic-indent-border: hsl(0deg 0% 0% / 19%);
     --color-separator-border: hsla(0, 0%, 0%, 0.15);
 
@@ -79,6 +81,8 @@
     --color-unread-count-bg: hsla(240, 10%, 50%, 0.35);
     --color-item-count-text: hsla(240, 15%, 60%, 1);
     --color-unread-count-text: hsla(240, 0%, 100%, 0.75);
+    --color-unread-count-strong-bg: hsl(240deg 18.37% 34.42%);
+    --color-unread-count-strong-text: hsl(0deg 0% 100%);
     --color-topic-indent-border: hsl(0deg 0% 100% / 19%);
     --color-separator-border: hsla(0, 0%, 100%, 0.15);
 
@@ -873,6 +877,11 @@ i.icon-user-status.sidebar-row__icon._away {
     text-align: right;
     margin-top: 0.5px;
 }
+.unread-count._strong,
+.item-count._strong {
+    background-color: var(--color-unread-count-strong-bg);
+    color: var(--color-unread-count-strong-text);
+}
 
 .item-count {
     background-color: transparent;
@@ -1058,7 +1067,7 @@ ul.sidebar-topics:after {
     font-style: normal;
     font-weight: 400;
     outline: none;
-    border-radius: 3px;
+    border-radius: 4px;
     transition: all 0.1s linear;
     border: 1px solid rgba(20, 22, 31, 0.3);
 }
