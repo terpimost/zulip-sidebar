@@ -459,13 +459,13 @@ i.icon-user-status.sidebar-row__icon._away {
 
 .sticky-active-underfold{ 
     overflow: hidden;
-    transition: all 100ms ease-out;
+    transition: all 150ms ease-out;
     transition-delay: 100ms;
 
     max-height: 28px;
 }
 .sticky-active-underfold._empty{ 
-    transition: all 3000ms ease-out;
+    transition: all 150ms ease-out;
     max-height: 0px;
 }
 
@@ -473,13 +473,13 @@ i.icon-user-status.sidebar-row__icon._away {
     transition: none;
     transition-delay: 0s;
     max-height: 0px;
-    opacity: 0;
+    /* opacity: 0; */
     pointer-events: none;
    
 }
 .sidebar-group__summary-sticky ._overscrolled+.sticky-active-underfold{
-    transition: max-height 300ms;
-    transition-delay: 0ms;
+    transition: max-height 200ms linear;
+    transition-delay: 100ms;
     max-height: 28px;
     opacity: 1;
     pointer-events: all;
