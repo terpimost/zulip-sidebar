@@ -365,7 +365,7 @@ function onClearInput(e) {
 
 
 // switchin on/off active alement in the group, just to test active element outside parent group
-const button_href_word_regex = /[a-zA-Z0-9_]+\b/
+const button_href_word_regex = /[a-zA-Z0-9_,-]+\b/
 function get_button_href_word(href) {
   const match = href.split('').reverse().join('').match(button_href_word_regex)
   if (match) {
@@ -378,33 +378,52 @@ document.querySelectorAll('.summary-sticky-views .sidebar-group__buttons .sideba
   it.addEventListener('click', onViewItemClick)
 )
 function onViewItemClick(e) {
-  activateViewItem(e.currentTarget.href)
+  activateViewDMItem(e.currentTarget.href)
 }
 document.querySelectorAll('.sidebar-group-views .sidebar-row a').forEach(it =>
   it.addEventListener('click', onViewItemClick)
 )
-function activateViewItem(href) {
+
+document.querySelectorAll('.sidebar-group-dms .sidebar-row a').forEach(it =>
+  it.addEventListener('click', onDMItemClick)
+)
+function onDMItemClick(e) {
+  console.log('onDMItemClick');
+  activateViewDMItem(e.currentTarget.href)
+}
+
+function activateViewDMItem(href) {
   const word = get_button_href_word(href)
-  const underfoldParent = document.querySelector('.summary-sticky-views .sticky-active-underfold')
-  document.querySelectorAll('.sidebar-group-views .sidebar-row').forEach(it => {
-    if (it.classList.contains('_selected')) {
-      it.classList.remove('_selected')
-      if(word == get_button_href_word(it.querySelector('a').href)){
-        copyNodeAndAddToParent(null, underfoldParent) //deselection
-      }
-    } else { //lets select it
-      if (word == get_button_href_word(it.querySelector('a').href)) {
-        it.classList.add('_selected')
-        // place copy of the element to sticky-active-underfold
-        // don't forget to attach event listeners to more button and other unless they are specified in the html
-        // cloneNode() doesn't copy event listeners added via addEventListener()
-        // also cloned element shouldn't have ids/names
-        const clonedNode = copyNodeAndAddToParent(it, underfoldParent)
-      }
-    }
-  })
+
+  let underfoldParent = document.querySelector('.summary-sticky-views .sticky-active-underfold')
+  document.querySelectorAll('.sidebar-group-views .sidebar-row')
+  .forEach(it => validateItemSelection(it, word, underfoldParent ))
+
+  underfoldParent = document.querySelector('.summary-sticky-dms .sticky-active-underfold')
+  document.querySelectorAll('.sidebar-group-dms .sidebar-row')
+  .forEach(it => validateItemSelection(it, word, underfoldParent ))
+  
   validateActiveStickyItems()
 }
+
+function validateItemSelection(it, word,  underfoldParent){
+  if (it.classList.contains('_selected')) {
+    it.classList.remove('_selected')
+    // if(word == get_button_href_word(it.querySelector('a').href)){
+      copyNodeAndAddToParent(null, underfoldParent) //deselection
+    // }
+  } else { //lets select it
+    if (word == get_button_href_word(it.querySelector('a').href)) {
+      it.classList.add('_selected')
+      // place copy of the element to sticky-active-underfold
+      // don't forget to attach event listeners to more button and other unless they are specified in the html
+      // cloneNode() doesn't copy event listeners added via addEventListener()
+      // also cloned element shouldn't have ids/names
+      const clonedNode = copyNodeAndAddToParent(it, underfoldParent)
+    }
+  }
+}
+
 //node is an active row
 //parent is sticky-active-underfold inside sticky element related to active row
 function copyNodeAndAddToParent(node, parent){
