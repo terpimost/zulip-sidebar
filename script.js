@@ -305,23 +305,21 @@ function onLeftSidebarScroll() {
         // but scrolled to and expanded
         if (details_rect.bottom < sticky_header_rect.bottom + 4) {
           summary.classList.add('_overscrolled')
-          validateActiveStickyItems()
         } else {
           summary.classList.remove('_overscrolled')
-          validateActiveStickyItems()
         }
       } else {
         sticky_header.classList.remove('_covering')
         summary.classList.remove('_overscrolled')
-        validateActiveStickyItems()
       }
     } else {
       sticky_header.classList.remove('_covering')
     }
   })
+  validateActiveStickyItems()
 }
 
-const onLeftSidebarScrollThrottled = lodash.throttle(onLeftSidebarScroll, 200)
+const onLeftSidebarScrollThrottled = lodash.throttle(onLeftSidebarScroll, 300,{leading:true})
 document.getElementById('left-sidebar').addEventListener('scroll', onLeftSidebarScrollThrottled)
 
 
