@@ -459,20 +459,31 @@ i.icon-user-status.sidebar-row__icon._away {
 
 .sticky-active-underfold{ 
     overflow: hidden;
-    /* transition: var(--transition-sidebar-all-slow); */
+    transition: all 100ms ease-out;
+    transition-delay: 100ms;
+
+    max-height: 28px;
 }
+.sticky-active-underfold._empty{ 
+    transition: all 3000ms ease-out;
+    max-height: 0px;
+}
+
 .sidebar-group__summary-sticky ._expanded+.sticky-active-underfold{
-    /* visibility: hidden; */
+    transition: none;
+    transition-delay: 0s;
     max-height: 0px;
     opacity: 0;
     pointer-events: none;
+   
 }
 .sidebar-group__summary-sticky ._overscrolled+.sticky-active-underfold{
-    /* visibility: visible; */
-    /* display: block; */
+    transition: max-height 300ms;
+    transition-delay: 0ms;
     max-height: 28px;
     opacity: 1;
     pointer-events: all;
+   
 }
 
 .sidebar-group__summary-label {
@@ -569,24 +580,22 @@ i.icon-user-status.sidebar-row__icon._away {
 }
 
 ._expanded ._group_expanded_hidden {
-    transition: opacity 0.2s;
+    transition: var(--transition-sidebar-all-slow);
     opacity: 0;
-    visibility: hidden;
+    pointer-events: none;
 }
 ._expanded._overscrolled ._group_expanded_hidden {
     opacity: 1;
-    visibility: visible;
+    pointer-events: all;
 }
 
 .sidebar-group .sidebar-group__details {
     overflow: hidden;
     animation: hide-details 200ms forwards;
-    animation: hide-details 0ms forwards;
 }
 
 .sidebar-group._expanded .sidebar-group__details {
-    animation: show-details 500ms forwards;
-    animation: show-details 500ms forwards;
+    animation: show-details 400ms forwards;
     padding-bottom: 4px;
 }
 
@@ -604,27 +613,30 @@ i.icon-user-status.sidebar-row__icon._away {
 
     99% {
         max-height: 0;
+        pointer-events: none;
     }
 
     100% {
         max-height: 0;
-        visibility: hidden;
+        /* visibility: hidden; */
     }
 }
 
 @keyframes show-details {
     0% {
-        visibility: visible;
-        max-height: 0;
+        /* visibility: visible; */
+        max-height: 28px;
+        opacity: 1;
     }
 
     99% {
         max-height: 100vh;
+        opacity: 1;
+        pointer-events: all;
     }
 
     100% {
         max-height: auto;
-        /* overflow: auto; */
     }
 }
 

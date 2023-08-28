@@ -230,8 +230,8 @@ function onSidebarGroupExpanderAreaClick(event) {
       }
     }
   }
+  setTimeout(validateActiveStickyItems,4000)
   onLeftSidebarScrollThrottled() //to validate headers of groups about shadow and _overscrolled
-  validateActiveStickyItems()
 }
 
 function stickyAreaHeightAboveDetails(element, stickyParent) {
@@ -412,9 +412,11 @@ function copyNodeAndAddToParent(node, parent){
     parent.innerHTML = ''
     const cloned = node.cloneNode(true)
     parent.appendChild(cloned)
+    parent.classList.remove('_empty')
     return cloned
   }else{
     parent.innerHTML = ''
+    parent.classList.add('_empty')
     return null
   }
 }
