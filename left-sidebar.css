@@ -459,10 +459,20 @@ i.icon-user-status.sidebar-row__icon._away {
 
 .sticky-active-underfold{ 
     overflow: hidden;
+    /* transition: var(--transition-sidebar-all-slow); */
 }
 .sidebar-group__summary-sticky ._expanded+.sticky-active-underfold{
-    display: none;
+    /* visibility: hidden; */
+    max-height: 0px;
+    opacity: 0;
     pointer-events: none;
+}
+.sidebar-group__summary-sticky ._overscrolled+.sticky-active-underfold{
+    /* visibility: visible; */
+    /* display: block; */
+    max-height: 28px;
+    opacity: 1;
+    pointer-events: all;
 }
 
 .sidebar-group__summary-label {
@@ -576,7 +586,7 @@ i.icon-user-status.sidebar-row__icon._away {
 
 .sidebar-group._expanded .sidebar-group__details {
     animation: show-details 500ms forwards;
-    animation: show-details 0ms forwards;
+    animation: show-details 500ms forwards;
     padding-bottom: 4px;
 }
 

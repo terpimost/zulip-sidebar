@@ -305,12 +305,15 @@ function onLeftSidebarScroll() {
         // but scrolled to and expanded
         if (details_rect.bottom < sticky_header_rect.bottom + 4) {
           summary.classList.add('_overscrolled')
+          validateActiveStickyItems()
         } else {
           summary.classList.remove('_overscrolled')
+          validateActiveStickyItems()
         }
       } else {
         sticky_header.classList.remove('_covering')
         summary.classList.remove('_overscrolled')
+        validateActiveStickyItems()
       }
     } else {
       sticky_header.classList.remove('_covering')
@@ -405,7 +408,6 @@ function activateViewItem(href) {
 //node is an active row
 //parent is sticky-active-underfold inside sticky element related to active row
 function copyNodeAndAddToParent(node, parent){
-  console.log('copyNodeAndAddToParent', ' node=', node,);
   if(node){
     parent.innerHTML = ''
     const cloned = node.cloneNode(true)
@@ -420,7 +422,6 @@ function copyNodeAndAddToParent(node, parent){
 // go through items of Views and DMs and correct their top positions
 // if we have active item but folded group we should show that item next to this group
 function validateActiveStickyItems(){
-  console.log('validateActiveStickyItems');
   const summaryStickyView = document.querySelector('.summary-sticky-views');
   const summaryStickyViewComputedStyle = getComputedStyle(summaryStickyView);
   const summaryStickyViewPading = extractNumericValue(summaryStickyViewComputedStyle.getPropertyValue('padding-top'))
