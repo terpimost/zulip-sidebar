@@ -388,20 +388,26 @@ document.querySelectorAll('.sidebar-group-dms .sidebar-row a').forEach(it =>
   it.addEventListener('click', onDMItemClick)
 )
 function onDMItemClick(e) {
-  console.log('onDMItemClick');
   activateViewDMItem(e.currentTarget.href)
 }
 
 function activateViewDMItem(href) {
   const word = get_button_href_word(href)
 
-  let underfoldParent = document.querySelector('.summary-sticky-views .sticky-active-underfold')
+  const underfoldParentViews = document.querySelector('.summary-sticky-views .sticky-active-underfold')
   document.querySelectorAll('.sidebar-group-views .sidebar-row')
-  .forEach(it => validateItemSelection(it, word, underfoldParent ))
+  .forEach(it => validateItemSelection(it, word, underfoldParentViews ))
 
-  underfoldParent = document.querySelector('.summary-sticky-dms .sticky-active-underfold')
+  const underfoldParentDms = document.querySelector('.summary-sticky-dms .sticky-active-underfold')
   document.querySelectorAll('.sidebar-group-dms .sidebar-row')
-  .forEach(it => validateItemSelection(it, word, underfoldParent ))
+  .forEach(it => validateItemSelection(it, word, underfoldParentDms ))
+
+  if(Array.from(document.querySelectorAll('.sidebar-group-views .sidebar-row._selected')).length){
+    copyNodeAndAddToParent(null, underfoldParentDms)
+  }
+  if(Array.from(document.querySelectorAll('.sidebar-group-dms .sidebar-row._selected')).length){
+    copyNodeAndAddToParent(null, underfoldParentViews)
+  }
   
   validateActiveStickyItems()
 }
@@ -409,9 +415,9 @@ function activateViewDMItem(href) {
 function validateItemSelection(it, word,  underfoldParent){
   if (it.classList.contains('_selected')) {
     it.classList.remove('_selected')
-    // if(word == get_button_href_word(it.querySelector('a').href)){
+    if(word == get_button_href_word(it.querySelector('a').href)){
       copyNodeAndAddToParent(null, underfoldParent) //deselection
-    // }
+    }
   } else { //lets select it
     if (word == get_button_href_word(it.querySelector('a').href)) {
       it.classList.add('_selected')
