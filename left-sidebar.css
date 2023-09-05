@@ -254,7 +254,10 @@ i.icon-user-status.sidebar-row__icon._away {
     flex-grow: 0;
     border-radius: 16px;
 }
-
+.dark .sidebar-row__icon.icon-user-group {
+    /* big circle with white text on top isn't contrast with default--color-clickable-icon */
+    background-color:  hsl(240 25% 40% / 1); 
+}
 
 .dark .icon-online {
     background: var(--icon-status-online-dark);
@@ -358,6 +361,9 @@ i.icon-user-status.sidebar-row__icon._away {
     box-shadow: 0px -4px 24px rgba(0, 0, 0, 0.7);
 }
 
+.sidebar-modal-dms .sidebar-modal-content {
+    top: 34px
+}
 
 .sidebar-group__summary-sticky {
     background: var(--color-main-bg);
@@ -492,10 +498,10 @@ i.icon-user-status.sidebar-row__icon._away {
 
 .sticky-active-underfold{ 
     overflow: hidden;
-    transition: all 150ms ease-out;
-    transition-delay: 150ms;
+    transition: all 150ms;
+    transition-delay: 200ms;
 
-    max-height: calc(28px * 2.5);
+    max-height: calc(28px * 3);
 }
 .sticky-active-underfold._empty{ 
     transition: all 150ms ease-out;
@@ -511,9 +517,9 @@ i.icon-user-status.sidebar-row__icon._away {
    
 }
 .sidebar-group__summary-sticky ._overscrolled+.sticky-active-underfold{
-    transition: max-height 200ms linear;
+    /* transition: max-height 200ms linear; */
     transition-delay: 100ms;
-    max-height: calc(28px * 2.5);
+    max-height: calc(28px * 3);
     opacity: 1;
     pointer-events: all;
    
@@ -1035,15 +1041,14 @@ ul.sidebar-topics .sidebar-row a {
     padding-left: 25px;
 }
 
-ul.sidebar-topics .sidebar-row._resolved a,
-ul.sidebar-topics .sidebar-row._following a  {
+ul.sidebar-topics .sidebar-row._resolved a {
     padding-left: calc(25px - 16px - 4px) ;
 }
 .sidebar-row._resolved .icon-resolved-small,
 .sidebar-row._following .icon-eye-small{
     opacity: 0.75;
     margin-top: 1px;
-    margin-right: 2px;
+    /* margin-right: 2px; */
 }
 .sidebar-row._following .icon-eye-small{
     opacity: 0.5;
@@ -1056,6 +1061,10 @@ ul.sidebar-topics .sidebar-row._following a  {
 }
 .sidebar-modal-content ul.sidebar-topics .sidebar-row._resolved a{
     padding-left: calc(33px - 16px - 4px);
+}
+
+.sidebar-modal-content ul.sidebar-dms .sidebar-row a {
+    padding-left: 10px;
 }
 
 ul.sidebar-topics:before {

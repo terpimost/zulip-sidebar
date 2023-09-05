@@ -179,7 +179,6 @@ document.querySelectorAll('ul.sidebar-group__details>li').forEach(li => {
   li.addEventListener('keydown', onSidebarRowKeyDown)
 })
 function onSidebarRowKeyDown(event) {
-  console.log('onSidebarRowKeyDown');
   if (event.key === 'Enter') {
     event.currentTarget.querySelector('a').click()
   }
@@ -230,7 +229,7 @@ function onSidebarGroupExpanderAreaClick(event) {
       }
     }
   }
-  setTimeout(validateActiveStickyItems,4000)
+  // setTimeout(validateActiveStickyItems,400)
   onLeftSidebarScrollThrottled() //to validate headers of groups about shadow and _overscrolled
 }
 
@@ -319,7 +318,7 @@ function onLeftSidebarScroll() {
   validateActiveStickyItems()
 }
 
-const onLeftSidebarScrollThrottled = lodash.throttle(onLeftSidebarScroll, 300,{leading:true})
+const onLeftSidebarScrollThrottled = lodash.throttle(onLeftSidebarScroll, 400, { leading: true })
 document.getElementById('left-sidebar').addEventListener('scroll', onLeftSidebarScrollThrottled)
 
 
@@ -334,21 +333,29 @@ function closeSidebarModal(e) {
 }
 
 //click on a free space above the modal to close it
-document.querySelector('.left-sidebar-modal').addEventListener('click', (e) => {
-  if (e.currentTarget === e.target) {
-    e.currentTarget.style.display = 'none'
-    e.currentTarget.querySelectorAll('.sidebar-modal-content').forEach(e => e.style.display = 'none')
-  }
+document.querySelectorAll('.left-sidebar-modal').forEach(el => {
+  el.addEventListener('click', (e) => {
+    if (e.currentTarget === e.target) {
+      e.currentTarget.style.display = 'none'
+      e.currentTarget.querySelectorAll('.sidebar-modal-content').forEach(e => e.style.display = 'none')
+    }
+  })
 })
 
 //opening model by the click on more topics button
 document.querySelectorAll('.button-more-topics>a').forEach(el => {
   el.addEventListener('click', openTopicModal)
 })
-
 function openTopicModal(e) {
-  document.querySelector('.sidebar-modal-content').style.display = 'flex'
-  document.querySelector('.left-sidebar-modal').style.display = 'flex'
+  document.querySelector('.left-sidebar-modal-topics').style.display = 'flex'
+  document.querySelector('.left-sidebar-modal-topics').querySelector('.sidebar-modal-content').style.display = 'flex'
+}
+document.querySelectorAll('.button-more-dm>a').forEach(el => {
+  el.addEventListener('click', openDMsModal)
+})
+function openDMsModal(e) {
+  document.querySelector('.sidebar-modal-dms').style.display = 'flex'
+  document.querySelector('.sidebar-modal-dms').querySelector('.sidebar-modal-content').style.display = 'flex'
 }
 
 // search and filter inputs
@@ -382,8 +389,11 @@ document.querySelectorAll('.sidebar-group-views .sidebar-row a').forEach(it =>
   it.addEventListener('click', onViewItemClick)
 )
 
-document.querySelectorAll('.sidebar-group-dms .sidebar-row a').forEach(it =>
-  it.addEventListener('click', onDMItemClick)
+document.querySelectorAll('.sidebar-group-dms .sidebar-row a').forEach(it => {
+    if(!it?.parentElement?.classList.contains('sidebar-row__button-more-items')){
+      it.addEventListener('click', onDMItemClick)
+    }
+  }
 )
 function onDMItemClick(e) {
   activateViewDMItem(e.currentTarget.href)
@@ -394,26 +404,26 @@ function activateViewDMItem(href) {
 
   const underfoldParentViews = document.querySelector('.summary-sticky-views .sticky-active-underfold')
   document.querySelectorAll('.sidebar-group-views .sidebar-row')
-  .forEach(it => validateItemSelection(it, word, underfoldParentViews ))
+    .forEach(it => validateItemSelection(it, word, underfoldParentViews))
 
   const underfoldParentDms = document.querySelector('.summary-sticky-dms .sticky-active-underfold')
   document.querySelectorAll('.sidebar-group-dms .sidebar-row')
-  .forEach(it => validateItemSelection(it, word, underfoldParentDms ))
+    .forEach(it => validateItemSelection(it, word, underfoldParentDms))
 
-  if(Array.from(document.querySelectorAll('.sidebar-group-views .sidebar-row._selected')).length){
+  if (Array.from(document.querySelectorAll('.sidebar-group-views .sidebar-row._selected')).length) {
     copyNodeAndAddToParent(null, underfoldParentDms)
   }
-  if(Array.from(document.querySelectorAll('.sidebar-group-dms .sidebar-row._selected')).length){
+  if (Array.from(document.querySelectorAll('.sidebar-group-dms .sidebar-row._selected')).length) {
     copyNodeAndAddToParent(null, underfoldParentViews)
   }
-  
+
   validateActiveStickyItems()
 }
 
-function validateItemSelection(it, word,  underfoldParent){
+function validateItemSelection(it, word, underfoldParent) {
   if (it.classList.contains('_selected')) {
     it.classList.remove('_selected')
-    if(word == get_button_href_word(it.querySelector('a').href)){
+    if (word == get_button_href_word(it.querySelector('a').href)) {
       copyNodeAndAddToParent(null, underfoldParent) //deselection
     }
   } else { //lets select it
@@ -430,14 +440,14 @@ function validateItemSelection(it, word,  underfoldParent){
 
 //node is an active row
 //parent is sticky-active-underfold inside sticky element related to active row
-function copyNodeAndAddToParent(node, parent){
-  if(node){
+function copyNodeAndAddToParent(node, parent) {
+  if (node) {
     parent.innerHTML = ''
     const cloned = node.cloneNode(true)
     parent.appendChild(cloned)
     parent.classList.remove('_empty')
     return cloned
-  }else{
+  } else {
     parent.innerHTML = ''
     parent.classList.add('_empty')
     return null
@@ -446,7 +456,7 @@ function copyNodeAndAddToParent(node, parent){
 
 // go through items of Views and DMs and correct their top positions
 // if we have active item but folded group we should show that item next to this group
-function validateActiveStickyItems(){
+function validateActiveStickyItems() {
   const summaryStickyView = document.querySelector('.summary-sticky-views');
   const summaryStickyViewComputedStyle = getComputedStyle(summaryStickyView);
   const summaryStickyViewPading = extractNumericValue(summaryStickyViewComputedStyle.getPropertyValue('padding-top'))
@@ -454,14 +464,14 @@ function validateActiveStickyItems(){
 
   const summaryStickyDMs = document.querySelector('.summary-sticky-dms')
   const summaryStickyDMsHeight = summaryStickyDMs.clientHeight
-  summaryStickyDMs.style.top = summaryStickyViewHeight+'px'
+  summaryStickyDMs.style.top = summaryStickyViewHeight + 'px'
 
   const stickyViewsDMsSeparator = document.querySelector('.summary-sticky-views-dms-separator')
   const stickyViewsDMsSeparatorHeight = stickyViewsDMsSeparator.clientHeight
-  stickyViewsDMsSeparator.style.top = (summaryStickyViewHeight+summaryStickyDMsHeight)+'px'
+  stickyViewsDMsSeparator.style.top = (summaryStickyViewHeight + summaryStickyDMsHeight) + 'px'
 
-  document.querySelectorAll('.summary-sticky-stream').forEach(it=>{
-    it.style.top = (summaryStickyViewHeight+summaryStickyDMsHeight+stickyViewsDMsSeparatorHeight)+'px'
+  document.querySelectorAll('.summary-sticky-stream').forEach(it => {
+    it.style.top = (summaryStickyViewHeight + summaryStickyDMsHeight + stickyViewsDMsSeparatorHeight) + 'px'
   })
 }
 function extractNumericValue(value) {
