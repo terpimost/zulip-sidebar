@@ -9,13 +9,16 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Source+Code:wght@300..700&family=Source+Sans+3:wght@300..700&display=block"
     rel="stylesheet" rel="preload">
+
+  <!-- Simplebar -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simplebar@6.2.5/dist/simplebar.css" />
+  <script src="https://cdn.jsdelivr.net/npm/simplebar@6.2.5/dist/simplebar.min.js"></script>
+
   <link href="general.css" rel="stylesheet" type="text/css" />
   <link href="style.css" rel="stylesheet" type="text/css" />
   <link href="left-sidebar.css" rel="stylesheet" type="text/css" />
 
-  <!-- Simplebar -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simplebar@6.2.4/dist/simplebar.css" />
-  <script src="https://cdn.jsdelivr.net/npm/simplebar@6.2.4/dist/simplebar.min.js"></script>
+  
 
 </head>
 
@@ -204,372 +207,183 @@
 
   <!-- left-sidebar.css related -->
   <div class="column-left" id="left-sidebar-container">
-    <div class="left-sidebar" id="left-sidebar" role="navigation">
+    <div class="left-sidebar" id="left-sidebar" role="navigation" >
+      <div class="left-sidebar-scrollable" data-simplebar 
+      data-simplebar-auto-hide="false"
+      >
 
-      <!-- VIEWS -->
-      <div class="sidebar-group__summary-sticky summary-sticky-views">
 
-        <div class="sidebar-group__summary sidebar-group-views _expanded" tabindex="0">
-          <div class="sidebar-group__expander-area">
-            <span class="sidebar-group__summary-expander"><i class="icon-trangle-right"></i></span>
-            <span class="sidebar-group__summary-label">Views</span>
+        <!-- VIEWS -->
+        <div class="sidebar-group__summary-sticky summary-sticky-views">
+
+          <div class="sidebar-group__summary sidebar-group-views _expanded" tabindex="0">
+            <div class="sidebar-group__expander-area">
+              <span class="sidebar-group__summary-expander"><i class="icon-trangle-right"></i></span>
+              <span class="sidebar-group__summary-label">Views</span>
+            </div>
+            <div class="sidebar-group__buttons _growing _group_expanded_hidden">
+              <a class="sidebar-group__button" href="#inbox">
+                <i class="icon icon-inbox"></i>
+                <i class="sidebar-group__button-badge"></i>
+              </a>
+              <a class="sidebar-group__button" href="#recent">
+                <i class="icon icon-clock"></i>
+              </a>
+              <a class="sidebar-group__button" href="#narrow/is/mentioned">
+                <i class="icon icon-at"></i>
+                <i class="sidebar-group__button-badge"></i>
+              </a>
+              <a class="sidebar-group__button" href="#narrow/is/starred">
+                <i class="icon icon-star"></i>
+              </a>
+              <a class="sidebar-group__button" href="#all_messages">
+                <i class="icon icon-interleaved-all"></i>
+              </a>
+            </div>
+
+            <div class="sidebar-row__buttons-wrapper">
+              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                tabindex="0">
+                <i class="icon icon-dots-vertical"></i>
+              </div>
+            </div>
           </div>
-          <div class="sidebar-group__buttons _growing _group_expanded_hidden">
-            <a class="sidebar-group__button" href="#inbox">
-              <i class="icon icon-inbox"></i>
-              <i class="sidebar-group__button-badge"></i>
-            </a>
-            <a class="sidebar-group__button" href="#recent">
-              <i class="icon icon-clock"></i>
-            </a>
-            <a class="sidebar-group__button" href="#narrow/is/mentioned">
-              <i class="icon icon-at"></i>
-              <i class="sidebar-group__button-badge"></i>
-            </a>
-            <a class="sidebar-group__button" href="#narrow/is/starred">
-              <i class="icon icon-star"></i>
-            </a>
-            <a class="sidebar-group__button" href="#all_messages">
-              <i class="icon icon-interleaved-all"></i>
-            </a>
+          <div class="sticky-active-underfold _empty">
+            <!-- a copy of active element of this group should be placed here -->
+            <!-- look at activateViewItem() -->
           </div>
+        </div>
 
-          <div class="sidebar-row__buttons-wrapper">
-            <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-              tabindex="0">
+        <!-- removed narrows_panel class -->
+        <div class="sidebar-group sidebar-group-views _expanded">
+
+
+          <!-- added "sidebar-row" class to every li item to provide general styling,
+              removed top_left_row -->
+          <!-- added "sidebar-row__label" for a span inside <a> -->
+          <!-- replaced more button from this:
+            <span class="arrow all-messages-sidebar-menu-icon hidden-for-spectators">
+              <i class="zulip-icon zulip-icon-ellipsis-v-solid" aria-hidden="true"></i>
+            </span> 
+            to this:
+            <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" tabindex="0">
               <i class="icon icon-dots-vertical"></i>
             </div>
-          </div>
-        </div>
-        <div class="sticky-active-underfold _empty">
-          <!-- a copy of active element of this group should be placed here -->
-          <!-- look at activateViewItem() -->
-        </div>
-      </div>
-
-      <!-- removed narrows_panel class -->
-      <div class="sidebar-group sidebar-group-views _expanded">
-
-
-        <!-- added "sidebar-row" class to every li item to provide general styling,
-            removed top_left_row -->
-        <!-- added "sidebar-row__label" for a span inside <a> -->
-        <!-- replaced more button from this:
-          <span class="arrow all-messages-sidebar-menu-icon hidden-for-spectators">
-            <i class="zulip-icon zulip-icon-ellipsis-v-solid" aria-hidden="true"></i>
-          </span> 
-          to this:
-          <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" tabindex="0">
-            <i class="icon icon-dots-vertical"></i>
-          </div>
-        -->
-        <!-- add title="Options" for more button  -->
-        <!-- replaced icon in the list item inside <a> from:
-        <span class="filter-icon">
-          <i class="fa fa-align-left" aria-hidden="true"></i>
-        </span>
-        to this:
-        <i class="icon icon-interleaved-all" aria-hidden="true"></i> 
-        -->
-
-        <ul id="global_filters" class="filters sidebar-group__details">
-          <!-- li ._selected is assigned on click -->
-          <li tabindex="0" class="top_left_recent_topics sidebar-row" title="Recent conversations (t)">
-            <a tabindex="-1" href="#inbox">
-              <i class="icon icon-inbox sidebar-row__icon" aria-hidden="true"></i>
-              <span class="sidebar-row__label">Inbox</span>
-              <span class="unread-count">999+</span>
-            </a>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
-              </div>
-            </div>
-          </li>
-          <li tabindex="0" class="top_left_recent_topics sidebar-row " title="Recent conversations (t)">
-            <a tabindex="-1" href="#recent">
-              <i class="icon icon-clock sidebar-row__icon" aria-hidden="true"></i>
-              <span class="sidebar-row__label">Recent conversations</span>
-            </a>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
-              </div>
-            </div>
-          </li>
-          <li tabindex="0" class="top_left_mentions sidebar-row hidden-for-spectators" title="Mentions">
-            <a tabindex="-1" href="#narrow/is/mentioned">
-              <i class="icon icon-at sidebar-row__icon" aria-hidden="true"></i>
-              <span class="sidebar-row__label">Mentions</span>
-              <span class="unread-count">3</span>
-            </a>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
-              </div>
-            </div>
-          </li>
-          <li tabindex="0" class="top_left_starred_messages sidebar-row hidden-for-spectators" title="Starred messages">
-            <a tabindex="-1" href="#narrow/is/starred">
-              <i class="icon icon-star sidebar-row__icon" aria-hidden="true"></i>
-              <span class="sidebar-row__label">Starred messages</span>
-              <span class="item-count">154</span>
-            </a>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
-              </div>
-            </div>
-          </li>
-          <li tabindex="0" class="top_left_all_messages sidebar-row" title="All messages (a)">
-            <a tabindex="-1" href="#all_messages" class="home-link">
-              <i class="icon icon-interleaved-all sidebar-row__icon" aria-hidden="true"></i>
-              <span class="sidebar-row__label">All messages</span>
-              <!-- we're moving the count that would make sense for it to Inbox -->
-              <!-- <span class="unread-count">521</span> -->
-            </a>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
-              </div>
-            </div>
-          </li>
-          <li tabindex="0" class="top_left_drafts sidebar-row hidden-for-spectators" title="Drafts (d)">
-            <a tabindex="-1" href="#drafts">
-              <i class="icon icon-document sidebar-row__icon" aria-hidden="true"></i>
-              <span class="sidebar-row__label">Drafts</span>
-              <span class="item-count">2</span>
-            </a>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
-              </div>
-            </div>
-          </li>
-          <li tabindex="0" class="top_left_scheduled_messages sidebar-row hidden-for-spectators">
-            <a tabindex="-1" href="#scheduled">
-              <i class="icon icon-calendar-days sidebar-row__icon" aria-hidden="true"></i>
-              <span class="sidebar-row__label">Scheduled messages</span>
-              <span class="item-count">1</span>
-            </a>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
-              </div>
-            </div>
-          </li>
-        </ul>
-      </div>
-
-      <!-- DMs -->
-      <div class="sidebar-group__summary-sticky summary-sticky-dms">
-        <div class="sidebar-group__summary sidebar-group-dms _expanded">
-          <div class="sidebar-group__expander-area">
-            <span class="sidebar-group__summary-expander"><i class="icon-trangle-right"></i></span>
-            <span class="sidebar-group__summary-label">Direct Messages</span>
-
-          </div>
-
-          <div class="sidebar-group__buttons _show-on-hover">
-            <a class="sidebar-group__button" href="#narrow/is/starred">
-              <i class="icon icon-search"></i>
-            </a>
-            <a class="sidebar-group__button" href="#all_messages">
-              <i class="icon icon-interleaved-all"></i>
-            </a>
-          </div>
-          <span class="unread-count-wrapper">
-            <span class="unread-count _strong">198</span>
+          -->
+          <!-- add title="Options" for more button  -->
+          <!-- replaced icon in the list item inside <a> from:
+          <span class="filter-icon">
+            <i class="fa fa-align-left" aria-hidden="true"></i>
           </span>
-          <!-- Hiding more button with "_hidden" until we have one for DMs -->
-          <div class="sidebar-row__buttons-wrapper _hidden">
-            <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-              tabindex="0">
-              <i class="icon icon-dots-vertical"></i>
-            </div>
-          </div>
-        </div>
-        <div class="sticky-active-underfold _empty">
-          <!-- an active element of this folded group will be placed here -->
-        </div>
-      </div>
-      <div class="sidebar-group _expanded sidebar-group-dms">
-        <ul class="sidebar-group__details dm-list">
-          <!-- replaced bottom_left_row with sidebar-row -->
-          <!-- removed zero-pm-unreads -->
-          <!-- removed pm-list-item -->
-          <!-- removed conversation-partners -->
-          <!-- removed zero-count, insted use _hidden-->
-          <!-- moved counter inside <a></a> -->
-          <!-- unread-count is unread-count -->
-          <!-- text of <a> is wrapped in <span class="sidebar-row__label"> -->
-          <!-- removed  <span class="pm-box pm_user_status"></span> and <div class="pm_left_col"> since icon will be inside a-->
-          <!-- _hidden more button is placed to be sure that counter is on the same placehorisontally -->
-          <!-- _no-extra-buttons mean tha there is no More button inside that row and we should maximize <a> tag
-            we don't have this:
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators _hidden" title="Options" tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
-              </div>
-            </div> 
+          to this:
+          <i class="icon icon-interleaved-all" aria-hidden="true"></i> 
           -->
 
-          <li class="sidebar-row" data-user-ids-string="26369" tabindex="0">
-            <a tabindex="-1" href="#narrow/dm/26369-Karl-Stolley">
-              <i class="icon icon-user-status sidebar-row__icon _online" aria-hidden="true"></i>
-              <span class="sidebar-row__label">Karl Stolley</span>
-              <span class="unread-count _strong">2</span>
-            </a>
-            <!-- with more button -->
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators _hidden" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
+          <ul id="global_filters" class="filters sidebar-group__details">
+            <!-- li ._selected is assigned on click -->
+            <li tabindex="0" class="top_left_recent_topics sidebar-row" title="Recent conversations (t)">
+              <a tabindex="-1" href="#inbox">
+                <i class="icon icon-inbox sidebar-row__icon" aria-hidden="true"></i>
+                <span class="sidebar-row__label">Inbox</span>
+                <span class="unread-count">999+</span>
+              </a>
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
               </div>
-            </div>
-          </li>
-
-          <li class="sidebar-row" data-user-ids-string="19257" tabindex="0">
-            <a tabindex="-1" href="#narrow/dm/19257-Alya-Abbott">
-              <i class="icon icon-user-status sidebar-row__icon _idle" aria-hidden="true"></i>
-              <span class="sidebar-row__label">Alya Abbott
-                <span class="emoji status-emoji emoji-1f30c"></span>
-              </span>
-              <span class="unread-count _hidden">0</span>
-            </a>
-            <!-- with more button -->
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators _hidden" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
+            </li>
+            <li tabindex="0" class="top_left_recent_topics sidebar-row " title="Recent conversations (t)">
+              <a tabindex="-1" href="#recent">
+                <i class="icon icon-clock sidebar-row__icon" aria-hidden="true"></i>
+                <span class="sidebar-row__label">Recent conversations</span>
+              </a>
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
               </div>
-            </div>
-          </li>
-
-          <li class="sidebar-row _no-extra-buttons" data-user-ids-string="22433" tabindex="0">
-            <a tabindex="-1" href="#narrow/dm/22433-Vlad-Korobov">
-              <i class="icon icon-user-status sidebar-row__icon _away" aria-hidden="true"></i>
-              <span class="sidebar-row__label">Vlad Korobov</span>
-              <span class="unread-count _hidden">0</span>
-            </a>
-
-          </li>
-
-          <li class="sidebar-row _no-extra-buttons" data-user-ids-string="5140" tabindex="0">
-            <a tabindex="-1" href="#narrow/dm/5140-Aman-(amanagr)">
-              <i class="icon icon-user-status sidebar-row__icon _online" aria-hidden="true"></i>
-              <span class="sidebar-row__label">Aman (amanagr)</span>
-              <span class="unread-count _strong">5</span>
-            </a>
-
-          </li>
-
-          <li class="sidebar-row _no-extra-buttons" data-user-ids-string="7,19257" tabindex="0">
-            <a tabindex="-1" href="#narrow/dm/7,19257-group">
-              <i class="icon icon-user-group-3 sidebar-row__icon" aria-hidden="true"></i>
-              <span class="sidebar-row__label">Alya Abbott, Tim Abbott</span>
-              <span class="unread-count _strong">99</span>
-            </a>
-          </li>
-
-          <li class="sidebar-row _no-extra-buttons" data-user-ids-string="7" tabindex="0">
-            <a tabindex="-1" href="#narrow/dm/7-Tim-Abbott">
-              <i class="icon icon-user-status sidebar-row__icon _away" aria-hidden="true"></i>
-              <span class="sidebar-row__label">Tim Abbott
-                <span class="emoji status-emoji emoji-1f419"></span>
-              </span>
-              <span class="unread-count _strong">1</span>
-            </a>
-          </li>
-
-          <li class="sidebar-row" data-user-ids-string="7,5140,19257" tabindex="0">
-            <a tabindex="-1" href="#narrow/dm/7,5140,4-group">
-              <i class="icon icon-user-group-4 sidebar-row__icon" aria-hidden="true"></i>
-              <span class="sidebar-row__label">Group Four, Person One, Person Two, Person Tree, Person Four</span>
-              <span class="unread-count _strong">5</span>
-            </a>
-            <!-- with more button -->
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators _hidden" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
+            </li>
+            <li tabindex="0" class="top_left_mentions sidebar-row hidden-for-spectators" title="Mentions">
+              <a tabindex="-1" href="#narrow/is/mentioned">
+                <i class="icon icon-at sidebar-row__icon" aria-hidden="true"></i>
+                <span class="sidebar-row__label">Mentions</span>
+                <span class="unread-count">3</span>
+              </a>
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
               </div>
-            </div>
-          </li>
-          <li class="sidebar-row" data-user-ids-string="7,5140,19257" tabindex="0">
-            <a tabindex="-1" href="#narrow/dm/7,5140,5-group">
-              <i class="icon icon-user-group-5 sidebar-row__icon" aria-hidden="true"></i>
-              <span class="sidebar-row__label">Group Five, Person One, Person Two, Person Tree, Person Four, Person Five</span>
-              <span class="unread-count _strong">4</span>
-            </a>
-            <!-- with more button -->
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators _hidden" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
+            </li>
+            <li tabindex="0" class="top_left_starred_messages sidebar-row hidden-for-spectators" title="Starred messages">
+              <a tabindex="-1" href="#narrow/is/starred">
+                <i class="icon icon-star sidebar-row__icon" aria-hidden="true"></i>
+                <span class="sidebar-row__label">Starred messages</span>
+                <span class="item-count">154</span>
+              </a>
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
               </div>
-            </div>
-          </li>
-          <li class="sidebar-row" data-user-ids-string="7,5140,19257" tabindex="0">
-            <a tabindex="-1" href="#narrow/dm/7,5140,6-group">
-              <i class="icon icon-user-group-6 sidebar-row__icon" aria-hidden="true"></i>
-              <span class="sidebar-row__label">Group Six, Person One, Person Two, Person Tree, Person Four, Person Five, Person Six</span>
-              <span class="unread-count _strong">3</span>
-            </a>
-            <!-- with more button -->
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators _hidden" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
+            </li>
+            <li tabindex="0" class="top_left_all_messages sidebar-row" title="All messages (a)">
+              <a tabindex="-1" href="#all_messages" class="home-link">
+                <i class="icon icon-interleaved-all sidebar-row__icon" aria-hidden="true"></i>
+                <span class="sidebar-row__label">All messages</span>
+                <!-- we're moving the count that would make sense for it to Inbox -->
+                <!-- <span class="unread-count">521</span> -->
+              </a>
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
               </div>
-            </div>
-          </li>
-          <li class="sidebar-row" data-user-ids-string="7,5140,19257" tabindex="0">
-            <a tabindex="-1" href="#narrow/dm/7,5140,7-group">
-              <i class="icon-user-group sidebar-row__icon" aria-hidden="true">7</i>
-              <span class="sidebar-row__label">Group Seven, Person One, Person Two, Person Tree, Person Four, Person Five, Person Six, Person Seven</span>
-              <span class="unread-count _strong">3</span>
-            </a>
-            <!-- with more button -->
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators _hidden" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
+            </li>
+            <li tabindex="0" class="top_left_drafts sidebar-row hidden-for-spectators" title="Drafts (d)">
+              <a tabindex="-1" href="#drafts">
+                <i class="icon icon-document sidebar-row__icon" aria-hidden="true"></i>
+                <span class="sidebar-row__label">Drafts</span>
+                <span class="item-count">2</span>
+              </a>
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
               </div>
-            </div>
-          </li>
+            </li>
+            <li tabindex="0" class="top_left_scheduled_messages sidebar-row hidden-for-spectators">
+              <a tabindex="-1" href="#scheduled">
+                <i class="icon icon-calendar-days sidebar-row__icon" aria-hidden="true"></i>
+                <span class="sidebar-row__label">Scheduled messages</span>
+                <span class="item-count">1</span>
+              </a>
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
 
-          <!-- removed class="pm-name" from <a></a> -->
-          <li id="show_more_private_messages" class="sidebar-row sidebar-row__button-more-items button-more-dm _no-extra-buttons"
-            tabindex="0">
-            <a tabindex="-1">
-              <span class="sidebar-row__label">more DM conversations</span>
-              <span class="unread-count _strong">1</span>
-            </a>
-          </li>
-
-        </ul>
-      </div>
-
-      <div class="sidebar-group__summary-sticky summary-sticky-views-dms-separator">
-        <hr class="sidebar-group__separator">
-      </div>
-
-      <!-- Streams -->
-      <div class="sidebar-group _expanded">
-        <div class="sidebar-group__summary-sticky summary-sticky-stream">
-          <div class="sidebar-group__summary">
+        <!-- DMs -->
+        <div class="sidebar-group__summary-sticky summary-sticky-dms">
+          <div class="sidebar-group__summary sidebar-group-dms _expanded">
             <div class="sidebar-group__expander-area">
               <span class="sidebar-group__summary-expander"><i class="icon-trangle-right"></i></span>
-              <span class="sidebar-group__summary-label">Streams main</span>
+              <span class="sidebar-group__summary-label">Direct Messages</span>
+
             </div>
+
             <div class="sidebar-group__buttons _show-on-hover">
               <a class="sidebar-group__button" href="#narrow/is/starred">
                 <i class="icon icon-search"></i>
@@ -579,83 +393,216 @@
               </a>
             </div>
             <span class="unread-count-wrapper">
-              <span class="unread-count">203</span>
+              <span class="unread-count _strong">198</span>
             </span>
-            <div class="sidebar-row__buttons-wrapper">
+            <!-- Hiding more button with "_hidden" until we have one for DMs -->
+            <div class="sidebar-row__buttons-wrapper _hidden">
               <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
                 tabindex="0">
                 <i class="icon icon-dots-vertical"></i>
               </div>
             </div>
-
+          </div>
+          <div class="sticky-active-underfold _empty">
+            <!-- an active element of this folded group will be placed here -->
           </div>
         </div>
-        <ul class="sidebar-group__details sidebar-group-streams">
-          <li tabindex="0" class="sidebar-row _pinned hidden-for-spectators">
-            <a tabindex="-1" href="#stream">
-              <i class="icon icon-globe sidebar-row__icon" aria-hidden="true"></i>
-              <span class="sidebar-row__label">design</span>
-              <span class="unread-count">2</span>
-            </a>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
-              </div>
-            </div>
-          </li>
-          <li tabindex="0" class="sidebar-row _pinned hidden-for-spectators">
-            <a tabindex="-1" href="#stream">
-              <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
-              <span class="sidebar-row__label">redesign project</span>
-              <i class="icon icon-at-smaller icon-secondary" aria-hidden="true"></i>
-              <span class="unread-count">13</span>
-            </a>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
-              </div>
-            </div>
-          </li>
-          <li tabindex="0" class="sidebar-row  _pinned hidden-for-spectators">
-            <a tabindex="-1" href="#stream">
-              <i class="icon icon-globe sidebar-row__icon" aria-hidden="true"></i>
-              <span class="sidebar-row__label">feedback</span>
-              <span class="unread-count">2</span>
-            </a>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
-              </div>
-            </div>
-          </li>
-          <li tabindex="0" class="sidebar-row hidden-for-spectators">
-            <a tabindex="-1" href="#stream">
-              <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
-              <span class="sidebar-row__label">mobile team</span>
-              <span class="unread-count">2</span>
-            </a>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
-              </div>
-            </div>
-          </li>
-
-          <li tabindex="0" class="sidebar-stream hidden-for-spectators">
-            <!-- if needed we can have sidebar-stream in all li elements 
-                in that case every li should have div with sidebar-row class on it
+        <div class="sidebar-group _expanded sidebar-group-dms">
+          <ul class="sidebar-group__details dm-list">
+            <!-- replaced bottom_left_row with sidebar-row -->
+            <!-- removed zero-pm-unreads -->
+            <!-- removed pm-list-item -->
+            <!-- removed conversation-partners -->
+            <!-- removed zero-count, insted use _hidden-->
+            <!-- moved counter inside <a></a> -->
+            <!-- unread-count is unread-count -->
+            <!-- text of <a> is wrapped in <span class="sidebar-row__label"> -->
+            <!-- removed  <span class="pm-box pm_user_status"></span> and <div class="pm_left_col"> since icon will be inside a-->
+            <!-- _hidden more button is placed to be sure that counter is on the same placehorisontally -->
+            <!-- _no-extra-buttons mean tha there is no More button inside that row and we should maximize <a> tag
+              we don't have this:
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators _hidden" title="Options" tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
+              </div> 
             -->
-            <!-- stream-name-container -->
-            <div class="sidebar-row">
+
+            <li class="sidebar-row" data-user-ids-string="26369" tabindex="0">
+              <a tabindex="-1" href="#narrow/dm/26369-Karl-Stolley">
+                <i class="icon icon-user-status sidebar-row__icon _online" aria-hidden="true"></i>
+                <span class="sidebar-row__label">Karl Stolley</span>
+                <span class="unread-count _strong">2</span>
+              </a>
+              <!-- with more button -->
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators _hidden" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
+              </div>
+            </li>
+
+            <li class="sidebar-row" data-user-ids-string="19257" tabindex="0">
+              <a tabindex="-1" href="#narrow/dm/19257-Alya-Abbott">
+                <i class="icon icon-user-status sidebar-row__icon _idle" aria-hidden="true"></i>
+                <span class="sidebar-row__label">Alya Abbott
+                  <span class="emoji status-emoji emoji-1f30c"></span>
+                </span>
+                <span class="unread-count _hidden">0</span>
+              </a>
+              <!-- with more button -->
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators _hidden" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
+              </div>
+            </li>
+
+            <li class="sidebar-row _no-extra-buttons" data-user-ids-string="22433" tabindex="0">
+              <a tabindex="-1" href="#narrow/dm/22433-Vlad-Korobov">
+                <i class="icon icon-user-status sidebar-row__icon _away" aria-hidden="true"></i>
+                <span class="sidebar-row__label">Vlad Korobov</span>
+                <span class="unread-count _hidden">0</span>
+              </a>
+
+            </li>
+
+            <li class="sidebar-row _no-extra-buttons" data-user-ids-string="5140" tabindex="0">
+              <a tabindex="-1" href="#narrow/dm/5140-Aman-(amanagr)">
+                <i class="icon icon-user-status sidebar-row__icon _online" aria-hidden="true"></i>
+                <span class="sidebar-row__label">Aman (amanagr)</span>
+                <span class="unread-count _strong">5</span>
+              </a>
+
+            </li>
+
+            <li class="sidebar-row _no-extra-buttons" data-user-ids-string="7,19257" tabindex="0">
+              <a tabindex="-1" href="#narrow/dm/7,19257-group">
+                <i class="icon icon-user-group-3 sidebar-row__icon" aria-hidden="true"></i>
+                <span class="sidebar-row__label">Alya Abbott, Tim Abbott</span>
+                <span class="unread-count _strong">99</span>
+              </a>
+            </li>
+
+            <li class="sidebar-row _no-extra-buttons" data-user-ids-string="7" tabindex="0">
+              <a tabindex="-1" href="#narrow/dm/7-Tim-Abbott">
+                <i class="icon icon-user-status sidebar-row__icon _away" aria-hidden="true"></i>
+                <span class="sidebar-row__label">Tim Abbott
+                  <span class="emoji status-emoji emoji-1f419"></span>
+                </span>
+                <span class="unread-count _strong">1</span>
+              </a>
+            </li>
+
+            <li class="sidebar-row" data-user-ids-string="7,5140,19257" tabindex="0">
+              <a tabindex="-1" href="#narrow/dm/7,5140,4-group">
+                <i class="icon icon-user-group-4 sidebar-row__icon" aria-hidden="true"></i>
+                <span class="sidebar-row__label">Group Four, Person One, Person Two, Person Tree, Person Four</span>
+                <span class="unread-count _strong">5</span>
+              </a>
+              <!-- with more button -->
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators _hidden" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
+              </div>
+            </li>
+            <li class="sidebar-row" data-user-ids-string="7,5140,19257" tabindex="0">
+              <a tabindex="-1" href="#narrow/dm/7,5140,5-group">
+                <i class="icon icon-user-group-5 sidebar-row__icon" aria-hidden="true"></i>
+                <span class="sidebar-row__label">Group Five, Person One, Person Two, Person Tree, Person Four, Person Five</span>
+                <span class="unread-count _strong">4</span>
+              </a>
+              <!-- with more button -->
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators _hidden" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
+              </div>
+            </li>
+            <li class="sidebar-row" data-user-ids-string="7,5140,19257" tabindex="0">
+              <a tabindex="-1" href="#narrow/dm/7,5140,6-group">
+                <i class="icon icon-user-group-6 sidebar-row__icon" aria-hidden="true"></i>
+                <span class="sidebar-row__label">Group Six, Person One, Person Two, Person Tree, Person Four, Person Five, Person Six</span>
+                <span class="unread-count _strong">3</span>
+              </a>
+              <!-- with more button -->
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators _hidden" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
+              </div>
+            </li>
+            <li class="sidebar-row" data-user-ids-string="7,5140,19257" tabindex="0">
+              <a tabindex="-1" href="#narrow/dm/7,5140,7-group">
+                <i class="icon-user-group sidebar-row__icon" aria-hidden="true">7</i>
+                <span class="sidebar-row__label">Group Seven, Person One, Person Two, Person Tree, Person Four, Person Five, Person Six, Person Seven</span>
+                <span class="unread-count _strong">3</span>
+              </a>
+              <!-- with more button -->
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators _hidden" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
+              </div>
+            </li>
+
+            <!-- removed class="pm-name" from <a></a> -->
+            <li id="show_more_private_messages" class="sidebar-row sidebar-row__button-more-items button-more-dm _no-extra-buttons"
+              tabindex="0">
+              <a tabindex="-1">
+                <span class="sidebar-row__label">more DM conversations</span>
+                <span class="unread-count _strong">1</span>
+              </a>
+            </li>
+
+          </ul>
+        </div>
+
+        <div class="sidebar-group__summary-sticky summary-sticky-views-dms-separator">
+          <hr class="sidebar-group__separator">
+        </div>
+
+        <!-- Streams -->
+        <div class="sidebar-group _expanded">
+          <div class="sidebar-group__summary-sticky summary-sticky-stream">
+            <div class="sidebar-group__summary">
+              <div class="sidebar-group__expander-area">
+                <span class="sidebar-group__summary-expander"><i class="icon-trangle-right"></i></span>
+                <span class="sidebar-group__summary-label">Streams main</span>
+              </div>
+              <div class="sidebar-group__buttons _show-on-hover">
+                <a class="sidebar-group__button" href="#narrow/is/starred">
+                  <i class="icon icon-search"></i>
+                </a>
+                <a class="sidebar-group__button" href="#all_messages">
+                  <i class="icon icon-interleaved-all"></i>
+                </a>
+              </div>
+              <span class="unread-count-wrapper">
+                <span class="unread-count">203</span>
+              </span>
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <ul class="sidebar-group__details sidebar-group-streams">
+            <li tabindex="0" class="sidebar-row _pinned hidden-for-spectators">
               <a tabindex="-1" href="#stream">
                 <i class="icon icon-globe sidebar-row__icon" aria-hidden="true"></i>
-                <span class="sidebar-row__label">announce</span>
-                <i class="icon icon-at-smaller icon-secondary" aria-hidden="true"></i>
-                <span class="unread-count">15</span>
+                <span class="sidebar-row__label">design</span>
+                <span class="unread-count">2</span>
               </a>
               <div class="sidebar-row__buttons-wrapper">
                 <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
@@ -663,163 +610,13 @@
                   <i class="icon icon-dots-vertical"></i>
                 </div>
               </div>
-            </div>
-            <!-- topics -->
-            <ul class="sidebar-topics">
-              <li tabindex="0" class="sidebar-row no-topic">
-                <a tabindex="-1" href="#topic" >
-                  <span class="sidebar-row__label">General chat</span>
-                  <span class="unread-count">2</span>
-                </a>
-                <div class="sidebar-row__buttons-wrapper">
-                  <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                    tabindex="0">
-                    <i class="icon icon-dots-vertical"></i>
-                  </div>
-                </div>
-              </li>
-              <li tabindex="0" class="sidebar-row">
-                <a tabindex="-1" href="#stream">
-                  <span class="sidebar-row__label">server releases</span>
-                  <i class="icon icon-at-smaller icon-secondary" aria-hidden="true"></i>
-                  <span class="unread-count">2</span>
-                </a>
-                <div class="sidebar-row__buttons-wrapper">
-                  <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                    tabindex="0">
-                    <i class="icon icon-dots-vertical"></i>
-                  </div>
-                </div>
-              </li>
-              <li tabindex="0" class="sidebar-row">
-                <a tabindex="-1" href="#stream">
-                  <span class="sidebar-row__label">Zulip Desktop on Microsoft Store</span>
-                  <span class="unread-count">2</span>
-                </a>
-                <div class="sidebar-row__buttons-wrapper">
-                  <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                    tabindex="0">
-                    <i class="icon icon-dots-vertical"></i>
-                  </div>
-                </div>
-              </li>
-              <li tabindex="0" class="sidebar-row _following">
-                <a tabindex="-1" href="#stream">
-                  <span class="sidebar-row__label">mobile releases</span>
-                  <i class="icon icon-eye-small" title="You are following this topic"></i>
-                  <span class="unread-count">2</span>
-                </a>
-                <div class="sidebar-row__buttons-wrapper">
-                  <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                    tabindex="0">
-                    <i class="icon icon-dots-vertical"></i>
-                  </div>
-                </div>
-              </li>
-              <li tabindex="0" class="sidebar-row sidebar-topic _selected">
-                <a tabindex="-1" href="#stream">
-                  <span class="sidebar-row__label">Atolio case study</span>
-                  <span class="unread-count">2</span>
-                </a>
-                <div class="sidebar-row__buttons-wrapper">
-                  <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                    tabindex="0">
-                    <i class="icon icon-dots-vertical"></i>
-                  </div>
-                </div>
-              </li>
-              <li tabindex="0" class="sidebar-row">
-                <a tabindex="-1" href="#stream">
-                  <span class="sidebar-row__label">new blog post</span>
-                  <span class="unread-count">2</span>
-                </a>
-                <div class="sidebar-row__buttons-wrapper">
-                  <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                    tabindex="0">
-                    <i class="icon icon-dots-vertical"></i>
-                  </div>
-                </div>
-              </li>
-              <li tabindex="0" class="sidebar-row _following _resolved">
-                <a tabindex="-1" href="#stream">
-                  <i class="icon icon-resolved-small" title="Topic is resolved"></i>
-                  <span class="sidebar-row__label">End Point Dev case study long topic name to check how icons are aligned</span>
-                  <i class="icon icon-eye-small" title="You are following this topic" aria-hidden="true"></i>
-                  <!-- <span class="unread-count">0</span> -->
-                </a>
-                <div class="sidebar-row__buttons-wrapper">
-                  <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                    tabindex="0">
-                    <i class="icon icon-dots-vertical"></i>
-                  </div>
-                </div>
-              </li>
-              <li tabindex="0" class="sidebar-row sidebar-topic">
-                <a tabindex="-1" href="#stream">
-                  <span class="sidebar-row__label">interview with Tim</span>
-                </a>
-                <div class="sidebar-row__buttons-wrapper">
-                  <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                    tabindex="0">
-                    <i class="icon icon-dots-vertical"></i>
-                  </div>
-                </div>
-              </li>
-              <li tabindex="0" class="sidebar-row sidebar-row__button-more-items button-more-topics _no-extra-buttons" tabindex="0">
-                <a tabindex="-1">
-                  <span class="sidebar-row__label">more topics</span>
-                  <span class="unread-count">3</span>
-                </a>
-              </li>
-            </ul>
-
-          </li>
-          <li tabindex="0" class="sidebar-row hidden-for-spectators">
-            <a tabindex="-1" href="#stream">
-              <i class="icon icon-lock sidebar-row__icon" aria-hidden="true"></i>
-              <span class="sidebar-row__label">private stream</span>
-              <span class="unread-count">2</span>
-            </a>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
-              </div>
-            </div>
-          </li>
-          <li tabindex="0" class="sidebar-row hidden-for-spectators">
-            <a tabindex="-1" href="#stream">
-              <i class="icon icon-globe sidebar-row__icon" aria-hidden="true"></i>
-              <span class="sidebar-row__label">news</span>
-              <span class="unread-count">2</span>
-            </a>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
-              </div>
-            </div>
-          </li>
-          <li tabindex="0" class="sidebar-row hidden-for-spectators">
-            <a tabindex="-1" href="#stream">
-              <i class="icon icon-lock sidebar-row__icon" aria-hidden="true"></i>
-              <span class="sidebar-row__label">management</span>
-              <span class="unread-count">2</span>
-            </a>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
-              </div>
-            </div>
-          </li>
-
-          <li tabindex="0" class="sidebar-stream _selected hidden-for-spectators">
-            <div class="sidebar-row">
+            </li>
+            <li tabindex="0" class="sidebar-row _pinned hidden-for-spectators">
               <a tabindex="-1" href="#stream">
                 <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
-                <span class="sidebar-row__label">code review</span>
-                <span class="unread-count">7</span>
+                <span class="sidebar-row__label">redesign project</span>
+                <i class="icon icon-at-smaller icon-secondary" aria-hidden="true"></i>
+                <span class="unread-count">13</span>
               </a>
               <div class="sidebar-row__buttons-wrapper">
                 <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
@@ -827,14 +624,45 @@
                   <i class="icon icon-dots-vertical"></i>
                 </div>
               </div>
-            </div>
+            </li>
+            <li tabindex="0" class="sidebar-row  _pinned hidden-for-spectators">
+              <a tabindex="-1" href="#stream">
+                <i class="icon icon-globe sidebar-row__icon" aria-hidden="true"></i>
+                <span class="sidebar-row__label">feedback</span>
+                <span class="unread-count">2</span>
+              </a>
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
+              </div>
+            </li>
+            <li tabindex="0" class="sidebar-row hidden-for-spectators">
+              <a tabindex="-1" href="#stream">
+                <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
+                <span class="sidebar-row__label">mobile team</span>
+                <span class="unread-count">2</span>
+              </a>
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
+              </div>
+            </li>
 
-            <!-- topics -->
-            <ul class="sidebar-topics">
-              <li tabindex="0" class="sidebar-row _following">
+            <li tabindex="0" class="sidebar-stream hidden-for-spectators">
+              <!-- if needed we can have sidebar-stream in all li elements 
+                  in that case every li should have div with sidebar-row class on it
+              -->
+              <!-- stream-name-container -->
+              <div class="sidebar-row">
                 <a tabindex="-1" href="#stream">
-                  <span class="sidebar-row__label">#24237</span>
-                  <i class="icon icon-eye-small" title="You are following this topic"></i>
+                  <i class="icon icon-globe sidebar-row__icon" aria-hidden="true"></i>
+                  <span class="sidebar-row__label">announce</span>
+                  <i class="icon icon-at-smaller icon-secondary" aria-hidden="true"></i>
+                  <span class="unread-count">15</span>
                 </a>
                 <div class="sidebar-row__buttons-wrapper">
                   <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
@@ -842,910 +670,1093 @@
                     <i class="icon icon-dots-vertical"></i>
                   </div>
                 </div>
-              </li>
-              <li tabindex="0" class="sidebar-row sidebar-topic _following">
-                <a tabindex="-1" href="#stream">
-                  <span class="sidebar-row__label">PR review and comment</span>
-                  <i class="icon icon-eye-small" title="You are following this topic"></i>
-                </a>
-                <div class="sidebar-row__buttons-wrapper">
-                  <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                    tabindex="0">
-                    <i class="icon icon-dots-vertical"></i>
+              </div>
+              <!-- topics -->
+              <ul class="sidebar-topics">
+                <li tabindex="0" class="sidebar-row no-topic">
+                  <a tabindex="-1" href="#topic" >
+                    <span class="sidebar-row__label">General chat</span>
+                    <span class="unread-count">2</span>
+                  </a>
+                  <div class="sidebar-row__buttons-wrapper">
+                    <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                      tabindex="0">
+                      <i class="icon icon-dots-vertical"></i>
+                    </div>
                   </div>
-                </div>
-              </li>
-              <li tabindex="0" class="sidebar-row">
-                <a tabindex="-1" href="#stream">
-                  <span class="sidebar-row__label">#25818</span>
-                </a>
-                <div class="sidebar-row__buttons-wrapper">
-                  <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                    tabindex="0">
-                    <i class="icon icon-dots-vertical"></i>
+                </li>
+                <li tabindex="0" class="sidebar-row">
+                  <a tabindex="-1" href="#stream">
+                    <span class="sidebar-row__label">server releases</span>
+                    <i class="icon icon-at-smaller icon-secondary" aria-hidden="true"></i>
+                    <span class="unread-count">2</span>
+                  </a>
+                  <div class="sidebar-row__buttons-wrapper">
+                    <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                      tabindex="0">
+                      <i class="icon icon-dots-vertical"></i>
+                    </div>
                   </div>
-                </div>
-              </li>
-              <li tabindex="0" class="sidebar-row">
-                <a tabindex="-1" href="#stream">
-                  <span class="sidebar-row__label">#25436</span>
-                </a>
-                <div class="sidebar-row__buttons-wrapper">
-                  <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                    tabindex="0">
-                    <i class="icon icon-dots-vertical"></i>
+                </li>
+                <li tabindex="0" class="sidebar-row">
+                  <a tabindex="-1" href="#stream">
+                    <span class="sidebar-row__label">Zulip Desktop on Microsoft Store</span>
+                    <span class="unread-count">2</span>
+                  </a>
+                  <div class="sidebar-row__buttons-wrapper">
+                    <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                      tabindex="0">
+                      <i class="icon icon-dots-vertical"></i>
+                    </div>
                   </div>
-                </div>
-              </li>
-              <li tabindex="0" class="sidebar-row">
-                <a tabindex="-1" href="#stream">
-                  <span class="sidebar-row__label">#25579</span>
-                </a>
-                <div class="sidebar-row__buttons-wrapper">
-                  <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                    tabindex="0">
-                    <i class="icon icon-dots-vertical"></i>
+                </li>
+                <li tabindex="0" class="sidebar-row _following">
+                  <a tabindex="-1" href="#stream">
+                    <span class="sidebar-row__label">mobile releases</span>
+                    <i class="icon icon-eye-small" title="You are following this topic"></i>
+                    <span class="unread-count">2</span>
+                  </a>
+                  <div class="sidebar-row__buttons-wrapper">
+                    <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                      tabindex="0">
+                      <i class="icon icon-dots-vertical"></i>
+                    </div>
                   </div>
-                </div>
-              </li>
-              <!-- resolve renamed to _resolved -->
+                </li>
+                <li tabindex="0" class="sidebar-row sidebar-topic _selected">
+                  <a tabindex="-1" href="#stream">
+                    <span class="sidebar-row__label">Atolio case study</span>
+                    <span class="unread-count">2</span>
+                  </a>
+                  <div class="sidebar-row__buttons-wrapper">
+                    <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                      tabindex="0">
+                      <i class="icon icon-dots-vertical"></i>
+                    </div>
+                  </div>
+                </li>
+                <li tabindex="0" class="sidebar-row">
+                  <a tabindex="-1" href="#stream">
+                    <span class="sidebar-row__label">new blog post</span>
+                    <span class="unread-count">2</span>
+                  </a>
+                  <div class="sidebar-row__buttons-wrapper">
+                    <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                      tabindex="0">
+                      <i class="icon icon-dots-vertical"></i>
+                    </div>
+                  </div>
+                </li>
+                <li tabindex="0" class="sidebar-row _following _resolved">
+                  <a tabindex="-1" href="#stream">
+                    <i class="icon icon-resolved-small" title="Topic is resolved"></i>
+                    <span class="sidebar-row__label">End Point Dev case study long topic name to check how icons are aligned</span>
+                    <i class="icon icon-eye-small" title="You are following this topic" aria-hidden="true"></i>
+                    <!-- <span class="unread-count">0</span> -->
+                  </a>
+                  <div class="sidebar-row__buttons-wrapper">
+                    <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                      tabindex="0">
+                      <i class="icon icon-dots-vertical"></i>
+                    </div>
+                  </div>
+                </li>
+                <li tabindex="0" class="sidebar-row sidebar-topic">
+                  <a tabindex="-1" href="#stream">
+                    <span class="sidebar-row__label">interview with Tim</span>
+                  </a>
+                  <div class="sidebar-row__buttons-wrapper">
+                    <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                      tabindex="0">
+                      <i class="icon icon-dots-vertical"></i>
+                    </div>
+                  </div>
+                </li>
+                <li tabindex="0" class="sidebar-row sidebar-row__button-more-items button-more-topics _no-extra-buttons" tabindex="0">
+                  <a tabindex="-1">
+                    <span class="sidebar-row__label">more topics</span>
+                    <span class="unread-count">3</span>
+                  </a>
+                </li>
+              </ul>
 
-              <li tabindex="0" class="sidebar-row _resolved">
-                <a tabindex="-1" href="#topic">
-                  <i class="icon icon-resolved-small" title="Topic is resolved"></i>
-                  <span class="sidebar-row__label">#25351</span>
-                </a>
-                <div class="sidebar-row__buttons-wrapper">
-                  <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                    tabindex="0">
-                    <i class="icon icon-dots-vertical"></i>
-                  </div>
+            </li>
+            <li tabindex="0" class="sidebar-row hidden-for-spectators">
+              <a tabindex="-1" href="#stream">
+                <i class="icon icon-lock sidebar-row__icon" aria-hidden="true"></i>
+                <span class="sidebar-row__label">private stream</span>
+                <span class="unread-count">2</span>
+              </a>
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
                 </div>
-              </li>
-              <li tabindex="0" class="sidebar-row">
+              </div>
+            </li>
+            <li tabindex="0" class="sidebar-row hidden-for-spectators">
+              <a tabindex="-1" href="#stream">
+                <i class="icon icon-globe sidebar-row__icon" aria-hidden="true"></i>
+                <span class="sidebar-row__label">news</span>
+                <span class="unread-count">2</span>
+              </a>
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
+              </div>
+            </li>
+            <li tabindex="0" class="sidebar-row hidden-for-spectators">
+              <a tabindex="-1" href="#stream">
+                <i class="icon icon-lock sidebar-row__icon" aria-hidden="true"></i>
+                <span class="sidebar-row__label">management</span>
+                <span class="unread-count">2</span>
+              </a>
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
+              </div>
+            </li>
+
+            <li tabindex="0" class="sidebar-stream _selected hidden-for-spectators">
+              <div class="sidebar-row">
                 <a tabindex="-1" href="#stream">
-                  <span class="sidebar-row__label">#25394, #24823 and #24921</span>
-                </a>
-                <div class="sidebar-row__buttons-wrapper">
-                  <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                    tabindex="0">
-                    <i class="icon icon-dots-vertical"></i>
-                  </div>
-                </div>
-              </li>
-              <li tabindex="0" class="sidebar-row">
-                <a tabindex="-1" href="#stream">
-                  <span class="sidebar-row__label">#25106</span>
-                </a>
-                <div class="sidebar-row__buttons-wrapper">
-                  <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                    tabindex="0">
-                    <i class="icon icon-dots-vertical"></i>
-                  </div>
-                </div>
-              </li>
-              <li tabindex="0" class="sidebar-row sidebar-row__button-more-items button-more-topics _no-extra-buttons" tabindex="0">
-                <a tabindex="-1">
-                  <span class="sidebar-row__label">more topics</span>
+                  <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
+                  <span class="sidebar-row__label">code review</span>
                   <span class="unread-count">7</span>
                 </a>
-              </li>
-            </ul>
-
-
-
-          </li>
-          <li tabindex="0" class="sidebar-row hidden-for-spectators">
-            <a tabindex="-1" href="#stream">
-              <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
-              <span class="sidebar-row__label">social</span>
-              <span class="unread-count">2</span>
-            </a>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
+                <div class="sidebar-row__buttons-wrapper">
+                  <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                    tabindex="0">
+                    <i class="icon icon-dots-vertical"></i>
+                  </div>
+                </div>
               </div>
-            </div>
-          </li>
-          <li tabindex="0" class="sidebar-row _silent-counter hidden-for-spectators">
-            <a tabindex="-1" href="#stream">
-              <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
-              <span class="sidebar-row__label">desktop</span>
-              <span class="unread-count">2</span>
-            </a>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
-              </div>
-            </div>
-          </li>
-          <li tabindex="0" class="sidebar-row _silent-counter hidden-for-spectators">
-            <a tabindex="-1" href="#stream">
-              <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
-              <span class="sidebar-row__label">mobile</span>
-              <span class="unread-count">2</span>
-            </a>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
-              </div>
-            </div>
-          </li>
-          <li tabindex="0" class="sidebar-row _muted _silent-counter hidden-for-spectators">
-            <a tabindex="-1" href="#stream">
-              <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
-              <span class="sidebar-row__label">issues</span>
-              <span class="unread-count">2</span>
-            </a>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
-              </div>
-            </div>
-          </li>
-          <li tabindex="0" class="sidebar-row _muted hidden-for-spectators">
-            <a tabindex="-1" href="#stream">
-              <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
-              <span class="sidebar-row__label">marketing</span>
-              <!-- <span class="unread-count">0</span> -->
-            </a>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
-              </div>
-            </div>
-          </li>
 
-          <!-- inactive -->
-          <li tabindex="-1" class=" hidden-for-spectators">
-            <div class="sidebar-stream__separator-wrapper">
-              <hr class="sidebar-stream__separator" />
-              <span class="sidebar-stream__separator-label">Inactive</span>
-              <hr class="sidebar-stream__separator" />
-            </div>
-          </li>
+              <!-- topics -->
+              <ul class="sidebar-topics">
+                <li tabindex="0" class="sidebar-row _following">
+                  <a tabindex="-1" href="#stream">
+                    <span class="sidebar-row__label">#24237</span>
+                    <i class="icon icon-eye-small" title="You are following this topic"></i>
+                  </a>
+                  <div class="sidebar-row__buttons-wrapper">
+                    <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                      tabindex="0">
+                      <i class="icon icon-dots-vertical"></i>
+                    </div>
+                  </div>
+                </li>
+                <li tabindex="0" class="sidebar-row sidebar-topic _following">
+                  <a tabindex="-1" href="#stream">
+                    <span class="sidebar-row__label">PR review and comment</span>
+                    <i class="icon icon-eye-small" title="You are following this topic"></i>
+                  </a>
+                  <div class="sidebar-row__buttons-wrapper">
+                    <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                      tabindex="0">
+                      <i class="icon icon-dots-vertical"></i>
+                    </div>
+                  </div>
+                </li>
+                <li tabindex="0" class="sidebar-row">
+                  <a tabindex="-1" href="#stream">
+                    <span class="sidebar-row__label">#25818</span>
+                  </a>
+                  <div class="sidebar-row__buttons-wrapper">
+                    <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                      tabindex="0">
+                      <i class="icon icon-dots-vertical"></i>
+                    </div>
+                  </div>
+                </li>
+                <li tabindex="0" class="sidebar-row">
+                  <a tabindex="-1" href="#stream">
+                    <span class="sidebar-row__label">#25436</span>
+                  </a>
+                  <div class="sidebar-row__buttons-wrapper">
+                    <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                      tabindex="0">
+                      <i class="icon icon-dots-vertical"></i>
+                    </div>
+                  </div>
+                </li>
+                <li tabindex="0" class="sidebar-row">
+                  <a tabindex="-1" href="#stream">
+                    <span class="sidebar-row__label">#25579</span>
+                  </a>
+                  <div class="sidebar-row__buttons-wrapper">
+                    <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                      tabindex="0">
+                      <i class="icon icon-dots-vertical"></i>
+                    </div>
+                  </div>
+                </li>
+                <!-- resolve renamed to _resolved -->
+
+                <li tabindex="0" class="sidebar-row _resolved">
+                  <a tabindex="-1" href="#topic">
+                    <i class="icon icon-resolved-small" title="Topic is resolved"></i>
+                    <span class="sidebar-row__label">#25351</span>
+                  </a>
+                  <div class="sidebar-row__buttons-wrapper">
+                    <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                      tabindex="0">
+                      <i class="icon icon-dots-vertical"></i>
+                    </div>
+                  </div>
+                </li>
+                <li tabindex="0" class="sidebar-row">
+                  <a tabindex="-1" href="#stream">
+                    <span class="sidebar-row__label">#25394, #24823 and #24921</span>
+                  </a>
+                  <div class="sidebar-row__buttons-wrapper">
+                    <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                      tabindex="0">
+                      <i class="icon icon-dots-vertical"></i>
+                    </div>
+                  </div>
+                </li>
+                <li tabindex="0" class="sidebar-row">
+                  <a tabindex="-1" href="#stream">
+                    <span class="sidebar-row__label">#25106</span>
+                  </a>
+                  <div class="sidebar-row__buttons-wrapper">
+                    <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                      tabindex="0">
+                      <i class="icon icon-dots-vertical"></i>
+                    </div>
+                  </div>
+                </li>
+                <li tabindex="0" class="sidebar-row sidebar-row__button-more-items button-more-topics _no-extra-buttons" tabindex="0">
+                  <a tabindex="-1">
+                    <span class="sidebar-row__label">more topics</span>
+                    <span class="unread-count">7</span>
+                  </a>
+                </li>
+              </ul>
+            </li>
 
 
-          <li tabindex="0" class="sidebar-row _muted hidden-for-spectators">
-            <a tabindex="-1" href="#stream">
-              <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
-              <span class="sidebar-row__label">mobile issues</span>
-              <!-- <span class="unread-count">0</span> -->
-            </a>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
-              </div>
-            </div>
-          </li>
-          <li tabindex="0" class="sidebar-row _muted hidden-for-spectators">
-            <a tabindex="-1" href="#stream">
-              <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
-              <span class="sidebar-row__label">learning</span>
-              <!-- <span class="unread-count">0</span> -->
-            </a>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
-              </div>
-            </div>
-          </li>
 
-          <li class="sidebar-row sidebar-row__button-more-items button-more-streams _no-extra-buttons" tabindex="0">
-            <a tabindex="-1">
-              <span class="sidebar-row__label">browse 138 more streams Main</span>
-            </a>
-          </li>
-
-        </ul>
-      </div>
-
-      <div class="sidebar-group _expanded">
-        <div class="sidebar-group__summary-sticky summary-sticky-stream">
-          <div class="sidebar-group__summary">
-            <div class="sidebar-group__expander-area">
-              <span class="sidebar-group__summary-expander"><i class="icon-trangle-right"></i></span>
-              <span class="sidebar-group__summary-label">Streams development infrastructure</span>
-            </div>
-            <div class="sidebar-group__buttons _show-on-hover">
-              <a class="sidebar-group__button" href="#narrow/is/starred">
-                <i class="icon icon-search"></i>
+            <li tabindex="0" class="sidebar-row hidden-for-spectators">
+              <a tabindex="-1" href="#stream">
+                <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
+                <span class="sidebar-row__label">social</span>
+                <span class="unread-count">2</span>
               </a>
-              <a class="sidebar-group__button" href="#all_messages">
-                <i class="icon icon-interleaved-all"></i>
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
+              </div>
+            </li>
+            <li tabindex="0" class="sidebar-row _silent-counter hidden-for-spectators">
+              <a tabindex="-1" href="#stream">
+                <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
+                <span class="sidebar-row__label">desktop</span>
+                <span class="unread-count">2</span>
               </a>
-            </div>
-            <span class="unread-count-wrapper">
-              <span class="unread-count">198</span>
-            </span>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
+              </div>
+            </li>
+            <li tabindex="0" class="sidebar-row _silent-counter hidden-for-spectators">
+              <a tabindex="-1" href="#stream">
+                <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
+                <span class="sidebar-row__label">mobile</span>
+                <span class="unread-count">2</span>
+              </a>
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
+              </div>
+            </li>
+            <li tabindex="0" class="sidebar-row _muted _silent-counter hidden-for-spectators">
+              <a tabindex="-1" href="#stream">
+                <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
+                <span class="sidebar-row__label">issues</span>
+                <span class="unread-count">2</span>
+              </a>
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
+              </div>
+            </li>
+            <li tabindex="0" class="sidebar-row _muted hidden-for-spectators">
+              <a tabindex="-1" href="#stream">
+                <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
+                <span class="sidebar-row__label">marketing</span>
+                <!-- <span class="unread-count">0</span> -->
+              </a>
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
+              </div>
+            </li>
+
+            <!-- inactive -->
+            <li tabindex="-1" class=" hidden-for-spectators">
+              <div class="sidebar-stream__separator-wrapper">
+                <hr class="sidebar-stream__separator" />
+                <span class="sidebar-stream__separator-label">Inactive</span>
+                <hr class="sidebar-stream__separator" />
+              </div>
+            </li>
+
+
+            <li tabindex="0" class="sidebar-row _muted hidden-for-spectators">
+              <a tabindex="-1" href="#stream">
+                <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
+                <span class="sidebar-row__label">mobile issues</span>
+                <!-- <span class="unread-count">0</span> -->
+              </a>
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
+              </div>
+            </li>
+            <li tabindex="0" class="sidebar-row _muted hidden-for-spectators">
+              <a tabindex="-1" href="#stream">
+                <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
+                <span class="sidebar-row__label">learning</span>
+                <!-- <span class="unread-count">0</span> -->
+              </a>
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
+              </div>
+            </li>
+
+            <li class="sidebar-row sidebar-row__button-more-items button-more-streams _no-extra-buttons" tabindex="0">
+              <a tabindex="-1">
+                <span class="sidebar-row__label">browse 138 more streams Main</span>
+              </a>
+            </li>
+
+          </ul>
+        </div>
+
+        <div class="sidebar-group _expanded">
+          <div class="sidebar-group__summary-sticky summary-sticky-stream">
+            <div class="sidebar-group__summary">
+              <div class="sidebar-group__expander-area">
+                <span class="sidebar-group__summary-expander"><i class="icon-trangle-right"></i></span>
+                <span class="sidebar-group__summary-label">Streams development infrastructure</span>
+              </div>
+              <div class="sidebar-group__buttons _show-on-hover">
+                <a class="sidebar-group__button" href="#narrow/is/starred">
+                  <i class="icon icon-search"></i>
+                </a>
+                <a class="sidebar-group__button" href="#all_messages">
+                  <i class="icon icon-interleaved-all"></i>
+                </a>
+              </div>
+              <span class="unread-count-wrapper">
+                <span class="unread-count">198</span>
+              </span>
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
               </div>
             </div>
           </div>
+          <ul class="sidebar-group__details sidebar-group-streams">
+            <li tabindex="0" class="sidebar-row hidden-for-spectators">
+              <a tabindex="-1" href="#stream">
+                <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
+                <span class="sidebar-row__label">some regular stream</span>
+                <span class="unread-count">2</span>
+              </a>
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
+              </div>
+            </li>
+            <li tabindex="0" class="sidebar-row hidden-for-spectators">
+              <a tabindex="-1" href="#stream">
+                <i class="icon icon-globe sidebar-row__icon" aria-hidden="true"></i>
+                <span class="sidebar-row__label">CapitlizedStream</span>
+                <span class="unread-count">2</span>
+              </a>
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
+              </div>
+            </li>
+            <li tabindex="0" class="sidebar-row hidden-for-spectators">
+              <a tabindex="-1" href="#stream">
+                <i class="icon icon-lock sidebar-row__icon" aria-hidden="true"></i>
+                <span class="sidebar-row__label">With Emoji 😀 </span>
+                <span class="unread-count">2</span>
+              </a>
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
+              </div>
+            </li>
+            <li tabindex="0" class="sidebar-row hidden-for-spectators">
+              <a tabindex="-1" href="#stream">
+                <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
+                <span class="sidebar-row__label">Long name of a stream to see how is it working</span>
+                <span class="unread-count">2</span>
+              </a>
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
+              </div>
+            </li>
+            <li tabindex="0" class="sidebar-row _pinned hidden-for-spectators">
+              <a tabindex="-1" href="#stream">
+                <i class="icon icon-lock sidebar-row__icon" aria-hidden="true"></i>
+                <span class="sidebar-row__label">Three lines should be the maximum, because streams usually are one letter
+                  names and four lines is overkill</span>
+                <span class="unread-count">2</span>
+              </a>
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
+              </div>
+            </li>
+
+            <li class="sidebar-row sidebar-row__button-more-items button-more-streams _no-extra-buttons" tabindex="0">
+              <a tabindex="-1">
+                <span class="sidebar-row__label">more streams development infrastructure</span>
+              </a>
+            </li>
+
+          </ul>
         </div>
-        <ul class="sidebar-group__details sidebar-group-streams">
-          <li tabindex="0" class="sidebar-row hidden-for-spectators">
-            <a tabindex="-1" href="#stream">
-              <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
-              <span class="sidebar-row__label">some regular stream</span>
-              <span class="unread-count">2</span>
-            </a>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
-              </div>
-            </div>
-          </li>
-          <li tabindex="0" class="sidebar-row hidden-for-spectators">
-            <a tabindex="-1" href="#stream">
-              <i class="icon icon-globe sidebar-row__icon" aria-hidden="true"></i>
-              <span class="sidebar-row__label">CapitlizedStream</span>
-              <span class="unread-count">2</span>
-            </a>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
-              </div>
-            </div>
-          </li>
-          <li tabindex="0" class="sidebar-row hidden-for-spectators">
-            <a tabindex="-1" href="#stream">
-              <i class="icon icon-lock sidebar-row__icon" aria-hidden="true"></i>
-              <span class="sidebar-row__label">With Emoji 😀 </span>
-              <span class="unread-count">2</span>
-            </a>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
-              </div>
-            </div>
-          </li>
-          <li tabindex="0" class="sidebar-row hidden-for-spectators">
-            <a tabindex="-1" href="#stream">
-              <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
-              <span class="sidebar-row__label">Long name of a stream to see how is it working</span>
-              <span class="unread-count">2</span>
-            </a>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
-              </div>
-            </div>
-          </li>
-          <li tabindex="0" class="sidebar-row _pinned hidden-for-spectators">
-            <a tabindex="-1" href="#stream">
-              <i class="icon icon-lock sidebar-row__icon" aria-hidden="true"></i>
-              <span class="sidebar-row__label">Three lines should be the maximum, because streams usually are one letter
-                names and four lines is overkill</span>
-              <span class="unread-count">2</span>
-            </a>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
-              </div>
-            </div>
-          </li>
 
-          <li class="sidebar-row sidebar-row__button-more-items button-more-streams _no-extra-buttons" tabindex="0">
-            <a tabindex="-1">
-              <span class="sidebar-row__label">more streams development infrastructure</span>
-            </a>
-          </li>
-
-        </ul>
-      </div>
-
-      <div class="sidebar-group _expanded">
-        <div class="sidebar-group__summary-sticky summary-sticky-stream">
-          <div class="sidebar-group__summary">
-            <div class="sidebar-group__expander-area">
-              <span class="sidebar-group__summary-expander"><i class="icon-trangle-right"></i></span>
-              <span class="sidebar-group__summary-label">Streams London</span>
-            </div>
-            <div class="sidebar-group__buttons _show-on-hover">
-              <a class="sidebar-group__button" href="#narrow/is/starred">
-                <i class="icon icon-search"></i>
-              </a>
-              <a class="sidebar-group__button" href="#all_messages">
-                <i class="icon icon-interleaved-all"></i>
-              </a>
-            </div>
-            <span class="unread-count-wrapper">
-              <span class="unread-count">198</span>
-            </span>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
+        <div class="sidebar-group _expanded">
+          <div class="sidebar-group__summary-sticky summary-sticky-stream">
+            <div class="sidebar-group__summary">
+              <div class="sidebar-group__expander-area">
+                <span class="sidebar-group__summary-expander"><i class="icon-trangle-right"></i></span>
+                <span class="sidebar-group__summary-label">Streams London</span>
+              </div>
+              <div class="sidebar-group__buttons _show-on-hover">
+                <a class="sidebar-group__button" href="#narrow/is/starred">
+                  <i class="icon icon-search"></i>
+                </a>
+                <a class="sidebar-group__button" href="#all_messages">
+                  <i class="icon icon-interleaved-all"></i>
+                </a>
+              </div>
+              <span class="unread-count-wrapper">
+                <span class="unread-count">198</span>
+              </span>
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
               </div>
             </div>
           </div>
+          <ul class="sidebar-group__details sidebar-group-streams">
+            <li class="stream-list__filter-wrapper">
+              <i class="icon icon-search"></i>
+              <input class="sidebar-list__filter" type="text" size="1" placeholder="Filter streams">
+              <button class="icon-button clear-input">
+                <i class="icon icon-close-small"></i>
+              </button>
+            </li>
+            <li tabindex="0" class="sidebar-row hidden-for-spectators">
+              <a tabindex="-1" href="#stream">
+                <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
+                <span class="sidebar-row__label">Addle Hill</span>
+                <span class="unread-count">2</span>
+              </a>
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
+              </div>
+            </li>
+            <li tabindex="0" class="sidebar-row hidden-for-spectators">
+              <a tabindex="-1" href="#stream">
+                <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
+                <span class="sidebar-row__label">Albion Way</span>
+                <span class="unread-count">2</span>
+              </a>
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
+              </div>
+            </li>
+            <li tabindex="0" class="sidebar-row hidden-for-spectators">
+              <a tabindex="-1" href="#stream">
+                <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
+                <span class="sidebar-row__label">Andrewes Highwalk</span>
+                <span class="unread-count">2</span>
+              </a>
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
+              </div>
+            </li>
+            <li tabindex="0" class="sidebar-row hidden-for-spectators">
+              <a tabindex="-1" href="#stream">
+                <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
+                <span class="sidebar-row__label">The Arcade</span>
+                <span class="unread-count">2</span>
+              </a>
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
+              </div>
+            </li>
+            <li tabindex="0" class="sidebar-row hidden-for-spectators">
+              <a tabindex="-1" href="#stream">
+                <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
+                <span class="sidebar-row__label">Athene Place</span>
+                <span class="unread-count">2</span>
+              </a>
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
+              </div>
+            </li>
+            <li tabindex="0" class="sidebar-row hidden-for-spectators">
+              <a tabindex="-1" href="#stream">
+                <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
+                <span class="sidebar-row__label">The Avenue</span>
+                <span class="unread-count">2</span>
+              </a>
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
+              </div>
+            </li>
+            <li tabindex="0" class="sidebar-row hidden-for-spectators">
+              <a tabindex="-1" href="#stream">
+                <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
+                <span class="sidebar-row__label">Back Passage</span>
+                <span class="unread-count">2</span>
+              </a>
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
+              </div>
+            </li>
+            <li tabindex="0" class="sidebar-row hidden-for-spectators">
+              <a tabindex="-1" href="#stream">
+                <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
+                <span class="sidebar-row__label">Ball Court</span>
+                <span class="unread-count">2</span>
+              </a>
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
+              </div>
+            </li>
+            <li tabindex="0" class="sidebar-row hidden-for-spectators">
+              <a tabindex="-1" href="#stream">
+                <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
+                <span class="sidebar-row__label">Bartholomew Close</span>
+                <span class="unread-count">2</span>
+              </a>
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
+              </div>
+            </li>
+            <li tabindex="0" class="sidebar-row hidden-for-spectators">
+              <a tabindex="-1" href="#stream">
+                <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
+                <span class="sidebar-row__label">Bassishaw Highwalk</span>
+                <span class="unread-count">2</span>
+              </a>
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
+              </div>
+            </li>
+            <li tabindex="0" class="sidebar-row hidden-for-spectators">
+              <a tabindex="-1" href="#stream">
+                <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
+                <span class="sidebar-row__label">Bear Alley</span>
+                <span class="unread-count">2</span>
+              </a>
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
+              </div>
+            </li>
+            <li tabindex="0" class="sidebar-row hidden-for-spectators">
+              <a tabindex="-1" href="#stream">
+                <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
+                <span class="sidebar-row__label">Beech Gardens</span>
+                <span class="unread-count">2</span>
+              </a>
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
+              </div>
+            </li>
+            <li tabindex="0" class="sidebar-row hidden-for-spectators">
+              <a tabindex="-1" href="#stream">
+                <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
+                <span class="sidebar-row__label">Beehive Passage</span>
+                <span class="unread-count">2</span>
+              </a>
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
+              </div>
+            </li>
+            <li tabindex="0" class="sidebar-row hidden-for-spectators">
+              <a tabindex="-1" href="#stream">
+                <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
+                <span class="sidebar-row__label">Bengal Court</span>
+                <span class="unread-count">2</span>
+              </a>
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
+              </div>
+            </li>
+            <li tabindex="0" class="sidebar-row hidden-for-spectators">
+              <a tabindex="-1" href="#stream">
+                <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
+                <span class="sidebar-row__label">Bell Inn Yard</span>
+                <span class="unread-count">2</span>
+              </a>
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
+              </div>
+            </li>
+            <li tabindex="0" class="sidebar-row hidden-for-spectators">
+              <a tabindex="-1" href="#stream">
+                <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
+                <span class="sidebar-row__label">Ben Jonson Place</span>
+                <span class="unread-count">2</span>
+              </a>
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
+              </div>
+            </li>
+            <li tabindex="0" class="sidebar-row hidden-for-spectators">
+              <a tabindex="-1" href="#stream">
+                <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
+                <span class="sidebar-row__label">Bevis Marks</span>
+                <span class="unread-count">2</span>
+              </a>
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
+              </div>
+            </li>
+            <li tabindex="0" class="sidebar-row hidden-for-spectators">
+              <a tabindex="-1" href="#stream">
+                <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
+                <span class="sidebar-row__label">Birchin Lane</span>
+                <span class="unread-count">2</span>
+              </a>
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
+              </div>
+            </li>
+
+            <li tabindex="0" class="sidebar-row hidden-for-spectators">
+              <a tabindex="-1" href="#stream">
+                <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
+                <span class="sidebar-row__label">a stream</span>
+                <span class="unread-count">2</span>
+              </a>
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
+              </div>
+            </li>
+            <li tabindex="0" class="sidebar-row hidden-for-spectators">
+              <a tabindex="-1" href="#stream">
+                <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
+                <span class="sidebar-row__label">a stream</span>
+                <span class="unread-count">2</span>
+              </a>
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
+              </div>
+            </li>
+            <li tabindex="0" class="sidebar-row hidden-for-spectators">
+              <a tabindex="-1" href="#stream">
+                <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
+                <span class="sidebar-row__label">a stream</span>
+                <span class="unread-count">2</span>
+              </a>
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
+              </div>
+            </li>
+            <li tabindex="0" class="sidebar-row hidden-for-spectators">
+              <a tabindex="-1" href="#stream">
+                <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
+                <span class="sidebar-row__label">a stream</span>
+                <span class="unread-count">2</span>
+              </a>
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
+              </div>
+            </li>
+            <li tabindex="0" class="sidebar-row hidden-for-spectators">
+              <a tabindex="-1" href="#stream">
+                <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
+                <span class="sidebar-row__label">a stream</span>
+                <span class="unread-count">2</span>
+              </a>
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
+              </div>
+            </li>
+            <li tabindex="0" class="sidebar-row hidden-for-spectators">
+              <a tabindex="-1" href="#stream">
+                <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
+                <span class="sidebar-row__label">a stream</span>
+                <span class="unread-count">2</span>
+              </a>
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
+              </div>
+            </li>
+            <li tabindex="0" class="sidebar-row hidden-for-spectators">
+              <a tabindex="-1" href="#stream">
+                <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
+                <span class="sidebar-row__label">a stream</span>
+                <span class="unread-count">2</span>
+              </a>
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
+              </div>
+            </li>
+            <li tabindex="0" class="sidebar-row hidden-for-spectators">
+              <a tabindex="-1" href="#stream">
+                <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
+                <span class="sidebar-row__label">a stream</span>
+                <span class="unread-count">2</span>
+              </a>
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
+              </div>
+            </li>
+            <li tabindex="0" class="sidebar-row hidden-for-spectators">
+              <a tabindex="-1" href="#stream">
+                <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
+                <span class="sidebar-row__label">a stream</span>
+                <span class="unread-count">2</span>
+              </a>
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
+              </div>
+            </li>
+            <li tabindex="0" class="sidebar-row hidden-for-spectators">
+              <a tabindex="-1" href="#stream">
+                <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
+                <span class="sidebar-row__label">a stream</span>
+                <span class="unread-count">2</span>
+              </a>
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
+              </div>
+            </li>
+            <li tabindex="0" class="sidebar-row hidden-for-spectators">
+              <a tabindex="-1" href="#stream">
+                <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
+                <span class="sidebar-row__label">a stream</span>
+                <span class="unread-count">2</span>
+              </a>
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
+              </div>
+            </li>
+            <li tabindex="0" class="sidebar-row hidden-for-spectators">
+              <a tabindex="-1" href="#stream">
+                <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
+                <span class="sidebar-row__label">a stream</span>
+                <span class="unread-count">2</span>
+              </a>
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
+              </div>
+            </li>
+            <li tabindex="0" class="sidebar-row hidden-for-spectators">
+              <a tabindex="-1" href="#stream">
+                <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
+                <span class="sidebar-row__label">a stream</span>
+                <span class="unread-count">2</span>
+              </a>
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
+              </div>
+            </li>
+            <li tabindex="0" class="sidebar-row hidden-for-spectators">
+              <a tabindex="-1" href="#stream">
+                <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
+                <span class="sidebar-row__label">a stream</span>
+                <span class="unread-count">2</span>
+              </a>
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
+              </div>
+            </li>
+            <li tabindex="0" class="sidebar-row hidden-for-spectators">
+              <a tabindex="-1" href="#stream">
+                <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
+                <span class="sidebar-row__label">a stream</span>
+                <span class="unread-count">2</span>
+              </a>
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
+              </div>
+            </li>
+            <li tabindex="0" class="sidebar-row hidden-for-spectators">
+              <a tabindex="-1" href="#stream">
+                <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
+                <span class="sidebar-row__label">a stream</span>
+                <span class="unread-count">2</span>
+              </a>
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
+              </div>
+            </li>
+            <li tabindex="0" class="sidebar-row hidden-for-spectators">
+              <a tabindex="-1" href="#stream">
+                <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
+                <span class="sidebar-row__label">a stream</span>
+                <span class="unread-count">2</span>
+              </a>
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
+              </div>
+            </li>
+            <li tabindex="0" class="sidebar-row hidden-for-spectators">
+              <a tabindex="-1" href="#stream">
+                <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
+                <span class="sidebar-row__label">a stream</span>
+                <span class="unread-count">2</span>
+              </a>
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
+              </div>
+            </li>
+            <li tabindex="0" class="sidebar-row hidden-for-spectators">
+              <a tabindex="-1" href="#stream">
+                <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
+                <span class="sidebar-row__label">a stream</span>
+                <span class="unread-count">2</span>
+              </a>
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
+              </div>
+            </li>
+            <li tabindex="0" class="sidebar-row hidden-for-spectators">
+              <a tabindex="-1" href="#stream">
+                <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
+                <span class="sidebar-row__label">a stream</span>
+                <span class="unread-count">2</span>
+              </a>
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
+              </div>
+            </li>
+            <li tabindex="0" class="sidebar-row hidden-for-spectators">
+              <a tabindex="-1" href="#stream">
+                <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
+                <span class="sidebar-row__label">a stream</span>
+                <span class="unread-count">2</span>
+              </a>
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
+              </div>
+            </li>
+            <li tabindex="0" class="sidebar-row hidden-for-spectators">
+              <a tabindex="-1" href="#stream">
+                <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
+                <span class="sidebar-row__label">a stream</span>
+                <span class="unread-count">2</span>
+              </a>
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
+              </div>
+            </li>
+            <li tabindex="0" class="sidebar-row hidden-for-spectators">
+              <a tabindex="-1" href="#stream">
+                <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
+                <span class="sidebar-row__label">a stream</span>
+                <span class="unread-count">2</span>
+              </a>
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
+              </div>
+            </li>
+            <li tabindex="0" class="sidebar-row hidden-for-spectators">
+              <a tabindex="-1" href="#stream">
+                <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
+                <span class="sidebar-row__label">a stream</span>
+                <span class="unread-count">2</span>
+              </a>
+              <div class="sidebar-row__buttons-wrapper">
+                <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+                  tabindex="0">
+                  <i class="icon icon-dots-vertical"></i>
+                </div>
+              </div>
+            </li>
+
+            <li class="sidebar-row sidebar-row__button-more-items button-more-streams _no-extra-buttons" tabindex="0">
+              <a tabindex="-1">
+                <span class="sidebar-row__label">browse 1 more stream London</span>
+              </a>
+            </li>
+
+          </ul>
         </div>
-        <ul class="sidebar-group__details sidebar-group-streams">
-          <li class="stream-list__filter-wrapper">
-            <i class="icon icon-search"></i>
-            <input class="sidebar-list__filter" type="text" size="1" placeholder="Filter streams">
-            <button class="icon-button clear-input">
-              <i class="icon icon-close-small"></i>
-            </button>
-          </li>
-          <li tabindex="0" class="sidebar-row hidden-for-spectators">
-            <a tabindex="-1" href="#stream">
-              <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
-              <span class="sidebar-row__label">Addle Hill</span>
-              <span class="unread-count">2</span>
-            </a>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
-              </div>
-            </div>
-          </li>
-          <li tabindex="0" class="sidebar-row hidden-for-spectators">
-            <a tabindex="-1" href="#stream">
-              <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
-              <span class="sidebar-row__label">Albion Way</span>
-              <span class="unread-count">2</span>
-            </a>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
-              </div>
-            </div>
-          </li>
-          <li tabindex="0" class="sidebar-row hidden-for-spectators">
-            <a tabindex="-1" href="#stream">
-              <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
-              <span class="sidebar-row__label">Andrewes Highwalk</span>
-              <span class="unread-count">2</span>
-            </a>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
-              </div>
-            </div>
-          </li>
-          <li tabindex="0" class="sidebar-row hidden-for-spectators">
-            <a tabindex="-1" href="#stream">
-              <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
-              <span class="sidebar-row__label">The Arcade</span>
-              <span class="unread-count">2</span>
-            </a>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
-              </div>
-            </div>
-          </li>
-          <li tabindex="0" class="sidebar-row hidden-for-spectators">
-            <a tabindex="-1" href="#stream">
-              <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
-              <span class="sidebar-row__label">Athene Place</span>
-              <span class="unread-count">2</span>
-            </a>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
-              </div>
-            </div>
-          </li>
-          <li tabindex="0" class="sidebar-row hidden-for-spectators">
-            <a tabindex="-1" href="#stream">
-              <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
-              <span class="sidebar-row__label">The Avenue</span>
-              <span class="unread-count">2</span>
-            </a>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
-              </div>
-            </div>
-          </li>
-          <li tabindex="0" class="sidebar-row hidden-for-spectators">
-            <a tabindex="-1" href="#stream">
-              <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
-              <span class="sidebar-row__label">Back Passage</span>
-              <span class="unread-count">2</span>
-            </a>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
-              </div>
-            </div>
-          </li>
-          <li tabindex="0" class="sidebar-row hidden-for-spectators">
-            <a tabindex="-1" href="#stream">
-              <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
-              <span class="sidebar-row__label">Ball Court</span>
-              <span class="unread-count">2</span>
-            </a>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
-              </div>
-            </div>
-          </li>
-          <li tabindex="0" class="sidebar-row hidden-for-spectators">
-            <a tabindex="-1" href="#stream">
-              <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
-              <span class="sidebar-row__label">Bartholomew Close</span>
-              <span class="unread-count">2</span>
-            </a>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
-              </div>
-            </div>
-          </li>
-          <li tabindex="0" class="sidebar-row hidden-for-spectators">
-            <a tabindex="-1" href="#stream">
-              <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
-              <span class="sidebar-row__label">Bassishaw Highwalk</span>
-              <span class="unread-count">2</span>
-            </a>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
-              </div>
-            </div>
-          </li>
-          <li tabindex="0" class="sidebar-row hidden-for-spectators">
-            <a tabindex="-1" href="#stream">
-              <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
-              <span class="sidebar-row__label">Bear Alley</span>
-              <span class="unread-count">2</span>
-            </a>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
-              </div>
-            </div>
-          </li>
-          <li tabindex="0" class="sidebar-row hidden-for-spectators">
-            <a tabindex="-1" href="#stream">
-              <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
-              <span class="sidebar-row__label">Beech Gardens</span>
-              <span class="unread-count">2</span>
-            </a>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
-              </div>
-            </div>
-          </li>
-          <li tabindex="0" class="sidebar-row hidden-for-spectators">
-            <a tabindex="-1" href="#stream">
-              <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
-              <span class="sidebar-row__label">Beehive Passage</span>
-              <span class="unread-count">2</span>
-            </a>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
-              </div>
-            </div>
-          </li>
-          <li tabindex="0" class="sidebar-row hidden-for-spectators">
-            <a tabindex="-1" href="#stream">
-              <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
-              <span class="sidebar-row__label">Bengal Court</span>
-              <span class="unread-count">2</span>
-            </a>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
-              </div>
-            </div>
-          </li>
-          <li tabindex="0" class="sidebar-row hidden-for-spectators">
-            <a tabindex="-1" href="#stream">
-              <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
-              <span class="sidebar-row__label">Bell Inn Yard</span>
-              <span class="unread-count">2</span>
-            </a>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
-              </div>
-            </div>
-          </li>
-          <li tabindex="0" class="sidebar-row hidden-for-spectators">
-            <a tabindex="-1" href="#stream">
-              <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
-              <span class="sidebar-row__label">Ben Jonson Place</span>
-              <span class="unread-count">2</span>
-            </a>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
-              </div>
-            </div>
-          </li>
-          <li tabindex="0" class="sidebar-row hidden-for-spectators">
-            <a tabindex="-1" href="#stream">
-              <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
-              <span class="sidebar-row__label">Bevis Marks</span>
-              <span class="unread-count">2</span>
-            </a>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
-              </div>
-            </div>
-          </li>
-          <li tabindex="0" class="sidebar-row hidden-for-spectators">
-            <a tabindex="-1" href="#stream">
-              <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
-              <span class="sidebar-row__label">Birchin Lane</span>
-              <span class="unread-count">2</span>
-            </a>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
-              </div>
-            </div>
-          </li>
 
-          <li tabindex="0" class="sidebar-row hidden-for-spectators">
-            <a tabindex="-1" href="#stream">
-              <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
-              <span class="sidebar-row__label">a stream</span>
-              <span class="unread-count">2</span>
-            </a>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
-              </div>
-            </div>
-          </li>
-          <li tabindex="0" class="sidebar-row hidden-for-spectators">
-            <a tabindex="-1" href="#stream">
-              <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
-              <span class="sidebar-row__label">a stream</span>
-              <span class="unread-count">2</span>
-            </a>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
-              </div>
-            </div>
-          </li>
-          <li tabindex="0" class="sidebar-row hidden-for-spectators">
-            <a tabindex="-1" href="#stream">
-              <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
-              <span class="sidebar-row__label">a stream</span>
-              <span class="unread-count">2</span>
-            </a>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
-              </div>
-            </div>
-          </li>
-          <li tabindex="0" class="sidebar-row hidden-for-spectators">
-            <a tabindex="-1" href="#stream">
-              <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
-              <span class="sidebar-row__label">a stream</span>
-              <span class="unread-count">2</span>
-            </a>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
-              </div>
-            </div>
-          </li>
-          <li tabindex="0" class="sidebar-row hidden-for-spectators">
-            <a tabindex="-1" href="#stream">
-              <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
-              <span class="sidebar-row__label">a stream</span>
-              <span class="unread-count">2</span>
-            </a>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
-              </div>
-            </div>
-          </li>
-          <li tabindex="0" class="sidebar-row hidden-for-spectators">
-            <a tabindex="-1" href="#stream">
-              <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
-              <span class="sidebar-row__label">a stream</span>
-              <span class="unread-count">2</span>
-            </a>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
-              </div>
-            </div>
-          </li>
-          <li tabindex="0" class="sidebar-row hidden-for-spectators">
-            <a tabindex="-1" href="#stream">
-              <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
-              <span class="sidebar-row__label">a stream</span>
-              <span class="unread-count">2</span>
-            </a>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
-              </div>
-            </div>
-          </li>
-          <li tabindex="0" class="sidebar-row hidden-for-spectators">
-            <a tabindex="-1" href="#stream">
-              <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
-              <span class="sidebar-row__label">a stream</span>
-              <span class="unread-count">2</span>
-            </a>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
-              </div>
-            </div>
-          </li>
-          <li tabindex="0" class="sidebar-row hidden-for-spectators">
-            <a tabindex="-1" href="#stream">
-              <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
-              <span class="sidebar-row__label">a stream</span>
-              <span class="unread-count">2</span>
-            </a>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
-              </div>
-            </div>
-          </li>
-          <li tabindex="0" class="sidebar-row hidden-for-spectators">
-            <a tabindex="-1" href="#stream">
-              <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
-              <span class="sidebar-row__label">a stream</span>
-              <span class="unread-count">2</span>
-            </a>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
-              </div>
-            </div>
-          </li>
-          <li tabindex="0" class="sidebar-row hidden-for-spectators">
-            <a tabindex="-1" href="#stream">
-              <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
-              <span class="sidebar-row__label">a stream</span>
-              <span class="unread-count">2</span>
-            </a>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
-              </div>
-            </div>
-          </li>
-          <li tabindex="0" class="sidebar-row hidden-for-spectators">
-            <a tabindex="-1" href="#stream">
-              <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
-              <span class="sidebar-row__label">a stream</span>
-              <span class="unread-count">2</span>
-            </a>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
-              </div>
-            </div>
-          </li>
-          <li tabindex="0" class="sidebar-row hidden-for-spectators">
-            <a tabindex="-1" href="#stream">
-              <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
-              <span class="sidebar-row__label">a stream</span>
-              <span class="unread-count">2</span>
-            </a>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
-              </div>
-            </div>
-          </li>
-          <li tabindex="0" class="sidebar-row hidden-for-spectators">
-            <a tabindex="-1" href="#stream">
-              <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
-              <span class="sidebar-row__label">a stream</span>
-              <span class="unread-count">2</span>
-            </a>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
-              </div>
-            </div>
-          </li>
-          <li tabindex="0" class="sidebar-row hidden-for-spectators">
-            <a tabindex="-1" href="#stream">
-              <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
-              <span class="sidebar-row__label">a stream</span>
-              <span class="unread-count">2</span>
-            </a>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
-              </div>
-            </div>
-          </li>
-          <li tabindex="0" class="sidebar-row hidden-for-spectators">
-            <a tabindex="-1" href="#stream">
-              <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
-              <span class="sidebar-row__label">a stream</span>
-              <span class="unread-count">2</span>
-            </a>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
-              </div>
-            </div>
-          </li>
-          <li tabindex="0" class="sidebar-row hidden-for-spectators">
-            <a tabindex="-1" href="#stream">
-              <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
-              <span class="sidebar-row__label">a stream</span>
-              <span class="unread-count">2</span>
-            </a>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
-              </div>
-            </div>
-          </li>
-          <li tabindex="0" class="sidebar-row hidden-for-spectators">
-            <a tabindex="-1" href="#stream">
-              <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
-              <span class="sidebar-row__label">a stream</span>
-              <span class="unread-count">2</span>
-            </a>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
-              </div>
-            </div>
-          </li>
-          <li tabindex="0" class="sidebar-row hidden-for-spectators">
-            <a tabindex="-1" href="#stream">
-              <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
-              <span class="sidebar-row__label">a stream</span>
-              <span class="unread-count">2</span>
-            </a>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
-              </div>
-            </div>
-          </li>
-          <li tabindex="0" class="sidebar-row hidden-for-spectators">
-            <a tabindex="-1" href="#stream">
-              <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
-              <span class="sidebar-row__label">a stream</span>
-              <span class="unread-count">2</span>
-            </a>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
-              </div>
-            </div>
-          </li>
-          <li tabindex="0" class="sidebar-row hidden-for-spectators">
-            <a tabindex="-1" href="#stream">
-              <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
-              <span class="sidebar-row__label">a stream</span>
-              <span class="unread-count">2</span>
-            </a>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
-              </div>
-            </div>
-          </li>
-          <li tabindex="0" class="sidebar-row hidden-for-spectators">
-            <a tabindex="-1" href="#stream">
-              <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
-              <span class="sidebar-row__label">a stream</span>
-              <span class="unread-count">2</span>
-            </a>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
-              </div>
-            </div>
-          </li>
-          <li tabindex="0" class="sidebar-row hidden-for-spectators">
-            <a tabindex="-1" href="#stream">
-              <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
-              <span class="sidebar-row__label">a stream</span>
-              <span class="unread-count">2</span>
-            </a>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
-              </div>
-            </div>
-          </li>
-          <li tabindex="0" class="sidebar-row hidden-for-spectators">
-            <a tabindex="-1" href="#stream">
-              <i class="icon icon-hash sidebar-row__icon" aria-hidden="true"></i>
-              <span class="sidebar-row__label">a stream</span>
-              <span class="unread-count">2</span>
-            </a>
-            <div class="sidebar-row__buttons-wrapper">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
-                tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
-              </div>
-            </div>
-          </li>
+        <button class="sidebar-button-cta" style="margin-top: 2px;">
+          <i class="icon icon-plus"></i>
+          Add a stream
+        </button>
+        </div>
 
-          <li class="sidebar-row sidebar-row__button-more-items button-more-streams _no-extra-buttons" tabindex="0">
-            <a tabindex="-1">
-              <span class="sidebar-row__label">browse 1 more stream London</span>
-            </a>
-          </li>
 
-        </ul>
       </div>
-
-      <button class="sidebar-button-cta" style="margin-top: 2px;">
-        <i class="icon icon-plus"></i>
-        Add a stream
-      </button>
-    </div>
+     
 
     <!-- modal sidebar for dedicated stream view with all the topics-->
     <div class="left-sidebar-modal left-sidebar-modal-topics" style="display: none;" role="navigation">
@@ -1999,7 +2010,7 @@
     </div>
 
     <!-- modal sidebar for DMs -->
-    <div class="left-sidebar-modal sidebar-modal-dms">
+    <div class="left-sidebar-modal sidebar-modal-dms" style="display: none;">
       <div class="sidebar-modal-content">
         <!-- <div class="sidebar-group _expanded"> -->
           <div class="summary-sticky-stream">
