@@ -284,7 +284,7 @@ function stickyAreaHeightAboveDetails(element, stickyParent) {
 // and _overscrolled status for groups which are _expanded
 
 function onLeftSidebarScroll() {
-
+  console.log('onLeftSidebarScroll')
   const groups = document.querySelectorAll('.sidebar-group')
   groups.forEach(group => {
     //.sidebar-group__summary-sticky will be either a child or prev sibling
@@ -318,8 +318,12 @@ function onLeftSidebarScroll() {
   validateActiveStickyItems()
 }
 
-const onLeftSidebarScrollThrottled = lodash.throttle(onLeftSidebarScroll, 400, { leading: true })
+const onLeftSidebarScrollThrottled = lodash.throttle(onLeftSidebarScroll, 40, { leading: true })
 document.getElementById('left-sidebar').addEventListener('scroll', onLeftSidebarScrollThrottled)
+
+const simpleBar = new SimpleBar(document.getElementById('left-sidebar-scroll-container'));
+simpleBar.getScrollElement().addEventListener('scroll', onLeftSidebarScrollThrottled);
+document.getElementById('left-sidebar').classList.add('_revealed')
 
 
 // sidebar modal related
