@@ -336,6 +336,7 @@ i.icon-user-status.sidebar-row__icon._away {
 
 .left-sidebar .simplebar-content-wrapper{
     padding: 4px 9px 18px 8px;
+    outline-offset: -2px;
 }
 .left-sidebar .simplebar-track.simplebar-vertical{
     right: 1px;
