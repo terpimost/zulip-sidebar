@@ -284,7 +284,7 @@ function stickyAreaHeightAboveDetails(element, stickyParent) {
 // and _overscrolled status for groups which are _expanded
 
 function onLeftSidebarScroll() {
-  console.log('onLeftSidebarScroll')
+  // console.log('onLeftSidebarScroll')
   const groups = document.querySelectorAll('.sidebar-group')
   groups.forEach(group => {
     //.sidebar-group__summary-sticky will be either a child or prev sibling
@@ -329,11 +329,18 @@ document.getElementById('left-sidebar').classList.add('_revealed')
 // sidebar modal related
 document.querySelectorAll('.button-close-modal').forEach(el => {
   el.addEventListener('click', closeSidebarModal)
+  el.addEventListener('keydown', (e)=>{
+    if(e.key == 'Enter' || e.key == ' ' )
+      closeSidebarModal(e)
+  })
 })
 
 function closeSidebarModal(e) {
   e.currentTarget.closest('.sidebar-modal-content').style.display = 'none'
   e.currentTarget.closest('.left-sidebar-modal').style.display = 'none'
+  document.getElementById('left-sidebar').classList.remove('_blurred')
+  document.querySelector('.sidebar-group-views').focus()
+  
 }
 
 //click on a free space above the modal to close it
@@ -351,8 +358,11 @@ document.querySelectorAll('.button-more-topics>a').forEach(el => {
   el.addEventListener('click', openTopicModal)
 })
 function openTopicModal(e) {
-  document.querySelector('.left-sidebar-modal-topics').style.display = 'flex'
-  document.querySelector('.left-sidebar-modal-topics').querySelector('.sidebar-modal-content').style.display = 'flex'
+  const topicsModal = document.querySelector('.left-sidebar-modal-topics')
+  topicsModal.style.display = 'flex'
+  topicsModal.querySelector('.sidebar-modal-content').style.display = 'flex'
+  topicsModal.querySelector('.sidebar-modal-content .button-close-modal').focus()
+  document.getElementById('left-sidebar').classList.add('_blurred')
 }
 document.querySelectorAll('.button-more-dm>a').forEach(el => {
   el.addEventListener('click', openDMsModal)
@@ -360,6 +370,8 @@ document.querySelectorAll('.button-more-dm>a').forEach(el => {
 function openDMsModal(e) {
   document.querySelector('.sidebar-modal-dms').style.display = 'flex'
   document.querySelector('.sidebar-modal-dms').querySelector('.sidebar-modal-content').style.display = 'flex'
+  document.querySelector('.sidebar-modal-dms').querySelector('.sidebar-modal-content .button-close-modal').focus()
+  document.getElementById('left-sidebar').classList.add('_blurred')
 }
 
 // search and filter inputs

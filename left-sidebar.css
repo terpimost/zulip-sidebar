@@ -308,6 +308,10 @@ i.icon-user-status.sidebar-row__icon._away {
 .left-sidebar._revealed{
     opacity: 1;
 }
+.left-sidebar._blurred{
+    user-select: none;
+    pointer-events: none;
+}
 
 .left-sidebar-scrollable{
     height: 100%;
@@ -1242,7 +1246,8 @@ button.icon-button{
     color: var(--color-base-text);
     opacity: 0.4;
 }
-button.icon-button:hover{
+button.icon-button:hover,
+button.icon-button:focus-visible{
     opacity: 1;
     background: rgba(0, 0, 0, 0.05);
 }
