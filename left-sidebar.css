@@ -291,6 +291,7 @@ i.icon-user-status.sidebar-row__icon._away {
 .dark .sidebar-row__icon.icon-user-group {
     /* big circle with white text on top isn't contrast with default--color-clickable-icon */
     background-color:  hsl(240 25% 40% / 1); 
+    outline-color:  hsl(240 25% 40% / 1); 
 }
 
 .dark .icon-online {
