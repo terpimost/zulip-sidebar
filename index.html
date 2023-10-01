@@ -206,8 +206,8 @@
   </div>
 
   <!-- left-sidebar.css related -->
-  <div class="column-left" id="left-sidebar-container">
-    <div class="left-sidebar" id="left-sidebar" role="navigation" >
+  <div class="column-left" id="left-sidebar-container" draggable="false">
+    <div class="left-sidebar" id="left-sidebar" role="navigation" draggable="false">
       
       <!-- data-simplebar-auto-hide="false" -->
       <!-- data-simplebar -->
@@ -602,7 +602,7 @@
             <li id="show_more_private_messages" class="sidebar-row sidebar-row__button-more-items button-more-dm _no-extra-buttons"
               tabindex="0">
               <a tabindex="-1">
-                <span class="sidebar-row__label">more DM conversations</span>
+                <span class="sidebar-row__label">All Direct messages</span>
                 <span class="unread-count _strong">1</span>
               </a>
             </li>
@@ -620,7 +620,7 @@
             <div class="sidebar-group__summary" tabindex="0">
               <div class="sidebar-group__expander-area">
                 <span class="sidebar-group__summary-expander"><i class="icon-trangle-right"></i></span>
-                <span class="sidebar-group__summary-label">Streams main</span>
+                <span class="sidebar-group__summary-label">Streams</span>
               </div>
               <div class="sidebar-group__buttons _show-on-hover">
                 <a class="sidebar-group__button" href="#narrow/is/starred">
@@ -819,7 +819,7 @@
                 </li>
                 <li tabindex="0" class="sidebar-row sidebar-row__button-more-items button-more-topics _no-extra-buttons" tabindex="0">
                   <a tabindex="-1">
-                    <span class="sidebar-row__label">more topics</span>
+                    <span class="sidebar-row__label">all topics</span>
                     <span class="unread-count">3</span>
                   </a>
                 </li>
@@ -978,7 +978,7 @@
                 </li>
                 <li tabindex="0" class="sidebar-row sidebar-row__button-more-items button-more-topics _no-extra-buttons" tabindex="0">
                   <a tabindex="-1">
-                    <span class="sidebar-row__label">more topics</span>
+                    <span class="sidebar-row__label">all topics</span>
                     <span class="unread-count">7</span>
                   </a>
                 </li>
@@ -1092,7 +1092,7 @@
 
             <li class="sidebar-row sidebar-row__button-more-items button-more-streams _no-extra-buttons" tabindex="0">
               <a tabindex="-1">
-                <span class="sidebar-row__label">browse 138 more streams Main</span>
+                <span class="sidebar-row__label">browse 138 more streams</span>
               </a>
             </li>
 
@@ -1104,7 +1104,7 @@
             <div class="sidebar-group__summary" tabindex="0">
               <div class="sidebar-group__expander-area">
                 <span class="sidebar-group__summary-expander"><i class="icon-trangle-right"></i></span>
-                <span class="sidebar-group__summary-label">Streams development infrastructure</span>
+                <span class="sidebar-group__summary-label">Another stream group</span>
               </div>
               <div class="sidebar-group__buttons _show-on-hover">
                 <a class="sidebar-group__button" href="#narrow/is/starred">
@@ -1195,7 +1195,7 @@
 
             <li class="sidebar-row sidebar-row__button-more-items button-more-streams _no-extra-buttons" tabindex="0">
               <a tabindex="-1">
-                <span class="sidebar-row__label">more streams development infrastructure</span>
+                <span class="sidebar-row__label">browse 2 more streams</span>
               </a>
             </li>
 
@@ -1207,7 +1207,7 @@
             <div class="sidebar-group__summary" tabindex="0">
               <div class="sidebar-group__expander-area">
                 <span class="sidebar-group__summary-expander"><i class="icon-trangle-right"></i></span>
-                <span class="sidebar-group__summary-label">Streams London</span>
+                <span class="sidebar-group__summary-label">London</span>
               </div>
               <div class="sidebar-group__buttons _show-on-hover">
                 <a class="sidebar-group__button" href="#narrow/is/starred">
@@ -1786,40 +1786,30 @@
 
             <li class="sidebar-row sidebar-row__button-more-items button-more-streams _no-extra-buttons" tabindex="0">
               <a tabindex="-1">
-                <span class="sidebar-row__label">browse 1 more stream London</span>
+                <span class="sidebar-row__label">Create a stream</span>
               </a>
             </li>
 
           </ul>
         </div>
 
-        <button class="sidebar-button-cta" style="margin-top: 2px;">
-          <i class="icon icon-plus"></i>
-          Add a stream
-        </button>
+        
         </div>
-
-
       </div>
      
 
     <!-- modal sidebar for dedicated stream view with all the topics-->
-    <div class="left-sidebar-modal left-sidebar-modal-topics" style="display: none;" role="navigation">
+    <div class="left-sidebar-modal left-sidebar-modal-topics" style="display: none;" role="navigation" draggable="false">
+      <div class="button-area-close-modal" tabindex="0">
+        <div class="button-back-modal">
+          <i class="icon icon-left-arrow"></i>
+          Back
+        </div>
+        <div class="button-close-modal">
+          <i class="icon icon-close"></i>
+        </div>
+      </div>
       <div class="sidebar-modal-content">
-        <!-- <div class="sidebar-group _expanded"> -->
-          <div class="summary-sticky-stream">
-            <div class="sidebar-modal__header">
-              <div class="sidebar-group__header-label">
-                <span class="sidebar-group__summary-label">Stream topics</span>
-              </div>
-
-              <div class="sidebar-row__buttons-wrapper">
-                <div class="sidebar-group__button button-close-modal" tabindex="0">
-                  <i class="icon icon-close"></i>
-                </div>
-              </div>
-            </div>
-          </div>
           <ul class="sidebar-group__details sidebar-group-streams">
             <!-- if the whole stream is selected we selec only this li element -->
             <li tabindex="0" class="sidebar-row">
@@ -2050,18 +2040,26 @@
               </ul>
             </div>
           </ul>
-        <!-- </div> -->
       </div>
     </div>
 
     <!-- modal sidebar for DMs -->
-    <div class="left-sidebar-modal sidebar-modal-dms" style="display: none;">
+    <div class="left-sidebar-modal sidebar-modal-dms" style="display: none;" role="navigation" draggable="false">
+      <div class="button-area-close-modal" style="height: 60px;" tabindex="0">
+        <div class="button-back-modal">
+          <i class="icon icon-left-arrow"></i>
+          Back
+        </div>
+        <div class="button-close-modal">
+          <i class="icon icon-close"></i>
+        </div>
+      </div>
       <div class="sidebar-modal-content">
         <!-- <div class="sidebar-group _expanded"> -->
-          <div class="summary-sticky-stream">
+          <!-- <div class="summary-sticky-stream"> -->
             <div class="sidebar-modal__header">
               <div class="sidebar-group__header-label">
-                <span class="sidebar-group__summary-label">More DMs</span>
+                <span class="sidebar-group__summary-label">All Direct messages</span>
               </div>
 
               <div class="sidebar-row__buttons-wrapper">
@@ -2076,12 +2074,9 @@
                 <div class="sidebar-group__button hidden-for-spectators" title="Options" tabindex="0">
                   <i class="icon icon-dots-vertical"></i>
                 </div>
-                <div class="sidebar-group__button button-close-modal" tabindex="0">
-                  <i class="icon icon-close"></i>
-                </div>
               </div>
             </div>
-          </div>
+          <!-- </div> -->
           <ul class="sidebar-group__details sidebar-group-streams">
             <li class="sidebar-list__filter-wrapper">
               <i class="icon icon-search"></i>

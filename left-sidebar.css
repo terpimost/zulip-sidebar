@@ -1,12 +1,14 @@
 :root {
     /* To encode icons back to svg file paste string "..." to 'Take encoded:' field here https://yoksel.github.io/url-encoder/ */
-    --left-sidebar-width: 304px;
+    --left-sidebar-width: 334px;
     /* used to be 270 */
     /* --header-height: 42px; is defined in general.css */
     /* --icon-triangle-right: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3e%3cpath fill='black' d='m5 4 6.93 4L5 12V4Z'/%3e%3c/svg%3e"); */
     --icon-triangle-right: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3e%3cpath fill='black' d='M5 4.24 12.53 8 5 11.76V4.24Z'/%3e%3c/svg%3e");
     --icon-dots-vertical: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3e%3cpath fill='black' d='M8 1.67A1.67 1.67 0 1 0 8 5a1.67 1.67 0 0 0 0-3.33Zm0 4.66a1.67 1.67 0 1 0 0 3.34 1.67 1.67 0 0 0 0-3.34ZM8 11a1.67 1.67 0 1 0 0 3.33A1.67 1.67 0 0 0 8 11Z'/%3e%3c/svg%3e");
-    --icon-interleaved-all: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3e%3cpath fill='black' d='M2 2.08a.67.67 0 0 0 0 1.34h8a.67.67 0 1 0 0-1.34H2Zm-.67 3.34c0-.37.3-.67.67-.67h10a.67.67 0 0 1 0 1.33H2a.67.67 0 0 1-.67-.66Zm0 2.66c0-.37.3-.66.67-.66h12a.67.67 0 0 1 0 1.33H2a.67.67 0 0 1-.67-.67Zm0 2.67c0-.37.3-.67.67-.67h10a.67.67 0 0 1 0 1.34H2a.67.67 0 0 1-.67-.67Zm.67 2a.67.67 0 0 0 0 1.33h8a.67.67 0 1 0 0-1.33H2Z'/%3e%3c/svg%3e");
+    /* --icon-interleaved-arr: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3e%3cpath fill='black' d='M2 2.08a.67.67 0 0 0 0 1.34h8a.67.67 0 1 0 0-1.34H2Zm-.67 3.34c0-.37.3-.67.67-.67h10a.67.67 0 0 1 0 1.33H2a.67.67 0 0 1-.67-.66Zm0 2.66c0-.37.3-.66.67-.66h12a.67.67 0 0 1 0 1.33H2a.67.67 0 0 1-.67-.67Zm0 2.67c0-.37.3-.67.67-.67h10a.67.67 0 0 1 0 1.34H2a.67.67 0 0 1-.67-.67Zm.67 2a.67.67 0 0 0 0 1.33h8a.67.67 0 1 0 0-1.33H2Z'/%3e%3c/svg%3e"); */
+    /* --icon-interleaved: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3e%3cpath fill='%23669' d='M1.333 2c0-.368.299-.666.667-.666h12a.667.667 0 0 1 0 1.333H2a.667.667 0 0 1-.667-.666Zm0 6c0-.368.299-.666.667-.666h12a.667.667 0 0 1 0 1.333H2a.667.667 0 0 1-.667-.666ZM2 13.334a.667.667 0 0 0 0 1.333h12a.667.667 0 0 0 0-1.333H2ZM2.333 5c0-.368.299-.666.667-.666h6a.667.667 0 0 1 0 1.333H3a.667.667 0 0 1-.667-.666ZM3 10.334a.667.667 0 0 0 0 1.333h6a.667.667 0 0 0 0-1.333H3Z'/%3e%3c/svg%3e"); */
+    --icon-interleaved-all: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3e%3cpath fill='%23669' d='M2 .666a.667.667 0 1 0 0 1.333h12a.667.667 0 0 0 0-1.333H2ZM2.333 4c0-.368.299-.667.667-.667h7a.667.667 0 1 1 0 1.334H3A.667.667 0 0 1 2.333 4ZM2 6a.667.667 0 0 0 0 1.333h12A.667.667 0 1 0 14 6H2Zm.333 3.334c0-.369.299-.667.667-.667h7A.667.667 0 0 1 10 10H3a.667.667 0 0 1-.667-.666Zm0 5.334c0-.368.299-.667.667-.667h7a.667.667 0 0 1 0 1.333H3a.667.667 0 0 1-.667-.666ZM2 11.334a.667.667 0 0 0 0 1.333h12a.667.667 0 0 0 0-1.333H2Z'/%3e%3c/svg%3e");
     --icon-inbox: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3e%3cpath fill='black' fill-rule='evenodd' d='M11.17 2H4.83a2 2 0 0 0-1.8 1.11L.75 7.7c-.04.1-.07.2-.07.31v4a2 2 0 0 0 2 2h10.66a2 2 0 0 0 2-2V8a.66.66 0 0 0-.07-.31l-2.3-4.58a2 2 0 0 0-1.79-1.1Zm2.42 5.33L11.77 3.7a.67.67 0 0 0-.6-.37H4.83a.67.67 0 0 0-.6.37L2.4 7.33h2.92a.7.7 0 0 1 .56.3l1.13 1.7h1.96l1.13-1.7a.7.7 0 0 1 .56-.3h2.92ZM1.99 8.66V12a.67.67 0 0 0 .68.67h10.66A.67.67 0 0 0 14 12V8.66h-2.98l-1.13 1.7a.66.66 0 0 1-.56.3H6.67a.66.66 0 0 1-.56-.3l-1.13-1.7H2Z' clip-rule='evenodd'/%3e%3c/svg%3e");
     --icon-clock: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3e%3cpath fill='black' fill-rule='evenodd' d='M2 8a6 6 0 1 1 12 0A6 6 0 0 1 2 8ZM8 .67a7.33 7.33 0 1 0 0 14.66A7.33 7.33 0 0 0 8 .67ZM8.67 4a.67.67 0 0 0-1.34 0v4c0 .25.15.48.37.6l2.67 1.33a.67.67 0 1 0 .6-1.2L8.66 7.6V4Z' clip-rule='evenodd'/%3e%3c/svg%3e");
     --icon-at: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3e%3cpath fill='black' fill-rule='evenodd' d='M9.67.86a7.33 7.33 0 1 0 2.79 12.96.67.67 0 0 0-.81-1.06A6 6 0 1 1 14 8v.67a1.33 1.33 0 1 1-2.67 0V5.33a.67.67 0 0 0-1.33 0 3.33 3.33 0 1 0 .5 4.88 2.67 2.67 0 0 0 4.83-1.54V8A7.33 7.33 0 0 0 9.67.86ZM6 8a2 2 0 1 1 4 0 2 2 0 0 1-4 0Z' clip-rule='evenodd'/%3e%3c/svg%3e");
@@ -18,6 +20,7 @@
     --icon-search: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3e%3cpath fill='black' d='m14.27 13.17-2.94-2.94a5.47 5.47 0 1 0-1.1 1.1l2.94 2.94a.78.78 0 0 0 1.1-1.1ZM3.06 6.96a3.9 3.9 0 1 1 7.8 0 3.9 3.9 0 0 1-7.8 0Z'/%3e%3c/svg%3e");
     --icon-close: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3e%3cpath fill='black' d='M14.47 2.47a.67.67 0 0 0-.94-.94L8 7.06 2.47 1.53a.67.67 0 0 0-.94.94L7.06 8l-5.53 5.53a.67.67 0 0 0 .94.94L8 8.94l5.53 5.53a.66.66 0 1 0 .94-.94L8.94 8l5.53-5.53Z'/%3e%3c/svg%3e");
     --icon-close-small: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3e%3cpath fill='black' d='M12.971 3.971a.665.665 0 1 0-.94-.94L8 7.06 3.97 3.03a.665.665 0 1 0-.94.94L7.06 8l-4.03 4.03a.665.665 0 0 0 .94.94L8 8.94l4.03 4.03a.665.665 0 0 0 .94-.94L8.941 8l4.03-4.03Z'/%3e%3c/svg%3e");
+    --icon-left-arrow: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3e%3cpath fill='%235959A6' d='M8.47 3.8a.66.66 0 1 0-.94-.94L2.86 7.53a.66.66 0 0 0 .02.95l4.65 4.66a.66.66 0 0 0 .94-.94L4.94 8.66h7.73a.66.66 0 1 0 0-1.33H4.94L8.47 3.8Z'/%3e%3c/svg%3e");
     --icon-plus: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3e%3cpath fill='black' d='M8.66 3.33a.66.66 0 1 0-1.33 0v4h-4a.67.67 0 0 0 0 1.33h4v4a.66.66 0 1 0 1.33 0v-4h4a.67.67 0 0 0 0-1.33h-4v-4Z'/%3e%3c/svg%3e");
     --icon-resolved-small: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3e%3cpath fill='black' fill-rule='evenodd' d='M12.47 4.53c.26.26.26.68 0 .94l-5.5 5.5c-.26.26-.68.26-.94 0l-2.5-2.5a.665.665 0 0 1 .94-.94L6.5 9.56l5.03-5.03c.26-.26.68-.26.94 0Z' clip-rule='evenodd'/%3e%3c/svg%3e");
     --icon-eye-small: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3e%3cg fill='black'%3e%3cpath d='M9.205 9.206a1.705 1.705 0 1 1-2.412-2.412 1.705 1.705 0 0 1 2.412 2.412Z'/%3e%3cpath fill-rule='evenodd' d='M13.547 8.303v.001l-.002.004-.006.01-.02.037a8.422 8.422 0 0 1-.34.563 9.386 9.386 0 0 1-1.038 1.31c-.902.946-2.304 1.976-4.141 1.976-1.838 0-3.24-1.03-4.141-1.975A9.388 9.388 0 0 1 2.48 8.355l-.019-.036-.006-.011-.002-.004v-.002a.665.665 0 0 1 0-.604v-.002l.027-.051.071-.128a9.39 9.39 0 0 1 1.307-1.746C4.762 4.826 6.163 3.796 8 3.796c1.837 0 3.239 1.03 4.14 1.975a9.388 9.388 0 0 1 1.38 1.874l.019.036.006.011.002.004v.002a.666.666 0 0 1 0 .604s.002-.002 0 0Zm-9.616-.115A7.65 7.65 0 0 1 3.811 8c.036-.056.075-.12.12-.188a8.19 8.19 0 0 1 .89-1.123C5.608 5.865 6.684 5.126 8 5.126c1.315 0 2.392.739 3.179 1.564A8.07 8.07 0 0 1 12.189 8l-.12.188a8.07 8.07 0 0 1-.89 1.122c-.787.825-1.864 1.564-3.179 1.564-1.316 0-2.392-.739-3.18-1.563a8.06 8.06 0 0 1-.889-1.123Z' clip-rule='evenodd'/%3e%3c/g%3e%3c/svg%3e");
@@ -46,7 +49,9 @@
 
     --color-clickable-icon: hsla(240, 30%, 40%, 1);
     --color-clickable-icon-hover: hsla(240, 100%, 15%, 1);
-    --color-clickable-icon-hover-bg: hsla(240, 100%, 50%, 0.08);
+    /* --color-clickable-icon-active: hsla(240, 100%, 10%, 1); */
+    --color-clickable-icon-hover-bg: hsla(240, 100%, 50%, 0.07);
+    --color-clickable-icon-hover-bg-active: hsla(240, 100%, 50%, 0.1);
 
     --color-sidebar-group-label: hsl(216, 65%, 20%);
 
@@ -60,7 +65,7 @@
     --color-topic-indent-border: hsl(0deg 0% 0% / 19%);
     --color-separator-border: hsla(0, 0%, 0%, 0.15);
 
-    --color-main-bg-transparent: hsla(0, 0%, 94%, 0.5);
+    --color-main-bg-transparent: hsla(0, 0%, 94%, 0.25);
 
     /* use this variable abd redefine it to shift icons accordingly due to vertical alignment 
     .sidebar-group__button has 22px as min height and it is ok, but summary rowas could be higher,
@@ -79,6 +84,7 @@
     --color-clickable-icon: hsla(240, 35%, 68%, 1);
     --color-clickable-icon-hover: hsla(240, 100%, 90%, 1);
     --color-clickable-icon-hover-bg: hsla(240, 100%, 75%, 0.2);
+    --color-clickable-icon-hover-bg-active: hsla(240, 100%, 75%, 0.16);
 
     --color-sidebar-group-label: hsl(216 50% 75% / 1);
 
@@ -92,7 +98,7 @@
     --color-topic-indent-border: hsl(0deg 0% 100% / 19%);
     --color-separator-border: hsla(0, 0%, 100%, 0.15);
 
-    --color-main-bg-transparent: hsla(0, 0%, 11%, 0.5);
+    --color-main-bg-transparent: hsla(0, 0%, 11%, 0.25);
 }
 
 
@@ -186,6 +192,11 @@ i.icon {
     -webkit-mask-image: var(--icon-close-small);
 }
 
+.icon-left-arrow {
+    mask-image: var(--icon-left-arrow);
+    -webkit-mask-image: var(--icon-left-arrow);
+}
+
 .icon-plus {
     mask-image: var(--icon-plus);
     -webkit-mask-image: var(--icon-plus);
@@ -261,6 +272,7 @@ i.icon-user-status.sidebar-row__icon._away {
     height: 16px;
     overflow: hidden;
     background-color: var(--color-clickable-icon);
+    outline: 2px solid var(--color-clickable-icon);
     color: white;
     display: flex;
     align-items: center;
@@ -304,19 +316,18 @@ i.icon-user-status.sidebar-row__icon._away {
     overflow: visible;
     display: flex;
     padding-top: var(--header-height);
+    -webkit-user-drag: none;
 }
 
 .left-sidebar {
     position: fixed;
     width: var(--left-sidebar-width);
-    
     height: calc(100% - var(--header-height));
     /* overflow-y: auto; */
-    overflow-y: hidden;
-    overflow-x: hidden;
+    overflow: hidden;
     box-sizing: border-box;
     color: var(--color-base-text);
-
+    -webkit-user-drag: none;
     opacity: 0;
     transition: opacity 0.35s ease-in;
 }
@@ -369,8 +380,10 @@ i.icon-user-status.sidebar-row__icon._away {
     position: relative;
     width: var(--left-sidebar-width);
     background-color: var(--color-main-bg-transparent);
+    display: flex;
+    flex-direction: column;
+    -webkit-user-drag: none;
 }
-
 
 .left-sidebar::-webkit-scrollbar,
 .sidebar-modal-content .sidebar-modal-scrollable::-webkit-scrollbar {
@@ -405,26 +418,63 @@ i.icon-user-status.sidebar-row__icon._away {
 
 .sidebar-modal-content {
     background: var(--color-main-bg);
-    box-shadow: 0px -4px 24px rgba(0, 0, 0, 0.2);
+    /* 1. small dark shadow */
+    /* 2. bg for label and icon */
+    /* 3. dimming content on the back */
+    box-shadow: 
+        0px -3px 12px 0px hsla(0, 0%, 0%, 0.2), 
+        0px -30px 12px 0px var(--color-main-bg),  
+        0px -122px 16px 0px hsla(0, 0%, 94%, 0.2); 
     border-radius: 6px 6px 0px 0px;
-    position: absolute;
-    top: 88px;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 0;
-
+    padding-top: 4px;
     display: flex;
     flex-wrap: nowrap;
     flex-direction: column;
     overflow: hidden;
+    height: 100%;
 }
+.sidebar-modal-dms .sidebar-modal-content {
+    padding-top: 2px;
+}
+.button-area-close-modal:hover + .sidebar-modal-content {
+    /* 2. bg for label and icon here is mix of --color-clickable-icon-hover-bg and main-bg  */
+    box-shadow: 
+        0px -3px 12px 0px hsla(0, 0%, 0%, 0.2),
+        0px -30px 12px 0px hsl(244, 36%, 91%), 
+        0px -122px 16px 0px var(--color-clickable-icon-hover-bg); 
+}
+.button-area-close-modal:active + .sidebar-modal-content {
+    box-shadow: 
+        0px -3px 12px 0px hsla(0, 0%, 0%, 0.25),
+        0px -30px 12px 0px hsl(240, 47%, 90%), 
+        0px -122px 16px 0px var(--color-clickable-icon-hover-bg-active); 
+}
+
 .dark .sidebar-modal-content {
-    box-shadow: 0px -4px 24px rgba(0, 0, 0, 0.7);
+    box-shadow: 
+        0px -4px 18px 0px hsla(0, 0%, 0%, 0.8),
+        0px -30px 12px 0px var(--color-main-bg), 
+        0px -122px 16px 0px hsla(0, 0%, 11%, 0.3); 
+}
+.dark .button-area-close-modal:hover + .sidebar-modal-content {
+    box-shadow: 
+        0px -4px 18px 0px hsla(0, 0%, 0%, 0.8),
+        0px -30px 12px 0px hsl(240, 19%, 24%), 
+        0px -122px 16px 0px var(--color-clickable-icon-hover-bg);
+}
+.dark .button-area-close-modal:active + .sidebar-modal-content {
+    box-shadow: 
+        0px -4px 18px 0px hsla(0, 0%, 0%, 0.8),
+        0px -30px 12px 0px hsl(240, 17%, 21%), 
+        0px -122px 16px 0px var(--color-clickable-icon-hover-bg-active); 
 }
 
 .sidebar-modal-dms .sidebar-modal-content {
     top: 34px
+}
+
+.sidebar-modal-summary{
+    position: relative;
 }
 
 .sidebar-group__summary-sticky {
@@ -481,6 +531,7 @@ i.icon-user-status.sidebar-row__icon._away {
     box-shadow: inset 0px 0px 0px 1px hsla(0, 0%, 0%, 0);
     width: 100%;
     overflow: hidden;
+    flex-shrink: 0;
 }
 /* this is for buttons in the group row */
 .sidebar-group__summary .sidebar-group__button{
@@ -488,7 +539,7 @@ i.icon-user-status.sidebar-row__icon._away {
 }
 
 .sidebar-modal__header {
-    height: 32px;
+    height: 28px;
 }
 /* this is for close button in the side bar modal */
 .sidebar-modal__header .sidebar-group__button{
@@ -654,17 +705,72 @@ i.icon-user-status.sidebar-row__icon._away {
     min-width: 24px;
     min-height: 22px;
     flex-grow: 1;
+    transition: background-color 140ms linear;
 }
+
+.button-area-close-modal{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    height: 90px;
+    position: relative;
+    cursor: pointer;
+    color: var(--color-clickable-icon);
+}
+.button-area-close-modal:hover{
+    color: var(--color-clickable-icon-hover);
+}
+
+.button-close-modal{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    transition: var(--transition-sidebar-all-small);
+}
+.button-back-modal{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding: 5px 5px 5px 8px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 4px;
+    font-family: var(--font-ss3);
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 100%; 
+    letter-spacing: 0.75px;
+    user-select: none;
+    transition: var(--transition-sidebar-all-small);
+}
+.button-area-close-modal:active .button-close-modal{
+    transform: scale(0.92);
+}
+.button-area-close-modal:active .button-back-modal{
+    transform: scale(0.96);
+}
+
+/* .button-close-modal .icon{
+    margin: 0;
+} */
 
 .sidebar-group__button:hover,
 .sidebar-group__button:focus-visible {
-    transition: none;
+    /* transition: none; */
     color: var(--color-clickable-icon-hover);
     background-color: var(--color-clickable-icon-hover-bg);
 }
 
 .sidebar-group__button:active {
-    scale: 0.92;
+    transform: scale(0.96);
+    background-color: var(--color-clickable-icon-hover-bg-active);
 }
 
 .sidebar-group__button .icon{
@@ -752,6 +858,13 @@ i.icon-user-status.sidebar-row__icon._away {
     display: flex;
     gap: 1px;
 }
+.sidebar-topics .sidebar-row__buttons-wrapper,
+.sidebar-group__details .sidebar-row__buttons-wrapper {
+    max-height: 24px;
+}
+.sidebar-modal__header .sidebar-row__buttons-wrapper{
+    padding: 0px 2px 0px 1px;
+}
 
 .sidebar-row__buttons-wrapper._hidden {
     opacity: 0;
@@ -763,16 +876,14 @@ i.icon-user-status.sidebar-row__icon._away {
     min-width: 24px;
     flex-grow: 0;
     opacity: 0;
-    transition: none;
+    transition: transform 140ms linear, background-color 140ms linear;
 }
 
 
 .sidebar-row__button-more:hover,
 .sidebar-row__button-more:focus-visible {
-    transition: none;
     color: var(--color-clickable-icon-hover);
-    /* background-color: var(--color-clickable-icon-hover-bg); */
-    /* we have to use non transparent background color to make pinn icon be not visible on focus of more button*/
+    /* we have to use non transparent background color to make pin icon be not visible on focus of more button*/
     background-color: hsl(240, 100%, 93%);
     opacity: 1;
 }
@@ -782,7 +893,11 @@ i.icon-user-status.sidebar-row__icon._away {
 }
 
 .sidebar-row__button-more:active {
-    scale: 0.92;
+    transform: scale(0.92);
+    background-color: hsl(240, 100%, 92%);
+}
+.dark .sidebar-row__button-more:active {
+    background-color: hsl(240, 25%, 32%);
 }
 
 /* .sidebar-row__button-more._hidden{
@@ -795,7 +910,7 @@ i.icon-user-status.sidebar-row__icon._away {
 .sidebar-row:hover .sidebar-row__button-more,
 .sidebar-row:focus-visible .sidebar-row__button-more {
     opacity: 0.85;
-    transition: none;
+    /* transition: none; */
 }
 
 .dark .sidebar-group__summary:hover .sidebar-row__button-more,
@@ -805,10 +920,10 @@ i.icon-user-status.sidebar-row__icon._away {
     opacity: 1;
 }
 
-.sidebar-group__summary:hover .sidebar-row__button-more:hover,
+/* .sidebar-group__summary:hover .sidebar-row__button-more:hover,
 .sidebar-row:hover .sidebar-row__button-more:hover {
     transition: none;
-}
+} */
 
 .left-sidebar ul,
 .left-sidebar-modal ul {
@@ -876,7 +991,7 @@ i.icon-user-status.sidebar-row__icon._away {
 
 .sidebar-row a:active {
     scale: 0.98;
-    transition: var(--transition-sidebar-all-fast);
+    transition: var(--transition-sidebar-all-medium);
 }
 
 .sidebar-row._selected a,
@@ -960,6 +1075,9 @@ i.icon-user-status.sidebar-row__icon._away {
 
 .sidebar-row.sidebar-row__button-more-items:hover {
     background-color: var(--color-clickable-icon-hover-bg);
+}
+.sidebar-row.sidebar-row__button-more-items:active {
+    background-color: var(--color-clickable-icon-hover-bg-active);
 }
 
 .sidebar-row.sidebar-row__button-more-items:hover .sidebar-row__label {
@@ -1330,7 +1448,7 @@ button.tab._selected{
     border: 1px solid hsla(0, 0%, 100%, 0.3);
 }
 
-.sidebar-button-cta{
+/* .sidebar-button-cta{
     cursor: pointer;
     font-family: var(--font-ss3);
     letter-spacing: 0.03em;
@@ -1355,4 +1473,4 @@ button.tab._selected{
 .sidebar-button-cta:active{
     scale: 0.97;
     transition: var(--transition-sidebar-all-fast);
-}
+} */

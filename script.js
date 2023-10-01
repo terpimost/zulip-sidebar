@@ -327,7 +327,7 @@ document.getElementById('left-sidebar').classList.add('_revealed')
 
 
 // sidebar modal related
-document.querySelectorAll('.button-close-modal').forEach(el => {
+document.querySelectorAll('.button-area-close-modal').forEach(el => {
   el.addEventListener('click', closeSidebarModal)
   el.addEventListener('keydown', (e)=>{
     if(e.key == 'Enter' || e.key == ' ' )
@@ -336,22 +336,13 @@ document.querySelectorAll('.button-close-modal').forEach(el => {
 })
 
 function closeSidebarModal(e) {
-  e.currentTarget.closest('.sidebar-modal-content').style.display = 'none'
-  e.currentTarget.closest('.left-sidebar-modal').style.display = 'none'
+  const modal = e.currentTarget.closest('.left-sidebar-modal')
+  modal.style.display = 'none'
+  modal.querySelector('.sidebar-modal-content').style.display = 'none'
+
   document.getElementById('left-sidebar').classList.remove('_blurred')
   document.querySelector('.sidebar-group-views').focus()
-  
 }
-
-//click on a free space above the modal to close it
-document.querySelectorAll('.left-sidebar-modal').forEach(el => {
-  el.addEventListener('click', (e) => {
-    if (e.currentTarget === e.target) {
-      e.currentTarget.style.display = 'none'
-      e.currentTarget.querySelectorAll('.sidebar-modal-content').forEach(e => e.style.display = 'none')
-    }
-  })
-})
 
 //opening model by the click on more topics button
 document.querySelectorAll('.button-more-topics>a').forEach(el => {
