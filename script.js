@@ -321,6 +321,7 @@ function onLeftSidebarScroll() {
 const onLeftSidebarScrollThrottled = lodash.throttle(onLeftSidebarScroll, 40, { leading: true })
 document.getElementById('left-sidebar').addEventListener('scroll', onLeftSidebarScrollThrottled)
 
+//custom scrollbar for the main container
 const simpleBar = new SimpleBar(document.getElementById('left-sidebar-scroll-container'));
 simpleBar.getScrollElement().addEventListener('scroll', onLeftSidebarScrollThrottled);
 document.getElementById('left-sidebar').classList.add('_revealed')
@@ -364,6 +365,8 @@ function openDMsModal(e) {
   document.querySelector('.sidebar-modal-dms').querySelector('.sidebar-modal-content .button-close-modal').focus()
   document.getElementById('left-sidebar').classList.add('_blurred')
 }
+
+
 
 // search and filter inputs
 document.querySelectorAll('button.clear-input').forEach(el => {

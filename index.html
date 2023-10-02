@@ -209,12 +209,10 @@
   <div class="column-left" id="left-sidebar-container" draggable="false">
     <div class="left-sidebar" id="left-sidebar" role="navigation" draggable="false">
       
+      <!-- Here simple bar is set via js because we want to track scroll -->
       <!-- data-simplebar-auto-hide="false" -->
       <!-- data-simplebar -->
-      <div id="left-sidebar-scroll-container" class="left-sidebar-scrollable" 
-      
-      >
-
+      <div id="left-sidebar-scroll-container" class="left-sidebar-scrollable">
 
         <!-- VIEWS -->
         <div class="sidebar-group__summary-sticky summary-sticky-views">
@@ -1182,7 +1180,7 @@
               <a tabindex="-1" href="#stream">
                 <i class="icon icon-lock sidebar-row__icon" aria-hidden="true"></i>
                 <span class="sidebar-row__label">Three lines should be the maximum, because streams usually are one letter
-                  names and four lines is overkill</span>
+                  names and four lines is overkill, so fourth line would be cut by css</span>
                 <span class="unread-count">2</span>
               </a>
               <div class="sidebar-row__buttons-wrapper">
@@ -1793,9 +1791,8 @@
           </ul>
         </div>
 
-        
-        </div>
       </div>
+    </div>
      
 
     <!-- modal sidebar for dedicated stream view with all the topics-->
@@ -1841,9 +1838,10 @@
                 <button class="tab">Resolved</button>
               </div>
             </li> -->
-            <div class="sidebar-modal-scrollable">
+            <div class="sidebar-modal-scroll-container">
+              <!-- we set scroll on children so we can make height: 100% off a parent on them -->
               <!-- topics -->
-              <ul class="sidebar-topics">
+              <ul class="sidebar-topics sidebar-modal-scrollable"  data-simplebar data-simplebar-auto-hide="false">
                 <li tabindex="0" class="sidebar-row">
                   <a tabindex="-1" href="#stream">
                     <span class="sidebar-row__label">#24237</span>
@@ -2086,9 +2084,9 @@
               </button>
             </li>
             
-            <div class="sidebar-modal-scrollable">
-              <!-- topics -->
-              <ul class="sidebar-dms">
+            <div class="sidebar-modal-scroll-container">
+              <!-- dms which should be scrollable -->
+              <ul class="sidebar-dms sidebar-modal-scrollable" data-simplebar data-simplebar-auto-hide="false">
                 <li class="sidebar-row" data-user-ids-string="26369" tabindex="0">
                   <a tabindex="-1" href="#narrow/dm/26369-Karl-Stolley">
                     <i class="icon icon-user-status sidebar-row__icon _online" aria-hidden="true"></i>
