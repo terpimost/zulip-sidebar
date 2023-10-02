@@ -1,0 +1,123 @@
+:root{
+    --right-sidebar-width: 254px;
+}
+.column-right {
+    width: var(--right-sidebar-width);
+    max-width: var(--right-sidebar-width);
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    overflow: visible;
+    display: flex;
+    padding-top: var(--header-height);
+    -webkit-user-drag: none;
+}
+
+.right-sidebar {
+    position: fixed;
+    width: var(--right-sidebar-width);
+    height: calc(100% - var(--header-height));
+    overflow: hidden;
+    box-sizing: border-box;
+    color: var(--color-base-text);
+    -webkit-user-drag: none;
+    opacity: 0;
+    transition: opacity 0.35s ease-in;
+}
+.right-sidebar._revealed{
+    opacity: 1;
+}
+.right-sidebar._blurred{
+    user-select: none;
+    pointer-events: none;
+}
+
+.right-sidebar-scroll-container{
+    height: 100%;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+}
+
+.summary-sticky-users {
+    /* -4 and 4 is because we don't want scrolled content underneath it to be visible */
+    margin: -4px 0px 0px;
+    padding: 4px 0px 0px;
+    top: -4px;
+    z-index: 2;
+    width: 100%;
+    overflow: hidden;
+}
+
+.right-sidebar .simplebar-content-wrapper{
+    padding: 4px 8px 18px 2px;
+    outline-offset: -1px;
+}
+
+.sidebar-group__header{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+    padding-left: 10px;
+    flex-grow: 2;
+    flex-basis: 0;
+    overflow: hidden;
+    cursor: auto;
+}
+.sidebar-group-users.sidebar-group__summary:hover {
+    background-color: transparent;
+    box-shadow: none;
+}
+.sidebar-row__button-more._visible{
+    opacity: 1;
+    visibility: visible;
+}
+.sidebar-group-users{
+    gap: 4px;
+}
+
+.sidebar-group-users .sidebar-group__header{
+    flex-grow: initial;
+    flex-basis: initial;
+    padding-left: 6px;
+    padding-right: 4px;
+    max-width: 50%;
+}
+
+.user-filter-wrapper{
+    margin: 2px 0px 1px 0px;
+    flex-grow: 1;
+    opacity: 0.75;
+}
+.dark .user-filter-wrapper{
+    opacity: 1;
+}
+.user-filter-wrapper:hover{
+    opacity: 1;
+}
+
+.user-filter-wrapper.sidebar-list__filter-wrapper .icon-search{
+    left: 5px
+}
+
+.user-list__filter.sidebar-list__filter{
+    padding-left: 24px;
+}
+
+.sidebar-group__summary-label._secondary{
+    text-transform:none; 
+    letter-spacing: 0; 
+    font-weight: 500;
+    display: inline-flex;
+    gap: 0.5ch;
+}
+
+.right-sidebar .item-count-wrapper{
+    padding-right: 4px;
+}
+
+.right-sidebar .sidebar-row a {
+    padding-left: 14px;
+}

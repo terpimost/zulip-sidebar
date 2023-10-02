@@ -21,8 +21,8 @@
 
 .compose-area {
   position: fixed;
-  width: calc(100% - var(--left-sidebar-width) - 216px);
-  margin: 0 216px 0 var(--left-sidebar-width);
+  width: calc(100% - var(--left-sidebar-width) - var(--right-sidebar-width));
+  margin: 0 var(--right-sidebar-width) 0 var(--left-sidebar-width);
   /* left: 50%; */
   /* transform: translate(-50%, 0%); */
   bottom: 0;

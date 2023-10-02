@@ -572,6 +572,10 @@ i.icon-user-status.sidebar-row__icon._away {
     outline-offset: -1px;
 }
 
+.sidebar-group__expander-area{
+    transition: var(--transition-sidebar-all-medium);
+}
+
 .sidebar-group__expander-area,
 .sidebar-group__header-label {
     /* acts as an indicator of hover on icon or icon and label */
@@ -587,7 +591,7 @@ i.icon-user-status.sidebar-row__icon._away {
 }
 
 .sidebar-group__expander-area:active {
-    scale: 0.97;
+    transform: scale(0.96);
 }
 
 .sidebar-group__header-label {
@@ -944,7 +948,8 @@ i.icon-user-status.sidebar-row__icon._away {
 } */
 
 .left-sidebar ul,
-.left-sidebar-modal ul {
+.left-sidebar-modal ul,
+.right-sidebar ul {
     padding: 0;
     margin: 0;
     list-style-type: none;
@@ -1189,6 +1194,7 @@ i.icon-user-status.sidebar-row__icon._away {
     margin-right: 0;
 }
 
+.item-count-wrapper,
 .unread-count-wrapper {
     padding-left: 1px;
     display: flex;
@@ -1352,6 +1358,9 @@ ul.sidebar-topics .sidebar-row._resolved a {
     border-radius: 4px;
     transition: all 0.1s linear;
     border: 1px solid rgba(20, 22, 31, 0.3);
+}
+input.sidebar-list__filter:placeholder-shown{
+    padding-right: 4px;
 }
 
 .sidebar-list__filter:hover {

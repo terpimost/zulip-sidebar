@@ -326,6 +326,11 @@ const simpleBar = new SimpleBar(document.getElementById('left-sidebar-scroll-con
 simpleBar.getScrollElement().addEventListener('scroll', onLeftSidebarScrollThrottled);
 document.getElementById('left-sidebar').classList.add('_revealed')
 
+//custom scrollbar for the main container
+const simpleBarRight = new SimpleBar(document.getElementById('right-sidebar-scroll-container'));
+// simpleBar.getScrollElement().addEventListener('scroll', onRightSidebarScrollThrottled);
+document.getElementById('right-sidebar').classList.add('_revealed')
+
 
 // sidebar modal related
 document.querySelectorAll('.button-area-close-modal').forEach(el => {
