@@ -15,6 +15,11 @@
 }
 
 .right-sidebar {
+    /* TODO remove ------------------------------------------------------- */
+    display: none;
+
+
+
     position: fixed;
     width: var(--right-sidebar-width);
     height: calc(100% - var(--header-height));

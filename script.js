@@ -329,7 +329,7 @@ document.getElementById('left-sidebar').classList.add('_revealed')
 //custom scrollbar for the main container
 const simpleBarRight = new SimpleBar(document.getElementById('right-sidebar-scroll-container'));
 // simpleBar.getScrollElement().addEventListener('scroll', onRightSidebarScrollThrottled);
-document.getElementById('right-sidebar').classList.add('_revealed')
+// document.getElementById('right-sidebar').classList.add('_revealed')
 
 
 // sidebar modal related
