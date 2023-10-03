@@ -347,6 +347,11 @@ i.icon-user-status.sidebar-row__icon._away {
     pointer-events: none;
 }
 
+.left-sidebar a[tabindex="-1"],
+.right-sidebar a[tabindex="-1"]{
+    outline: none;
+}
+
 .left-sidebar-scrollable{
     height: 100%;
     overflow-x: hidden;
@@ -651,18 +656,18 @@ i.icon-user-status.sidebar-row__icon._away {
     transition: none;
     transition-delay: 0s;
     max-height: 0px;
-    /* opacity: 0; */
     pointer-events: none;
-   
+    /* visibility: hidden; */
 }
+
 .sidebar-group__summary-sticky ._overscrolled+.sticky-active-underfold{
-    /* transition: max-height 200ms linear; */
     transition-delay: 100ms;
     max-height: calc(28px * 3);
     opacity: 1;
     pointer-events: all;
-   
+    /* visibility: visible; */
 }
+
 
 .sidebar-group__summary-label {
     white-space: nowrap;
@@ -701,15 +706,30 @@ i.icon-user-status.sidebar-row__icon._away {
     flex-grow: 1;
 }
 
-.sidebar-group__buttons._show-on-hover {
+/* .sidebar-group__buttons._show-on-hover a{
+    opacity: 0;
+}
+
+.sidebar-group__summary:hover .sidebar-group__buttons._show-on-hover a,
+.sidebar-group__summary:focus-visible .sidebar-group__buttons._show-on-hover a,
+.sidebar-group__buttons._show-on-hover a:focus-visible{
+    opacity: 1;
+    display: flex;
+} */
+
+.sidebar-group__buttons._show-on-hover{
     opacity: 0;
     display: none;
 }
 
-.sidebar-group__summary:hover .sidebar-group__buttons._show-on-hover {
+.sidebar-group__summary:hover .sidebar-group__buttons._show-on-hover,
+.sidebar-group__summary:focus-visible .sidebar-group__buttons._show-on-hover,
+.sidebar-group__summary:focus-within .sidebar-group__buttons._show-on-hover{
     opacity: 1;
     display: flex;
 }
+
+
 
 .sidebar-group__button {
     color: var(--color-clickable-icon);
@@ -900,10 +920,13 @@ i.icon-user-status.sidebar-row__icon._away {
     opacity: 0;
     transition: transform 140ms linear, background-color 140ms linear;
 }
-
+.sidebar-row:focus-within .sidebar-row__button-more,
+.sidebar-group__summary:focus-within .sidebar-row__button-more{
+    opacity: 1;
+}
 
 .sidebar-row__button-more:hover,
-.sidebar-row__button-more:focus-visible {
+.sidebar-row__button-more:focus-visible{
     color: var(--color-clickable-icon-hover);
     /* we have to use non transparent background color to make pin icon be not visible on focus of more button*/
     background-color: hsl(240, 100%, 93%);
@@ -1363,7 +1386,8 @@ input.sidebar-list__filter:placeholder-shown{
     padding-right: 4px;
 }
 
-.sidebar-list__filter:hover {
+.sidebar-list__filter:hover,
+input.sidebar-list__filter:not(:placeholder-shown) {
     border: 1px solid rgba(20, 22, 31, 0.6);
 }
 
@@ -1392,7 +1416,7 @@ input.sidebar-list__filter:placeholder-shown{
     box-shadow: 0px 0px 5px rgb(255 255 255 / 40%);
 }
 
-button.icon-button{
+button.sidebar-icon-button{
     border: 1px solid transparent;
     background: transparent;
     display: flex;
@@ -1408,15 +1432,15 @@ button.icon-button{
     color: var(--color-base-text);
     opacity: 0.4;
 }
-button.icon-button:hover,
-button.icon-button:focus-visible{
+button.sidebar-icon-button:hover,
+button.sidebar-icon-button:focus-visible{
     opacity: 1;
     background: rgba(0, 0, 0, 0.05);
 }
-.dark button.icon-button:hover{
+.dark button.sidebar-icon-button:hover{
     background: rgba(255, 255, 255, 0.05);
 }
-button.icon-button:active{
+button.sidebar-icon-button:active{
     opacity: 1;
     transform: scale(0.90);
 }

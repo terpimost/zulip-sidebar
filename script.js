@@ -296,13 +296,23 @@ function onLeftSidebarScroll() {
     if (group.classList.contains('_expanded')) {
       const details = group.querySelector('.sidebar-group__details')
       const details_rect = details.getBoundingClientRect()
+      if(details.classList.contains('dm-list')) console.log('details', details)
+      if(details.classList.contains('dm-list')) console.log('details_rect', details_rect)
+      
+      
       const sticky_header_rect = sticky_header.getBoundingClientRect()
+      const sticky_header_underfold_rect = sticky_header.querySelector('.sticky-active-underfold')?.getBoundingClientRect()
+      if(details.classList.contains('dm-list')) console.log('sticky_header', sticky_header)
+      if(details.classList.contains('dm-list')) console.log('sticky_header_rect', sticky_header_rect, sticky_header_underfold_rect)
       const summary = sticky_header.querySelector('.sidebar-group__summary')
       if (details_rect.top < sticky_header_rect.bottom - 4) {
         sticky_header.classList.add('_covering')
         // we might want to virtually close that group, so when clicked it will not be close 
         // but scrolled to and expanded
-        if (details_rect.bottom < sticky_header_rect.bottom + 4) {
+        if(details.classList.contains('dm-list')) console.log('details_rect.bottom', details_rect.bottom)
+        if(details.classList.contains('dm-list')) console.log('sticky_header_rect.bottom + 4', sticky_header_rect.bottom + 4)
+
+        if (details_rect.bottom < (sticky_header_rect.bottom-(sticky_header_underfold_rect?.height || 0)) + 4) {
           summary.classList.add('_overscrolled')
         } else {
           summary.classList.remove('_overscrolled')
@@ -329,7 +339,7 @@ document.getElementById('left-sidebar').classList.add('_revealed')
 //custom scrollbar for the main container
 const simpleBarRight = new SimpleBar(document.getElementById('right-sidebar-scroll-container'));
 // simpleBar.getScrollElement().addEventListener('scroll', onRightSidebarScrollThrottled);
-// document.getElementById('right-sidebar').classList.add('_revealed')
+document.getElementById('right-sidebar').classList.add('_revealed')
 
 
 // sidebar modal related
