@@ -229,8 +229,8 @@ function onSidebarGroupExpanderAreaClick(event) {
       }
     }
   }
-  // setTimeout(validateActiveStickyItems,400)
-  onLeftSidebarScrollThrottled() //to validate headers of groups about shadow and _overscrolled
+  // first parameter is fake event, second parameter is flag to enforce removal fo covering
+  onLeftSidebarScrollThrottled(true, true) //to validate headers of groups about shadow and _overscrolled
 }
 
 function stickyAreaHeightAboveDetails(element, stickyParent) {
@@ -283,7 +283,7 @@ function stickyAreaHeightAboveDetails(element, stickyParent) {
 //sidebar scroll tracker to control shadow under group header 
 // and _overscrolled status for groups which are _expanded
 
-function onLeftSidebarScroll() {
+function onLeftSidebarScroll(e, no_covering=false) {
   // console.log('onLeftSidebarScroll')
   const groups = document.querySelectorAll('.sidebar-group')
   groups.forEach(group => {
@@ -311,8 +311,12 @@ function onLeftSidebarScroll() {
         // but scrolled to and expanded
         if(details.classList.contains('dm-list')) console.log('details_rect.bottom', details_rect.bottom)
         if(details.classList.contains('dm-list')) console.log('sticky_header_rect.bottom + 4', sticky_header_rect.bottom + 4)
-
-        if (details_rect.bottom < (sticky_header_rect.bottom-(sticky_header_underfold_rect?.height || 0)) + 4) {
+        // 74 < 102 - 0
+      console.log('no_covering',no_covering)
+        if (
+          !no_covering &&
+          (details_rect.bottom < (sticky_header_rect.bottom-(sticky_header_underfold_rect?.height || 0)) + 4)
+          ) {
           summary.classList.add('_overscrolled')
         } else {
           summary.classList.remove('_overscrolled')
