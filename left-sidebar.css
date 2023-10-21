@@ -25,6 +25,8 @@
     --icon-resolved-small: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3e%3cpath fill='black' fill-rule='evenodd' d='M12.47 4.53c.26.26.26.68 0 .94l-5.5 5.5c-.26.26-.68.26-.94 0l-2.5-2.5a.665.665 0 0 1 .94-.94L6.5 9.56l5.03-5.03c.26-.26.68-.26.94 0Z' clip-rule='evenodd'/%3e%3c/svg%3e");
     --icon-following: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3e%3cg fill='black'%3e%3cpath d='M11.84 1.24a.75.75 0 0 0-1.1 1.02 8.92 8.92 0 0 1 0 12 .75.75 0 1 0 1.1 1.03 10.42 10.42 0 0 0 0-14.05Z'/%3e%3cpath d='M7.16 3.8a.77.77 0 0 1 1.07 0 6.38 6.38 0 0 1 0 8.9.75.75 0 0 1-1.08-1.03 4.88 4.88 0 0 0 .01-6.8.75.75 0 0 1 0-1.06Zm-3.31 6.31a1.85 1.85 0 1 0 0-3.7 1.85 1.85 0 0 0 0 3.7Z'/%3e%3c/g%3e%3c/svg%3e");
     --icon-following-small: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3e%3cg fill='black'%3e%3cpath d='M10.88 2.93a.56.56 0 1 0-.82.77 6.7 6.7 0 0 1 0 9 .56.56 0 0 0 .82.77 7.82 7.82 0 0 0 0-10.54Z'/%3e%3cpath d='M7.37 4.85a.56.56 0 0 1 .8 0 4.79 4.79 0 0 1 0 6.68.56.56 0 0 1-.8-.78 3.66 3.66 0 0 0 0-5.1.56.56 0 0 1 0-.8ZM4.89 9.58a1.39 1.39 0 1 0 0-2.77 1.39 1.39 0 0 0 0 2.77Z'/%3e%3c/g%3e%3c/svg%3e");
+    
+    --icon-plus-square: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3e%3cg fill='black' clip-path='url(%23a)'%3e%3cpath d='M3.668 8c0-.367.298-.665.665-.665h3.002V4.333a.665.665 0 1 1 1.33 0v3.002h3.001a.665.665 0 1 1 0 1.33H8.665v3.001a.665.665 0 1 1-1.33 0V8.665H4.333A.665.665 0 0 1 3.668 8Z'/%3e%3cpath fill-rule='evenodd' d='M.335 2.333C.335 1.23 1.23.335 2.333.335h11.334c1.103 0 1.998.895 1.998 1.998v11.334a1.998 1.998 0 0 1-1.998 1.998H2.333a1.998 1.998 0 0 1-1.998-1.998V2.333Zm1.998-.668c-.369 0-.668.3-.668.668v11.334c0 .369.3.668.668.668h11.334c.369 0 .668-.3.668-.668V2.333c0-.369-.3-.668-.668-.668H2.333Z' clip-rule='evenodd'/%3e%3c/g%3e%3cdefs%3e%3cclipPath id='a'%3e%3cpath fill='white' d='M0 0h16v16H0z'/%3e%3c/clipPath%3e%3c/defs%3e%3c/svg%3e");
 
     /* in icon-user-status the circle is shifted to the right */
     --icon-user-status: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3e%3ccircle cx='10' cy='8' r='4' fill='black'/%3e%3c/svg%3e");
@@ -216,6 +218,13 @@ i.icon {
     mask-image: var(--icon-following-small);
     -webkit-mask-image: var(--icon-following-small);
 }
+
+.icon-plus-square {
+    mask-image: var(--icon-plus-square);
+    -webkit-mask-image: var(--icon-plus-square);
+}
+
+
 
 i.icon-user-status.sidebar-row__icon._online {
     background-color: hsl(137, 42%, 47%);
@@ -720,13 +729,20 @@ i.icon-user-status.sidebar-row__icon._away {
 .sidebar-group__buttons._show-on-hover{
     opacity: 0;
     display: none;
+    /* we want to dedicate space for label as much as we can */
+    /* visibility: hidden; */
 }
 
 .sidebar-group__summary:hover .sidebar-group__buttons._show-on-hover,
 .sidebar-group__summary:focus-visible .sidebar-group__buttons._show-on-hover,
-.sidebar-group__summary:focus-within .sidebar-group__buttons._show-on-hover{
+.sidebar-group__summary:focus-within:not(:focus) .sidebar-group__buttons._show-on-hover
+{
     opacity: 1;
     display: flex;
+    /* visibility: visible; */
+    /* we should remove focused from the button via JS
+    otherwise the focus stays inside the group and continue to show buttons
+     */
 }
 
 
@@ -920,8 +936,8 @@ i.icon-user-status.sidebar-row__icon._away {
     opacity: 0;
     transition: transform 140ms linear, background-color 140ms linear;
 }
-.sidebar-row:focus-within .sidebar-row__button-more,
-.sidebar-group__summary:focus-within .sidebar-row__button-more{
+.sidebar-row:focus-visible .sidebar-row__button-more,
+.sidebar-group__summary:focus-visible .sidebar-row__button-more{
     opacity: 1;
 }
 

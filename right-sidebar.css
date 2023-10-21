@@ -68,8 +68,16 @@
     padding-left: 10px;
     flex-grow: 2;
     flex-basis: 0;
+    max-width: 100%;
     overflow: hidden;
     cursor: auto;
+    transition: var(--transition-sidebar-all-slow);
+}
+.sidebar-group-users .sidebar-group__header._hidden{
+    padding-left: 0;
+    flex-grow: 0;
+    flex-shrink: 2;
+    max-width: 0;
 }
 .sidebar-group-users.sidebar-group__summary:hover {
     background-color: transparent;

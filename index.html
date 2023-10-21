@@ -386,7 +386,7 @@
             </div>
 
             <div class="sidebar-group__buttons _show-on-hover">
-              <a class="sidebar-group__button" href="#narrow/is/starred">
+              <a class="sidebar-group__button" id="search_dms_icon_btn" >
                 <i class="icon icon-search"></i>
               </a>
               <a class="sidebar-group__button" href="#all_messages">
@@ -396,11 +396,11 @@
             <span class="unread-count-wrapper">
               <span class="unread-count _strong">198</span>
             </span>
-            <!-- Hiding more button with "_hidden" until we have one for DMs -->
-            <div class="sidebar-row__buttons-wrapper _hidden">
-              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="Options"
+
+            <div class="sidebar-row__buttons-wrapper">
+              <div class="sidebar-group__button sidebar-row__button-more hidden-for-spectators" title="New conversation"
                 tabindex="0">
-                <i class="icon icon-dots-vertical"></i>
+                <i class="icon icon-plus-square"></i>
               </div>
             </div>
           </div>
@@ -2063,8 +2063,8 @@
             <span class="unread-count-wrapper">
               <span class="unread-count">198</span>
             </span>
-            <div class="sidebar-group__button hidden-for-spectators" title="Options" tabindex="0">
-              <i class="icon icon-dots-vertical"></i>
+            <div class="sidebar-group__button hidden-for-spectators" title="New conversation" tabindex="0">
+              <i class="icon icon-plus-square"></i>
             </div>
           </div>
         </div>
@@ -2072,7 +2072,7 @@
         <ul class="sidebar-group__details sidebar-group-streams">
           <li class="sidebar-list__filter-wrapper">
             <i class="icon icon-search"></i>
-            <input class="sidebar-list__filter" type="text" size="1" placeholder="Filter recepients">
+            <input id="filter_dms_input" class="sidebar-list__filter" type="text" size="1" placeholder="Filter recepients">
             <button class="sidebar-icon-button clear-input">
               <i class="icon icon-close-small"></i>
             </button>
@@ -2258,7 +2258,7 @@
 
             <div class="user-filter-wrapper sidebar-list__filter-wrapper">
               <i class="icon icon-search"></i>
-              <input class="user-list__filter sidebar-list__filter" type="text" size="1" placeholder="Filter">
+              <input id="user-filter-input" class="user-list__filter sidebar-list__filter" type="text" size="1" placeholder="Filter">
               <button class="sidebar-icon-button clear-input">
                 <i class="icon icon-close-small"></i>
               </button>

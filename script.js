@@ -124,8 +124,6 @@ function colorizeStreamRows() {
   const darkMode = document.body.classList.contains('dark')
   document.querySelectorAll('ul.sidebar-group-streams').forEach((sg, sg_i) => {
     [...sg.children].forEach((s, s_i) => {
-      // console.log('s=', s);
-      // console.log('sg_i + s_i=', sg_i + s_i);
       const color = streamColors[sg_i + s_i]
       colorizeStreamRow(s, color, darkMode)
       const possibleTopics = s.querySelector('ul.sidebar-topics')?.children;
@@ -296,23 +294,15 @@ function onLeftSidebarScroll(e, no_covering=false) {
     if (group.classList.contains('_expanded')) {
       const details = group.querySelector('.sidebar-group__details')
       const details_rect = details.getBoundingClientRect()
-      if(details.classList.contains('dm-list')) console.log('details', details)
-      if(details.classList.contains('dm-list')) console.log('details_rect', details_rect)
       
       
       const sticky_header_rect = sticky_header.getBoundingClientRect()
       const sticky_header_underfold_rect = sticky_header.querySelector('.sticky-active-underfold')?.getBoundingClientRect()
-      if(details.classList.contains('dm-list')) console.log('sticky_header', sticky_header)
-      if(details.classList.contains('dm-list')) console.log('sticky_header_rect', sticky_header_rect, sticky_header_underfold_rect)
       const summary = sticky_header.querySelector('.sidebar-group__summary')
       if (details_rect.top < sticky_header_rect.bottom - 4) {
         sticky_header.classList.add('_covering')
         // we might want to virtually close that group, so when clicked it will not be close 
         // but scrolled to and expanded
-        if(details.classList.contains('dm-list')) console.log('details_rect.bottom', details_rect.bottom)
-        if(details.classList.contains('dm-list')) console.log('sticky_header_rect.bottom + 4', sticky_header_rect.bottom + 4)
-        // 74 < 102 - 0
-      console.log('no_covering',no_covering)
         if (
           !no_covering &&
           (details_rect.bottom < (sticky_header_rect.bottom-(sticky_header_underfold_rect?.height || 0)) + 4)
@@ -381,7 +371,7 @@ document.querySelectorAll('.button-more-dm>a').forEach(el => {
 function openDMsModal(e) {
   document.querySelector('.sidebar-modal-dms').style.display = 'flex'
   document.querySelector('.sidebar-modal-dms').querySelector('.sidebar-modal-content').style.display = 'flex'
-  document.querySelector('.sidebar-modal-dms').querySelector('.sidebar-modal-content .button-close-modal').focus()
+  document.querySelector('.sidebar-modal-dms').querySelector('.button-close-modal').focus()
   document.getElementById('left-sidebar').classList.add('_blurred')
 }
 
@@ -395,8 +385,6 @@ function onClearInput(e) {
   e.currentTarget.previousElementSibling.value = ''
   e.currentTarget.previousElementSibling.focus()
 }
-
-
 
 // switchin on/off active alement in the group, just to test active element outside parent group
 const button_href_word_regex = /[a-zA-Z0-9_,-]+\b/
@@ -506,4 +494,33 @@ function validateActiveStickyItems() {
 function extractNumericValue(value) {
   var numericValue = parseFloat(value);
   return isNaN(numericValue) ? 0 : numericValue;
+}
+
+document.getElementById('search_dms_icon_btn').addEventListener('click', onSearchDMsClick)
+function onSearchDMsClick(){
+  openDMsModal()
+  document.getElementById('filter_dms_input').focus()
+}
+
+document.getElementById('user-filter-input').addEventListener('focus', onUserFilterFocus)
+document.getElementById('user-filter-input').addEventListener('blur', onUserFilterBlur)
+
+function onUserFilterFocus(){
+  document.querySelector('.sidebar-group-users.sidebar-group__summary .sidebar-group__header').classList.add('_hidden')
+}
+
+function onUserFilterBlur(){
+   // it is ok to unfocus but a bit later, so if its clear button we wouldn't flinch
+   setTimeout(()=>{
+    // console.log('value',document.getElementById('user-filter-input').value)
+    if(
+      document.activeElement!==document.getElementById('user-filter-input')
+      && document.getElementById('user-filter-input').value.trim()===''
+    ){
+      document.getElementById('user-filter-input').value=''
+      document.querySelector('.sidebar-group-users.sidebar-group__summary .sidebar-group__header').classList.remove('_hidden')
+    }
+   },250)
+    
+  
 }
