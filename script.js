@@ -281,9 +281,9 @@ function stickyAreaHeightAboveDetails(element, stickyParent) {
 //sidebar scroll tracker to control shadow under group header 
 // and _overscrolled status for groups which are _expanded
 
-function onLeftSidebarScroll(e, no_covering=false) {
+function onLeftSidebarScroll(e, no_covering = false) {
   // console.log('onLeftSidebarScroll')
-  const groups = document.querySelectorAll('.sidebar-group')
+  const groups = document.querySelectorAll('.column-left .sidebar-group')
   groups.forEach(group => {
     //.sidebar-group__summary-sticky will be either a child or prev sibling
     let sticky_header = group.querySelector('.sidebar-group__summary-sticky')
@@ -294,8 +294,8 @@ function onLeftSidebarScroll(e, no_covering=false) {
     if (group.classList.contains('_expanded')) {
       const details = group.querySelector('.sidebar-group__details')
       const details_rect = details.getBoundingClientRect()
-      
-      
+
+
       const sticky_header_rect = sticky_header.getBoundingClientRect()
       const sticky_header_underfold_rect = sticky_header.querySelector('.sticky-active-underfold')?.getBoundingClientRect()
       const summary = sticky_header.querySelector('.sidebar-group__summary')
@@ -305,8 +305,8 @@ function onLeftSidebarScroll(e, no_covering=false) {
         // but scrolled to and expanded
         if (
           !no_covering &&
-          (details_rect.bottom < (sticky_header_rect.bottom-(sticky_header_underfold_rect?.height || 0)) + 4)
-          ) {
+          (details_rect.bottom < (sticky_header_rect.bottom - (sticky_header_underfold_rect?.height || 0)) + 4)
+        ) {
           summary.classList.add('_overscrolled')
         } else {
           summary.classList.remove('_overscrolled')
@@ -319,28 +319,70 @@ function onLeftSidebarScroll(e, no_covering=false) {
       sticky_header.classList.remove('_covering')
     }
   })
-  validateActiveStickyItems()
+  validateActiveStickyItemsLS()
 }
 
 const onLeftSidebarScrollThrottled = lodash.throttle(onLeftSidebarScroll, 40, { leading: true })
-document.getElementById('left-sidebar').addEventListener('scroll', onLeftSidebarScrollThrottled)
 
-//custom scrollbar for the main container
-const simpleBar = new SimpleBar(document.getElementById('left-sidebar-scroll-container'));
-simpleBar.getScrollElement().addEventListener('scroll', onLeftSidebarScrollThrottled);
-document.getElementById('left-sidebar').classList.add('_revealed')
+//custom scrollbar for the left sidebar
+const simpleBarLeft = new SimpleBar(document.getElementById('left-sidebar-scroll-container'));
+simpleBarLeft.getScrollElement().addEventListener('scroll', onLeftSidebarScrollThrottled);
+//lets change opacity from 0 to 1 instead of raw content load twitching
+document.getElementById('left-sidebar').classList.add('_revealed') 
 
-//custom scrollbar for the main container
+
+
+function onRightSidebarScroll(e, no_covering = false) {
+  // console.log('onLeftSidebarScroll')
+  const groups = document.querySelectorAll('.column-right .sidebar-group')
+  groups.forEach(group => {
+    //.sidebar-group__summary-sticky will be either a child or prev sibling
+    let sticky_header = group.querySelector('.sidebar-group__summary-sticky')
+    if (!sticky_header?.classList.contains('sidebar-group__summary-sticky')) {
+      sticky_header = group.previousElementSibling
+    }
+
+    if (group.classList.contains('_expanded')) {
+      const details = group.querySelector('.sidebar-group__details')
+      const details_rect = details.getBoundingClientRect()
+
+
+      const sticky_header_rect = sticky_header.getBoundingClientRect()
+      const sticky_header_underfold_rect = sticky_header.querySelector('.sticky-active-underfold')?.getBoundingClientRect()
+      const summary = sticky_header.querySelector('.sidebar-group__summary')
+      if (details_rect.top < sticky_header_rect.bottom - 4) {
+        sticky_header.classList.add('_covering')
+        // we might want to virtually close that group, so when clicked it will not be close 
+        // but scrolled to and expanded
+        if (
+          !no_covering &&
+          (details_rect.bottom < (sticky_header_rect.bottom - (sticky_header_underfold_rect?.height || 0)) + 4)
+        ) {
+          summary.classList.add('_overscrolled')
+        } else {
+          summary.classList.remove('_overscrolled')
+        }
+      } else {
+        sticky_header.classList.remove('_covering')
+        summary.classList.remove('_overscrolled')
+      }
+    } else {
+      sticky_header.classList.remove('_covering')
+    }
+  })
+  // validateActiveStickyItemsLS()
+}
+const onRightSidebarScrollThrottled = lodash.throttle(onRightSidebarScroll, 40, { leading: true })
 const simpleBarRight = new SimpleBar(document.getElementById('right-sidebar-scroll-container'));
-// simpleBar.getScrollElement().addEventListener('scroll', onRightSidebarScrollThrottled);
+simpleBarRight.getScrollElement().addEventListener('scroll', onRightSidebarScrollThrottled);
 document.getElementById('right-sidebar').classList.add('_revealed')
 
 
 // sidebar modal related
 document.querySelectorAll('.button-area-close-modal').forEach(el => {
   el.addEventListener('click', closeSidebarModal)
-  el.addEventListener('keydown', (e)=>{
-    if(e.key == 'Enter' || e.key == ' ' )
+  el.addEventListener('keydown', (e) => {
+    if (e.key == 'Enter' || e.key == ' ')
       closeSidebarModal(e)
   })
 })
@@ -407,10 +449,10 @@ document.querySelectorAll('.sidebar-group-views .sidebar-row a').forEach(it =>
 )
 
 document.querySelectorAll('.sidebar-group-dms .sidebar-row a').forEach(it => {
-    if(!it?.parentElement?.classList.contains('sidebar-row__button-more-items')){
-      it.addEventListener('click', onDMItemClick)
-    }
+  if (!it?.parentElement?.classList.contains('sidebar-row__button-more-items')) {
+    it.addEventListener('click', onDMItemClick)
   }
+}
 )
 function onDMItemClick(e) {
   activateViewDMItem(e.currentTarget.href)
@@ -434,7 +476,7 @@ function activateViewDMItem(href) {
     copyNodeAndAddToParent(null, underfoldParentViews)
   }
 
-  validateActiveStickyItems()
+  validateActiveStickyItemsLS()
 }
 
 function validateItemSelection(it, word, underfoldParent) {
@@ -473,7 +515,7 @@ function copyNodeAndAddToParent(node, parent) {
 
 // go through items of Views and DMs and correct their top positions
 // if we have active item but folded group we should show that item next to this group
-function validateActiveStickyItems() {
+function validateActiveStickyItemsLS() {
   const summaryStickyView = document.querySelector('.summary-sticky-views');
   const summaryStickyViewComputedStyle = getComputedStyle(summaryStickyView);
   const summaryStickyViewPading = extractNumericValue(summaryStickyViewComputedStyle.getPropertyValue('padding-top'))
@@ -491,13 +533,15 @@ function validateActiveStickyItems() {
     it.style.top = (summaryStickyViewHeight + summaryStickyDMsHeight + stickyViewsDMsSeparatorHeight) + 'px'
   })
 }
+
+
 function extractNumericValue(value) {
   var numericValue = parseFloat(value);
   return isNaN(numericValue) ? 0 : numericValue;
 }
 
 document.getElementById('search_dms_icon_btn').addEventListener('click', onSearchDMsClick)
-function onSearchDMsClick(){
+function onSearchDMsClick() {
   openDMsModal()
   document.getElementById('filter_dms_input').focus()
 }
@@ -505,22 +549,23 @@ function onSearchDMsClick(){
 document.getElementById('user-filter-input').addEventListener('focus', onUserFilterFocus)
 document.getElementById('user-filter-input').addEventListener('blur', onUserFilterBlur)
 
-function onUserFilterFocus(){
+function onUserFilterFocus() {
   document.querySelector('.sidebar-group-users.sidebar-group__summary .sidebar-group__header').classList.add('_hidden')
+  document.getElementById('user-filter-input').placeholder = 'Filter users'
 }
 
-function onUserFilterBlur(){
-   // it is ok to unfocus but a bit later, so if its clear button we wouldn't flinch
-   setTimeout(()=>{
+function onUserFilterBlur() {
+  // it is ok to unfocus but a bit later, so if its clear button we wouldn't flinch
+  setTimeout(() => {
     // console.log('value',document.getElementById('user-filter-input').value)
-    if(
-      document.activeElement!==document.getElementById('user-filter-input')
-      && document.getElementById('user-filter-input').value.trim()===''
-    ){
-      document.getElementById('user-filter-input').value=''
+    if (
+      document.activeElement !== document.getElementById('user-filter-input')
+      && document.getElementById('user-filter-input').value.trim() === ''
+    ) {
+      document.getElementById('user-filter-input').value = ''
+      document.getElementById('user-filter-input').placeholder = 'Filter'
       document.querySelector('.sidebar-group-users.sidebar-group__summary .sidebar-group__header').classList.remove('_hidden')
+      
     }
-   },250)
-    
-  
+  }, 250)
 }

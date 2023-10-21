@@ -51,12 +51,28 @@
     top: -4px;
     z-index: 2;
     width: 100%;
-    overflow: hidden;
+}
+
+.summary-sticky-users-narrower{
+    top: 28px;
+}
+.summary-sticky-all-users{
+    top:56px
 }
 
 .right-sidebar .simplebar-content-wrapper{
     padding: 4px 8px 18px 2px;
     outline-offset: -1px;
+}
+
+/* related to .icon-trangle-right frmo left-sidebar.css */
+.sidebar-group._expanded .sidebar-group__summary-expander .icon-trangle-right,
+.sidebar-group-users-narrower._expanded .sidebar-group__summary-expander .icon-trangle-right{
+    transform: rotate(90deg);
+}
+.sidebar-group._expanded._overscrolled .sidebar-group__summary-expander .icon-trangle-right,
+.sidebar-group-users-narrower._expanded._overscrolled .sidebar-group__summary-expander .icon-trangle-right {
+    transform: rotate(0deg);
 }
 
 .sidebar-group__header{
@@ -71,7 +87,7 @@
     max-width: 100%;
     overflow: hidden;
     cursor: auto;
-    transition: var(--transition-sidebar-all-slow);
+    transition: all 200ms ease-out;
 }
 .sidebar-group-users .sidebar-group__header._hidden{
     padding-left: 0;
@@ -89,6 +105,7 @@
 }
 .sidebar-group-users{
     gap: 4px;
+    overflow: visible;
 }
 
 .sidebar-group-users .sidebar-group__header{
