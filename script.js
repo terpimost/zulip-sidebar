@@ -152,7 +152,6 @@ function colorizeStreamRow(row, color, darkMode) {
 //should be called on theme change / topics open
 colorizeStreamRows()
 
-
 // Sidebar interactions related
 
 //if a click was on some empty area of a summary consider it as a click on expander area
@@ -182,12 +181,11 @@ function onSidebarRowKeyDown(event) {
   }
 }
 
-
-document.querySelectorAll('.sidebar-group__expander-area').forEach(el => {
-  el.addEventListener('click', onSidebarGroupExpanderAreaClick)
+document.querySelectorAll('.left-sidebar .sidebar-group__expander-area').forEach(el => {
+  el.addEventListener('click', onLSGroupExpanderAreaClick)
 })
-function onSidebarGroupExpanderAreaClick(event) {
-  const sidebar = document.querySelector('.left-sidebar')
+function onLSGroupExpanderAreaClick(event) {
+  const sidebar = simpleBarLeft.getScrollElement() //document.querySelector('.left-sidebar')
   let group = event.currentTarget.closest('.sidebar-group')
   let summaryViewsOrDms
   let stickyParent
@@ -200,7 +198,8 @@ function onSidebarGroupExpanderAreaClick(event) {
   const expanded = group.classList.contains('_expanded')
   const groupDetails = group.querySelector('.sidebar-group__details')
   const stickyAreaAbove = stickyAreaHeightAboveDetails(groupDetails, stickyParent)
-  if (expanded && !summaryViewsOrDms?.classList.contains('_overscrolled')) {//we will fold the group
+  if (expanded && !summaryViewsOrDms?.classList.contains('_overscrolled')) {
+    //we will fold the group
     if (stickyAreaAbove) { //scroll to the beginning of the current element
       //so when it folds, we are at expected place visually
       group.scrollIntoView(true)
@@ -212,7 +211,6 @@ function onSidebarGroupExpanderAreaClick(event) {
     }
     group.classList.remove('_expanded')
     if (summaryViewsOrDms) summaryViewsOrDms.classList.remove('_expanded')
-
   } else {//we will expand the group
     group.classList.add('_expanded')
     if (summaryViewsOrDms) {
@@ -231,8 +229,8 @@ function onSidebarGroupExpanderAreaClick(event) {
   onLeftSidebarScrollThrottled(true, true) //to validate headers of groups about shadow and _overscrolled
 }
 
-function stickyAreaHeightAboveDetails(element, stickyParent) {
-  const sidebar = document.querySelector('.left-sidebar')
+function stickyAreaHeightAboveDetails(element, stickyParent, left = true) {
+  const sidebar = left ? simpleBarLeft.getScrollElement() : simpleBarRight.getScrollElement()
 
   const elementRect = element.getBoundingClientRect()
   const sidebarRect = sidebar.getBoundingClientRect()
@@ -244,7 +242,7 @@ function stickyAreaHeightAboveDetails(element, stickyParent) {
 
   const viewsSticky = sidebar.querySelector('.summary-sticky-views')
 
-  const viewsStickyHeight = viewsSticky.offsetHeight
+  const viewsStickyHeight = viewsSticky?.offsetHeight || 0
   totalStickyHeight += viewsStickyHeight
   if (stickyParent == viewsSticky) {
     if (isAbove(totalStickyHeight)) return totalStickyHeight
@@ -254,7 +252,7 @@ function stickyAreaHeightAboveDetails(element, stickyParent) {
   const viewStickyHeight = 0 // TODO detect that it exists in case of views are folded and get offsetHeight
 
   const dmsSticky = sidebar.querySelector('.summary-sticky-dms')
-  const dmsStickyHeight = dmsSticky.offsetHeight
+  const dmsStickyHeight = dmsSticky?.offsetHeight || 0
   totalStickyHeight += viewStickyHeight + dmsStickyHeight
   if (stickyParent == dmsSticky) {
     if (isAbove(totalStickyHeight)) return totalStickyHeight
@@ -263,7 +261,7 @@ function stickyAreaHeightAboveDetails(element, stickyParent) {
 
   const dmStickyHeight = 0 // TODO detect that it exists in case of views are folded and get offsetHeight
 
-  const separatorStickyHeight = sidebar.querySelector('.summary-sticky-views-dms-separator').offsetHeight
+  const separatorStickyHeight = sidebar.querySelector('.summary-sticky-views-dms-separator')?.offsetHeight || 0
 
   // we don't include current group sticky since we want it to be visible and only above content matters
   // const streamGroup = element.closest('.sidebar-group').querySelector('.summary-sticky-stream')
@@ -280,7 +278,6 @@ function stickyAreaHeightAboveDetails(element, stickyParent) {
 
 //sidebar scroll tracker to control shadow under group header 
 // and _overscrolled status for groups which are _expanded
-
 function onLeftSidebarScroll(e, no_covering = false) {
   // console.log('onLeftSidebarScroll')
   const groups = document.querySelectorAll('.column-left .sidebar-group')
@@ -328,12 +325,58 @@ const onLeftSidebarScrollThrottled = lodash.throttle(onLeftSidebarScroll, 40, { 
 const simpleBarLeft = new SimpleBar(document.getElementById('left-sidebar-scroll-container'));
 simpleBarLeft.getScrollElement().addEventListener('scroll', onLeftSidebarScrollThrottled);
 //lets change opacity from 0 to 1 instead of raw content load twitching
-document.getElementById('left-sidebar').classList.add('_revealed') 
+document.getElementById('left-sidebar').classList.add('_revealed')
 
+document.querySelectorAll('.right-sidebar .sidebar-group__expander-area').forEach(el => {
+  el.addEventListener('click', onRSGroupExpanderAreaClick)
+})
 
+function onRSGroupExpanderAreaClick(event) {
+  const sidebar = simpleBarRight.getScrollElement()
+  let group = event.currentTarget.closest('.sidebar-group')
+  let summaryViewsOrDms
+  let stickyParent
+  if (!group) { //it is not a regular stream group but something with a separate sticky element
+    stickyParent = event.currentTarget.closest('.sidebar-group__summary-sticky')
+    group = stickyParent.nextElementSibling
+    summaryViewsOrDms = stickyParent.querySelector('.sidebar-group__summary')
+  }
+
+  const expanded = group.classList.contains('_expanded')
+  const groupDetails = group.querySelector('.sidebar-group__details')
+  const stickyAreaAbove = stickyAreaHeightAboveDetails(groupDetails, stickyParent, false)
+  if (expanded && !summaryViewsOrDms?.classList.contains('_overscrolled')) {
+    //we will fold the group
+    if (stickyAreaAbove) { //scroll to the beginning of the current element
+      //so when it folds, we are at expected place visually
+      group.scrollIntoView(true)
+      //compensate for sticky
+      sidebar.scrollTo({
+        top: sidebar.scrollTop - stickyAreaAbove,
+        behavior: 'instant',
+      })
+    }
+    group.classList.remove('_expanded')
+    if (summaryViewsOrDms) summaryViewsOrDms.classList.remove('_expanded')
+  } else {//we will expand the group
+    group.classList.add('_expanded')
+    if (summaryViewsOrDms) {
+      summaryViewsOrDms.classList.add('_expanded')
+      //user might scrolled down, so we should scroll to the expanded area
+      if (stickyAreaAbove) {
+        group.scrollIntoView(true)
+        sidebar.scrollTo({
+          top: sidebar.scrollTop - stickyAreaAbove,
+          behavior: 'instant',
+        })
+      }
+    }
+  }
+  // first parameter is fake event, second parameter is flag to enforce removal fo covering
+  onRightSidebarScrollThrottled(true, true) //to validate headers of groups about shadow and _overscrolled
+}
 
 function onRightSidebarScroll(e, no_covering = false) {
-  // console.log('onLeftSidebarScroll')
   const groups = document.querySelectorAll('.column-right .sidebar-group')
   groups.forEach(group => {
     //.sidebar-group__summary-sticky will be either a child or prev sibling
@@ -404,7 +447,7 @@ function openTopicModal(e) {
   const topicsModal = document.querySelector('.left-sidebar-modal-topics')
   topicsModal.style.display = 'flex'
   topicsModal.querySelector('.sidebar-modal-content').style.display = 'flex'
-  topicsModal.querySelector('.sidebar-modal-content .button-close-modal').focus()
+  topicsModal.querySelector('.button-close-modal').focus()
   document.getElementById('left-sidebar').classList.add('_blurred')
 }
 document.querySelectorAll('.button-more-dm>a').forEach(el => {
@@ -565,7 +608,6 @@ function onUserFilterBlur() {
       document.getElementById('user-filter-input').value = ''
       document.getElementById('user-filter-input').placeholder = 'Filter'
       document.querySelector('.sidebar-group-users.sidebar-group__summary .sidebar-group__header').classList.remove('_hidden')
-      
     }
   }, 250)
 }
