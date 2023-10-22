@@ -65,6 +65,36 @@
     outline-offset: -1px;
 }
 
+.right-sidebar .simplebar-track.simplebar-vertical {
+    width: 8px;
+    transition: all 0.4s linear;
+}
+
+.right-sidebar .simplebar-track.simplebar-vertical.simplebar-hover {
+    background-color: hsla(0, 0%, 0%, 0.08);
+    transition: all 0.05s 0.15s linear;
+    box-shadow: 0 0 1px hsl(0deg 0% 0%);
+}
+
+.dark .right-sidebar .simplebar-track.simplebar-vertical.simplebar-hover{
+    background-color: hsla(0, 0%, 100%, 0.05);
+    transition: all 0.05s 0.15s linear;
+    box-shadow: 0 0 1px hsl(0deg 0% 90%);
+}
+
+.right-sidebar .simplebar-scrollbar:before {
+    background-color: hsla(0, 0%, 0%, 0.36);
+}
+
+.dark .right-sidebar .simplebar-scrollbar:before {
+    background-color: hsla(0, 0%, 100%, 0.33);
+}
+
+.simplebar-scrollbar.simplebar-visible:before {
+    opacity: 1;
+}
+
+
 /* related to .icon-trangle-right frmo left-sidebar.css */
 .sidebar-group._expanded .sidebar-group__summary-expander .icon-trangle-right,
 .sidebar-group-users-narrower._expanded .sidebar-group__summary-expander .icon-trangle-right{
@@ -124,7 +154,8 @@
 .dark .user-filter-wrapper{
     opacity: 1;
 }
-.user-filter-wrapper:hover{
+.user-filter-wrapper:hover,
+.user-filter-wrapper:focus-within{
     opacity: 1;
 }
 

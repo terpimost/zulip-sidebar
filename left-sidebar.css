@@ -538,7 +538,7 @@ i.icon-user-status.sidebar-row__icon._away {
 }
 
 .sidebar-group__summary-sticky._covering {
-    box-shadow: 0 1px 1px -1px hsl(0deg 0% 0% / 40%),
+    box-shadow: 0 1px 1px -1px hsl(0deg 0% 0% / 25%),
         0 3px 4px -5px hsl(0deg 0% 0% / 40%),
         0 4px 9px -10px hsl(0deg 0% 0% / 45%),
         0 12px 12px -13px hsl(0deg 0% 0% / 30%);
