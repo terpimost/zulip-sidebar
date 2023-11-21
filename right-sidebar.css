@@ -60,6 +60,54 @@
     top:56px
 }
 
+/* overriding leftsidebar styles to make _minimal version */
+.sidebar-group__summary._as_separator{
+    justify-content: center;
+}
+.sidebar-group__summary._as_separator:hover{
+    justify-content: center;
+    background: initial;
+    box-shadow: initial;
+}
+.sidebar-group__summary._as_separator>.sidebar-group__expander-area {
+    flex-grow: 1;
+    flex-basis: unset;
+    padding: 0 4px;
+
+}
+.sidebar-group__summary._as_separator .sidebar-group__summary-expander{ 
+    width: 16px;
+}
+.sidebar-group__summary._as_separator .sidebar-group__summary-label,
+.sidebar-group__summary._as_separator .item-count,
+.sidebar-group__summary._as_separator .item-count-separator{
+    font-size: 14px;
+    line-height: 100%;
+    letter-spacing: 0.04em;
+    opacity: 0.5;
+    user-select: none;
+    text-transform: none;
+    font-weight: 400;
+    padding: 0;
+    margin: 0;
+    color: var(--color-sidebar-group-label);
+    transition: var(--transition-sidebar-all-slow);
+}
+.sidebar-group__summary._as_separator .item-count{
+    margin-right: 1ch;
+}
+.sidebar-group__summary._as_separator:hover .sidebar-group__summary-label,
+.sidebar-group__summary._as_separator:hover .item-count,
+.sidebar-group__summary._as_separator:hover .item-count-separator{
+    opacity: 1;
+}
+.sidebar-group__summary._as_separator:hover .sidebar-group__separator{
+    background-color: var(--color-sidebar-group-label);
+    opacity: 0.5;
+    transition: var(--transition-sidebar-all-slow);
+}
+/* --- */
+
 .right-sidebar .simplebar-content-wrapper{
     padding: 4px 8px 18px 2px;
     outline-offset: -1px;
@@ -167,18 +215,25 @@
     padding-left: 24px;
 }
 
-.sidebar-group__summary-label._secondary{
-    text-transform:none; 
-    letter-spacing: 0; 
-    font-weight: 500;
-    display: inline-flex;
-    gap: 0.5ch;
-}
-
 .right-sidebar .item-count-wrapper{
     padding-right: 4px;
 }
 
 .right-sidebar .sidebar-row a {
-    padding-left: 14px;
+    padding-left: 1px;
+}
+
+.sidebar-row.sidebar-row__button-more-users .sidebar-row__label {
+    color: var(--color-clickable-icon);
+}
+.sidebar-row.sidebar-row__button-more-users:hover {
+    background-color: var(--color-clickable-icon-hover-bg);
+}
+
+.sidebar-row.sidebar-row__button-more-users:active {
+    background-color: var(--color-clickable-icon-hover-bg-active);
+}
+
+.sidebar-row.sidebar-row__button-more-users:hover .sidebar-row__label {
+    color: var(--color-clickable-icon-hover);
 }

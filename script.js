@@ -413,7 +413,6 @@ function onRightSidebarScroll(e, no_covering = false) {
       sticky_header.classList.remove('_covering')
     }
   })
-  // validateActiveStickyItemsLS()
 }
 const onRightSidebarScrollThrottled = lodash.throttle(onRightSidebarScroll, 40, { leading: true })
 const simpleBarRight = new SimpleBar(document.getElementById('right-sidebar-scroll-container'));
