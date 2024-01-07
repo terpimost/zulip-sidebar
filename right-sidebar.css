@@ -63,10 +63,11 @@
 /* overriding leftsidebar styles to make _minimal version */
 .sidebar-group__summary._as_separator{
     justify-content: center;
+    border-radius: 0;
 }
 .sidebar-group__summary._as_separator:hover{
     justify-content: center;
-    background: initial;
+    background: var(--color-main-bg);
     box-shadow: initial;
 }
 .sidebar-group__summary._as_separator>.sidebar-group__expander-area {
